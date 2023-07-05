@@ -30,7 +30,6 @@ mapscripts Haightashbury_Gym_Lobby_MapScripts{
 }
 
 script Haightashbury_Gym_Lobby_RepositionAttendant_Script{
-    //setobjectxy(ATTENDANT_SINGLES,4,4)
     setobjectxyperm(ATTENDANT_SINGLES,4,4)
     setobjectmovementtype(ATTENDANT_SINGLES,MOVEMENT_TYPE_FACE_DOWN)
     return

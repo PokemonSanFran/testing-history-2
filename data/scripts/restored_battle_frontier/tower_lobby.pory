@@ -201,7 +201,7 @@ script BattleTower_EventScript_AskEnterChallenge{
         case ATTENDANT_LINK_MULTIS: message(BattleTower_Text_TakeLinkMultisChallenge)
     }
 
-    call(BattleFrontier_Challenge_Info_Exit_Menu_Script)
+    call(BattleFrontier_Challenge_Info_Exit_Menu)
     switch(var(VAR_RESULT)){
         case 0: goto(BattleTower_EventScript_TryEnterChallenge)
         case 1: goto(BattleTower_EventScript_ExplainChallenge)
@@ -210,7 +210,7 @@ script BattleTower_EventScript_AskEnterChallenge{
     }
 }
 
-script BattleFrontier_Challenge_Info_Exit_Menu_Script{
+script BattleFrontier_Challenge_Info_Exit_Menu{
     waitmessage
     dynmultichoice(18,4,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,
         gText_Challenge,
@@ -545,7 +545,7 @@ script BattleTower_EventScript_WaitForLinkOpponentLoad{
 
     call(BattleTower_EventScript_ShowYouToBattleRoom)
     clearflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
-    warp(MAP_BATTLE_FRONTIER_BATTLE_TOWER_ELEVATOR, 1, 6)
+    warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, 0)
     waitstate
     end
@@ -563,23 +563,29 @@ script BattleTower_EventScript_ShowYouToBattleRoom{
         }
 
     goto(BattleTower_EventScript_WalkToElevator)
+    return
 }
 
 script BattleTower_EventScript_WalkToElevator{
     closemessage
     call(BattleTower_EventScript_SetAttendantTalkedTo)
     call(BattleTower_EventScript_GetDoorXCoord)
-    applymovement(VAR_LAST_TALKED, BattleTower_Movement_WalkToElevator)
+    applymovement(VAR_LAST_TALKED, BattleTower_StepAside_Movement)
     applymovement(OBJ_EVENT_ID_PLAYER, BattleTower_Movement_WalkToElevator)
     waitmovement(0)
     opendoor(VAR_0x8004, 1)
     waitdooranim
-    applymovement(VAR_LAST_TALKED, BattleTower_Movement_AttendantEnterElevator)
     applymovement(OBJ_EVENT_ID_PLAYER, BattleTower_Movement_PlayerEnterElevator)
     waitmovement(0)
     closedoor(VAR_0x8004, 1)
     waitdooranim
     return
+}
+
+movement BattleTower_StepAside_Movement{
+    walk_right
+    face_left
+    step_end
 }
 
 movement BattleTower_Movement_WalkToElevator{
@@ -764,7 +770,7 @@ text BattleTower_Text_OkayToSaveBeforeEntering{
 }
 
 text BattleTower_Text_ShowYouToBattleRoom{
-    format("I will now show you to the {STR_VAR_1} BATTLE ROOM.")
+    format("Right this way to the {STR_VAR_1} Battle Room. Good luck!")
 }
 
 text BattleTower_Text_RecordLastMatch{

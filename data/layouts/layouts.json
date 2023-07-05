@@ -6900,6 +6900,16 @@
       "secondary_tileset": "gTileset_BattleFrontier",
       "border_filepath": "data/layouts/Haightashbury_Gym_Lobby/border.bin",
       "blockdata_filepath": "data/layouts/Haightashbury_Gym_Lobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAIGHTASHBURY_GYM_BATTLE_ROOM",
+      "name": "Haightashbury_Gym_Battle_Room_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/Haightashbury_Gym_Battle_Room/border.bin",
+      "blockdata_filepath": "data/layouts/Haightashbury_Gym_Battle_Room/map.bin"
     }
   ]
 }

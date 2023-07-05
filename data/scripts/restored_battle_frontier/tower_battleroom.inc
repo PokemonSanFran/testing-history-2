@@ -1,0 +1,537 @@
+Haightashbury_Gym_Battle_Room_EventScript_EnterRoom::
+	setvar VAR_TEMP_0, 1
+	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter
+	waitmovement 0
+	frontier_get FRONTIER_DATA_BATTLE_NUM
+	compare VAR_RESULT, 0
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2
+Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_1:
+	applymovement 2, Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant
+	waitmovement 0
+	setvar VAR_TEMP_2, 1
+	frontier_set FRONTIER_DATA_RECORD_DISABLED, TRUE
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter
+	goto Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter::
+	tower_setopponent
+	addobject 1
+	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
+	waitmovement 0
+	tower_getopponentintro 0
+	msgbox gStringVar4, MSGBOX_DEFAULT
+	waitmessage
+	call Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_2
+Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_1:
+	goto BattleTower_EventScript_WarpToLobbyLost
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent
+	goto Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_1
+
+
+BattleTower_EventScript_SetChallengeStatus::
+	tower_set TOWER_DATA_LVL_MODE
+	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
+	special Script_TryGainNewFanFromCounter
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby
+	return
+
+
+BattleTower_EventScript_WarpToLobbyLost::
+	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST
+	goto BattleTower_EventScript_SetChallengeStatus
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon::
+	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON
+	goto BattleTower_EventScript_SetChallengeStatus
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent::
+	frontier_incrementstreak
+	tower_setbattlewon
+	compare VAR_RESULT, FRONTIER_STAGES_PER_CHALLENGE
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_2
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_1:
+	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentExit
+	waitmovement 0
+	removeobject 1
+	frontier_getbrainstatus
+	applymovement 2, Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant
+	waitmovement 0
+	msgbox Haightashbury_Gym_Battle_Room_Text_RestoreMonsToFullHealth, MSGBOX_DEFAULT
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon
+	goto Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_1
+
+
+BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu::
+	waitmessage
+	dynmultipush gText_GoOn, 0
+	call BattleFrontier_EventScript_GetCantRecordBattle
+	compare VAR_RESULT, FALSE
+	goto_if_eq BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu_2
+BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu_1:
+	dynmultipush gText_Rest, 2
+	dynmultipush gText_Retire, 3
+	return
+
+BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu_2:
+	dynmultipush gText_Record2, 1
+	goto BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent::
+	frontier_getbrainstatus
+	copyvar VAR_TEMP_F, VAR_RESULT
+	frontier_get FRONTIER_DATA_BATTLE_NUM
+	call Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent
+	call BattleFrontier_BattleTower_ConstructAndCall_Menu
+	return
+
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu::
+	call BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu
+	dynmultistack 19, 2, FALSE, 4, TRUE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, BattleFrontier_BattleTower_ConstructAndCall_Menu_2
+	case 1, BattleFrontier_BattleTower_ConstructAndCall_Menu_3
+	case 2, BattleFrontier_BattleTower_ConstructAndCall_Menu_4
+	case 3, BattleFrontier_BattleTower_ConstructAndCall_Menu_5
+	case MULTI_B_PRESSED, BattleFrontier_BattleTower_ConstructAndCall_Menu_6
+	return
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_ContinueChallenge
+	return
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu_3:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle
+	return
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu_4:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge
+	return
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu_5:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge
+	return
+
+BattleFrontier_BattleTower_ConstructAndCall_Menu_6:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle::
+	message Haightashbury_Gym_Battle_Room_Text_RecordYourBattle
+	waitmessage
+	multichoicedefault 20, 8, MULTI_YESNO, 1, FALSE
+	compare VAR_RESULT, 0
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle_2
+Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle_1:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle_2:
+	call BattleFrontier_EventScript_SaveBattle
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskRecordBattle_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge::
+	msgbox Haightashbury_Gym_Battle_Room_Text_SaveAndQuitGame, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge_2
+Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge_1:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_PauseChallenge
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskPauseChallenge_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge::
+	message Haightashbury_Gym_Battle_Room_Text_CancelYourChallenge
+	waitmessage
+	multichoicedefault 20, 8, MULTI_YESNO, 1, FALSE
+	compare VAR_RESULT, 0
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge_2
+Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge_1:
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_RetireChallenge
+	goto Haightashbury_Gym_Battle_Room_EventScript_AskRetireChallenge_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_ContinueChallenge::
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceBattle
+	waitmovement 0
+	applymovement 2, Haightashbury_Gym_Battle_Room_Movement_AttendantReturnToPos
+	waitmovement 0
+	goto Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_PauseChallenge::
+	message Haightashbury_Gym_Battle_Room_Text_SavingPleaseWait
+	waitmessage
+	tower_save CHALLENGE_STATUS_PAUSED
+	playse SE_SAVE
+	waitse
+	fadescreen FADE_TO_BLACK
+	frontier_reset
+	end
+
+
+Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent::
+	copyvar VAR_TEMP_E, VAR_RESULT
+	addvar VAR_TEMP_E, 1
+	buffernumberstring STR_VAR_3, VAR_TEMP_E
+	message Haightashbury_Gym_Battle_Room_Text_ReadyForXOpponent
+	waitmessage
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_BattleAnabel::
+	frontier_setbrainobj
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceBattle
+	waitmovement 0
+	applymovement 2, Haightashbury_Gym_Battle_Room_Movement_AttendantReturnToPos
+	waitmovement 0
+	addobject 1
+	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
+	waitmovement 0
+	goto Haightashbury_Gym_Battle_Room_EventScript_Anabel
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType::
+	setvar VAR_TEMP_D, 0
+	frontier_get FRONTIER_DATA_HEARD_BRAIN_SPEECH
+	compare VAR_RESULT, TRUE
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_2
+	addvar VAR_TEMP_D, 0
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_1:
+	switch VAR_TEMP_F
+	case FRONTIER_BRAIN_SILVER, Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_7
+	case FRONTIER_BRAIN_GOLD, Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_8
+	case FRONTIER_BRAIN_STREAK, Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_9
+	case FRONTIER_BRAIN_STREAK_LONG, Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_9
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_5:
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_2:
+	addvar VAR_TEMP_D, 2
+	goto Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_1
+
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_7:
+	addvar VAR_TEMP_D, 50
+	goto Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_5
+
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_8:
+	addvar VAR_TEMP_D, 100
+	goto Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_5
+
+Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_9:
+	addvar VAR_TEMP_D, 200
+	goto Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType_5
+
+
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro::
+	call Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType
+	compare VAR_TEMP_D, 50
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_2
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_1:
+	compare VAR_TEMP_D, 100
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_5
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_4:
+	compare VAR_TEMP_D, 100
+	goto_if_lt Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_8
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_7:
+	compare VAR_TEMP_D, 52
+	goto_if_gt Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_10
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_2:
+	msgbox Haightashbury_Gym_Battle_Room_Text_GreetingsImAnabel, MSGBOX_DEFAULT
+	frontier_set FRONTIER_DATA_HEARD_BRAIN_SPEECH
+	goto Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_1
+
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_5:
+	msgbox Haightashbury_Gym_Battle_Room_Text_AnabelYouCameBack, MSGBOX_DEFAULT
+	frontier_set FRONTIER_DATA_HEARD_BRAIN_SPEECH
+	goto Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_4
+
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_8:
+	msgbox Haightashbury_Gym_Battle_Room_Text_LetMeSeeYourTalent, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_7
+
+Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro_10:
+	msgbox Haightashbury_Gym_Battle_Room_Text_LetsBeginShallWe, MSGBOX_DEFAULT
+	return
+
+
+Haightashbury_Gym_Battle_Room_EventScript_Anabel::
+	call Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro
+	call Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_Anabel_2
+Haightashbury_Gym_Battle_Room_EventScript_Anabel_1:
+	goto BattleTower_EventScript_WarpToLobbyLost
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_Anabel_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel
+	goto Haightashbury_Gym_Battle_Room_EventScript_Anabel_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle::
+	closemessage
+	setvar VAR_TEMP_2, 0
+	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
+	special HealPlayerParty
+	setvar VAR_0x8004, SPECIAL_BATTLE_TOWER
+	setvar VAR_0x8005, 0
+	special DoSpecialTrainerBattle
+	waitstate
+	copyvar VAR_0x8004, VAR_FRONTIER_BATTLE_MODE
+	compare VAR_0x8004, FRONTIER_MODE_LINK_MULTIS
+	goto_if_ne Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle_2
+Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle_1:
+	tower_setinterviewdata
+	frontier_get FRONTIER_DATA_BATTLE_OUTCOME
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle_2:
+	frontier_restorehelditems
+	special HealPlayerParty
+	frontier_resetsketch
+	goto Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel::
+	frontier_incrementstreak
+	frontier_getsymbols
+	compare VAR_RESULT, 2
+	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel_2
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel_1:
+	call BattleTower_EventScript_AnabelCongratsText
+	playfanfare MUS_OBTAIN_SYMBOL
+	call BattleTower_EventScript_FrontierPassText
+	waitmessage
+	waitfanfare
+	frontier_givesymbol
+	call BattleTower_EventScript_AnabelConclusionText
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon
+	return
+
+Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel_2:
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon
+	goto Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel_1
+
+
+BattleTower_EventScript_AnabelCongratsText::
+	compare VAR_RESULT, 0
+	goto_if_eq BattleTower_EventScript_AnabelCongratsText_2
+BattleTower_EventScript_AnabelCongratsText_1:
+	compare VAR_RESULT, 1
+	goto_if_eq BattleTower_EventScript_AnabelCongratsText_5
+BattleTower_EventScript_AnabelCongratsText_4:
+	return
+
+BattleTower_EventScript_AnabelCongratsText_2:
+	msgbox Haightashbury_Gym_Battle_Room_Text_AnabelTalentShallBeRecognized, MSGBOX_DEFAULT
+	goto BattleTower_EventScript_AnabelCongratsText_1
+
+BattleTower_EventScript_AnabelCongratsText_5:
+	msgbox Haightashbury_Gym_Battle_Room_Text_AnabelCongratsYourPassPlease, MSGBOX_DEFAULT
+	goto BattleTower_EventScript_AnabelCongratsText_4
+
+
+BattleTower_EventScript_FrontierPassText::
+	compare VAR_RESULT, 0
+	goto_if_eq BattleTower_EventScript_FrontierPassText_2
+BattleTower_EventScript_FrontierPassText_1:
+	compare VAR_RESULT, 1
+	goto_if_eq BattleTower_EventScript_FrontierPassText_5
+BattleTower_EventScript_FrontierPassText_4:
+	return
+
+BattleTower_EventScript_FrontierPassText_2:
+	message Haightashbury_Gym_Battle_Room_Text_ReceivedAbilitySymbol
+	goto BattleTower_EventScript_FrontierPassText_1
+
+BattleTower_EventScript_FrontierPassText_5:
+	message Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine
+	goto BattleTower_EventScript_FrontierPassText_4
+
+
+BattleTower_EventScript_AnabelConclusionText::
+	compare VAR_RESULT, 0
+	goto_if_eq BattleTower_EventScript_AnabelConclusionText_2
+BattleTower_EventScript_AnabelConclusionText_1:
+	compare VAR_RESULT, 1
+	goto_if_eq BattleTower_EventScript_AnabelConclusionText_5
+BattleTower_EventScript_AnabelConclusionText_4:
+	return
+
+BattleTower_EventScript_AnabelConclusionText_2:
+	msgbox Haightashbury_Gym_Battle_Room_Text_UntilNextTime, MSGBOX_DEFAULT
+	goto BattleTower_EventScript_AnabelConclusionText_1
+
+BattleTower_EventScript_AnabelConclusionText_5:
+	msgbox Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain, MSGBOX_DEFAULT
+	goto BattleTower_EventScript_AnabelConclusionText_4
+
+
+Haightashbury_Gym_Battle_Room_Movement_PlayerEnter:
+	walk_up
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant:
+	face_left
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_PlayerFaceBattle:
+	face_right
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_OpponentEnter:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_OpponentExit:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer:
+	walk_right
+	walk_right
+	step_end
+
+Haightashbury_Gym_Battle_Room_Movement_AttendantReturnToPos:
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby::
+	copyvar VAR_RESULT, VAR_FRONTIER_BATTLE_MODE
+	switch VAR_RESULT
+	case FRONTIER_MODE_SINGLES, Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_3
+	case FRONTIER_MODE_DOUBLES, Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_4
+	case FRONTIER_MODE_MULTIS, Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_5
+	case FRONTIER_MODE_LINK_MULTIS, Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_6
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_1:
+	waitstate
+	end
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_3:
+	warp MAP_HAIGHTASHBURY_GYM_LOBBY, 4, 5
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_1
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_4:
+	warp MAP_HAIGHTASHBURY_GYM_LOBBY, 9, 5
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_1
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_5:
+	warp MAP_HAIGHTASHBURY_GYM_LOBBY, 12, 5
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_1
+
+Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_6:
+	tower_closelink
+	warp MAP_HAIGHTASHBURY_GYM_LOBBY, 16, 5
+	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_1
+
+
+Haightashbury_Gym_Battle_Room_EventScript_RetireChallenge::
+	setflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
+	goto BattleTower_EventScript_WarpToLobbyLost
+	end
+
+
+Haightashbury_Gym_Battle_Room_Text_RestoreMonsToFullHealth::
+	.string "We will restore your POKéMON to\nfull health.$"
+
+Haightashbury_Gym_Battle_Room_Text_ReadyForXOpponent::
+	.string "You will be facing opponent no. {STR_VAR_3}.\nAre you ready?$"
+
+Haightashbury_Gym_Battle_Room_Text_RecordYourBattle::
+	.string "Record your battle on your\nFRONTIER PASS?$"
+
+Haightashbury_Gym_Battle_Room_Text_SaveAndQuitGame::
+	.string "Would you like to save and\nquit the game?$"
+
+Haightashbury_Gym_Battle_Room_Text_SavingPleaseWait::
+	.string "Saving your battle data.\nPlease wait.$"
+
+Haightashbury_Gym_Battle_Room_Text_CancelYourChallenge::
+	.string "Would you like to cancel your BATTLE\nROOM challenge?$"
+
+Haightashbury_Gym_Battle_Room_Text_RecordCouldntBeSaved::
+	.string "There was an error of some sort.\nYour record could not be saved.$"
+
+Haightashbury_Gym_Battle_Room_Text_GreetingsImAnabel::
+	.string "Greetings…\nMy name is ANABEL.\pI am the SALON MAIDEN, and I am in\ncharge of running the BATTLE TOWER…\pI have heard several rumors\nabout you…\pIn all honesty, what I have heard does\nnot seem attractive in any way…\pThe reason I've come to see you…\nWell, there is but one reason…$"
+
+Haightashbury_Gym_Battle_Room_Text_LetMeSeeYourTalent::
+	.string "Let me see your talent in\nits entirety…$"
+
+Haightashbury_Gym_Battle_Room_Text_AnabelTalentShallBeRecognized::
+	.string "ANABEL: Fufufu, nicely done…\pYour FRONTIER PASS, please…\nYour talent shall be recognized.$"
+
+Haightashbury_Gym_Battle_Room_Text_ReceivedAbilitySymbol::
+	.string "The Ability Symbol was embossed on\nthe FRONTIER PASS!$"
+
+Haightashbury_Gym_Battle_Room_Text_UntilNextTime::
+	.string "… … … … … …\pYou have confidence in your POKéMON\nbattling talent, don't you?\pI urge you to keep battling and\nkeep on winning.\pI will be waiting for you.\nUntil the next time we meet…$"
+
+Haightashbury_Gym_Battle_Room_Text_AnabelYouCameBack::
+	.string "ANABEL: You really did come back to\nsee me…\p… … … … … …\pYou've won straight matches to see me…\nI won't have to hold back against you…\pIt's been too long now…\pToo long since I've been able to battle\nwithout thinking about anything…$"
+
+Haightashbury_Gym_Battle_Room_Text_LetsBeginShallWe::
+	.string "Let's begin, shall we?$"
+
+Haightashbury_Gym_Battle_Room_Text_AnabelCongratsYourPassPlease::
+	.string "ANABEL: Fufu, congratulations…\nYour FRONTIER PASS, please…$"
+
+Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine::
+	.string "The Ability Symbol took on\na golden shine!$"
+
+Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain::
+	.string "That was fun…\pI have never had a POKéMON battle\nso enjoyable before…\pI wish I could battle with you again…$"

@@ -210,7 +210,7 @@ BattleTower_EventScript_AskEnterChallenge::
 	case 3, BattleTower_EventScript_AskEnterChallenge_5
 	case 4, BattleTower_EventScript_AskEnterChallenge_6
 BattleTower_EventScript_AskEnterChallenge_1:
-	call BattleFrontier_Challenge_Info_Exit_Menu_Script
+	call BattleFrontier_Challenge_Info_Exit_Menu
 	switch VAR_RESULT
 	case 0, BattleTower_EventScript_AskEnterChallenge_8
 	case 1, BattleTower_EventScript_AskEnterChallenge_9
@@ -251,7 +251,7 @@ BattleTower_EventScript_AskEnterChallenge_11:
 	return
 
 
-BattleFrontier_Challenge_Info_Exit_Menu_Script::
+BattleFrontier_Challenge_Info_Exit_Menu::
 	waitmessage
 	dynmultichoice 18, 4, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, gText_Challenge, gText_Info3, gText_Exit
 	return
@@ -794,7 +794,7 @@ BattleTower_EventScript_WaitForLinkOpponentLoad::
 BattleTower_EventScript_WaitForLinkOpponentLoad_1:
 	call BattleTower_EventScript_ShowYouToBattleRoom
 	clearflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
-	warp MAP_BATTLE_FRONTIER_BATTLE_TOWER_ELEVATOR, 1, 6
+	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8
 	setvar VAR_TEMP_0, 0
 	waitstate
 	end
@@ -824,18 +824,22 @@ BattleTower_EventScript_WalkToElevator::
 	closemessage
 	call BattleTower_EventScript_SetAttendantTalkedTo
 	call BattleTower_EventScript_GetDoorXCoord
-	applymovement VAR_LAST_TALKED, BattleTower_Movement_WalkToElevator
+	applymovement VAR_LAST_TALKED, BattleTower_StepAside_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, BattleTower_Movement_WalkToElevator
 	waitmovement 0
 	opendoor VAR_0x8004, 1
 	waitdooranim
-	applymovement VAR_LAST_TALKED, BattleTower_Movement_AttendantEnterElevator
 	applymovement OBJ_EVENT_ID_PLAYER, BattleTower_Movement_PlayerEnterElevator
 	waitmovement 0
 	closedoor VAR_0x8004, 1
 	waitdooranim
 	return
 
+
+BattleTower_StepAside_Movement:
+	walk_right
+	face_left
+	step_end
 
 BattleTower_Movement_WalkToElevator:
 	walk_up
@@ -1121,8 +1125,8 @@ BattleTower_Text_OkayToSaveBeforeEntering::
 	.string "progress must be saved. Is that okay?$"
 
 BattleTower_Text_ShowYouToBattleRoom::
-	.string "I will now show you to the\n"
-	.string "{STR_VAR_1} BATTLE ROOM.$"
+	.string "Right this way to the {STR_VAR_1}\n"
+	.string "Battle Room. Good luck!$"
 
 BattleTower_Text_RecordLastMatch::
 	.string "Shall I record your last BATTLE TOWER\n"

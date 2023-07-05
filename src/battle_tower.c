@@ -1063,7 +1063,6 @@ static void SetNextFacilityOpponent(void)
         u16 id;
         u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
         u16 winStreak = GetCurrentFacilityWinStreak();
-        u32 challengeNum = winStreak / FRONTIER_STAGES_PER_CHALLENGE;
         SetFacilityPtrsGetLevel();
 
         if (battleMode == FRONTIER_MODE_MULTIS || battleMode == FRONTIER_MODE_LINK_MULTIS)
@@ -1084,7 +1083,7 @@ static void SetNextFacilityOpponent(void)
             s32 i;
             while (1)
             {
-                id = GetRandomScaledFrontierTrainerId(challengeNum, gSaveBlock2Ptr->frontier.curChallengeBattleNum);
+                id = GetRandomScaledFrontierTrainerId();
 
                 // Ensure trainer wasn't previously fought in this challenge.
                 for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
@@ -1104,30 +1103,12 @@ static void SetNextFacilityOpponent(void)
     }
 }
 
-u16 GetRandomScaledFrontierTrainerId(u8 challengeNum, u8 battleNum)
+u16 GetRandomScaledFrontierTrainerId(void)
 {
     u16 trainerId;
 
-    if (challengeNum <= 7)
-    {
-        if (battleNum == FRONTIER_STAGES_PER_CHALLENGE - 1)
-        {
-            // The last battle in each challenge has a jump in difficulty, pulls from a table with higher ranges
-            trainerId = (sFrontierTrainerIdRangesHard[challengeNum][1] - sFrontierTrainerIdRangesHard[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRangesHard[challengeNum][0] + (Random() % trainerId);
-        }
-        else
-        {
-            trainerId = (sFrontierTrainerIdRanges[challengeNum][1] - sFrontierTrainerIdRanges[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRanges[challengeNum][0] + (Random() % trainerId);
-        }
-    }
-    else
-    {
-        // After challenge 7, trainer IDs always come from the last, hardest range, which is the same for both trainer ID tables
-        trainerId = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
-        trainerId = sFrontierTrainerIdRanges[7][0] + (Random() % trainerId);
-    }
+    trainerId = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
+    trainerId = sFrontierTrainerIdRanges[7][0] + (Random() % trainerId);
 
     return trainerId;
 }
@@ -1276,7 +1257,7 @@ u16 GetBattleFacilityTrainerGfxId(u16 trainerId)
         facilityClass = gSaveBlock2Ptr->frontier.ereaderTrainer.facilityClass;
     }
     else if (trainerId < FRONTIER_TRAINERS_COUNT)
-    #else 
+    #else
     if (trainerId < FRONTIER_TRAINERS_COUNT)
     #endif
     {
@@ -2377,7 +2358,7 @@ static void LoadMultiPartnerCandidatesData(void)
     {
         do
         {
-            trainerId = GetRandomScaledFrontierTrainerId(challengeNum, 0);
+            trainerId = GetRandomScaledFrontierTrainerId();
             for (i = 0; i < j; i++)
             {
                 if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)
@@ -2609,7 +2590,7 @@ static void ShowPartnerCandidateMessage(void)
         {
             while (1)
             {
-                i = GetRandomScaledFrontierTrainerId(challengeNum, k / 2);
+                i = GetRandomScaledFrontierTrainerId();
                 if (gPartnerTrainerId == i)
                     continue;
 
@@ -2688,7 +2669,7 @@ static void LoadLinkMultiOpponentsData(void)
             {
                 do
                 {
-                    trainerId = GetRandomScaledFrontierTrainerId(challengeNum, i / 2);
+                    trainerId = GetRandomScaledFrontierTrainerId();
                     for (j = 0; j < i; j++)
                     {
                         if (gSaveBlock2Ptr->frontier.trainerIds[j] == trainerId)

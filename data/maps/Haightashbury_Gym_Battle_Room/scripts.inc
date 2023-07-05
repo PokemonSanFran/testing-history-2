@@ -1,0 +1,8 @@
+Haightashbury_Gym_Battle_Room_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Haightashbury_Gym_Battle_Room_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Haightashbury_Gym_Battle_Room_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Haightashbury_Gym_Battle_Room_EventScript_EnterRoom
+	.2byte 0
+

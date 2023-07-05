@@ -69,13 +69,6 @@
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 1,
-      "elevation": 0,
-      "dest_map": "MAP_HAIGHTASHBURY_GYM",
-      "dest_warp_id": "0"
-    },
-    {
       "x": 10,
       "y": 9,
       "elevation": 0,
@@ -88,6 +81,13 @@
       "elevation": 0,
       "dest_map": "MAP_HAIGHTASHBURY",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 4,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_HAIGHTASHBURY_GYM",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

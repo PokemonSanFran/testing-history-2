@@ -1494,7 +1494,7 @@ static u16 GetUniqueTrainerId(u8 objectEventId)
     {
         do
         {
-            trainerId = GetRandomScaledFrontierTrainerId(challengeNum + 1, floor);
+            trainerId = GetRandomScaledFrontierTrainerId();
             for (i = 0; i < objectEventId; i++)
             {
                 if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)
@@ -1506,7 +1506,7 @@ static u16 GetUniqueTrainerId(u8 objectEventId)
     {
         do
         {
-            trainerId = GetRandomScaledFrontierTrainerId(challengeNum, floor);
+            trainerId = GetRandomScaledFrontierTrainerId();
             for (i = 0; i < objectEventId; i++)
             {
                 if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)

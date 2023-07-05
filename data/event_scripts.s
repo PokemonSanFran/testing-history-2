@@ -1092,6 +1092,7 @@ Script_RemoveTint::
 .include "data/text/birch_speech.inc"
 
 .include "data/scripts/restored_battle_frontier/tower_lobby.inc"
+.include "data/scripts/restored_battle_frontier/tower_battleroom.inc"
 
 .include "data/maps/BlackMap/scripts.inc"
 .include "data/maps/Southbay/scripts.inc"
@@ -1648,3 +1649,5 @@ Script_RemoveTint::
 	.include "data/maps/Uber_HQ_Floor2/scripts.inc"
 
 	.include "data/maps/Haightashbury_Gym_Lobby/scripts.inc"
+
+	.include "data/maps/Haightashbury_Gym_Battle_Room/scripts.inc"

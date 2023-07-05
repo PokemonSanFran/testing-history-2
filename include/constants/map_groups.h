@@ -229,6 +229,7 @@
 #define MAP_HAIGHTASHBURY_POKEMONCENTER_1F (0 | (10 << 8))
 #define MAP_HAIGHTASHBURY_GYM              (1 | (10 << 8))
 #define MAP_HAIGHTASHBURY_GYM_LOBBY        (2 | (10 << 8))
+#define MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM  (3 | (10 << 8))
 
 // gMapGroup_IndoorGldngtepark
 #define MAP_GLDNGTEPARK_POKEMONCENTER_1F (0 | (11 << 8))
