@@ -2456,11 +2456,11 @@ bool8 ScrCmd_givecustommon(struct ScriptContext *ctx)
     u16 move3 = ScriptReadHalfword(ctx);
     u16 move4 = ScriptReadHalfword(ctx);
     bool8 isShiny = ScriptReadByte(ctx);
-    
+
     u8 evs[NUM_STATS] = {hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv};
     u8 ivs[NUM_STATS] = {hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv};
     u16 moves[4] = {move1, move2, move3, move4};
-    
+
     gSpecialVar_Result = ScriptGiveCustomMon(species, level, item, ball, nature, abilityNum, evs, ivs, moves, isShiny);
     return FALSE;
 }
@@ -2623,11 +2623,17 @@ bool8 ScrCmd_setcustomwildmon(struct ScriptContext *ctx)
     u16 move3 = ScriptReadHalfword(ctx);
     u16 move4 = ScriptReadHalfword(ctx);
     bool8 isShiny = ScriptReadByte(ctx);
-    
+
     u8 evs[NUM_STATS] = {hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv};
     u8 ivs[NUM_STATS] = {hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv};
     u16 moves[4] = {move1, move2, move3, move4};
-    
+
     gSpecialVar_Result = CreateCustomMon(species, level, item, ball, nature, abilityNum, evs, ivs, moves, isShiny);
+    return FALSE;
+}
+bool8 ScrCmd_givefrontierbattlepoints(struct ScriptContext *ctx)
+{
+    u32 amount = VarGet(ScriptReadWord(ctx));
+    GiveFrontierBattlePoints(amount);
     return FALSE;
 }

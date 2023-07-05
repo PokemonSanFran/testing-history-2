@@ -1819,7 +1819,7 @@ static const u16 sElevatorWindowTiles_Descending[ELEVATOR_WINDOW_HEIGHT][ELEVATO
 
 void SetSalesforcetowerFloor(void)
 {
-    u8 SalesforcetowerFloor; 
+    u8 SalesforcetowerFloor;
 
 /*
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
@@ -3095,12 +3095,12 @@ void TakeFrontierBattlePoints(void)
         gSaveBlock2Ptr->frontier.battlePoints -= gSpecialVar_0x8004;
 }
 
-void GiveFrontierBattlePoints(void)
+void GiveFrontierBattlePoints(u32 amount)
 {
-    if (gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004 > MAX_BATTLE_FRONTIER_POINTS)
+    if (gSaveBlock2Ptr->frontier.battlePoints + amount > MAX_BATTLE_FRONTIER_POINTS)
         gSaveBlock2Ptr->frontier.battlePoints = MAX_BATTLE_FRONTIER_POINTS;
     else
-        gSaveBlock2Ptr->frontier.battlePoints = gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004;
+        gSaveBlock2Ptr->frontier.battlePoints = gSaveBlock2Ptr->frontier.battlePoints + amount;
 }
 
 u16 GetFrontierBattlePoints(void)
@@ -4400,7 +4400,7 @@ u8 GetNumberOfBadges(void)
 {
     u16 badgeFlag;
     u8 count = 0;
-    
+
     for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
         if (FlagGet(badgeFlag))
         count++;
@@ -4434,21 +4434,21 @@ bool32 GetMegaEvolutionPartyMember(u16 species, int PartySlot, int IsEvolution)
             {
                 VarSet(VAR_TEMP_1,PartySlot);
                 VarSet(VAR_TEMP_2,IsEvolution);
-            }else 
+            }else
             {
                 IsEvolution = 1;
 
             }
             GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies,PartySlot,IsEvolution);
         }
-    }   
+    }
 }
 
 u8 CheckNumAlcatrazExhibitDefeated(void)
 {
     u16 trainerFlag;
     u8 count = 0;
-    
+
     if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALBERTO)){
         count++;
     }
@@ -4603,7 +4603,7 @@ void CopyMonFromStolenTradeStorage(void)
         }
     }
 }
-    
+
 void RandomlyBoostPartyMemberFriendship(void)
 {
     u8 i = (Random() % 6);

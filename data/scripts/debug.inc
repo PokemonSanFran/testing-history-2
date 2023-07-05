@@ -75,15 +75,17 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	warp MAP_MISSION, 7, 26
+	warp MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER, 0
 	end
 
 
 Debug_Script_4::
+	call BattleFrontier_ScottsHouse_EventScript_Give1BattlePoint
 	end
 
 
 Debug_Script_5::
+	givefrontierbattlepoints 10
 	end
 
 
