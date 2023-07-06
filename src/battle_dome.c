@@ -2309,7 +2309,7 @@ static void InitDomeTrainers(void)
         {
             do
             {
-                trainerId = GetRandomScaledFrontierTrainerId();
+                trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak(), 0);
                 for (j = 1; j < i; j++)
                 {
                     if (DOME_TRAINERS[j].trainerId == trainerId)
@@ -2322,7 +2322,7 @@ static void InitDomeTrainers(void)
         {
             do
             {
-                trainerId = GetRandomScaledFrontierTrainerId();
+                trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak() + 1, 0);
                 for (j = 1; j < i; j++)
                 {
                     if (DOME_TRAINERS[j].trainerId == trainerId)

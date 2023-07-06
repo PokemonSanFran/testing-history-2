@@ -316,7 +316,7 @@ static void GenerateOpponentMons(void)
     do
     {
         // Choose a random trainer, ensuring no repeats in this challenge
-        trainerId = GetRandomScaledFrontierTrainerId();
+        trainerId = GetRandomScaledFrontierTrainerId(challengeNum, gSaveBlock2Ptr->frontier.curChallengeBattleNum);
         for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
         {
             if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)

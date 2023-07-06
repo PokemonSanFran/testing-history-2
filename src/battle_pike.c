@@ -1412,7 +1412,7 @@ static void PrepareOneTrainer(bool8 difficult)
     challengeNum = gSaveBlock2Ptr->frontier.pikeWinStreaks[lvlMode] / NUM_PIKE_ROOMS;
     do
     {
-        trainerId = GetRandomScaledFrontierTrainerId();
+        trainerId = GetRandomScaledFrontierTrainerId(challengeNum, battleNum);
         for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1; i++)
         {
             if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)
@@ -1437,7 +1437,7 @@ static void PrepareTwoTrainers(void)
     gFacilityTrainers = gBattleFrontierTrainers;
     do
     {
-        trainerId = GetRandomScaledFrontierTrainerId();
+        trainerId = GetRandomScaledFrontierTrainerId(challengeNum, 1);
         for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum - 1; i++)
         {
             if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)
@@ -1452,7 +1452,7 @@ static void PrepareTwoTrainers(void)
 
     do
     {
-        trainerId = GetRandomScaledFrontierTrainerId();
+        trainerId = GetRandomScaledFrontierTrainerId(challengeNum, 1);
         for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
         {
             if (gSaveBlock2Ptr->frontier.trainerIds[i] == trainerId)

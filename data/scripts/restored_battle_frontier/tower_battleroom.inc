@@ -2,6 +2,7 @@ Haightashbury_Gym_Battle_Room_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter
 	waitmovement 0
+	special PSF_SetNextTowerOpponent
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	compare VAR_RESULT, 0
 	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2
@@ -21,7 +22,6 @@ Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2:
 
 
 Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter::
-	tower_setopponent
 	addobject 1
 	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
 	waitmovement 0
@@ -69,7 +69,6 @@ Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_1:
 	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentExit
 	waitmovement 0
 	removeobject 1
-	frontier_getbrainstatus
 	applymovement 2, Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant
@@ -78,6 +77,11 @@ Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent_1:
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
+	playse MUS_LEVEL_UP
+	msgbox Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned, MSGBOX_DEFAULT
+	buffernumberstring STR_VAR_1, 3
+	givefrontierbattlepoints 3
+	waitse
 	goto Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent
 	return
 
@@ -103,8 +107,7 @@ BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu_2:
 
 
 Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent::
-	frontier_getbrainstatus
-	copyvar VAR_TEMP_F, VAR_RESULT
+	special PSF_SetNextTowerOpponent
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	call Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent
 	call BattleFrontier_BattleTower_ConstructAndCall_Menu
@@ -535,3 +538,7 @@ Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine::
 
 Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain::
 	.string "That was fun…\pI have never had a POKéMON battle\nso enjoyable before…\pI wish I could battle with you again…$"
+
+Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned::
+	.string "You've also earned {STR_VAR_1}\n"
+	.string "Battle Points!$"

@@ -71,8 +71,10 @@ script BattleTower_EventScript_GiveRibbons{
 }
 
 script BattleTower_EventScript_GiveBattlePoints{
+    //PSF TODO needs a show BP box
     msgbox(BattleTower_Text_AwardYouTheseBattlePoints, MSGBOX_DEFAULT)
-    frontier_givepoints
+    buffernumberstring(STR_VAR_1,10)
+    givefrontierbattlepoints(10)
     msgbox(BattleFrontier_Text_ObtainedXBattlePoints, MSGBOX_GETPOINTS)
     return
 }

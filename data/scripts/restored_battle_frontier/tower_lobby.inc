@@ -55,7 +55,8 @@ BattleTower_EventScript_GiveRibbons_2:
 
 BattleTower_EventScript_GiveBattlePoints::
 	msgbox BattleTower_Text_AwardYouTheseBattlePoints, MSGBOX_DEFAULT
-	frontier_givepoints
+	buffernumberstring STR_VAR_1, 10
+	givefrontierbattlepoints 10
 	msgbox BattleFrontier_Text_ObtainedXBattlePoints, MSGBOX_GETPOINTS
 	return
 

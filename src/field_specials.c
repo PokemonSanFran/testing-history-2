@@ -3097,10 +3097,13 @@ void TakeFrontierBattlePoints(void)
 
 void GiveFrontierBattlePoints(u32 amount)
 {
-    if (gSaveBlock2Ptr->frontier.battlePoints + amount > MAX_BATTLE_FRONTIER_POINTS)
-        gSaveBlock2Ptr->frontier.battlePoints = MAX_BATTLE_FRONTIER_POINTS;
-    else
-        gSaveBlock2Ptr->frontier.battlePoints = gSaveBlock2Ptr->frontier.battlePoints + amount;
+    u32 pointsToBeSet = (gSaveBlock2Ptr->frontier.battlePoints + amount);
+
+    if (pointsToBeSet > MAX_BATTLE_FRONTIER_POINTS)
+        pointsToBeSet = MAX_BATTLE_FRONTIER_POINTS;
+
+    gSaveBlock2Ptr->frontier.cardBattlePoints = pointsToBeSet;
+    gSaveBlock2Ptr->frontier.battlePoints = pointsToBeSet;
 }
 
 u16 GetFrontierBattlePoints(void)

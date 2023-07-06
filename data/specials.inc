@@ -617,3 +617,7 @@ gSpecials::
     def_special Quest_Persuasivepassenger_CheckQuestAndChooseDriver
     def_special Quest_Persuasivepassenger_CheckNeededItems
     def_special Quest_Persuasivepassenger_TakeNeededItems
+
+@ Restored Frontier
+
+    def_special PSF_SetNextTowerOpponent

@@ -20,6 +20,8 @@ script Haightashbury_Gym_Battle_Room_EventScript_EnterRoom{
     applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter)
     waitmovement(0)
 
+    special(PSF_SetNextTowerOpponent)
+
     frontier_get(FRONTIER_DATA_BATTLE_NUM)
     if(var(VAR_RESULT) == 0){
         goto(Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter)
@@ -36,7 +38,6 @@ script Haightashbury_Gym_Battle_Room_EventScript_EnterRoom{
 }
 
 script Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter{
-    tower_setopponent
 
     addobject(OPPONENT)
     applymovement(OPPONENT, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter)
@@ -81,8 +82,6 @@ script Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent{
     waitmovement(0)
     removeobject(OPPONENT)
 
-    frontier_getbrainstatus
-
     applymovement(ATTENDANT_1, Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer)
     waitmovement(0)
     applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant)
@@ -92,6 +91,13 @@ script Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent{
     playfanfare(MUS_HEAL)
     waitfanfare
     special(HealPlayerParty)
+
+    playse(MUS_LEVEL_UP)
+    msgbox(Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned, MSGBOX_DEFAULT)
+    buffernumberstring(STR_VAR_1,3)
+    //PSF TODO needs a show BP box
+    givefrontierbattlepoints(3)
+    waitse
 
     goto(Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent)
 }
@@ -111,10 +117,8 @@ script BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu{
     return
 }
 
-
 script Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent{
-    frontier_getbrainstatus
-    copyvar(VAR_BRAIN_STATUS, VAR_RESULT)
+    special(PSF_SetNextTowerOpponent)
 
     frontier_get(FRONTIER_DATA_BATTLE_NUM)
     call(Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent)
@@ -466,4 +470,8 @@ text Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine{
 
 text Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain{
     "That was fun…\pI have never had a POKéMON battle\nso enjoyable before…\pI wish I could battle with you again…"
+}
+
+text Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned{
+    format("You've also earned {STR_VAR_1} Battle Points!")
 }
