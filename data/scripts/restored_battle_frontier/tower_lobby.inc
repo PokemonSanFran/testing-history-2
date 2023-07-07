@@ -795,6 +795,7 @@ BattleTower_EventScript_WaitForLinkOpponentLoad::
 BattleTower_EventScript_WaitForLinkOpponentLoad_1:
 	call BattleTower_EventScript_ShowYouToBattleRoom
 	clearflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
+	setflag FLAG_HIDE_BATTLE_TOWER_OPPONENT
 	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8
 	setvar VAR_TEMP_0, 0
 	waitstate
@@ -1027,8 +1028,8 @@ BattleTower_Text_DidntSaveBeforeQuitting::
 	.string "has been disqualified. Sorry!$"
 
 BattleTower_Text_CongratsBeatenSeven::
-	.string "Congratulations! You've beaten all\n"
-	.string "seven TRAINERS!\p"
+	.string "Congratulations! You've beaten all 10\n"
+	.string "Trainers!\p"
 	.string "$"
 
 BattleTower_Text_ReceivedPrize::

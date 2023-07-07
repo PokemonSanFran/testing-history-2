@@ -10,7 +10,6 @@ const HAS_NO_SYMBOLS = 0
 const HAS_SILVER_SYMBOL = 1
 const HAS_GOLD_SYMBOL = 2
 
-const VAR_HEARD_MAIDEN_INTRO = VAR_TEMP_2
 const VAR_CURRENT_BATTLE_NUM = VAR_TEMP_E
 const VAR_SYMBOL_SPEECH_STATUS = VAR_TEMP_D
 const VAR_BRAIN_STATUS = VAR_TEMP_F
@@ -19,8 +18,6 @@ script Haightashbury_Gym_Battle_Room_EventScript_EnterRoom{
     setvar(VAR_TEMP_0, 1)
     applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter)
     waitmovement(0)
-
-    special(PSF_SetNextTowerOpponent)
 
     frontier_get(FRONTIER_DATA_BATTLE_NUM)
     if(var(VAR_RESULT) == 0){
@@ -32,13 +29,12 @@ script Haightashbury_Gym_Battle_Room_EventScript_EnterRoom{
     applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant)
     waitmovement(0)
 
-    setvar(VAR_HEARD_MAIDEN_INTRO, 1)
     frontier_set(FRONTIER_DATA_RECORD_DISABLED, TRUE)
     goto(Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent)
 }
 
 script Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter{
-
+    special(PSF_SetNextTowerOpponent)
     addobject(OPPONENT)
     applymovement(OPPONENT, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter)
     waitmovement(0)
@@ -78,14 +74,11 @@ script Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent{
         goto(Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon)
     }
 
-    applymovement(OPPONENT, Haightashbury_Gym_Battle_Room_Movement_OpponentExit)
-    waitmovement(0)
-    removeobject(OPPONENT)
-
     applymovement(ATTENDANT_1, Haightashbury_Gym_Battle_Room_Movement_AttendantApproachPlayer)
-    waitmovement(0)
     applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceAttendant)
-    waitmovement(0)
+    applymovement(OPPONENT, Haightashbury_Gym_Battle_Room_Movement_OpponentExit)
+    waitmovement(OPPONENT)
+    removeobject(OPPONENT)
 
     msgbox(Haightashbury_Gym_Battle_Room_Text_RestoreMonsToFullHealth, MSGBOX_DEFAULT)
     playfanfare(MUS_HEAL)
@@ -93,8 +86,8 @@ script Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent{
     special(HealPlayerParty)
 
     playse(MUS_LEVEL_UP)
-    msgbox(Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned, MSGBOX_DEFAULT)
     buffernumberstring(STR_VAR_1,3)
+    msgbox(Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned, MSGBOX_DEFAULT)
     //PSF TODO needs a show BP box
     givefrontierbattlepoints(3)
     waitse
@@ -118,7 +111,6 @@ script BattleFrontier_Construct_GoOn_Record_Rest_Retire_Menu{
 }
 
 script Haightashbury_Gym_Battle_Room_EventScript_AskReadyForOpponent{
-    special(PSF_SetNextTowerOpponent)
 
     frontier_get(FRONTIER_DATA_BATTLE_NUM)
     call(Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent)
@@ -204,73 +196,9 @@ script Haightashbury_Gym_Battle_Room_EventScript_ReadyForOpponent{
     return
 }
 
-script Haightashbury_Gym_Battle_Room_EventScript_BattleAnabel{
-    frontier_setbrainobj
-    closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerFaceBattle)
-    waitmovement(0)
-    applymovement(ATTENDANT_1, Haightashbury_Gym_Battle_Room_Movement_AttendantReturnToPos)
-    waitmovement(0)
-    addobject(OPPONENT)
-    applymovement(OPPONENT,Haightashbury_Gym_Battle_Room_Movement_OpponentEnter)
-    waitmovement(0)
-    goto(Haightashbury_Gym_Battle_Room_EventScript_Anabel)
-}
-
-script Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType{
-    setvar(VAR_SYMBOL_SPEECH_STATUS,0)
-
-    frontier_get(FRONTIER_DATA_HEARD_BRAIN_SPEECH)
-    if(var(VAR_RESULT) == TRUE){
-        addvar(VAR_SYMBOL_SPEECH_STATUS,2)
-    }else{
-        addvar(VAR_SYMBOL_SPEECH_STATUS,0)
-    }
-
-    switch(var(VAR_BRAIN_STATUS)){
-        case FRONTIER_BRAIN_SILVER: addvar(VAR_SYMBOL_SPEECH_STATUS,50)
-        case FRONTIER_BRAIN_GOLD: addvar(VAR_SYMBOL_SPEECH_STATUS,100)
-        case FRONTIER_BRAIN_STREAK:
-        case FRONTIER_BRAIN_STREAK_LONG: addvar(VAR_SYMBOL_SPEECH_STATUS,200)
-    }
-    return
-}
-
-script Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro{
-    call(Haightashbury_Gym_Battle_Room_EventScript_DetermineIntroType)
-
-    if(var(VAR_SYMBOL_SPEECH_STATUS) == NONE_UNHEARD){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_GreetingsImAnabel, MSGBOX_DEFAULT)
-        frontier_set(FRONTIER_DATA_HEARD_BRAIN_SPEECH)
-}
-    if(var(VAR_SYMBOL_SPEECH_STATUS) == SILVER_UNHEARD){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_AnabelYouCameBack, MSGBOX_DEFAULT)
-        frontier_set(FRONTIER_DATA_HEARD_BRAIN_SPEECH)
-    }
-
-    if(var(VAR_SYMBOL_SPEECH_STATUS) < SILVER_UNHEARD){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_LetMeSeeYourTalent, MSGBOX_DEFAULT)
-    }
-    if(var(VAR_SYMBOL_SPEECH_STATUS) > NONE_HEARD){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_LetsBeginShallWe, MSGBOX_DEFAULT)
-    }
-}
-
-script Haightashbury_Gym_Battle_Room_EventScript_Anabel{
-    call(Haightashbury_Gym_Battle_Room_EventScript_AnabelIntro)
-
-    call(Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle)
-    if(var(VAR_RESULT) == B_OUTCOME_WON){
-        goto(Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel)
-    }
-
-    goto(BattleTower_EventScript_WarpToLobbyLost)
-}
-
 script Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle{
     closemessage
 
-    setvar(VAR_HEARD_MAIDEN_INTRO, 0)
     frontier_set(FRONTIER_DATA_RECORD_DISABLED, FALSE)
 
     special(HealPlayerParty)
@@ -287,59 +215,7 @@ script Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle{
         frontier_resetsketch
     }
 
-    tower_setinterviewdata
     frontier_get(FRONTIER_DATA_BATTLE_OUTCOME)
-    return
-}
-
-script Haightashbury_Gym_Battle_Room_EventScript_DefeatedAnabel{
-    frontier_incrementstreak
-    frontier_getsymbols
-
-    if(var(VAR_RESULT) == HAS_GOLD_SYMBOL){
-        goto(Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon)
-    }
-
-    call(BattleTower_EventScript_AnabelCongratsText)
-
-    playfanfare(MUS_OBTAIN_SYMBOL)
-    call(BattleTower_EventScript_FrontierPassText)
-    waitmessage
-    waitfanfare
-    frontier_givesymbol
-
-    call(BattleTower_EventScript_AnabelConclusionText)
-
-    goto(Haightashbury_Gym_Battle_Room_EventScript_WarpToLobbyWon)
-}
-
-script BattleTower_EventScript_AnabelCongratsText{
-    if(var(VAR_RESULT) == HAS_NO_SYMBOLS){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_AnabelTalentShallBeRecognized, MSGBOX_DEFAULT)
-    }
-    if(var(VAR_RESULT) == HAS_SILVER_SYMBOL){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_AnabelCongratsYourPassPlease, MSGBOX_DEFAULT)
-    }
-    return
-}
-
-script BattleTower_EventScript_FrontierPassText{
-if(var(VAR_RESULT) == HAS_NO_SYMBOLS){
-       message(Haightashbury_Gym_Battle_Room_Text_ReceivedAbilitySymbol)
-    }
-    if(var(VAR_RESULT) == HAS_SILVER_SYMBOL){
-        message(Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine)
-    }
-return
-}
-
-script BattleTower_EventScript_AnabelConclusionText{
-    if(var(VAR_RESULT) == HAS_NO_SYMBOLS){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_UntilNextTime, MSGBOX_DEFAULT)
-    }
-    if(var(VAR_RESULT) == HAS_SILVER_SYMBOL){
-        msgbox(Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain, MSGBOX_DEFAULT)
-    }
     return
 }
 
@@ -430,46 +306,6 @@ text Haightashbury_Gym_Battle_Room_Text_CancelYourChallenge{
 
 text Haightashbury_Gym_Battle_Room_Text_RecordCouldntBeSaved{
     "There was an error of some sort.\nYour record could not be saved."
-}
-
-text Haightashbury_Gym_Battle_Room_Text_GreetingsImAnabel{
-    "Greetings…\nMy name is ANABEL.\pI am the SALON MAIDEN, and I am in\ncharge of running the BATTLE TOWER…\pI have heard several rumors\nabout you…\pIn all honesty, what I have heard does\nnot seem attractive in any way…\pThe reason I've come to see you…\nWell, there is but one reason…"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_LetMeSeeYourTalent{
-    "Let me see your talent in\nits entirety…"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_AnabelTalentShallBeRecognized{
-    "ANABEL: Fufufu, nicely done…\pYour FRONTIER PASS, please…\nYour talent shall be recognized."
-}
-
-text Haightashbury_Gym_Battle_Room_Text_ReceivedAbilitySymbol{
-    "The Ability Symbol was embossed on\nthe FRONTIER PASS!"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_UntilNextTime{
-    "… … … … … …\pYou have confidence in your POKéMON\nbattling talent, don't you?\pI urge you to keep battling and\nkeep on winning.\pI will be waiting for you.\nUntil the next time we meet…"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_AnabelYouCameBack{
-    "ANABEL: You really did come back to\nsee me…\p… … … … … …\pYou've won straight matches to see me…\nI won't have to hold back against you…\pIt's been too long now…\pToo long since I've been able to battle\nwithout thinking about anything…"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_LetsBeginShallWe{
-    "Let's begin, shall we?"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_AnabelCongratsYourPassPlease{
-    "ANABEL: Fufu, congratulations…\nYour FRONTIER PASS, please…"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_AbilitySymbolTookGoldenShine{
-    "The Ability Symbol took on\na golden shine!"
-}
-
-text Haightashbury_Gym_Battle_Room_Text_WishICouldBattleYouAgain{
-    "That was fun…\pI have never had a POKéMON battle\nso enjoyable before…\pI wish I could battle with you again…"
 }
 
 text Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned{

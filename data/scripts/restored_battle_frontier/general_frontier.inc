@@ -1,3 +1,0 @@
-RestoredBattleFrontier_AwardBattlePoints_Script::
-	return
-

@@ -3786,7 +3786,7 @@ u16 PSF_GetFrontierTrainerID(void)
     u16 trainerId;
     u16 battleNum = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
 
-    if (battleNum == FRONTIER_STAGES_PER_CHALLENGE - 1)
+    if (battleNum == (FRONTIER_STAGES_PER_CHALLENGE - 1))
     {
         trainerId = TRAINER_FRONTIER_BRAIN;
     }
@@ -3820,8 +3820,7 @@ void PSF_SetNextTowerOpponent(void)
         s32 i;
         while (1)
         {
-            //id = PSF_GetFrontierTrainerID();
-            id = GetRandomScaledFrontierTrainerId(0, gSaveBlock2Ptr->frontier.curChallengeBattleNum);
+            id = PSF_GetFrontierTrainerID();
 
             // Ensure trainer wasn't previously fought in this challenge.
             for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)

@@ -547,6 +547,7 @@ script BattleTower_EventScript_WaitForLinkOpponentLoad{
 
     call(BattleTower_EventScript_ShowYouToBattleRoom)
     clearflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
+    setflag(FLAG_HIDE_BATTLE_TOWER_OPPONENT)
     warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, 0)
     waitstate
@@ -688,7 +689,7 @@ text BattleTower_Text_DidntSaveBeforeQuitting{
 }
 
 text BattleTower_Text_CongratsBeatenSeven{
-    format("Congratulations! You've beaten all seven TRAINERS!\p")
+    format("Congratulations! You've beaten all 10 Trainers!\p")
 }
 
 text BattleTower_Text_ReceivedPrize{
