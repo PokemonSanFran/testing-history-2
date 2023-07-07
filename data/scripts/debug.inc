@@ -75,19 +75,16 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	message BattleTower_Text_RecordLastMatch
-	waitmessage
-	call EventScript_Construct_YesNo_NoSelected_Menu_Script
+	special Debug_MakeStreak40
 	end
 
 
 Debug_Script_4::
-	call BattleFrontier_ScottsHouse_EventScript_Give1BattlePoint
+	special Debug_MakeStreak90
 	end
 
 
 Debug_Script_5::
-	givefrontierbattlepoints 10
 	end
 
 

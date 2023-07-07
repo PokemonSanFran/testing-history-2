@@ -2,6 +2,8 @@ Haightashbury_Gym_Battle_Room_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter
 	waitmovement 0
+	special Debug_MakeStreak40
+	setflag FLAG_SYS_TOWER_SILVER
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	compare VAR_RESULT, 0
 	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2
@@ -24,6 +26,9 @@ Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter::
 	addobject 1
 	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
 	waitmovement 0
+	frontier_results FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SINGLES
+	waitbuttonpress
+	special RemoveRecordsWindow
 	call Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue
 	call Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle
 	call Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue
@@ -39,28 +44,105 @@ Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_2:
 
 
 Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue::
-	specialvar VAR_RESULT, PSF_GetFrontierBrainStatus
-	compare VAR_RESULT, FRONTIER_BRAIN_NOT_READY
-	goto_if_eq Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_2
-	buffernumberstring STR_VAR_1, VAR_RESULT
-	msgbox Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_Text_0, MSGBOX_DEFAULT
+	tower_getopponentintro 0
+	specialvar VAR_TEMP_0, PSF_GetFrontierBrainStatus
+	switch VAR_TEMP_0
+	case FRONTIER_BRAIN_NOT_READY, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_3
+	case FRONTIER_BRAIN_SILVER_FIRST, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_4
+	case FRONTIER_BRAIN_SILVER_REMATCH, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_5
+	case FRONTIER_BRAIN_SILVER_COMPLETE, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_6
+	case FRONTIER_BRAIN_GOLD_FIRST, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_7
+	case FRONTIER_BRAIN_GOLD_COMPLETE, Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_8
 Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1:
 	waitmessage
 	return
 
-Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_2:
-	tower_getopponentintro 0
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_3:
 	msgbox gStringVar4, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_4:
+	msgbox gText_RestoredTower_HiPlayer, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_5:
+	msgbox gText_RestoredTower_GotYourStreak, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_6:
+	msgbox gText_RestoredTower_BuildingAnother, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_7:
+	msgbox gText_RestoredTower_WelcomeToBattle, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_8:
+	msgbox gText_RestoredTower_ItsAlways, MSGBOX_DEFAULT
 	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
 
 
 Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue::
-	compare VAR_RESULT, FRONTIER_BRAIN_NOT_READY
-	goto_if_eq Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_1
+	specialvar VAR_TEMP_0, PSF_GetFrontierBrainStatus
+	switch VAR_TEMP_0
+	case FRONTIER_BRAIN_NOT_READY, Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_3
+	call Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue
+	waitmessage
 	return
 
-Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_1:
+Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_3:
 	return
+
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue::
+	switch VAR_TEMP_0
+	case FRONTIER_BRAIN_SILVER_FIRST, Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_2
+	case FRONTIER_BRAIN_SILVER_REMATCH, Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_3
+	case FRONTIER_BRAIN_SILVER_COMPLETE, Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_4
+	case FRONTIER_BRAIN_GOLD_FIRST, Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_5
+	case FRONTIER_BRAIN_GOLD_COMPLETE, Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_6
+	return
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_2:
+	msgbox gText_RestoredTower_TakeThisBadge, MSGBOX_DEFAULT
+	call Haightashbury_Gym_Battle_Room_GiveSymbol_Script
+	msgbox gText_RestoredTower_CantWaitToSeeYou, MSGBOX_DEFAULT
+	return
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_3:
+	msgbox gText_RestoredTower_CantWaitToSeeYou, MSGBOX_DEFAULT
+	return
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_4:
+	msgbox gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT
+	return
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_5:
+	msgbox gText_RestoredTower_YouDidIt, MSGBOX_DEFAULT
+	call Haightashbury_Gym_Battle_Room_GiveSymbol_Script
+	msgbox gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT
+	return
+
+Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue_6:
+	msgbox gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT
+	return
+
+
+Haightashbury_Gym_Battle_Room_GiveSymbol_Script::
+	compare VAR_TEMP_0, FRONTIER_BRAIN_SILVER_FIRST
+	goto_if_eq Haightashbury_Gym_Battle_Room_GiveSymbol_Script_2
+	bufferstring STR_VAR_1, Haightashbury_Gym_Battle_Room_GiveSymbol_Script_Text_1
+Haightashbury_Gym_Battle_Room_GiveSymbol_Script_1:
+	playfanfare MUS_OBTAIN_SYMBOL
+	message gText_RestoredTower_RecivedBadge
+	waitmessage
+	waitfanfare
+	frontier_givesymbol
+	return
+
+Haightashbury_Gym_Battle_Room_GiveSymbol_Script_2:
+	bufferstring STR_VAR_1, Haightashbury_Gym_Battle_Room_GiveSymbol_Script_Text_0
+	goto Haightashbury_Gym_Battle_Room_GiveSymbol_Script_1
 
 
 BattleTower_EventScript_SetChallengeStatus::
@@ -337,8 +419,11 @@ Haightashbury_Gym_Battle_Room_EventScript_RetireChallenge::
 	end
 
 
-Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_Text_0:
-	.string "{STR_VAR_1}$"
+Haightashbury_Gym_Battle_Room_GiveSymbol_Script_Text_0:
+	.string "$"
+
+Haightashbury_Gym_Battle_Room_GiveSymbol_Script_Text_1:
+	.string "Gold$"
 
 Haightashbury_Gym_Battle_Room_Text_RestoreMonsToFullHealth::
 	.string "We will restore your POKéMON to\nfull health.$"
@@ -364,3 +449,42 @@ Haightashbury_Gym_Battle_Room_Text_RecordCouldntBeSaved::
 Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned::
 	.string "You've also earned {STR_VAR_1}\n"
 	.string "Battle Points!$"
+
+gText_RestoredTower_HiPlayer::
+	.string "hi {PLAYER}, let's have a good battle.$"
+
+gText_RestoredTower_GotYourStreak::
+	.string "got your streak reset? well, let's see if\n"
+	.string "you can get it started again!$"
+
+gText_RestoredTower_BuildingAnother::
+	.string "building another streak? let's see how\n"
+	.string "high you can go!$"
+
+gText_RestoredTower_WelcomeToBattle::
+	.string "welcome to battle 100! i'm going to go\n"
+	.string "all out, get ready!$"
+
+gText_RestoredTower_ItsAlways::
+	.string "its always a pleasure to battle you,\n"
+	.string "let's make it a good one!$"
+
+gText_RestoredTower_RecivedBadge::
+	.string "{PLAYER} recieved the {STR_VAR_1}\n"
+	.string "Badge!$"
+
+gText_RestoredTower_TakeThisBadge::
+	.string "Take this badge!$"
+
+gText_RestoredTower_CantWaitToSeeYou::
+	.string "Can't wait to see you again. Come get\n"
+	.string "your streak up to 100!$"
+
+gText_RestoredTower_LetsSeeHow::
+	.string "I'm so excited to see how high you can\n"
+	.string "get your streak to be!$"
+
+gText_RestoredTower_YouDidIt::
+	.string "You did it! 100 battles in a row! I have\n"
+	.string "nothing else. These are new: the\l"
+	.string "GOLDEN Badge!$"

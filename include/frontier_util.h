@@ -25,6 +25,7 @@ u8 GetFrontierBrainMonNature(u8 monId);
 u8 GetFrontierBrainMonEvs(u8 monId, u8 evStatId);
 s32 GetFronterBrainSymbol(void);
 u8 PSF_GetFrontierBrainStatus(void);
+u8 PSF_GetPlayerSymbolCountForFacility(u8 facility);
 
 extern const u16 gFrontierBannedSpecies[];
 

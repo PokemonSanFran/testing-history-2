@@ -3783,6 +3783,7 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
 
 const u16 gFacilityBosses[NUM_BOSS_SLOTS] =
 {
+    //PSF fix bug where Hugo will never be fought first because 0 matches 0
     FRONTIER_TRAINER_HUGO,
     FRONTIER_TRAINER_BRYCE,
     FRONTIER_TRAINER_GIDEON,
@@ -3825,6 +3826,19 @@ u16 PSF_GetBossTrainerID(void)
 
     VarSet(VAR_FRONTIER_LAST_FOUGHT_BOSS, bossTrainer);
     return bossTrainer;
+}
+
+void Debug_MakeStreak40(void)
+{
+    u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    u16 winStreak = 40;
+
+        gSaveBlock2Ptr->frontier.towerWinStreaks[FRONTIER_MODE_SINGLES][1] = winStreak;
+}
+
+void Debug_MakeStreak90(void)
+{
+    gSaveBlock2Ptr->frontier.towerWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_MAX_LEVEL_OPEN] = 90;
 }
 
 u16 PSF_GetFrontierTrainerID(void)

@@ -11,8 +11,6 @@ const HAS_SILVER_SYMBOL = 1
 const HAS_GOLD_SYMBOL = 2
 
 const VAR_CURRENT_BATTLE_NUM = VAR_TEMP_E
-const VAR_SYMBOL_SPEECH_STATUS = VAR_TEMP_D
-const VAR_BRAIN_STATUS = VAR_TEMP_F
 
 script Haightashbury_Gym_Battle_Room_EventScript_EnterRoom{
     setvar(VAR_TEMP_0, 1)
@@ -50,24 +48,74 @@ script Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter{
 }
 
 script Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue{
-    specialvar(VAR_RESULT,PSF_GetFrontierBrainStatus)
+    tower_getopponentintro(0)
 
-    if (var(VAR_RESULT) == FRONTIER_BRAIN_NOT_READY){
-        tower_getopponentintro(0)
-        msgbox(gStringVar4, MSGBOX_DEFAULT)
-    }else{
-        buffernumberstring(STR_VAR_1,VAR_RESULT)
-        msgbox("{STR_VAR_1}",MSGBOX_DEFAULT)
+    specialvar(VAR_TEMP_0,PSF_GetFrontierBrainStatus)
+
+    switch(var(VAR_TEMP_0)){
+        case FRONTIER_BRAIN_NOT_READY:
+            msgbox(gStringVar4, MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_SILVER_FIRST:
+            msgbox(gText_RestoredTower_HiPlayer,MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_SILVER_REMATCH:
+            msgbox(gText_RestoredTower_GotYourStreak,MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_SILVER_COMPLETE:
+            msgbox(gText_RestoredTower_BuildingAnother,MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_GOLD_FIRST:
+            msgbox(gText_RestoredTower_WelcomeToBattle,MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_GOLD_COMPLETE:
+            msgbox(gText_RestoredTower_ItsAlways,MSGBOX_DEFAULT)
     }
     waitmessage
-        return
+    return
 }
 
 script Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue{
-    if (var(VAR_RESULT) == FRONTIER_BRAIN_NOT_READY){
-        return
+    specialvar(VAR_TEMP_0,PSF_GetFrontierBrainStatus)
+
+    switch(var(VAR_TEMP_0)){
+        case FRONTIER_BRAIN_NOT_READY:
+            return
+        default:
+            call(Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue)
+    }
+    waitmessage
+    return
+}
+
+script Haightashbury_Gym_Battle_Room_DefeatedBrain_Dialogue{
+    switch(var(VAR_TEMP_0)){
+        case FRONTIER_BRAIN_SILVER_FIRST:
+            msgbox(gText_RestoredTower_TakeThisBadge, MSGBOX_DEFAULT)
+            call(Haightashbury_Gym_Battle_Room_GiveSymbol_Script)
+            msgbox(gText_RestoredTower_CantWaitToSeeYou, MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_SILVER_REMATCH:
+            msgbox(gText_RestoredTower_CantWaitToSeeYou, MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_SILVER_COMPLETE:
+            msgbox(gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_GOLD_FIRST:
+            msgbox(gText_RestoredTower_YouDidIt, MSGBOX_DEFAULT)
+            call(Haightashbury_Gym_Battle_Room_GiveSymbol_Script)
+            msgbox(gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT)
+        case FRONTIER_BRAIN_GOLD_COMPLETE:
+            msgbox(gText_RestoredTower_LetsSeeHow, MSGBOX_DEFAULT)
+    }
+}
+
+script Haightashbury_Gym_Battle_Room_GiveSymbol_Script{
+
+    if (var(VAR_TEMP_0) == FRONTIER_BRAIN_SILVER_FIRST){
+        bufferstring(STR_VAR_1,"")
+    }else{
+        bufferstring(STR_VAR_1,"Gold")
     }
 
+    playfanfare(MUS_OBTAIN_SYMBOL)
+    message(gText_RestoredTower_RecivedBadge)
+    waitmessage
+    waitfanfare
+    special(PSF_GiveFacilitySymbol)
+    return
 }
 
 script BattleTower_EventScript_SetChallengeStatus{
@@ -329,4 +377,43 @@ text Haightashbury_Gym_Battle_Room_Text_RecordCouldntBeSaved{
 
 text Haightashbury_Gym_Battle_Room_Text_YouveAlsoEarned{
     format("You've also earned {STR_VAR_1} Battle Points!")
+}
+
+text gText_RestoredTower_HiPlayer{
+    format("hi {PLAYER}, let's have a good battle.")
+}
+
+text gText_RestoredTower_GotYourStreak{
+    format("got your streak reset? well, let's see if you can get it started again!")
+}
+
+text gText_RestoredTower_BuildingAnother{
+    format("building another streak? let's see how high you can go!")
+}
+
+text gText_RestoredTower_WelcomeToBattle{
+    format("welcome to battle 100! i'm going to go all out, get ready!")
+}
+
+text gText_RestoredTower_ItsAlways{
+    format("its always a pleasure to battle you, let's make it a good one!")
+}
+
+text gText_RestoredTower_RecivedBadge{
+    format("{PLAYER} recieved the {STR_VAR_1} Badge!")
+}
+text gText_RestoredTower_TakeThisBadge{
+    format("Take this badge!")
+}
+
+text gText_RestoredTower_CantWaitToSeeYou{
+    format("Can't wait to see you again. Come get your streak up to 100!")
+}
+
+text gText_RestoredTower_LetsSeeHow{
+    format("I'm so excited to see how high you can get your streak to be!")
+}
+
+text gText_RestoredTower_YouDidIt{
+    format("You did it! 100 battles in a row! I have nothing else. These are new: the GOLDEN Badge!")
 }

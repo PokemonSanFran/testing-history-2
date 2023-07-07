@@ -2616,7 +2616,7 @@ u8 PSF_GetFrontierBrainStatus(void)
     s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u16 winStreak = GetCurrentFacilityWinStreak() + 1;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbolsCount = GetPlayerSymbolCountForFacility(facility);
+    s32 symbolsCount = PSF_GetPlayerSymbolCountForFacility(facility);
 
     if (battleMode == FRONTIER_MODE_MULTIS || battleMode == FRONTIER_MODE_LINK_MULTIS)
         return FRONTIER_BRAIN_NOT_READY;
@@ -2641,4 +2641,19 @@ u8 PSF_GetFrontierBrainStatus(void)
     }
 
     return status;
+}
+
+static void PSF_GiveFacilitySymbol(void)
+{
+    s32 facility = VarGet(VAR_FRONTIER_FACILITY);
+    if (PSF_GetPlayerSymbolCountForFacility(facility) == 0)
+        FlagSet(FLAG_SYS_RESTORED_TOWER_SILVER + facility * 2);
+    else
+        FlagSet(FLAG_SYS_RESTORED_TOWER_GOLD + facility * 2);
+}
+
+u8 PSF_GetPlayerSymbolCountForFacility(u8 facility)
+{
+    return FlagGet(FLAG_SYS_RESTORED_TOWER_SILVER + facility * 2)
+         + FlagGet(FLAG_SYS_RESTORED_TOWER_GOLD + facility * 2);
 }

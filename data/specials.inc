@@ -622,3 +622,6 @@ gSpecials::
 
     def_special PSF_SetNextTowerOpponent
     def_special PSF_GetFrontierBrainStatus
+    def_special Debug_MakeStreak40
+    def_special Debug_MakeStreak90
+    def_special PSF_GiveFacilitySymbol
