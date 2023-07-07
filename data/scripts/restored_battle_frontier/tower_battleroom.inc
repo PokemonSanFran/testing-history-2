@@ -2,8 +2,6 @@ Haightashbury_Gym_Battle_Room_EventScript_EnterRoom::
 	setvar VAR_TEMP_0, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Haightashbury_Gym_Battle_Room_Movement_PlayerEnter
 	waitmovement 0
-	special Debug_MakeStreak40
-	setflag FLAG_SYS_TOWER_SILVER
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	compare VAR_RESULT, 0
 	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_EnterRoom_2
@@ -26,9 +24,6 @@ Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter::
 	addobject 1
 	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
 	waitmovement 0
-	frontier_results FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SINGLES
-	waitbuttonpress
-	special RemoveRecordsWindow
 	call Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue
 	call Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle
 	call Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue
@@ -137,7 +132,7 @@ Haightashbury_Gym_Battle_Room_GiveSymbol_Script_1:
 	message gText_RestoredTower_RecivedBadge
 	waitmessage
 	waitfanfare
-	frontier_givesymbol
+	special PSF_GiveFacilitySymbol
 	return
 
 Haightashbury_Gym_Battle_Room_GiveSymbol_Script_2:
@@ -147,8 +142,6 @@ Haightashbury_Gym_Battle_Room_GiveSymbol_Script_2:
 
 BattleTower_EventScript_SetChallengeStatus::
 	tower_set TOWER_DATA_LVL_MODE
-	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
-	special Script_TryGainNewFanFromCounter
 	goto Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby
 	return
 

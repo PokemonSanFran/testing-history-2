@@ -2643,7 +2643,7 @@ u8 PSF_GetFrontierBrainStatus(void)
     return status;
 }
 
-static void PSF_GiveFacilitySymbol(void)
+void PSF_GiveFacilitySymbol(void)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
     if (PSF_GetPlayerSymbolCountForFacility(facility) == 0)

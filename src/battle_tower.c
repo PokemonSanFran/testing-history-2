@@ -3781,48 +3781,78 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
 
 //New PSF Functions
 
-const u16 gFacilityBosses[NUM_BOSS_SLOTS] =
-{
-    //PSF fix bug where Hugo will never be fought first because 0 matches 0
-    FRONTIER_TRAINER_HUGO,
-    FRONTIER_TRAINER_BRYCE,
-    FRONTIER_TRAINER_GIDEON,
-    FRONTIER_TRAINER_TRISTON,
-    TRAINER_FRONTIER_BRAIN,
-    FRONTIER_TRAINER_RAYMOND,
-    FRONTIER_TRAINER_DIRK,
-    FRONTIER_TRAINER_HAROLD,
-    FRONTIER_TRAINER_OMAR,
-    TRAINER_FRONTIER_BRAIN,
-    FRONTIER_TRAINER_DEV,
-    FRONTIER_TRAINER_COREY,
-    FRONTIER_TRAINER_ANDRE,
-    FRONTIER_TRAINER_FERRIS,
-    TRAINER_FRONTIER_BRAIN,
-    FRONTIER_TRAINER_PAIGE,
-    FRONTIER_TRAINER_ANYA,
-    FRONTIER_TRAINER_DAWN,
-    FRONTIER_TRAINER_ABBY,
-    TRAINER_FRONTIER_BRAIN,
+    /*
+       FLAG_FACILITY_UNLOCK_ADAORA
+       FLAG_FACILITY_UNLOCK_AMI_ARGENTO
+       FLAG_FACILITY_UNLOCK_ARMANDO
+       FLAG_FACILITY_UNLOCK_BD
+       FLAG_FACILITY_UNLOCK_BELEN
+       FLAG_FACILITY_UNLOCK_CHARLOTTE
+       FLAG_FACILITY_UNLOCK_DIMU
+       FLAG_FACILITY_UNLOCK_ELLEN
+       FLAG_FACILITY_UNLOCK_EMRYS
+       FLAG_FACILITY_UNLOCK_KAI
+       FLAG_FACILITY_UNLOCK_KEI_YING
+       FLAG_FACILITY_UNLOCK_LIKO
+       FLAG_FACILITY_UNLOCK_MAGNUS
+       FLAG_FACILITY_UNLOCK_NERIENE
+       FLAG_FACILITY_UNLOCK_SHINZO
+       FLAG_FACILITY_UNLOCK_TALA
+
+       //PSF TODO If a flag is on this list, it hasn't been assigned to a script in game yet!
+       */
+
+typedef struct {
+    u16 trainerID;
+    u16 unlockFlag;
+} BossSlot;
+
+const BossSlot gFacilityBosses[NUM_BOSS_SLOTS] = {
+    {FRONTIER_TRAINER_HUGO, FLAG_FACILITY_UNLOCK_LIKO},
+    {FRONTIER_TRAINER_BRYCE, FLAG_FACILITY_UNLOCK_CHARLOTTE},
+    {FRONTIER_TRAINER_GIDEON, FLAG_FACILITY_UNLOCK_AMI_ARGENTO},
+    {FRONTIER_TRAINER_TRISTON, FLAG_FACILITY_UNLOCK_TALA},
+    {TRAINER_FRONTIER_BRAIN, FLAG_HIDE_FACILITY_OPPONENT},
+    {FRONTIER_TRAINER_RAYMOND, FLAG_FACILITY_UNLOCK_DIMU},
+    {FRONTIER_TRAINER_DIRK, FLAG_FACILITY_UNLOCK_ADAORA},
+    {FRONTIER_TRAINER_HAROLD, FLAG_FACILITY_UNLOCK_EMRYS},
+    {FRONTIER_TRAINER_OMAR, FLAG_FACILITY_UNLOCK_MAGNUS},
+    {TRAINER_FRONTIER_BRAIN, FLAG_HIDE_FACILITY_OPPONENT},
+    {FRONTIER_TRAINER_DEV, FLAG_FACILITY_UNLOCK_BD},
+    {FRONTIER_TRAINER_COREY, FLAG_FACILITY_UNLOCK_KAI},
+    {FRONTIER_TRAINER_ANDRE, FLAG_FACILITY_UNLOCK_NERIENE},
+    {FRONTIER_TRAINER_FERRIS, FLAG_FACILITY_UNLOCK_ARMANDO},
+    {TRAINER_FRONTIER_BRAIN, FLAG_HIDE_FACILITY_OPPONENT},
+    {FRONTIER_TRAINER_PAIGE, FLAG_FACILITY_UNLOCK_SHINZO},
+    {FRONTIER_TRAINER_ANYA, FLAG_FACILITY_UNLOCK_KEI_YING},
+    {FRONTIER_TRAINER_DAWN, FLAG_FACILITY_UNLOCK_BELEN},
+    {FRONTIER_TRAINER_ABBY, FLAG_FACILITY_UNLOCK_ELLEN},
+    {TRAINER_FRONTIER_BRAIN, FLAG_HIDE_FACILITY_OPPONENT},
 };
 
-u16 PSF_GetBossTrainerID(void)
-{
+u16 PSF_GetBossTrainerID(void) {
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u16 winStreak = GetCurrentFacilityWinStreak() + 1;
     u32 bossIndex = ((winStreak % BOSS_CYCLE - FRONTIER_STAGES_PER_CHALLENGE) / FRONTIER_STAGES_PER_CHALLENGE);
-    u32 bossTrainer = gFacilityBosses[bossIndex];
-    u32 lastBossTrainer = VarGet(VAR_FRONTIER_LAST_FOUGHT_BOSS);
+    u16 bossTrainer = gFacilityBosses[bossIndex].trainerID;
+    u16 bossTrainerFlag = gFacilityBosses[bossIndex].unlockFlag;
+    u16 lastBossTrainer = VarGet(VAR_FRONTIER_LAST_FOUGHT_BOSS);
 
-    if (bossTrainer != TRAINER_FRONTIER_BRAIN){
-        if (bossTrainer == lastBossTrainer)
-            bossIndex++;
-        if (bossIndex > (NUM_BOSS_SLOTS - 1))
-            bossIndex = 0;
-
-        bossTrainer = gFacilityBosses[bossIndex];
+    if (bossTrainer != TRAINER_FRONTIER_BRAIN) {
+        if (bossTrainer == lastBossTrainer) {
+            if (FlagGet(FLAG_FOUGHT_FIRST_FACILITY_BOSS)){
+                bossIndex = (bossIndex + 1) % NUM_BOSS_SLOTS;
+                bossTrainer = gFacilityBosses[bossIndex].trainerID;
+            }
+        }
     }
+
+    if (!FlagGet(bossTrainerFlag))
+        return PSF_GetNormalFrontierTrainerID();
+
+    if (!FlagGet(FLAG_FOUGHT_FIRST_FACILITY_BOSS))
+        FlagSet(FLAG_FOUGHT_FIRST_FACILITY_BOSS);
 
     VarSet(VAR_FRONTIER_LAST_FOUGHT_BOSS, bossTrainer);
     return bossTrainer;
@@ -3841,21 +3871,25 @@ void Debug_MakeStreak90(void)
     gSaveBlock2Ptr->frontier.towerWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_MAX_LEVEL_OPEN] = 90;
 }
 
+u16 PSF_GetNormalFrontierTrainerID(void)
+{
+    u16 trainerId;
+    u16 battleNum = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
+
+    //Trainer IDs always come from the last, hardest range, which is the same for both trainer ID tables
+    trainerId = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
+    return sFrontierTrainerIdRanges[7][0] + (Random() % trainerId);
+}
+
 u16 PSF_GetFrontierTrainerID(void)
 {
     u16 trainerId;
     u16 battleNum = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
 
     if (battleNum == (FRONTIER_STAGES_PER_CHALLENGE - 1))
-    {
         trainerId = PSF_GetBossTrainerID();
-    }
     else
-    {
-        //Trainer IDs always come from the last, hardest range, which is the same for both trainer ID tables
-        trainerId = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
-        trainerId = sFrontierTrainerIdRanges[7][0] + (Random() % trainerId);
-    }
+        trainerId = PSF_GetNormalFrontierTrainerID();
 
     return trainerId;
 }

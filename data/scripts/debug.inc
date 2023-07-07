@@ -70,6 +70,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	setflag FLAG_FACILITY_UNLOCK_LIKO
 	warp MAP_HAIGHTASHBURY, 1
 	end
 

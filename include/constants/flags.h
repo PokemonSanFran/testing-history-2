@@ -144,23 +144,26 @@
 #define FLAG_QUEST_BODEGA_RESCUE_FLAGS_END                   FLAG_QUEST_BODEGA_RESCUE6 //Quest
 #define BODEGA_RESCUE_COUNT                                  (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1) //Quest
 #define FLAG_HIDE_FACILITY_OPPONENT                          0x7D
-#define PSF_FLAG_128                                         0x7E
-#define PSF_FLAG_129                                         0x7F
-#define PSF_FLAG_130                                         0x80
-#define PSF_FLAG_131                                         0x81
-#define PSF_FLAG_132                                         0x82
-#define PSF_FLAG_133                                         0x83
-#define PSF_FLAG_134                                         0x84
-#define PSF_FLAG_135                                         0x85
-#define PSF_FLAG_136                                         0x86
-#define PSF_FLAG_137                                         0x87
-#define PSF_FLAG_138                                         0x88
-#define PSF_FLAG_139                                         0x89
-#define PSF_FLAG_140                                         0x8A
-#define PSF_FLAG_141                                         0x8B
-#define PSF_FLAG_142                                         0x8C
-#define PSF_FLAG_143                                         0x8D
-#define PSF_FLAG_144                                         0x8E
+#define FLAG_FACILITY_UNLOCK_FLAGS_START                     FLAG_FACILITY_UNLOCK_LIKO
+#define FLAG_FACILITY_UNLOCK_LIKO                            0x7E
+#define FLAG_FACILITY_UNLOCK_CHARLOTTE                       0x7F
+#define FLAG_FACILITY_UNLOCK_AMI_ARGENTO                     0x80
+#define FLAG_FACILITY_UNLOCK_TALA                            0x81
+#define FLAG_FACILITY_UNLOCK_DIMU                            0x82
+#define FLAG_FACILITY_UNLOCK_ADAORA                          0x83
+#define FLAG_FACILITY_UNLOCK_EMRYS                           0x84
+#define FLAG_FACILITY_UNLOCK_MAGNUS                          0x85
+#define FLAG_FACILITY_UNLOCK_BD                              0x86
+#define FLAG_FACILITY_UNLOCK_KAI                             0x87
+#define FLAG_FACILITY_UNLOCK_NERIENE                         0x88
+#define FLAG_FACILITY_UNLOCK_ARMANDO                         0x89
+#define FLAG_FACILITY_UNLOCK_SHINZO                          0x8A
+#define FLAG_FACILITY_UNLOCK_KEI_YING                        0x8B
+#define FLAG_FACILITY_UNLOCK_BELEN                           0x8C
+#define FLAG_FACILITY_UNLOCK_ELLEN                           0x8D
+#define FLAG_FACILITY_UNLOCK_FLAGS_END                       FLAG_FACILITY_UNLOCK_ELLEN
+#define FACILITY_UNLOCK_FLAGS_COUNT                          (FLAG_FACILITY_UNLOCK_FLAGS_END - FLAG_FACILITY_UNLOCK_FLAGS_START + 1)
+#define FLAG_FOUGHT_FIRST_FACILITY_BOSS                      0x8E
 #define PSF_FLAG_145                                         0x8F
 #define PSF_FLAG_146                                         0x90
 #define PSF_FLAG_147                                         0x91
