@@ -3781,6 +3781,52 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
 
 //New PSF Functions
 
+const u16 gFacilityBosses[NUM_BOSS_SLOTS] =
+{
+    FRONTIER_TRAINER_HUGO,
+    FRONTIER_TRAINER_BRYCE,
+    FRONTIER_TRAINER_GIDEON,
+    FRONTIER_TRAINER_TRISTON,
+    TRAINER_FRONTIER_BRAIN,
+    FRONTIER_TRAINER_RAYMOND,
+    FRONTIER_TRAINER_DIRK,
+    FRONTIER_TRAINER_HAROLD,
+    FRONTIER_TRAINER_OMAR,
+    TRAINER_FRONTIER_BRAIN,
+    FRONTIER_TRAINER_DEV,
+    FRONTIER_TRAINER_COREY,
+    FRONTIER_TRAINER_ANDRE,
+    FRONTIER_TRAINER_FERRIS,
+    TRAINER_FRONTIER_BRAIN,
+    FRONTIER_TRAINER_PAIGE,
+    FRONTIER_TRAINER_ANYA,
+    FRONTIER_TRAINER_DAWN,
+    FRONTIER_TRAINER_ABBY,
+    TRAINER_FRONTIER_BRAIN,
+};
+
+u16 PSF_GetBossTrainerID(void)
+{
+    u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    u16 winStreak = GetCurrentFacilityWinStreak() + 1;
+    u32 bossIndex = ((winStreak % BOSS_CYCLE - FRONTIER_STAGES_PER_CHALLENGE) / FRONTIER_STAGES_PER_CHALLENGE);
+    u32 bossTrainer = gFacilityBosses[bossIndex];
+    u32 lastBossTrainer = VarGet(VAR_FRONTIER_LAST_FOUGHT_BOSS);
+
+    if (bossTrainer != TRAINER_FRONTIER_BRAIN){
+        if (bossTrainer == lastBossTrainer)
+            bossIndex++;
+        if (bossIndex > (NUM_BOSS_SLOTS - 1))
+            bossIndex = 0;
+
+        bossTrainer = gFacilityBosses[bossIndex];
+    }
+
+    VarSet(VAR_FRONTIER_LAST_FOUGHT_BOSS, bossTrainer);
+    return bossTrainer;
+}
+
 u16 PSF_GetFrontierTrainerID(void)
 {
     u16 trainerId;
@@ -3788,7 +3834,7 @@ u16 PSF_GetFrontierTrainerID(void)
 
     if (battleNum == (FRONTIER_STAGES_PER_CHALLENGE - 1))
     {
-        trainerId = TRAINER_FRONTIER_BRAIN;
+        trainerId = PSF_GetBossTrainerID();
     }
     else
     {

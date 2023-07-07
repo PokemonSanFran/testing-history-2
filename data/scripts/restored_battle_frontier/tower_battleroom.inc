@@ -24,10 +24,9 @@ Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter::
 	addobject 1
 	applymovement 1, Haightashbury_Gym_Battle_Room_Movement_OpponentEnter
 	waitmovement 0
-	tower_getopponentintro 0
-	msgbox gStringVar4, MSGBOX_DEFAULT
-	waitmessage
+	call Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue
 	call Haightashbury_Gym_Battle_Room_EventScript_DoTowerBattle
+	call Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_2
 Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_1:
@@ -37,6 +36,31 @@ Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_1:
 Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_2:
 	goto Haightashbury_Gym_Battle_Room_EventScript_DefeatedOpponent
 	goto Haightashbury_Gym_Battle_Room_EventScript_OpponentEnter_1
+
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue::
+	specialvar VAR_RESULT, PSF_GetFrontierBrainStatus
+	compare VAR_RESULT, FRONTIER_BRAIN_NOT_READY
+	goto_if_eq Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_2
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	msgbox Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_Text_0, MSGBOX_DEFAULT
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1:
+	waitmessage
+	return
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_2:
+	tower_getopponentintro 0
+	msgbox gStringVar4, MSGBOX_DEFAULT
+	goto Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_1
+
+
+Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue::
+	compare VAR_RESULT, FRONTIER_BRAIN_NOT_READY
+	goto_if_eq Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_1
+	return
+
+Haightashbury_Gym_Battle_Room_PlayBattleOutro_Dialogue_1:
+	return
 
 
 BattleTower_EventScript_SetChallengeStatus::
@@ -312,6 +336,9 @@ Haightashbury_Gym_Battle_Room_EventScript_RetireChallenge::
 	goto BattleTower_EventScript_WarpToLobbyLost
 	end
 
+
+Haightashbury_Gym_Battle_Room_PlayBattleIntro_Dialogue_Text_0:
+	.string "{STR_VAR_1}$"
 
 Haightashbury_Gym_Battle_Room_Text_RestoreMonsToFullHealth::
 	.string "We will restore your POKéMON to\nfull health.$"

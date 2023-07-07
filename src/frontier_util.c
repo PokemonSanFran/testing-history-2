@@ -2464,7 +2464,22 @@ void CreateFrontierBrainPokemon(void)
     s32 monLevel = 0;
     u8 friendship;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    //s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = PSF_GetFrontierBrainStatus();
+
+    //PSF Specific Logic
+    switch(symbol){
+        case FRONTIER_BRAIN_SILVER_FIRST:
+        case FRONTIER_BRAIN_SILVER_REMATCH:
+        case FRONTIER_BRAIN_SILVER_COMPLETE:
+            symbol = 0;
+            break;
+        case FRONTIER_BRAIN_GOLD_FIRST:
+        case FRONTIER_BRAIN_GOLD_COMPLETE:
+            symbol = 1;
+            break;
+    }
+    //End PSF Specific Logic
 
     if (facility == FRONTIER_FACILITY_DOME)
         selectedMonBits = GetDomeTrainerSelectedMons(TrainerIdToDomeTournamentId(TRAINER_FRONTIER_BRAIN));
@@ -2591,4 +2606,39 @@ static void CopyFrontierBrainText(bool8 playerWonText)
         StringCopy(gStringVar4, sFrontierBrainPlayerWonTexts[symbol][facility]);
         break;
     }
+}
+
+//PSF
+
+u8 PSF_GetFrontierBrainStatus(void)
+{
+    s32 status = FRONTIER_BRAIN_NOT_READY;
+    s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    u16 winStreak = GetCurrentFacilityWinStreak() + 1;
+    s32 facility = VarGet(VAR_FRONTIER_FACILITY);
+    s32 symbolsCount = GetPlayerSymbolCountForFacility(facility);
+
+    if (battleMode == FRONTIER_MODE_MULTIS || battleMode == FRONTIER_MODE_LINK_MULTIS)
+        return FRONTIER_BRAIN_NOT_READY;
+
+    switch (symbolsCount) {
+        case 0:
+            if (winStreak == FRONTIER_STREAK_SILVER)
+                status = FRONTIER_BRAIN_SILVER_FIRST;
+            break;
+        case 1:
+            if (winStreak == FRONTIER_STREAK_SILVER)
+                status = FRONTIER_BRAIN_SILVER_REMATCH;
+            else if (winStreak == FRONTIER_STREAK_GOLD)
+                status = FRONTIER_BRAIN_GOLD_FIRST;
+            break;
+        case 2:
+            if (winStreak == FRONTIER_STREAK_SILVER)
+                status = FRONTIER_BRAIN_SILVER_COMPLETE;
+            else if (winStreak == FRONTIER_STREAK_GOLD)
+                status = FRONTIER_BRAIN_GOLD_COMPLETE;
+            break;
+    }
+
+    return status;
 }

@@ -143,7 +143,7 @@
 #define FLAG_QUEST_BODEGA_RESCUE6                            0x7C //Quest
 #define FLAG_QUEST_BODEGA_RESCUE_FLAGS_END                   FLAG_QUEST_BODEGA_RESCUE6 //Quest
 #define BODEGA_RESCUE_COUNT                                  (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1) //Quest
-#define PSF_FLAG_127                                         0x7D
+#define FLAG_HIDE_FACILITY_OPPONENT                          0x7D
 #define PSF_FLAG_128                                         0x7E
 #define PSF_FLAG_129                                         0x7F
 #define PSF_FLAG_130                                         0x80

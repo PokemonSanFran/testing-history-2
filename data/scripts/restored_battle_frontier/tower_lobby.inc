@@ -123,8 +123,8 @@ BattleTower_EventScript_AskSaveBattle2::
 	goto_if_eq BattleTower_EventScript_AskSaveBattle2_2
 	message BattleTower_Text_RecordLastMatch
 	waitmessage
-	multichoicedefault 20, 8, MULTI_YESNO, 1, FALSE
-	compare VAR_RESULT, 0
+	call EventScript_Construct_YesNo_NoSelected_Menu_Script
+	compare VAR_RESULT, YES
 	goto_if_eq BattleTower_EventScript_AskSaveBattle2_5
 BattleTower_EventScript_AskSaveBattle2_4:
 	return
@@ -135,6 +135,13 @@ BattleTower_EventScript_AskSaveBattle2_2:
 BattleTower_EventScript_AskSaveBattle2_5:
 	call BattleFrontier_EventScript_SaveBattle2
 	goto BattleTower_EventScript_AskSaveBattle2_4
+
+
+EventScript_Construct_YesNo_NoSelected_Menu_Script::
+	dynmultipush gText_Yes, YES
+	dynmultipush gText_No, NO
+	dynmultistack 19, 6, FALSE, 2, FALSE, NO, DYN_MULTICHOICE_CB_NONE
+	return
 
 
 BattleFrontier_EventScript_SaveBattle2::
@@ -795,7 +802,7 @@ BattleTower_EventScript_WaitForLinkOpponentLoad::
 BattleTower_EventScript_WaitForLinkOpponentLoad_1:
 	call BattleTower_EventScript_ShowYouToBattleRoom
 	clearflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
-	setflag FLAG_HIDE_BATTLE_TOWER_OPPONENT
+	setflag FLAG_HIDE_FACILITY_OPPONENT
 	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8
 	setvar VAR_TEMP_0, 0
 	waitstate

@@ -621,3 +621,4 @@ gSpecials::
 @ Restored Frontier
 
     def_special PSF_SetNextTowerOpponent
+    def_special PSF_GetFrontierBrainStatus

@@ -136,11 +136,20 @@ script BattleTower_EventScript_AskSaveBattle2{
 
     message(BattleTower_Text_RecordLastMatch)
     waitmessage
-    multichoicedefault(20, 8, MULTI_YESNO, 1, FALSE)
-    if (var(VAR_RESULT) == 0){
+    //multichoicedefault(20, 8, MULTI_YESNO, 1, FALSE)
+    call(EventScript_Construct_YesNo_NoSelected_Menu_Script)
+    if (var(VAR_RESULT) == YES){
         call(BattleFrontier_EventScript_SaveBattle2)
     }
 
+    return
+}
+
+script EventScript_Construct_YesNo_NoSelected_Menu_Script{
+    dynmultipush(gText_Yes,YES)
+    dynmultipush(gText_No,NO)
+
+    dynmultistack(19,6,FALSE,2,FALSE,NO,DYN_MULTICHOICE_CB_NONE)
     return
 }
 
@@ -547,7 +556,7 @@ script BattleTower_EventScript_WaitForLinkOpponentLoad{
 
     call(BattleTower_EventScript_ShowYouToBattleRoom)
     clearflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
-    setflag(FLAG_HIDE_BATTLE_TOWER_OPPONENT)
+    setflag(FLAG_HIDE_FACILITY_OPPONENT)
     warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, 0)
     waitstate
