@@ -37,6 +37,7 @@
 #include "constants/items.h"
 #include "constants/event_objects.h"
 #include "party_menu.h"
+#include "script_pokemon_util.h"
 
 struct FrontierBrainMon
 {

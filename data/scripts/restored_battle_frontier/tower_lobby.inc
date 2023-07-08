@@ -181,6 +181,7 @@ BattleTower_EventScript_Attendant::
 	goto_if_eq BattleTower_EventScript_Attendant_2
 BattleTower_EventScript_Attendant_1:
 	special SavePlayerParty
+	special LevelUpAllPokemonTo100
 	switch VAR_LAST_TALKED
 	case 1, BattleTower_EventScript_Attendant_6
 	case 2, BattleTower_EventScript_Attendant_7
@@ -803,8 +804,8 @@ BattleTower_EventScript_WaitForLinkOpponentLoad_1:
 	call BattleTower_EventScript_ShowYouToBattleRoom
 	clearflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
 	setflag FLAG_HIDE_FACILITY_OPPONENT
-	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8
 	setvar VAR_TEMP_0, 0
+	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8
 	waitstate
 	end
 
@@ -819,7 +820,7 @@ BattleTower_EventScript_ShowYouToBattleRoom::
 	goto_if_eq BattleTower_EventScript_ShowYouToBattleRoom_2
 	msgbox BattleTower_Text_ShowYouToBattleRoom, MSGBOX_DEFAULT
 BattleTower_EventScript_ShowYouToBattleRoom_1:
-	goto BattleTower_EventScript_WalkToElevator
+	call BattleTower_EventScript_WalkToElevator
 	return
 
 BattleTower_EventScript_ShowYouToBattleRoom_2:

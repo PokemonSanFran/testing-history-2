@@ -557,8 +557,8 @@ script BattleTower_EventScript_WaitForLinkOpponentLoad{
     call(BattleTower_EventScript_ShowYouToBattleRoom)
     clearflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
     setflag(FLAG_HIDE_FACILITY_OPPONENT)
-    warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, 0)
+    warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
     waitstate
     end
 }
@@ -574,7 +574,7 @@ script BattleTower_EventScript_ShowYouToBattleRoom{
             msgbox(BattleTower_Text_ShowYouToBattleRoom, MSGBOX_DEFAULT)
         }
 
-    goto(BattleTower_EventScript_WalkToElevator)
+    call(BattleTower_EventScript_WalkToElevator)
     return
 }
 
