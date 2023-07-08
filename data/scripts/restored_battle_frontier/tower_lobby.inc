@@ -181,7 +181,6 @@ BattleTower_EventScript_Attendant::
 	goto_if_eq BattleTower_EventScript_Attendant_2
 BattleTower_EventScript_Attendant_1:
 	special SavePlayerParty
-	special LevelUpAllPokemonTo100
 	switch VAR_LAST_TALKED
 	case 1, BattleTower_EventScript_Attendant_6
 	case 2, BattleTower_EventScript_Attendant_7

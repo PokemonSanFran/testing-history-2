@@ -22,6 +22,7 @@
 #include "battle_main.h"
 #include "script_pokemon_util.h"
 #include "sound.h"
+#include "strings.h"
 
 u32 GetCurrentMap(void)
 {
@@ -224,7 +225,7 @@ void Quest_Rockcollector_RespawnStones(void)
 // ***********************************************************************
 // Quest: Hidden Grotto Mapping
 // ***********************************************************************
-const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
+static const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
 {
     {MAP_PSFROUTE1_GROTTO,SUB_QUEST_1},
     {MAP_PSFROUTE30_GROTTO,SUB_QUEST_2},
@@ -319,7 +320,7 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
 #define TOTEM  1
 #define NUM_TOTEM_MON (QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT - 1)
 
-const u32 TOTEM_POKEMON_LIST[NUM_TOTEM_MON][9]=
+static const u32 TOTEM_POKEMON_LIST[NUM_TOTEM_MON][9]=
 {
     {MAP_PSFROUTE14, SPECIES_TYROGUE, ITEM_FOCUS_BAND, 3, 6, 5, 2, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1)},
     {MAP_PSFROUTE62, SPECIES_AMPHAROS, ITEM_LEFTOVERS, 0, 4, 2, 6, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 2)},
@@ -342,7 +343,7 @@ const u32 TOTEM_POKEMON_LIST[NUM_TOTEM_MON][9]=
     //fixed natures and move sets and level
     //wild map, totem species, held item, totem atk, totem def, totem speed, totem spatk, totem spdef, totem flag
 
-const u32 ULTRA_BEAST_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
+static const u32 ULTRA_BEAST_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
 {
     {MAP_ULTRA_PALDEA,SPECIES_POIPOLE,ITEM_BEAST_BALL,3,1,6,5,0},
     {MAP_ULTRA_UNOVA,SPECIES_PHEROMOSA,ITEM_BEAST_BALL,6,4,0,5,2},
@@ -589,7 +590,7 @@ u8 Quest_Gemartist_CountRemainingUniqueGems(void)
 #define SKY 1
 #define LAND 2
 
-const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][3]=
+static const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][3]=
 {
     {MAP_TREASUREISLAND,SUB_QUEST_1,SEA},
     {MAP_SUNSET,SUB_QUEST_2,SEA},
@@ -773,7 +774,7 @@ bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
 #define CATCH_SMART 4
 #define CATCH_FAIRY 5
 
-const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
+static const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
 {
     {MAP_SOMA_POKEMONCENTER_1F,SUB_QUEST_1,DELIVER,MAP_PSFROUTE17},
     {MAP_SUNSET_POKEMONCENTER_1F,SUB_QUEST_2,DELIVER,MAP_TWINPEAKS},
@@ -798,27 +799,27 @@ const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
     {MAP_BERKELEY_POKEMONCENTER_1F,SUB_QUEST_19,CATCH_FAIRY,},
 };
 
-const u8* bodegaParametersTextArray[19][2]=
+static const u8* const bodegaParametersTextArray[19][2]=
 {
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
-    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
+    {gText_IndigoPokeblock,gText_BrownPokeblock},
 };
 
 u8 Quest_Bodegaburnout_LookUpCorrespondingSubquest(void){

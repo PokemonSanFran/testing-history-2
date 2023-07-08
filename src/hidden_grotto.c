@@ -26,7 +26,7 @@
 
 void HiddenGrotto_WarpPlayerToGrotto(u32 grottoMapGroup, u32 grottpMapNum);
 
-const u8* discoveredGrottoTextArray[] = 
+static const u8* const discoveredGrottoTextArray[] =
 {
     gText_LookIveFound,\
     gText_WowHiddenPath,\

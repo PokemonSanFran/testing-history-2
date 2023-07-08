@@ -37,7 +37,7 @@
 #include "constants/rgb.h"
 
 /*
- * 
+ *
  */
 
 //==========DEFINES==========//
@@ -223,7 +223,7 @@ static const struct BgTemplate sMenuBgTemplates[] =
         .charBaseIndex = 0,
         .mapBaseIndex = 31,
         .priority = 1
-    }, 
+    },
     {
         .bg = 1,    // this bg loads the UI tilemap
         .charBaseIndex = 3,
@@ -238,9 +238,9 @@ static const struct BgTemplate sMenuBgTemplates[] =
     }
 };
 
-static const struct WindowTemplate sMenuWindowTemplates[] = 
+static const struct WindowTemplate sMenuWindowTemplates[] =
 {
-    [WINDOW_1] = 
+    [WINDOW_1] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
@@ -272,7 +272,7 @@ enum Colors
     FONT_RED,
     FONT_BLUE,
 };
-static const u8 sMenuWindowFontColors[][3] = 
+static const u8 sMenuWindowFontColors[][3] =
 {
     [FONT_BLACK]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_TRANSPARENT},
     [FONT_WHITE]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,       TEXT_COLOR_TRANSPARENT},
@@ -285,6 +285,7 @@ static const u8 sMenuWindowFontColors[][3] =
 void Task_OpenOptionsMenuFromStartMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
@@ -454,7 +455,7 @@ static void Menu_FreeResources(void)
     try_free(Temporal_Options_Music_Settings);
     try_free(Temporal_Options_Visual_Settings);
     try_free(Temporal_Options_Random_Settings);
-    
+
     FreeAllWindowBuffers();
 }
 
@@ -647,7 +648,7 @@ struct OptionData
     const u8 title[OPTION_NAME_LENGTH];
     const u8 options[OPTION_NAME_LENGTH][MAX_OPTIONS_PER_SETTING];
     const u8 optionDescription[MAX_OPTION_DESCRIPTION_LENGTH][MAX_OPTIONS_PER_SETTING];
-    u8 numOptions;
+    const u8 numOptions;
 };
 
 //Graphics
@@ -677,16 +678,16 @@ static const u8 sText_Help_Bar_Settings_Hub[]   = _("{DPAD_LEFTRIGHT} Preset {A_
 static const u8 sText_Help_Bar_Settings_Page[]  = _("{DPAD_LEFTRIGHT} Change {B_BUTTON} Discard {START_BUTTON} Save {L_BUTTON}{R_BUTTON} Next Page");
 // Preset
 
-struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
+static const struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [GAME_SETTINGS] =
     {
         .title = _("Game Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Speedrun"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Speedrun Description"),
             _("Custom Description"),
@@ -696,7 +697,7 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [BATTLE_SETTINGS] =
     {
         .title = _("Battle Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Challenge"),
             _("Speedrun"),
@@ -704,7 +705,7 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
             _("Kaizo"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Challenge Description"),
             _("Speedrun Description"),
@@ -717,12 +718,12 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [VISUAL_SETTINGS] =
     {
         .title = _("Visual Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Speedrun"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Speedrun Description"),
             _("Custom Description"),
@@ -732,7 +733,7 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [MUSIC_SETTINGS] =
     {
         .title = _("Music Settings"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -745,7 +746,7 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
             _("SV"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF Description"),
             _("LGPE Description"),
             _("HGSS Description"),
@@ -763,14 +764,14 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [RANDOM_SETTINGS] =
     {
         .title = _("Random Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Sane"),
             _("Crazy"),
             _("Total Chaos"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Sane Description"),
             _("Crazy Description"),
@@ -838,32 +839,32 @@ enum RandomOptionsForOptionsMenu
 
 #define MAX_VOLUME 19
 
-static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PER_SETTING] = {
+static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PER_SETTING] = {
     [GAME_SETTINGS] =
     {
         [GAME_PRESET_DEFAULT]  = {
-            [GAME_OPTIONS_PRESET]            = GAME_PRESET_DEFAULT, 
-            [GAME_OPTIONS_SAVE_BOOT]         = 1, 
-            [GAME_OPTIONS_BUTTON_MODE]       = 1, 
-            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
-            [GAME_OPTIONS_RUN]               = 1, 
-            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0, 
+            [GAME_OPTIONS_PRESET]            = GAME_PRESET_DEFAULT,
+            [GAME_OPTIONS_SAVE_BOOT]         = 1,
+            [GAME_OPTIONS_BUTTON_MODE]       = 1,
+            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1,
+            [GAME_OPTIONS_RUN]               = 1,
+            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0,
             [GAME_OPTIONS_ITEM_SORT]         = 2
         },
         [GAME_PRESET_SPEEDRUN] = {
-            [GAME_OPTIONS_PRESET]            = GAME_PRESET_SPEEDRUN, 
-            [GAME_OPTIONS_SAVE_BOOT]         = 1, 
-            [GAME_OPTIONS_BUTTON_MODE]       = 1, 
-            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
-            [GAME_OPTIONS_RUN]               = 2, 
-            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0, 
+            [GAME_OPTIONS_PRESET]            = GAME_PRESET_SPEEDRUN,
+            [GAME_OPTIONS_SAVE_BOOT]         = 1,
+            [GAME_OPTIONS_BUTTON_MODE]       = 1,
+            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1,
+            [GAME_OPTIONS_RUN]               = 2,
+            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0,
             [GAME_OPTIONS_ITEM_SORT]         = 4
         }
     },
     [BATTLE_SETTINGS] =
     {
         [BATTLE_PRESET_DEFAULT]  = {
-            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_DEFAULT, 
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_DEFAULT,
             [BATTLE_OPTIONS_EXPERIENCE]             = 0,
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0,
             [BATTLE_OPTIONS_LEVEL]                  = 0,
@@ -890,7 +891,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
         },
         [BATTLE_PRESET_CHALLENGE]  = {
-            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_CHALLENGE, 
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_CHALLENGE,
             [BATTLE_OPTIONS_EXPERIENCE]             = 0,
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0,
             [BATTLE_OPTIONS_LEVEL]                  = 0,
@@ -917,7 +918,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
         },
         [BATTLE_PRESET_SPEEDRUN]  = {
-            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_SPEEDRUN, 
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_SPEEDRUN,
             [BATTLE_OPTIONS_EXPERIENCE]             = 0,
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0,
             [BATTLE_OPTIONS_LEVEL]                  = 0,
@@ -944,7 +945,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 2,
         },
         [BATTLE_PRESET_NUZLOCKE]  = {
-            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_NUZLOCKE, 
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_NUZLOCKE,
             [BATTLE_OPTIONS_EXPERIENCE]             = 0,
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0,
             [BATTLE_OPTIONS_LEVEL]                  = 0,
@@ -971,7 +972,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
         },
         [BATTLE_PRESET_KAIZO]  = {
-            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_KAIZO, 
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_KAIZO,
             [BATTLE_OPTIONS_EXPERIENCE]             = 2,
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0,
             [BATTLE_OPTIONS_LEVEL]                  = 0,
@@ -1001,79 +1002,79 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [VISUAL_SETTINGS] =
     {
         [VISUAL_PRESET_DEFAULT]  = {
-            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_DEFAULT, 
-            [VISUAL_OPTIONS_UNITS]           = 1, 
-            [VISUAL_OPTIONS_TEXT_SPEED]      = 2, 
-            [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
-            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
-            [VISUAL_OPTIONS_COLOR]           = 6, 
+            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_DEFAULT,
+            [VISUAL_OPTIONS_UNITS]           = 1,
+            [VISUAL_OPTIONS_TEXT_SPEED]      = 2,
+            [VISUAL_OPTIONS_FRAME_TYPE]      = 0,
+            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0,
+            [VISUAL_OPTIONS_COLOR]           = 6,
         },
         [VISUAL_PRESET_SPEEDRUN] = {
-            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_SPEEDRUN, 
-            [VISUAL_OPTIONS_UNITS]           = 1, 
-            [VISUAL_OPTIONS_TEXT_SPEED]      = 4, 
-            [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
-            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
-            [VISUAL_OPTIONS_COLOR]           = 6, 
+            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_SPEEDRUN,
+            [VISUAL_OPTIONS_UNITS]           = 1,
+            [VISUAL_OPTIONS_TEXT_SPEED]      = 4,
+            [VISUAL_OPTIONS_FRAME_TYPE]      = 0,
+            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0,
+            [VISUAL_OPTIONS_COLOR]           = 6,
         }
     },
     [MUSIC_SETTINGS] =
     {
         [MUSIC_PRESET_DEFAULT]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
-            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_DEFAULT, 
-            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_DEFAULT,
         },
         [MUSIC_PRESET_LGPE]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
-            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_LGPE, 
-            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_LGPE,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_LGPE,
         },
         [MUSIC_PRESET_HGSS]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
-            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_HGSS, 
-            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_HGSS,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_HGSS,
         },
         [MUSIC_PRESET_ORAS]  = {
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
-            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_ORAS, 
-            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_ORAS,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_ORAS,
         },
         [MUSIC_PRESET_BDSP]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BDSP, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_BDSP,
             [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_BDSP,
@@ -1084,8 +1085,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BDSP,
         },
         [MUSIC_PRESET_BW2]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BW2, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_BW2,
@@ -1097,9 +1098,9 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BW2,
         },
         [MUSIC_PRESET_XY]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_XY, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_XY,
             [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_XY,
@@ -1110,8 +1111,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_XY,
         },
         [MUSIC_PRESET_USUM]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_USUM, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_USUM,
@@ -1123,8 +1124,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_USUM,
         },
         [MUSIC_PRESET_SWSH]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SWSH, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_SWSH,
@@ -1136,9 +1137,9 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_SWSH,
         },
         [MUSIC_PRESET_SV]  = {
-            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SV, 
-            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
-            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SV,
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME,
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
             [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_DEFAULT,
             [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_DEFAULT,
@@ -1148,84 +1149,84 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_SV,
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_SV,
         },
-    }, 
+    },
     [RANDOM_SETTINGS] =
     {
         [RANDOM_PRESET_DEFAULT]  = {
-            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_DEFAULT, 
-            [RANDOM_OPTIONS_STARTER]            = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_DEFAULT,
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT,
         },
         [RANDOM_PRESET_SANE]  = {
-            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_SANE, 
-            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT, 
-            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_SANE,
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT,
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT,
         },
         [RANDOM_PRESET_CRAZY]  = {
-            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_CRAZY, 
-            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TYPES]              = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TMS]                = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_ITEMS]              = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_RANDOM, 
-            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_CRAZY,
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TMS]                = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_RANDOM,
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_RANDOM,
         },
         [RANDOM_PRESET_TOTAL_CHAOS]  = {
-            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_TOTAL_CHAOS, 
-            [RANDOM_OPTIONS_STARTER]            = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_CHAOS + 1, 
-            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_TYPES]              = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_TMS]                = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_ITEMS]              = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_CHAOS, 
-            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_TOTAL_CHAOS,
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_CHAOS + 1,
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_TMS]                = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_CHAOS,
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_CHAOS,
         },
     },
 };
@@ -1346,16 +1347,16 @@ void ChangePresetDataToCustom()
 }
 
 // For Game Settings asdf
-struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
+static const struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_PRESET] =
     {
         .title = _("Game Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Speedrun"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Speedrun Description"),
             _("Custom Description"),
@@ -1365,11 +1366,11 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_SAVE_BOOT] =
     {
         .title = _("Save Boot"),
-        .options = { 
+        .options = {
             _("Traditional"),
             _("Continue"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Traditional Description"),
             _("Continue Description"),
             },
@@ -1378,12 +1379,12 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_BUTTON_MODE] =
     {
         .title = _("Button Mode"),
-        .options = { 
+        .options = {
             _("Normal"),
             _("{L_BUTTON}{R_BUTTON}"),
             _("{L_BUTTON} {EMOJI_EQUALS} {A_BUTTON}"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Normal Description"),
             _("{L_BUTTON}{R_BUTTON} Description"),
             _("{L_BUTTON} {EMOJI_EQUALS} {A_BUTTON} Description"),
@@ -1393,11 +1394,11 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_SAVE_BEHAVIOR] =
     {
         .title = _("Save Behavior"),
-        .options = { 
+        .options = {
             _("Automatic"),
             _("Manual"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Automatic Description"),
             _("Manual Description"),
             },
@@ -1406,12 +1407,12 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_RUN] =
     {
         .title = _("Run"),
-        .options = { 
+        .options = {
             _("Always"),
             _("Toogle"),
             _("Manual"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Always Description"),
             _("Toogle Description"),
             _("Manual Description"),
@@ -1421,11 +1422,11 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_PUZZLE_DIFFICULTY] =
     {
         .title = _("Puzzle Difficulty"),
-        .options = { 
+        .options = {
             _("Normal"),
             _("Easy"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Normal Description"),
             _("Easy Description"),
             },
@@ -1434,14 +1435,14 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_ITEM_SORT] =
     {
         .title = _("Item Sort"),
-        .options = { 
+        .options = {
             _("Off"),
             _("Name"),
             _("Type"),
             _("Amount"),
             _("Recency"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Off"),
             _("Name"),
             _("Type"),
@@ -1454,11 +1455,11 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
 
 // For Battle Settings
 
-struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] = {
+static const struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] = {
     [BATTLE_OPTIONS_PRESET] =
     {
         .title = _("Battle Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Challenge"),
             _("Speedrun"),
@@ -1466,7 +1467,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
             _("Kaizo"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Challenge Description"),
             _("Speedrun Description"),
@@ -1479,12 +1480,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_EXPERIENCE] =
     {
         .title = _("Experience"),
-        .options = { 
+        .options = {
                 _("All"),
                 _("Party"),
                 _("Active"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("All"),
                 _("Party"),
                 _("Active"),
@@ -1494,13 +1495,13 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_EXP_MULTIPLIER] =
     {
         .title = _("Exp Multiplier"),
-        .options = { 
+        .options = {
                 _("Normal"),
                 _("1.5"),
                 _("2"),
                 _("0"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Normal"),
                 _("1.5"),
                 _("2"),
@@ -1511,11 +1512,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_LEVEL] =
     {
         .title = _("Level"),
-        .options = { 
+        .options = {
                 _("Level Cap"),
                 _("No Cap"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Level Cap"),
                 _("No Cap"),
             },
@@ -1524,11 +1525,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_SWITCH_STYLE] =
     {
         .title = _("Switch Style"),
-        .options = { 
+        .options = {
             _("Shift"),
             _("Set"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Shift"),
             _("Set"),
             },
@@ -1537,12 +1538,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_TAKE_WILD_ITEMS] =
     {
         .title = _("Take Wild Items"),
-        .options = { 
+        .options = {
                 _("Never"),
                 _("Ask"),
                 _("Always"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Never"),
                 _("Ask"),
                 _("Always"),
@@ -1552,12 +1553,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_LAST_USED_BALL] =
     {
         .title = _("Last Used Ball"),
-        .options = { 
+        .options = {
                 _("Always"),
                 _("Best Ball"),
                 _("After 1 Ball"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Always"),
                 _("Best Ball"),
                 _("After 1 Ball"),
@@ -1567,12 +1568,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_QUICK_RUN] =
     {
         .title = _("Quick Run"),
-        .options = { 
+        .options = {
                 _("B -> A"),
                 _("R"),
                 _("Off"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("B -> A"),
                 _("R"),
                 _("Off"),
@@ -1582,13 +1583,13 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_BATTLE_DIFFICULTY] =
     {
         .title = _("Battle Difficulty"),
-        .options = { 
+        .options = {
                 _("Cinematic"),
                 _("Standard"),
                 _("Challenge"),
                 _("Kaizo"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Cinematic"),
                 _("Standard"),
                 _("Challenge"),
@@ -1599,12 +1600,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_FAINTED_MON] =
     {
         .title = _("Fainted Mon"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("Box"),
                 _("Release"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Allowed"),
                 _("Box"),
                 _("Release"),
@@ -1614,12 +1615,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_FIRST_POKEMON_CATCH] =
     {
         .title = _("First Pokemon Catch"),
-        .options = { 
+        .options = {
                 _("Default"),
                 _("First Only"),
                 _("Duplicate"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Default"),
                 _("First Only"),
                 _("Duplicate"),
@@ -1629,12 +1630,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_NICKNAME] =
     {
         .title = _("Nickname"),
-        .options = { 
+        .options = {
                 _("Ask"),
                 _("Forced"),
                 _("None"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Ask"),
                 _("Forced"),
                 _("None"),
@@ -1644,12 +1645,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_WITHEOUT] =
     {
         .title = _("Witheout"),
-        .options = { 
+        .options = {
                 _("Default"),
                 _("Respawn"),
                 _("Death"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Default"),
                 _("Respawn"),
                 _("Death"),
@@ -1659,11 +1660,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_ITEM_HEALING] =
     {
         .title = _("Item Healing"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("Disabled"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Allowed"),
                 _("Disabled"),
             },
@@ -1672,11 +1673,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_CENTER_HEALING] =
     {
         .title = _("Center Healing"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("Disabled"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Allowed"),
                 _("Disabled"),
             },
@@ -1685,7 +1686,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_MOVE_HEALING] =
     {
         .title = _("Move Healing"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("Disabled"),
             },
@@ -1695,14 +1696,14 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_BAG_ITEMS] =
     {
         .title = _("Bag Items"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("No Boss"),
                 _("No Trainer"),
                 _("4 Only"),
                 _("No Items"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Allowed"),
                 _("No Boss"),
                 _("No Trainer"),
@@ -1714,11 +1715,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_OPPONENTS_ITEMS] =
     {
         .title = _("Opponent Items"),
-        .options = { 
+        .options = {
                 _("Allowed"),
                 _("Disabled"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Allowed"),
                 _("Disabled"),
             },
@@ -1727,13 +1728,13 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_BASE_STAT_EQUALIZER] =
     {
         .title = _("Base Stat Equalizer"),
-        .options = { 
+        .options = {
                 _("Disabled"),
                 _("100"),
                 _("255"),
                 _("500"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Disabled"),
                 _("100"),
                 _("255"),
@@ -1744,7 +1745,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE] =
     {
         .title = _("One Type Challenge"),
-        .options = { 
+        .options = {
                 _("Normal"),
                 _("Fighting"),
                 _("Flying"),
@@ -1764,7 +1765,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
                 _("Dark"),
                 _("Fairy"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Normal"),
                 _("Fighting"),
                 _("Flying"),
@@ -1789,11 +1790,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_TYPE_ICONS] =
     {
         .title = _("Type Icons"),
-        .options = { 
+        .options = {
                 _("Show"),
                 _("Hide"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Show"),
                 _("Hide"),
             },
@@ -1802,11 +1803,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_ANIMATIONS] =
     {
         .title = _("Animations"),
-        .options = { 
+        .options = {
                 _("Animated"),
                 _("Skip"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Animated"),
                 _("Skip"),
             },
@@ -1815,11 +1816,11 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_INTRO] =
     {
         .title = _("Intro"),
-        .options = { 
+        .options = {
                 _("Normal"),
                 _("Skip"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Normal"),
                 _("Skip"),
             },
@@ -1828,12 +1829,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_HP_SPEED] =
     {
         .title = _("Hp Speed"),
-        .options = { 
+        .options = {
                 _("Fast"),
                 _("Normal"),
                 _("Instant"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Fast"),
                 _("Normal"),
                 _("Instant"),
@@ -1843,12 +1844,12 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
     [BATTLE_OPTIONS_EXP_SPEED] =
     {
         .title = _("Exp Speed"),
-        .options = { 
+        .options = {
                 _("Fast"),
                 _("Normal"),
                 _("Instant"),
             },
-        .optionDescription = { 
+        .optionDescription = {
                 _("Fast"),
                 _("Normal"),
                 _("Instant"),
@@ -1859,16 +1860,16 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
 
 // For Visual Settings
 
-struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] = {
+static const struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] = {
     [VISUAL_OPTIONS_PRESET] =
     {
         .title = _("Visual Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Speedrun"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Speedrun Description"),
             _("Custom Description"),
@@ -1878,11 +1879,11 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
     [VISUAL_OPTIONS_UNITS] =
     {
         .title = _("Units"),
-        .options = { 
+        .options = {
             _("Metric"),
             _("Imperial"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Metric"),
             _("Imperial"),
             },
@@ -1891,14 +1892,14 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
     [VISUAL_OPTIONS_TEXT_SPEED] =
     {
         .title = _("Text Speed"),
-        .options = { 
+        .options = {
             _("Slow"),
             _("Medium"),
             _("Fast"),
             _("Faster"),
             _("Instant"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Slow"),
             _("Medium"),
             _("Fast"),
@@ -1910,7 +1911,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
     [VISUAL_OPTIONS_FRAME_TYPE] =
     {
         .title = _("Frame Type"),
-        .options = { 
+        .options = {
             _("Frame 1"),
             _("Frame 2"),
             _("Frame 3"),
@@ -1932,7 +1933,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
             _("Frame 19"),
             _("Frame 20"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Frame 1"),
             _("Frame 2"),
             _("Frame 3"),
@@ -1959,11 +1960,11 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
     [VISUAL_OPTIONS_FONT_SWITCHER] =
     {
         .title = _("Font Switcher"),
-        .options = { 
+        .options = {
             _("Emerald"),
             _("Fire Red"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Emerald"),
             _("Fire Red"),
             },
@@ -1972,7 +1973,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
     [VISUAL_OPTIONS_COLOR] =
     {
         .title = _("Color"),
-        .options = { 
+        .options = {
             _("Red"),
             _("Green"),
             _("Blue"),
@@ -1984,7 +1985,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
             _("Violet"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Red"),
             _("Green"),
             _("Blue"),
@@ -2002,11 +2003,11 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
 
 // For Music Settings
 
-struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
+static const struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_PRESET] =
     {
         .title = _("Music Settings"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2019,7 +2020,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SV"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF Description"),
             _("LGPE Description"),
             _("HGSS Description"),
@@ -2037,7 +2038,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_SOUND_EFFECT] =
     {
         .title = _("Sound Effect"),
-        .options = { 
+        .options = {
             _("1"),
             _("2"),
             _("3"),
@@ -2059,7 +2060,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("19"),
             _("20"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("1"),
             _("2"),
             _("3"),
@@ -2086,7 +2087,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_MUSIC] =
     {
         .title = _("Music"),
-        .options = { 
+        .options = {
             _("1"),
             _("2"),
             _("3"),
@@ -2108,7 +2109,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("19"),
             _("20"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("1"),
             _("2"),
             _("3"),
@@ -2135,11 +2136,11 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_SPEAKER] =
     {
         .title = _("Speaker"),
-        .options = { 
+        .options = {
             _("Mono"),
             _("Stereo"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Mono"),
             _("Stereo"),
             },
@@ -2148,7 +2149,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_SURF] =
     {
         .title = _("Surf"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2159,7 +2160,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("USUM"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2175,7 +2176,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_BIKE] =
     {
         .title = _("Bike"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2187,7 +2188,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2204,7 +2205,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_WILD] =
     {
         .title = _("Wild"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2216,7 +2217,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2233,7 +2234,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_TRAINER] =
     {
         .title = _("Trainer"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2245,7 +2246,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2262,7 +2263,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_GYM] =
     {
         .title = _("Gym"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2274,7 +2275,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2291,7 +2292,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_TOURNAMENT] =
     {
         .title = _("Tournament"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2303,7 +2304,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2320,7 +2321,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
     [MUSIC_OPTIONS_CHAMPION] =
     {
         .title = _("Champion"),
-        .options = { 
+        .options = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2332,7 +2333,7 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
             _("SWSH"),
             _("SV"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("PSF"),
             _("LGPE"),
             _("HGSS"),
@@ -2350,18 +2351,18 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
 
 // For Random Settings
 
-struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] = {
+static const struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] = {
     [RANDOM_OPTIONS_PRESET] =
     {
         .title = _("Random Settings"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Sane"),
             _("Crazy"),
             _("Total Chaos"),
             _("Custom"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default Description"),
             _("Sane Description"),
             _("Crazy Description"),
@@ -2373,12 +2374,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_STARTER] =
     {
         .title = _("Starter"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2388,12 +2389,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_WILD_BATTLE] =
     {
         .title = _("Wild Battle"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2403,12 +2404,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_TRAINER_BATTLE] =
     {
         .title = _("Trainer Battle"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2418,13 +2419,13 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_EVOLUTION] =
     {
         .title = _("Evolution"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Legends"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Legends"),
@@ -2435,12 +2436,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_EVOLUTION_METHOD] =
     {
         .title = _("Evolution Method"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2450,12 +2451,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] =
     {
         .title = _("Type Effectiveness"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2465,12 +2466,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_BASE_STATS] =
     {
         .title = _("Base Stats"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2480,12 +2481,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_TYPES] =
     {
         .title = _("Types"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2495,12 +2496,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_ABILITIES] =
     {
         .title = _("Abilities"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2510,12 +2511,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_LEVEL_UP_MOVES] =
     {
         .title = _("Level Up Moves"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2525,12 +2526,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_TMS] =
     {
         .title = _("TMs"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2540,12 +2541,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_MOVE_TUTORS] =
     {
         .title = _("Move Tutors"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2555,12 +2556,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_LEARNSETS] =
     {
         .title = _("Learnsets"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2570,12 +2571,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_ITEMS] =
     {
         .title = _("Items"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2585,12 +2586,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_STATIC_ENCOUNTERS] =
     {
         .title = _("Static Encounters"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2600,12 +2601,12 @@ struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] =
     [RANDOM_OPTIONS_TRAINERS] =
     {
         .title = _("Trainers"),
-        .options = { 
+        .options = {
             _("Default"),
             _("Random"),
             _("Chaos"),
             },
-        .optionDescription = { 
+        .optionDescription = {
             _("Default"),
             _("Random"),
             _("Chaos"),
@@ -2665,7 +2666,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     if(areYouNotOnSettingsHub){
         x = 0;
 	    y = 0;
-            
+
         switch(currentScreenId){
             case GAME_SETTINGS:
                 BlitBitmapToWindow(windowId, sOptionMenuIcon_Game_Settings, (x*8), (y*8), 16, 16);
@@ -2695,7 +2696,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 7;
 	y = 11;
 
-    if((!areYouNotOnSettingsHub && currentScreenId != (NUM_OF_SCREENS - 1)) || 
+    if((!areYouNotOnSettingsHub && currentScreenId != (NUM_OF_SCREENS - 1)) ||
         (areYouNotOnSettingsHub && (currentFirstOption + NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN) <= (GetCurrentScreenOptionNumber() - 1)))
         BlitBitmapToWindow(windowId, sOptionMenuArrow_Down, (x*8), (y*8) + 7, 16, 16);
 
@@ -2845,7 +2846,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 }
             break;
         }
-        
+
     }
 
     // Option Description --------------------------------------------------------------------------------------------------------------------
@@ -3001,7 +3002,7 @@ static void Task_MenuMain(u8 taskId)
             PressedDownButton();
         }
         PlaySE(SE_SELECT);
-        
+
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
@@ -3157,7 +3158,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else
                         Temporal_Options_Visual_Settings[currentOptionId] = 0;
-                    
+
                     if(currentOptionId == VISUAL_OPTIONS_COLOR)
                             RecolorWindow();
                 break;
@@ -3193,7 +3194,7 @@ static void Task_MenuMain(u8 taskId)
 
             if(currentScreenId == VISUAL_SETTINGS){
                 RecolorWindow();
-            }  
+            }
 
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
@@ -3220,7 +3221,7 @@ static void Task_MenuMain(u8 taskId)
             currentOptionId = 0;
             currentFirstOption = 0;
         }
-        
+
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
 
