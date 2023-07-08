@@ -156,6 +156,7 @@ script Quest_Allthatglittersmightbegold_Reward_Dialogue{
         }
     msgbox(gText_Allthatglittersmightbegold_IWasThinking,,SPEAKER_ELIOR,,)
         call(Quest_Allthatglittersmightbegold_GiveReward_Script)
+        setflag(FLAG_UNLOCKED_DIVE)
         completequest(QUEST_ALLTHATGLITTERSMIGHTBEGOLD)
         closemessage
         end

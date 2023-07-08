@@ -399,45 +399,6 @@ static const struct SubQuest sBreakTheInternet_Sub[QUEST_BREAKTHEINTERNET_SUB_CO
 	),
 };
 
-static const struct SubQuest sImprovBattling_Sub[QUEST_IMPROVBATTLING_SUB_COUNT] = {
-	sub_quest(
-	        13,
-	        gText_Quest_ImprovBattling_Sub1_Name,
-	        gText_Quest_ImprovBattling_Sub1_Desc,
-	        gText_Quest_ImprovBattling_Sub1_Map,
-	        ITEM_POKE_BALL,
-	        ITEM,
-	        sText_Completed
-	),
-	sub_quest(
-	        14,
-	        gText_Quest_ImprovBattling_Sub2_Name,
-	        gText_Quest_ImprovBattling_Sub2_Desc,
-	        gText_Quest_ImprovBattling_Sub2_Map,
-	        ITEM_GREAT_BALL,
-	        ITEM,
-	        sText_Completed
-	),
-	sub_quest(
-	        15,
-	        gText_Quest_ImprovBattling_Sub3_Name,
-	        gText_Quest_ImprovBattling_Sub3_Desc,
-	        gText_Quest_ImprovBattling_Sub3_Map,
-	        ITEM_ULTRA_BALL,
-	        ITEM,
-	        sText_Completed
-	),
-	sub_quest(
-	        16,
-	        gText_Quest_ImprovBattling_Sub4_Name,
-	        gText_Quest_ImprovBattling_Sub4_Desc,
-	        gText_Quest_ImprovBattling_Sub4_Map,
-	        ITEM_MASTER_BALL,
-	        ITEM,
-	        sText_Completed
-	),
-};
-
 static const struct SubQuest sInstallNatureProbes_Sub[QUEST_INSTALLNATUREPROBES_SUB_COUNT] = {
 	sub_quest(
 	        17,
@@ -2642,8 +2603,8 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_ImprovBattling_Map,
 	        OBJ_EVENT_GFX_RICH_BOY,
 	        OBJECT,
-	        sImprovBattling_Sub,
-            QUEST_IMPROVBATTLING_SUB_COUNT
+	        NULL,
+	        0
 	),
 	side_quest(
 	        gText_Quest_InstallNatureProbes_Name,

@@ -164,10 +164,10 @@
 #define FLAG_FACILITY_UNLOCK_FLAGS_END                       FLAG_FACILITY_UNLOCK_ELLEN
 #define FACILITY_UNLOCK_FLAGS_COUNT                          (FLAG_FACILITY_UNLOCK_FLAGS_END - FLAG_FACILITY_UNLOCK_FLAGS_START + 1)
 #define FLAG_FOUGHT_FIRST_FACILITY_BOSS                      0x8E
-#define PSF_FLAG_145                                         0x8F
-#define PSF_FLAG_146                                         0x90
-#define PSF_FLAG_147                                         0x91
-#define PSF_FLAG_148                                         0x92
+#define FLAG_UNLOCKED_CUT                                    0x8F
+#define FLAG_UNLOCKED_DIVE                                   0x90
+#define FLAG_UNLOCKED_STRENGTH                               0x91
+#define FLAG_UNLOCKED_WHIRLPOOL                              0x92
 #define PSF_FLAG_149                                         0x93
 #define PSF_FLAG_150                                         0x94
 #define PSF_FLAG_151                                         0x95
