@@ -54,5 +54,7 @@ void LoadPlayerBag(void);
 void SavePlayerBag(void);
 void ApplyNewEncryptionKeyToHword(u16 *hWord, u32 newKey);
 void ApplyNewEncryptionKeyToWord(u32 *word, u32 newKey);
+void SavePlayerPartyBattleTower(void);
+void LoadPlayerPartyBattleTower(void);
 
 #endif // GUARD_LOAD_SAVE_H

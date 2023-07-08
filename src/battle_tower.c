@@ -2877,11 +2877,11 @@ static void AwardBattleTowerRibbons(void)
             partyIndex = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
             ribbons[i].partyIndex = partyIndex;
             ribbons[i].count = 0;
-            if (!GetMonData(&gSaveBlock1Ptr->playerParty[partyIndex], ribbonType))
+            if (!GetMonData(&gSaveBlock1Ptr->playerPartyBattleTower[partyIndex], ribbonType))
             {
                 gSpecialVar_Result = TRUE;
-                SetMonData(&gSaveBlock1Ptr->playerParty[partyIndex], ribbonType, &gSpecialVar_Result);
-                ribbons[i].count = GetRibbonCount(&gSaveBlock1Ptr->playerParty[partyIndex]);
+                SetMonData(&gSaveBlock1Ptr->playerPartyBattleTower[partyIndex], ribbonType, &gSpecialVar_Result);
+                ribbons[i].count = GetRibbonCount(&gSaveBlock1Ptr->playerPartyBattleTower[partyIndex]);
             }
         }
     }
@@ -2900,7 +2900,7 @@ static void AwardBattleTowerRibbons(void)
         }
         if (ribbons[0].count > NUM_CUTIES_RIBBONS)
         {
-            TryPutSpotTheCutiesOnAir(&gSaveBlock1Ptr->playerParty[ribbons[0].partyIndex], ribbonType);
+            TryPutSpotTheCutiesOnAir(&gSaveBlock1Ptr->playerPartyBattleTower[ribbons[0].partyIndex], ribbonType);
         }
     }
 }

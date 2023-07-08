@@ -82,12 +82,14 @@ script BattleTower_EventScript_GiveBattlePoints{
 script BattleTower_EventScript_LookForwardToChallenge{
     msgbox(BattleTower_Text_LookForwardToAnotherChallenge, MSGBOX_DEFAULT)
     closemessage
+    special(LoadPlayerPartyBattleTower)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_END)
     release
     end
 }
 
 script BattleTower_EventScript_LostChallenge {
+    special(LoadPlayerPartyBattleTower)
     if (var(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_MULTIS ||
         flag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)) {
         goto(BattleTower_EventScript_CancelWinStreak)
@@ -123,7 +125,6 @@ script BattleTower_EventScript_AskSaveBattle2{
     message(BattleTower_Text_RecordWillBeSaved)
     waitmessage
     frontier_checkairshow
-    special(LoadPlayerParty)
     special(HealPlayerParty)
     tower_save(0)
     playse(SE_SAVE)
@@ -192,7 +193,6 @@ script BattleTower_EventScript_Attendant{
         clearflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
     }
 
-    special(SavePlayerParty)
 
     switch(var(VAR_LAST_TALKED)){
         case ATTENDANT_SINGLES: msgbox(BattleTower_Text_WelcomSingleBattle, MSGBOX_DEFAULT)
@@ -241,6 +241,7 @@ script BattleTower_EventScript_TryEnterChallenge{
     setvar(VAR_RESULT,1)
     frontier_checkineligible
     goto_if_eq(VAR_0x8004, TRUE, BattleTower_EventScript_NotEnoughValidMons)
+    special(SavePlayerPartyBattleTower)
     frontier_set(FRONTIER_DATA_LVL_MODE, VAR_RESULT)
     switch(var(VAR_LAST_TALKED)){
         case ATTENDANT_SINGLES: msgbox(BattleTower_Text_SelectThreeMons, MSGBOX_DEFAULT)
@@ -275,7 +276,6 @@ script BattleTower_EventScript_SaveBeforeChallenge{
     tower_init
     tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE)
     frontier_set(FRONTIER_DATA_PAUSED, FALSE)
-    special(LoadPlayerParty)
     closemessage
     delay(2)
 
@@ -525,7 +525,6 @@ script BattleTower_EventScript_GetModeandFormat{
 }
 
 script BattleTower_EventScript_LoadPartyCancelChallenge{
-    special(LoadPlayerParty)
     goto(BattleTower_EventScript_CancelChallenge)
 }
 
@@ -538,7 +537,6 @@ script BattleTower_EventScript_CancelChallenge{
 
 script BattleTower_EventScript_EnterElevator{
     incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER)
-    special(SavePlayerParty)
     setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER)
     call(BattleTower_EventScript_GetPartySize)
     special(CallFrontierUtilFunc)

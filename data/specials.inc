@@ -636,3 +636,5 @@ gSpecials::
     def_special Debug_MakeStreak90
     def_special PSF_GiveFacilitySymbol
     def_special LevelUpAllPokemonTo100
+    def_special SavePlayerPartyBattleTower
+    def_special LoadPlayerPartyBattleTower

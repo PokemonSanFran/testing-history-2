@@ -1243,8 +1243,9 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     /*0x3???*/ struct Pokemon stolenTrade;
     // sizeof: 0x3???
-    /*??x??*/ u16 mazeLayoutSeed;
-    u16 mazeItemsSeed;
+    /*??x??*/  u16 mazeLayoutSeed;
+               u16 mazeItemsSeed;
+    /*0x??*/   struct Pokemon playerPartyBattleTower[PARTY_SIZE];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

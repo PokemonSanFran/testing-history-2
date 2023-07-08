@@ -64,12 +64,14 @@ BattleTower_EventScript_GiveBattlePoints::
 BattleTower_EventScript_LookForwardToChallenge::
 	msgbox BattleTower_Text_LookForwardToAnotherChallenge, MSGBOX_DEFAULT
 	closemessage
+	special LoadPlayerPartyBattleTower
 	setvar VAR_TEMP_0, 255
 	release
 	end
 
 
 BattleTower_EventScript_LostChallenge::
+	special LoadPlayerPartyBattleTower
 	compare VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS
 	goto_if_ne BattleTower_EventScript_LostChallenge_2
 	goto_if_set FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER, BattleTower_EventScript_LostChallenge_2
@@ -113,7 +115,6 @@ BattleTower_EventScript_AskSaveBattle2::
 	message BattleTower_Text_RecordWillBeSaved
 	waitmessage
 	frontier_checkairshow
-	special LoadPlayerParty
 	special HealPlayerParty
 	tower_save 0
 	playse SE_SAVE
@@ -180,7 +181,6 @@ BattleTower_EventScript_Attendant::
 	compare VAR_LAST_TALKED, 3
 	goto_if_eq BattleTower_EventScript_Attendant_2
 BattleTower_EventScript_Attendant_1:
-	special SavePlayerParty
 	switch VAR_LAST_TALKED
 	case 1, BattleTower_EventScript_Attendant_6
 	case 2, BattleTower_EventScript_Attendant_7
@@ -275,6 +275,7 @@ BattleTower_EventScript_TryEnterChallenge_1:
 	setvar VAR_RESULT, 1
 	frontier_checkineligible
 	goto_if_eq VAR_0x8004, TRUE, BattleTower_EventScript_NotEnoughValidMons
+	special SavePlayerPartyBattleTower
 	frontier_set FRONTIER_DATA_LVL_MODE, VAR_RESULT
 	switch VAR_LAST_TALKED
 	case 1, BattleTower_EventScript_TryEnterChallenge_9
@@ -360,7 +361,6 @@ BattleTower_EventScript_SaveBeforeChallenge::
 	tower_init
 	tower_set TOWER_DATA_WIN_STREAK_ACTIVE, TRUE
 	frontier_set FRONTIER_DATA_PAUSED, FALSE
-	special LoadPlayerParty
 	closemessage
 	delay 2
 	compare VAR_LAST_TALKED, 4
@@ -771,7 +771,6 @@ BattleTower_EventScript_GetModeandFormat_9:
 
 
 BattleTower_EventScript_LoadPartyCancelChallenge::
-	special LoadPlayerParty
 	goto BattleTower_EventScript_CancelChallenge
 	return
 
@@ -785,7 +784,6 @@ BattleTower_EventScript_CancelChallenge::
 
 BattleTower_EventScript_EnterElevator::
 	incrementgamestat GAME_STAT_ENTERED_BATTLE_TOWER
-	special SavePlayerParty
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER
 	call BattleTower_EventScript_GetPartySize
 	special CallFrontierUtilFunc
