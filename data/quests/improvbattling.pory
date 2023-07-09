@@ -2,8 +2,11 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const IMPROV_1 = 1
 const IMPROV_2 = 2
 const IMPROV_3 = 3
+
 //Quest_Improvbattling_
 //gText_Improvbattling_
+
+//PSF TODO implement mini factory
 
 script Quest_Improvbattling_Event_Script{
     goto_if_quest_complete(QUEST_IMPROVBATTLING,Quest_Improvbattling_Complete_Script)
@@ -11,16 +14,14 @@ script Quest_Improvbattling_Event_Script{
     goto(Quest_Improvbattling_StartQuest_Script)
 }
 
-//PSF TODO implement mini factory
-
 script Quest_Improvbattling_StartQuest_Script{
     lock
     msgbox(gText_Improvbattling_WelcomeTo,MSGBOX_NPC,SPEAKER_IMPROV_1)
     msgbox(gText_Improvbattling_WereAllAbout,,SPEAKER_IMPROV_1)
     msgbox(gText_Improvbattling_YoureATrainer,,SPEAKER_IMPROV_1)
     msgbox(gText_Improvbattling_ItllMakeYou,,SPEAKER_IMPROV_1)
-    msgbox(gText_Improvbattling_WhatDo,MSGBOX_YESNO,SPEAKER_IMPROV_1)
 
+    msgbox(gText_Improvbattling_WhatDo,MSGBOX_YESNO,SPEAKER_IMPROV_1)
     call(Quest_Improvbattling_AskStartChallenge_Script)
     release
     end
@@ -45,18 +46,24 @@ script Quest_Improvbattling_CheckQuestAndStart{
     return
 }
 
-script Quest_Improvbattling_Active_Script{
+script Quest_Improvbattling_CancelChallenge{
+    msgbox(gText_Improvbattling_NoProblem,,SPEAKER_IMPROV_1)
+    release
+    end
 }
 
-script Quest_Improvbattling_BeatAllTrainer_Script{
-    completequest(QUEST_IMPROVBATTLING)
+script Quest_Improvbattling_Active_Script{
+    msgbox(gText_Improvbattling_WelcomeBackReady,MSGBOX_NPC,SPEAKER_IMPROV_1)
+    goto(Quest_Improvbattling_SaveBeforeChallenge_Script)
 }
 
 script Quest_Improvbattling_Complete_Script{
+    msgbox(gText_Improvbattling_OurFavoriteImprov,,MSGBOX_NPC,SPEAKER_IMPROV_1)
+    goto(Quest_Improvbattling_SaveBeforeChallenge_Script)
 }
 
 script Quest_Improvbattling_SaveBeforeChallenge_Script{
-    msgbox(gText_Improvbattling_BeforeWeStartLetsSave,SPEAKER_IMPROV_1)
+    msgbox(gText_Improvbattling_BeforeWeStartLetsSave,,SPEAKER_IMPROV_1)
     closemessage
     call(Common_EventScript_SaveGame)
 
@@ -77,6 +84,19 @@ script Quest_Improvbattling_StartChallenge{
     msgbox(gText_Improvbattling_OkayYouveGot,,SPEAKER_IMPROV_1)
     closemessage
     goto(Quest_Improvbattling_Battle1_Script)
+}
+
+script Quest_Improvbattling_MovePlayer_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    if (var(VAR_TEMP_1) != 3){
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,2,3)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(PLAYER)
+        TeleportCamera(2,3)
+        fadescreen(FADE_FROM_BLACK)
+    }
+    return
 }
 
 script Quest_Improvbattling_Battle1_Script{
@@ -146,11 +166,10 @@ script Quest_Improvbattling_Battle3_Script{
 }
 
 script Quest_Improvbattling_PostBattle3_Script{
-    call(Quest_Improvbattling_RestoreParty)
-    special(HealPlayerParty)
+    call(Quest_Improvbattling_RestoreParty_Script)
     msgbox(gText_Improvbattling_ThankYouAll,,SPEAKER_IMPROV_3)
+    call_if_quest_not_complete(QUEST_IMPROVBATTLING,Quest_Improvbattling_Reward_Dialogue)
     closemessage
-    goto_if_quest_not_complete(QUEST_IMPROVBATTLING,Quest_Improvbattling_Reward_Dialogue)
     release
     end
 }
@@ -159,31 +178,10 @@ script Quest_Improvbattling_Reward_Dialogue{
     msgbox(gText_Improvbattling_YoureANatural,,SPEAKER_IMPROV_3)
     giveitem(ITEM_TM49)
     completequest(QUEST_IMPROVBATTLING)
-    release
-    end
-}
-
-
-script Quest_Improvbattling_MovePlayer_Script{
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    if (var(VAR_TEMP_1) != 3){
-        fadescreen(FADE_TO_BLACK)
-        setobjectxy(PLAYER,2,3)
-        applymovement(PLAYER,Common_Movement_FaceUp)
-        waitmovement(PLAYER)
-        TeleportCamera(2,3)
-        fadescreen(FADE_FROM_BLACK)
-    }
     return
 }
 
-script Quest_Improvbattling_CancelChallenge{
-    msgbox(gText_Improvbattling_NoProblem,,SPEAKER_IMPROV_1)
-    release
-    end
-}
-
-script Quest_Improvbattling_RestoreParty{
+script Quest_Improvbattling_RestoreParty_Script{
     fadescreen(FADE_TO_BLACK)
     special(LoadPlayerParty)
     special(HealPlayerParty)
@@ -192,7 +190,7 @@ script Quest_Improvbattling_RestoreParty{
 }
 
 script Quest_Improvbattling_ExitChallenge_Script{
-    call(Quest_Improvbattling_RestoreParty)
+    call(Quest_Improvbattling_RestoreParty_Script)
     msgbox(gText_Improvbattling_ThanksForPerforming,,SPEAKER_IMPROV_1)
     closemessage
     release
@@ -218,7 +216,7 @@ text gText_Improvbattling_BeforeWeStartLetsSave{
 	format("Before we start, let's save your game.")
 }
 text gText_Improvbattling_OkayYouveGot{
-	format("Okay! Let's take your Pokémon for a second... you're going to use three of ours instead.")
+	format("Okay! Let's take your Pokémon for a second... you're going to use three of ours instead.Okay, let's do it!")
 }
 text gText_Improvbattling_LetsHeal{
 	format("Let's heal those Pokémon.")
@@ -249,4 +247,10 @@ text gText_Improvbattling_AndScene{
 }
 text gText_Improvbattling_ThanksForPerforming{
     format("Thanks for performing with us! Come back sometime.")
+}
+text gText_Improvbattling_WelcomeBackReady{
+    format("Welcome back! Ready to perform?")
+}
+text gText_Improvbattling_OurFavoriteImprov{
+    format("Our favorite improv performer! Let's put on a show.")
 }
