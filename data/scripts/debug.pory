@@ -80,6 +80,7 @@ script Debug_Script_1{
 }
 
 script Debug_Script_2{
+    warp(MAP_PRESIDIO_IMPROV,0)
     end
 }
 

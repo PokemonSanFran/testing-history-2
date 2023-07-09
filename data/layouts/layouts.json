@@ -5634,7 +5634,7 @@
     {
       "id": "LAYOUT_PRESIDIO_IMPROV",
       "name": "Presidio_Improv_Layout",
-      "width": 6,
+      "width": 5,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",

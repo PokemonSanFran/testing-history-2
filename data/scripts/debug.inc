@@ -71,6 +71,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	warp MAP_PRESIDIO_IMPROV, 0
 	end
 
 

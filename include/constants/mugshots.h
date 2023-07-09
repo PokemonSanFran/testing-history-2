@@ -243,5 +243,8 @@
 #define SPEAKER_UBER_GRUNT2             210
 #define SPEAKER_UBER_CEO                211
 #define SPEAKER_GYM_ATTENDANT           212
+#define SPEAKER_IMPROV_1                213
+#define SPEAKER_IMPROV_2                214
+#define SPEAKER_IMPROV_3                215
 
 #endif
