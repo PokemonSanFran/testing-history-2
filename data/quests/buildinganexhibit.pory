@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const WHITNEY = 7
-const FLAG_HIDE_WHITNEY = FLAG_TEMP_5 
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_5
 
 //Quest_BuildingAnExhibit_
 //gText_BuildingAnExhibit_
@@ -17,7 +17,7 @@ script Quest_BuildingAnExhibit_Debug_Script{
 }
 
 script Quest_BuildingAnExhibit_HideLeader_Script{
-    
+
     if (var(VAR_WHITNEY_STATE) != QUEST_1_COMPLETE){
         setflag(FLAG_HIDE_WHITNEY)
     }
@@ -31,7 +31,7 @@ script Quest_BuildingAnExhibit_CheckSubquests_Script{
     if (!var(VAR_RESULT)){
         return
     }
-    
+
     setvar(VAR_TEMP_0,0)
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BUILDINGANEXHIBIT, SUB_QUEST_1)
@@ -198,7 +198,7 @@ script Quest_BuildingAnExhibit_PersonC_Decline_Dialogue{
 script Quest_BuildingAnExhibit_Interact_PersonD_Script{ lock
 
     returnqueststate(QUEST_BUILDINGANEXHIBIT)
-    
+
     switch (var(VAR_RESULT)){
         case QUEST_MENU_SET_REWARD:
         case QUEST_MENU_SET_ACTIVE: goto(Quest_BuildingAnExhibit_Active_PersonD_Script)
@@ -251,6 +251,7 @@ script Quest_BuildingAnExhibit_Reward_Dialogue{
     waitmovement(WHITNEY)
     removeobject(WHITNEY)
     setvar(VAR_WHITNEY_STATE, QUEST_2_COMPLETE)
+    setflag(FLAG_FACILITY_UNLOCK_EMRYS)
     completequest(QUEST_BUILDINGANEXHIBIT)
     release
     end

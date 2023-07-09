@@ -2,6 +2,7 @@
 #define GUARD_MONEY_H
 
 #define MAX_MONEY 999999
+#define CHARLOTTE_MONEY (MAX_MONEY / 10) * 7
 
 u32 GetMoney(u32 *moneyPtr);
 void SetMoney(u32 *moneyPtr, u32 newValue);

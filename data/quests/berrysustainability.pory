@@ -92,30 +92,31 @@ script Quest_BerrySustaiability_Event_Script{
 
 script Quest_BerrySustaiability_StartQuest_Dialogue{
     msgbox(gText_BerrySustaiability_GetBerries,MSGBOX_NPC,SPEAKER_JASMINE)
-    
+
 
     startquest(QUEST_BERRYSUSTAINABILITY)
     end
 }
 script Quest_BerrySustaiability_Active_Dialogue{
     msgbox(gText_BerrySustaiability_DidYouFind,MSGBOX_NPC,SPEAKER_JASMINE)
-    
+
     end
 }
 script Quest_BerrySustaiability_Reward_Dialogue{
     msgbox(gText_BerrySustaiability_YouFoundThem,MSGBOX_NPC,SPEAKER_JASMINE)
-    
+
 
     giveitem(ITEM_GANLON_BERRY,1)
     waitmessage
     closemessage
     setvar(VAR_JASMINE_STATE,QUEST_2_COMPLETE)
+    setflag(FLAG_FACILITY_UNLOCK_DIMU)
     completequest(QUEST_BERRYSUSTAINABILITY)
     end
 }
 script Quest_BerrySustaiability_Complete_Dialogue{
     msgbox(gText_BerrySustaiability_ThanksFor,MSGBOX_NPC,SPEAKER_JASMINE)
-    
+
     applymovement(JASMINE,Quest_BerrySustaiability_LeaveMarin_Movement)
     waitmovement(JASMINE)
     removeobject(JASMINE)

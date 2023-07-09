@@ -241,6 +241,7 @@ script Quest_Restaurantexpansion2_Reward_Dialogue{
     closemessage
     applymovement(FALKNER_MISSION,Quest_Restaurantexpansion_WalkInside_Movement)
     setvar(VAR_FALKNER_STATE,QUEST_2_COMPLETE)
+       setflag(FLAG_FACILITY_UNLOCK_BELEN)
     completequest(QUEST_RESTAURANTEXPANSION2)
     fadescreen(FADE_TO_BLACK)
     removeobject(FALKNER_MISSION)

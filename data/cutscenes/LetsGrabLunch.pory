@@ -115,6 +115,7 @@ script LetsGrabLunch_DinerBooth_Dialogue {
 }
 
 script LetsGrabLunch_InteractArcherDiner_Dialogue {
+       setflag(FLAG_FACILITY_UNLOCK_KAI)
     msgbox(gText_LetsGrabLunch_ImJustPlanning,,SPEAKER_ARCHER)
     goto(LetsGrabLunch_ShowGymList_Dialogue)
 }

@@ -11,6 +11,7 @@ script Quest_Restorehaightashbury_Leader_Visibility_Script{
 script Quest_Restorehaightashbury_Dialogue{
     lock
     goto_if_quest_complete(QUEST_RESTOREHAIGHTASHBURY,Quest_Restorehaightashbury_CompletedQuest_Dialogue)
+       setflag(FLAG_FACILITY_UNLOCK_BD)
     msgbox(gText_Restorehaightashbury_HeyPlayerIDont,MSGBOX_NPC,SPEAKER_PRYCE)
     msgbox(gText_Restorehaightashbury_ImGoingTo,,SPEAKER_PRYCE)
     closemessage

@@ -76,8 +76,14 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	special Debug_MakeStreak40
-	end
+	goto_if_set FLAG_FACILITY_UNLOCK_CHARLOTTE, Debug_Script_3_2
+	msgbox Debug_Script_3_Text_1
+Debug_Script_3_1:
+	return
+
+Debug_Script_3_2:
+	msgbox Debug_Script_3_Text_0
+	goto Debug_Script_3_1
 
 
 Debug_Script_4::
@@ -119,6 +125,12 @@ Debug_CheckSaveBlock::
 	release
 	end
 
+
+Debug_Script_3_Text_0:
+	.string "unlocked$"
+
+Debug_Script_3_Text_1:
+	.string "nope$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

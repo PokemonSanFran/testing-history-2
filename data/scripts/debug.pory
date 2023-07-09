@@ -85,8 +85,12 @@ script Debug_Script_2{
 }
 
 script Debug_Script_3{
-    special(Debug_MakeStreak40)
-    end
+    if(flag(FLAG_FACILITY_UNLOCK_CHARLOTTE)){
+        msgbox("unlocked")
+    }else{
+        msgbox("nope")
+}
+    return
 }
 
 script Debug_Script_4{

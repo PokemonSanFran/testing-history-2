@@ -37,6 +37,7 @@
 #include "constants/trainers.h"
 #include "constants/event_objects.h"
 #include "constants/moves.h"
+#include "money.h"
 
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer[];
@@ -3781,23 +3782,27 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
 
 //New PSF Functions
 
+void PSF_UnlockCharlotteInBattleFacility(u32 money)
+{
+    if ((money >= CHARLOTTE_MONEY) && (!FlagGet(FLAG_FACILITY_UNLOCK_CHARLOTTE)))
+        FlagSet(FLAG_FACILITY_UNLOCK_CHARLOTTE);
+}
+
     /*
-       FLAG_FACILITY_UNLOCK_ADAORA
-       FLAG_FACILITY_UNLOCK_AMI_ARGENTO
-       FLAG_FACILITY_UNLOCK_ARMANDO
-       FLAG_FACILITY_UNLOCK_BD
-       FLAG_FACILITY_UNLOCK_BELEN
-       FLAG_FACILITY_UNLOCK_CHARLOTTE
-       FLAG_FACILITY_UNLOCK_DIMU
-       FLAG_FACILITY_UNLOCK_ELLEN
-       FLAG_FACILITY_UNLOCK_EMRYS
-       FLAG_FACILITY_UNLOCK_KAI
-       FLAG_FACILITY_UNLOCK_KEI_YING
-       FLAG_FACILITY_UNLOCK_LIKO
-       FLAG_FACILITY_UNLOCK_MAGNUS
-       FLAG_FACILITY_UNLOCK_NERIENE
-       FLAG_FACILITY_UNLOCK_SHINZO
-       FLAG_FACILITY_UNLOCK_TALA
+
+       FLAG_FACILITY_UNLOCK_ADAORA //after her character quest
+       FLAG_FACILITY_UNLOCK_CHARLOTTE //after you reach a certain amount of money...?
+                                      //
+       FLAG_FACILITY_UNLOCK_LIKO //after his 2nd quest
+       FLAG_FACILITY_UNLOCK_NERIENE //after her 2nd quest
+       FLAG_FACILITY_UNLOCK_AMI_ARGENTO //after his 2nd quest
+                                        //
+       FLAG_FACILITY_UNLOCK_ARMANDO //after post game E4 battle
+       FLAG_FACILITY_UNLOCK_ELLEN //after post game E4 battle
+       FLAG_FACILITY_UNLOCK_MAGNUS //after post game E4 battle
+       FLAG_FACILITY_UNLOCK_TALA //after post game E4 battle
+                                 //
+       FLAG_FACILITY_UNLOCK_KEI_YING //after post game battle
 
        //PSF TODO If a flag is on this list, it hasn't been assigned to a script in game yet!
        */

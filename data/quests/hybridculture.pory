@@ -49,7 +49,7 @@ script Quest_HybridCulture_Event_Script{
         returnqueststate(QUEST_HYBRIDCULTURE)
 
         switch(var(VAR_RESULT)){
-            case QUEST_MENU_SET_ACTIVE: 
+            case QUEST_MENU_SET_ACTIVE:
                 goto(Quest_HybridCulture_Active_Dialogue)
             case QUEST_MENU_SET_REWARD: goto(Quest_HybridCulture_Reward_Dialogue)
             case QUEST_MENU_COMPLETE_QUEST: goto(Quest_HybridCulture_Complete_Dialogue)
@@ -60,28 +60,28 @@ script Quest_HybridCulture_Event_Script{
 script Quest_HybridCulture_StartQuest_Dialogue{
     msgbox(gText_HybridCulture_HeyThanksFor,MSGBOX_NPC,SPEAKER_BUGSY)
     msgbox(gText_HybridCulture_IThinkINeedToLearn,MSGBOX_NPC,SPEAKER_BUGSY)
-    
+
 
     msgbox(gText_HybridCulture_HaveYouStarted,MSGBOX_NPC,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_HybridCulture_IHaventYet,MSGBOX_NPC,SPEAKER_BUGSY)
     msgbox(gText_HybridCulture_CanYouHelp,MSGBOX_NPC,SPEAKER_BUGSY)
-    
+
     startquest(QUEST_HYBRIDCULTURE)
     end
 }
 
 script Quest_HybridCulture_Active_Dialogue{
     msgbox(gText_HybridCulture_HaveYouHad,MSGBOX_NPC,SPEAKER_BUGSY)
-    
+
     end
 }
 
 script Quest_HybridCulture_Reward_Dialogue{
     msgbox(gText_HybridCulture_OhWhatDidYouLearn,MSGBOX_NPC,SPEAKER_BUGSY)
     closemessage
-    
+
 
     fadescreen(FADE_TO_BLACK)
     msgbox(gText_HybridCulture_PlayerExplained)
@@ -90,12 +90,13 @@ script Quest_HybridCulture_Reward_Dialogue{
 
     msgbox(gText_HybridCulture_ThankYou,MSGBOX_NPC,SPEAKER_BUGSY)
     closemessage
-    
+
 
     call(Quest_HybridCulture_GiveReward_Script)
 
     completequest(QUEST_HYBRIDCULTURE)
     setvar(VAR_BUGSY_STATE,QUEST_2_COMPLETE)
+    setflag(FLAG_FACILITY_UNLOCK_SHINZO)
     end
 }
 
@@ -107,7 +108,7 @@ script Quest_HybridCulture_GiveReward_Script{
 script Quest_HybridCulture_Complete_Dialogue{
     msgbox(gText_HybridCulture_IHaveSoMuch,MSGBOX_NPC,SPEAKER_BUGSY)
     closemessage
-    
+
 
     applymovement(BUGSY,Quest_HybridCulture_WalkBackIntoGym_Movement)
     waitmovement(BUGSY)
