@@ -238,10 +238,10 @@ extern const u8 gText_Quest_DetectiveAriana_Desc[];
 extern const u8 gText_Quest_DetectiveAriana_DoneDesc[];
 extern const u8 gText_Quest_DetectiveAriana_Map[];
 
-extern const u8 gText_Quest_UnknownBruceLeeQuest_Name[];
-extern const u8 gText_Quest_UnknownBruceLeeQuest_Desc[];
-extern const u8 gText_Quest_UnknownBruceLeeQuest_DoneDesc[];
-extern const u8 gText_Quest_UnknownBruceLeeQuest_Map[];
+extern const u8 gText_Quest_BruceLeeQuest_Name[];
+extern const u8 gText_Quest_BruceLeeQuest_Desc[];
+extern const u8 gText_Quest_BruceLeeQuest_DoneDesc[];
+extern const u8 gText_Quest_BruceLeeQuest_Map[];
 
 extern const u8 gText_Quest_ChallengeOfThe7Sisters_Name[];
 extern const u8 gText_Quest_ChallengeOfThe7Sisters_Desc[];
@@ -288,15 +288,15 @@ extern const u8 gText_Quest_ArtisanBalls3_Desc[];
 extern const u8 gText_Quest_ArtisanBalls3_DoneDesc[];
 extern const u8 gText_Quest_ArtisanBalls3_Map[];
 
-extern const u8 gText_Quest_ShelterSwitcheroo_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_DoneDesc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_DoneDesc[];
+extern const u8 gText_Quest_Mutualaidfund_Map[];
 
-extern const u8 gText_Quest_ShelterTaxiSolution_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_DoneDesc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_DoneDesc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Map[];
 
 extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[];
 extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[];
@@ -527,6 +527,16 @@ extern const u8 gText_Quest_Temporaryshelter_Name[];
 extern const u8 gText_Quest_Temporaryshelter_Desc[];
 extern const u8 gText_Quest_Temporaryshelter_DoneDesc[];
 extern const u8 gText_Quest_Temporaryshelter_Map[];
+
+extern const u8 gText_Quest_Skilllibrary_Name[];
+extern const u8 gText_Quest_Skilllibrary_Desc[];
+extern const u8 gText_Quest_Skilllibrary_DoneDesc[];
+extern const u8 gText_Quest_Skilllibrary_Map[];
+
+extern const u8 gText_Quest_Miniarcade_Name[];
+extern const u8 gText_Quest_Miniarcade_Desc[];
+extern const u8 gText_Quest_Miniarcade_DoneDesc[];
+extern const u8 gText_Quest_Miniarcade_Map[];
 
 //subquests
 extern const u8 gText_Quest_HauntABuilding_Sub1_Name[];
@@ -893,37 +903,37 @@ extern const u8 gText_Quest_ArtisanBalls2_Sub3_Name[];
 extern const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[];
 extern const u8 gText_Quest_ArtisanBalls2_Sub3_Map[];
 
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub1_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub1_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub1_Map[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub2_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub2_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub2_Map[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub3_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub3_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub3_Map[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub4_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub4_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub4_Map[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub5_Name[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub5_Desc[];
-extern const u8 gText_Quest_ShelterSwitcheroo_Sub5_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Sub1_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Sub1_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_Sub1_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Sub2_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Sub2_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_Sub2_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Sub3_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Sub3_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_Sub3_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Sub4_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Sub4_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_Sub4_Map[];
+extern const u8 gText_Quest_Mutualaidfund_Sub5_Name[];
+extern const u8 gText_Quest_Mutualaidfund_Sub5_Desc[];
+extern const u8 gText_Quest_Mutualaidfund_Sub5_Map[];
 
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub1_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub1_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub1_Map[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub2_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub2_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub2_Map[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub3_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub3_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub3_Map[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub4_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub4_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub4_Map[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub5_Name[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub5_Desc[];
-extern const u8 gText_Quest_ShelterTaxiSolution_Sub5_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub2_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub2_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub2_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub3_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub3_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub3_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub4_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub4_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub4_Map[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub5_Name[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub5_Desc[];
+extern const u8 gText_Quest_Volunteerfirefighter_Sub5_Map[];
 
 extern const u8 gText_Quest_NeighborhoodCleanUp_Sub1_Name[];
 extern const u8 gText_Quest_NeighborhoodCleanUp_Sub1_Desc[];
@@ -1391,6 +1401,28 @@ extern const u8 gText_Quest_SieboldsTraining_Sub3_Map[];
 extern const u8 gText_Quest_SieboldsTraining_Sub4_Name[];
 extern const u8 gText_Quest_SieboldsTraining_Sub4_Desc[];
 extern const u8 gText_Quest_SieboldsTraining_Sub4_Map[];
+
+extern const u8 gText_Quest_Skilllibrary_Sub1_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub1_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub1_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub2_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub2_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub2_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub3_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub3_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub3_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub4_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub4_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub4_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub5_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub5_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub5_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub6_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub6_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub6_Map[];
+extern const u8 gText_Quest_Skilllibrary_Sub7_Name[];
+extern const u8 gText_Quest_Skilllibrary_Sub7_Desc[];
+extern const u8 gText_Quest_Skilllibrary_Sub7_Map[];
 
 //quest flavor
 extern const u8 gText_ChampionsAdventure_Flavor2[];

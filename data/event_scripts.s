@@ -1272,7 +1272,7 @@ Script_RemoveTint::
 .include "data/quests/getthebandbacktogether.inc"
 .include "data/quests/foodtruckbureaucracy.inc"
 // .include "data/quests/detectiveariana.inc"
-// .include "data/quests/unknownbruceleequest.inc"
+// .include "data/quests/bruceleequest.inc"
 .include "data/quests/challengeofthe7sisters.inc"
 .include "data/quests/cutepokemon.inc"
 .include "data/quests/wallacearmy.inc"
@@ -1318,6 +1318,10 @@ Script_RemoveTint::
 .include "data/quests/dancebattle.inc"
 .include "data/quests/sieboldstraining.inc"
 .include "data/quests/temporaryshelter.inc"
+.include "data/quests/skilllibrary.inc"
+// .include "data/quests/miniarcade.inc"
+// .include "data/quests/mutualaidfund.inc"
+// .include "data/quests/volunteerfirefighter.inc"
 
 ## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"

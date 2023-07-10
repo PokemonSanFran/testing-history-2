@@ -1143,99 +1143,51 @@ static const struct SubQuest sArtisanBalls2_Sub[QUEST_ARTISANBALLS2_SUB_COUNT] =
 	),
 };
 
-static const struct SubQuest sShelterSwitcheroo_Sub[QUEST_SHELTERSWITCHEROO_SUB_COUNT] = {
+static const struct SubQuest sMutualaidfund_Sub[QUEST_MUTUALAIDFUND_SUB_COUNT] = {
 	sub_quest(
 	        94,
-	        gText_Quest_ShelterSwitcheroo_Sub1_Name,
-	        gText_Quest_ShelterSwitcheroo_Sub1_Desc,
-	        gText_Quest_ShelterSwitcheroo_Sub1_Map,
+	        gText_Quest_Mutualaidfund_Sub1_Name,
+	        gText_Quest_Mutualaidfund_Sub1_Desc,
+	        gText_Quest_Mutualaidfund_Sub1_Map,
 	        ITEM_REAPER_CLOTH,
 	        ITEM,
 	        sText_Delievered
 	),
 	sub_quest(
 	        95,
-	        gText_Quest_ShelterSwitcheroo_Sub2_Name,
-	        gText_Quest_ShelterSwitcheroo_Sub2_Desc,
-	        gText_Quest_ShelterSwitcheroo_Sub2_Map,
+	        gText_Quest_Mutualaidfund_Sub2_Name,
+	        gText_Quest_Mutualaidfund_Sub2_Desc,
+	        gText_Quest_Mutualaidfund_Sub2_Map,
 	        ITEM_REAPER_CLOTH,
 	        ITEM,
 	        sText_Delievered
 	),
 	sub_quest(
 	        96,
-	        gText_Quest_ShelterSwitcheroo_Sub3_Name,
-	        gText_Quest_ShelterSwitcheroo_Sub3_Desc,
-	        gText_Quest_ShelterSwitcheroo_Sub3_Map,
+	        gText_Quest_Mutualaidfund_Sub3_Name,
+	        gText_Quest_Mutualaidfund_Sub3_Desc,
+	        gText_Quest_Mutualaidfund_Sub3_Map,
 	        ITEM_REAPER_CLOTH,
 	        ITEM,
 	        sText_Delievered
 	),
 	sub_quest(
 	        97,
-	        gText_Quest_ShelterSwitcheroo_Sub4_Name,
-	        gText_Quest_ShelterSwitcheroo_Sub4_Desc,
-	        gText_Quest_ShelterSwitcheroo_Sub4_Map,
+	        gText_Quest_Mutualaidfund_Sub4_Name,
+	        gText_Quest_Mutualaidfund_Sub4_Desc,
+	        gText_Quest_Mutualaidfund_Sub4_Map,
 	        ITEM_REAPER_CLOTH,
 	        ITEM,
 	        sText_Delievered
 	),
 	sub_quest(
 	        98,
-	        gText_Quest_ShelterSwitcheroo_Sub5_Name,
-	        gText_Quest_ShelterSwitcheroo_Sub5_Desc,
-	        gText_Quest_ShelterSwitcheroo_Sub5_Map,
+	        gText_Quest_Mutualaidfund_Sub5_Name,
+	        gText_Quest_Mutualaidfund_Sub5_Desc,
+	        gText_Quest_Mutualaidfund_Sub5_Map,
 	        ITEM_REAPER_CLOTH,
 	        ITEM,
 	        sText_Delievered
-	),
-};
-
-static const struct SubQuest sShelterTaxiSolution_Sub[QUEST_SHELTERTAXISOLUTION_SUB_COUNT] = {
-	sub_quest(
-	        99,
-	        gText_Quest_ShelterTaxiSolution_Sub1_Name,
-	        gText_Quest_ShelterTaxiSolution_Sub1_Desc,
-	        gText_Quest_ShelterTaxiSolution_Sub1_Map,
-	        SPECIES_CORVIKNIGHT,
-	        PKMN,
-	        sText_Gave
-	),
-	sub_quest(
-	        100,
-	        gText_Quest_ShelterTaxiSolution_Sub2_Name,
-	        gText_Quest_ShelterTaxiSolution_Sub2_Desc,
-	        gText_Quest_ShelterTaxiSolution_Sub2_Map,
-	        SPECIES_CORVIKNIGHT,
-	        PKMN,
-	        sText_Gave
-	),
-	sub_quest(
-	        101,
-	        gText_Quest_ShelterTaxiSolution_Sub3_Name,
-	        gText_Quest_ShelterTaxiSolution_Sub3_Desc,
-	        gText_Quest_ShelterTaxiSolution_Sub3_Map,
-	        SPECIES_CORVIKNIGHT,
-	        PKMN,
-	        sText_Gave
-	),
-	sub_quest(
-	        102,
-	        gText_Quest_ShelterTaxiSolution_Sub4_Name,
-	        gText_Quest_ShelterTaxiSolution_Sub4_Desc,
-	        gText_Quest_ShelterTaxiSolution_Sub4_Map,
-	        SPECIES_CORVIKNIGHT,
-	        PKMN,
-	        sText_Gave
-	),
-	sub_quest(
-	        103,
-	        gText_Quest_ShelterTaxiSolution_Sub5_Name,
-	        gText_Quest_ShelterTaxiSolution_Sub5_Desc,
-	        gText_Quest_ShelterTaxiSolution_Sub5_Map,
-	        SPECIES_CORVIKNIGHT,
-	        PKMN,
-	        sText_Gave
 	),
 };
 
@@ -2376,7 +2328,71 @@ static const struct SubQuest sSieboldsTraining_Sub[QUEST_RESTAURANTEXPANSION2_SU
 	        sText_Recruited
 	),
 };
-
+static const struct SubQuest sSkilllibrary_Sub[QUEST_SKILLLIBRARY_SUB_COUNT] = {
+    sub_quest(
+            228,
+            gText_Quest_Skilllibrary_Sub1_Name,
+            gText_Quest_Skilllibrary_Sub1_Desc,
+            gText_Quest_Skilllibrary_Sub1_Map,
+            ITEM_TM01,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            229,
+            gText_Quest_Skilllibrary_Sub2_Name,
+            gText_Quest_Skilllibrary_Sub2_Desc,
+            gText_Quest_Skilllibrary_Sub2_Map,
+            ITEM_TM02,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            230,
+            gText_Quest_Skilllibrary_Sub3_Name,
+            gText_Quest_Skilllibrary_Sub3_Desc,
+            gText_Quest_Skilllibrary_Sub3_Map,
+            ITEM_TM03,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            231,
+            gText_Quest_Skilllibrary_Sub4_Name,
+            gText_Quest_Skilllibrary_Sub4_Desc,
+            gText_Quest_Skilllibrary_Sub4_Map,
+            ITEM_TM04,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            232,
+            gText_Quest_Skilllibrary_Sub5_Name,
+            gText_Quest_Skilllibrary_Sub5_Desc,
+            gText_Quest_Skilllibrary_Sub5_Map,
+            ITEM_TM05,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            233,
+            gText_Quest_Skilllibrary_Sub6_Name,
+            gText_Quest_Skilllibrary_Sub6_Desc,
+            gText_Quest_Skilllibrary_Sub6_Map,
+            ITEM_TM06,
+            ITEM,
+            sText_Recruited
+            ),
+    sub_quest(
+            234,
+            gText_Quest_Skilllibrary_Sub7_Name,
+            gText_Quest_Skilllibrary_Sub7_Desc,
+            gText_Quest_Skilllibrary_Sub7_Map,
+            ITEM_TM07,
+            ITEM,
+            sText_Recruited
+            ),
+};
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2847,10 +2863,10 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        QUEST_DETECTIVEARIANA_SUB_COUNT
 	),
 	side_quest(
-	        gText_Quest_UnknownBruceLeeQuest_Name,
-	        gText_Quest_UnknownBruceLeeQuest_Desc,
-	        gText_Quest_UnknownBruceLeeQuest_DoneDesc,
-	        gText_Quest_UnknownBruceLeeQuest_Map,
+	        gText_Quest_BruceLeeQuest_Name,
+	        gText_Quest_BruceLeeQuest_Desc,
+	        gText_Quest_BruceLeeQuest_DoneDesc,
+	        gText_Quest_BruceLeeQuest_Map,
 	        OBJ_EVENT_GFX_BLACK_BELT,
 	        OBJECT,
 	        NULL,
@@ -2957,24 +2973,24 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        0
 	),
 	side_quest(
-	        gText_Quest_ShelterSwitcheroo_Name,
-	        gText_Quest_ShelterSwitcheroo_Desc,
-	        gText_Quest_ShelterSwitcheroo_DoneDesc,
-	        gText_Quest_ShelterSwitcheroo_Map,
+	        gText_Quest_Mutualaidfund_Name,
+	        gText_Quest_Mutualaidfund_Desc,
+	        gText_Quest_Mutualaidfund_DoneDesc,
+	        gText_Quest_Mutualaidfund_Map,
 	        OBJ_EVENT_GFX_FAT_MAN,
 	        OBJECT,
-	        sShelterSwitcheroo_Sub,
-            QUEST_SHELTERSWITCHEROO_SUB_COUNT
+	        sMutualaidfund_Sub,
+            QUEST_MUTUALAIDFUND_SUB_COUNT
 	),
 	side_quest(
-	        gText_Quest_ShelterTaxiSolution_Name,
-	        gText_Quest_ShelterTaxiSolution_Desc,
-	        gText_Quest_ShelterTaxiSolution_DoneDesc,
-	        gText_Quest_ShelterTaxiSolution_Map,
+	        gText_Quest_Volunteerfirefighter_Name,
+	        gText_Quest_Volunteerfirefighter_Desc,
+	        gText_Quest_Volunteerfirefighter_DoneDesc,
+	        gText_Quest_Volunteerfirefighter_Map,
 	        OBJ_EVENT_GFX_FAT_MAN,
 	        OBJECT,
-	        sShelterTaxiSolution_Sub,
-            QUEST_SHELTERTAXISOLUTION_SUB_COUNT
+            NULL,
+            0
 	),
 	side_quest(
 	        gText_Quest_LastMusicVenueInSanFrancisco_Name,
@@ -3389,6 +3405,26 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJECT,
             NULL,
 	        0
+	),
+	side_quest(
+	        gText_Quest_Skilllibrary_Name,
+	        gText_Quest_Skilllibrary_Desc,
+	        gText_Quest_Skilllibrary_DoneDesc,
+	        gText_Quest_Skilllibrary_Map,
+            OBJ_EVENT_GFX_NURSE,
+	        OBJECT,
+            sSkilllibrary_Sub,
+	        7
+	),
+	side_quest(
+	        gText_Quest_Miniarcade_Name,
+	        gText_Quest_Miniarcade_Desc,
+	        gText_Quest_Miniarcade_DoneDesc,
+	        gText_Quest_Miniarcade_Map,
+            OBJ_EVENT_GFX_MYSTERY_GIFT_MAN,
+	        OBJECT,
+            NULL,
+            0
 	)
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////

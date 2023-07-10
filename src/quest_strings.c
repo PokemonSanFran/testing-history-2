@@ -238,10 +238,10 @@ const u8 gText_Quest_DetectiveAriana_Desc[] =_("Description");
 const u8 gText_Quest_DetectiveAriana_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_DetectiveAriana_Map[] =_("Berkeley");
 
-const u8 gText_Quest_UnknownBruceLeeQuest_Name[] = _("Unknown Bruce Lee Quest");
-const u8 gText_Quest_UnknownBruceLeeQuest_Desc[] =_("Description");
-const u8 gText_Quest_UnknownBruceLeeQuest_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_UnknownBruceLeeQuest_Map[] =_("Chinatown");
+const u8 gText_Quest_BruceLeeQuest_Name[] = _("Unknown Bruce Lee Quest");
+const u8 gText_Quest_BruceLeeQuest_Desc[] =_("Description");
+const u8 gText_Quest_BruceLeeQuest_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_BruceLeeQuest_Map[] =_("Chinatown");
 
 const u8 gText_Quest_ChallengeOfThe7Sisters_Name[] = _("Challenge of the 7 Sisters");
 const u8 gText_Quest_ChallengeOfThe7Sisters_Desc[] =_("Description");
@@ -288,15 +288,15 @@ const u8 gText_Quest_ArtisanBalls3_Desc[] =_("Defeat one of the Gym Leaders usin
 const u8 gText_Quest_ArtisanBalls3_DoneDesc[] =_("Serey's PokéBalls got enough publicity to get acquired by Silph Co.!");
 const u8 gText_Quest_ArtisanBalls3_Map[] =_("Japantown");
 
-const u8 gText_Quest_ShelterSwitcheroo_Name[] = _("Shelter Switcheroo");
-const u8 gText_Quest_ShelterSwitcheroo_Desc[] =_("Description");
-const u8 gText_Quest_ShelterSwitcheroo_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_ShelterSwitcheroo_Map[] =_("SouthBay");
+const u8 gText_Quest_Mutualaidfund_Name[] = _("Shelter Switcheroo");
+const u8 gText_Quest_Mutualaidfund_Desc[] =_("Description");
+const u8 gText_Quest_Mutualaidfund_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_Mutualaidfund_Map[] =_("SouthBay");
 
-const u8 gText_Quest_ShelterTaxiSolution_Name[] = _("Shelter Taxi Solution");
-const u8 gText_Quest_ShelterTaxiSolution_Desc[] =_("Description");
-const u8 gText_Quest_ShelterTaxiSolution_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_ShelterTaxiSolution_Map[] =_("SouthBay");
+const u8 gText_Quest_Volunteerfirefighter_Name[] = _("Shelter Taxi Solution");
+const u8 gText_Quest_Volunteerfirefighter_Desc[] =_("Description");
+const u8 gText_Quest_Volunteerfirefighter_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_Volunteerfirefighter_Map[] =_("SouthBay");
 
 const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[] = _("Last Music Venue in SanFran");
 const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[] =_("Help Ladislau find local musicians\nlooking for a regular venue to perform\nin.");
@@ -527,6 +527,16 @@ const u8 gText_Quest_Temporaryshelter_Name[] =_("Temporary Shelter");
 const u8 gText_Quest_Temporaryshelter_Desc[] =_("");
 const u8 gText_Quest_Temporaryshelter_DoneDesc[] =_("");
 const u8 gText_Quest_Temporaryshelter_Map[] =_("Psfroute70");
+
+const u8 gText_Quest_Skilllibrary_Name[] =_("Skill Library");
+const u8 gText_Quest_Skilllibrary_Desc[] =_("");
+const u8 gText_Quest_Skilllibrary_DoneDesc[] =_("");
+const u8 gText_Quest_Skilllibrary_Map[] =_("Oakland");
+
+const u8 gText_Quest_Miniarcade_Name[] =_("Mini Battle Arcade");
+const u8 gText_Quest_Miniarcade_Desc[] =_("");
+const u8 gText_Quest_Miniarcade_DoneDesc[] =_("");
+const u8 gText_Quest_Miniarcade_Map[] =_("Japantown");
 
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
@@ -860,37 +870,37 @@ const u8 gText_Quest_ArtisanBalls2_Sub3_Name[] = _("Customer Service");
 const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[] = _("You battled a Customer Service rep that\nis interested in working with Sergey.");
 const u8 gText_Quest_ArtisanBalls2_Sub3_Map[] = _("Psfroute61");
 
-const u8 gText_Quest_ShelterSwitcheroo_Sub1_Name[] = _("Shelter 1");
-const u8 gText_Quest_ShelterSwitcheroo_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterSwitcheroo_Sub1_Map[] = _("GldnGtePark");
-const u8 gText_Quest_ShelterSwitcheroo_Sub2_Name[] = _("Shelter 2");
-const u8 gText_Quest_ShelterSwitcheroo_Sub2_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterSwitcheroo_Sub2_Map[] = _("Dogpatch");
-const u8 gText_Quest_ShelterSwitcheroo_Sub3_Name[] = _("Shelter 3");
-const u8 gText_Quest_ShelterSwitcheroo_Sub3_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterSwitcheroo_Sub3_Map[] = _("Marin");
-const u8 gText_Quest_ShelterSwitcheroo_Sub4_Name[] = _("Shelter 4");
-const u8 gText_Quest_ShelterSwitcheroo_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterSwitcheroo_Sub4_Map[] = _("Mission");
-const u8 gText_Quest_ShelterSwitcheroo_Sub5_Name[] = _("Shelter 5");
-const u8 gText_Quest_ShelterSwitcheroo_Sub5_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterSwitcheroo_Sub5_Map[] = _("Chinatown");
+const u8 gText_Quest_Mutualaidfund_Sub1_Name[] = _("Goal 1");
+const u8 gText_Quest_Mutualaidfund_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Mutualaidfund_Sub1_Map[] = _("GldnGtePark");
+const u8 gText_Quest_Mutualaidfund_Sub2_Name[] = _("Goal 2");
+const u8 gText_Quest_Mutualaidfund_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Mutualaidfund_Sub2_Map[] = _("Dogpatch");
+const u8 gText_Quest_Mutualaidfund_Sub3_Name[] = _("Goal 3");
+const u8 gText_Quest_Mutualaidfund_Sub3_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Mutualaidfund_Sub3_Map[] = _("Marin");
+const u8 gText_Quest_Mutualaidfund_Sub4_Name[] = _("Goal 4");
+const u8 gText_Quest_Mutualaidfund_Sub4_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Mutualaidfund_Sub4_Map[] = _("Mission");
+const u8 gText_Quest_Mutualaidfund_Sub5_Name[] = _("Goal 5");
+const u8 gText_Quest_Mutualaidfund_Sub5_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Mutualaidfund_Sub5_Map[] = _("Chinatown");
 
-const u8 gText_Quest_ShelterTaxiSolution_Sub1_Name[] = _("Shelter 1");
-const u8 gText_Quest_ShelterTaxiSolution_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterTaxiSolution_Sub1_Map[] = _("GldnGtePark");
-const u8 gText_Quest_ShelterTaxiSolution_Sub2_Name[] = _("Shelter 2");
-const u8 gText_Quest_ShelterTaxiSolution_Sub2_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterTaxiSolution_Sub2_Map[] = _("Dogpatch");
-const u8 gText_Quest_ShelterTaxiSolution_Sub3_Name[] = _("Shelter 3");
-const u8 gText_Quest_ShelterTaxiSolution_Sub3_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterTaxiSolution_Sub3_Map[] = _("Marin");
-const u8 gText_Quest_ShelterTaxiSolution_Sub4_Name[] = _("Shelter 4");
-const u8 gText_Quest_ShelterTaxiSolution_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterTaxiSolution_Sub4_Map[] = _("Mission");
-const u8 gText_Quest_ShelterTaxiSolution_Sub5_Name[] = _("Shelter 5");
-const u8 gText_Quest_ShelterTaxiSolution_Sub5_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ShelterTaxiSolution_Sub5_Map[] = _("Chinatown");
+const u8 gText_Quest_Volunteerfirefighter_Sub1_Name[] = _("Shelter 1");
+const u8 gText_Quest_Volunteerfirefighter_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Volunteerfirefighter_Sub1_Map[] = _("GldnGtePark");
+const u8 gText_Quest_Volunteerfirefighter_Sub2_Name[] = _("Shelter 2");
+const u8 gText_Quest_Volunteerfirefighter_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Volunteerfirefighter_Sub2_Map[] = _("Dogpatch");
+const u8 gText_Quest_Volunteerfirefighter_Sub3_Name[] = _("Shelter 3");
+const u8 gText_Quest_Volunteerfirefighter_Sub3_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Volunteerfirefighter_Sub3_Map[] = _("Marin");
+const u8 gText_Quest_Volunteerfirefighter_Sub4_Name[] = _("Shelter 4");
+const u8 gText_Quest_Volunteerfirefighter_Sub4_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Volunteerfirefighter_Sub4_Map[] = _("Mission");
+const u8 gText_Quest_Volunteerfirefighter_Sub5_Name[] = _("Shelter 5");
+const u8 gText_Quest_Volunteerfirefighter_Sub5_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Volunteerfirefighter_Sub5_Map[] = _("Chinatown");
 
 const u8 gText_Quest_NeighborhoodCleanUp_Sub1_Name[] = _("Punk 1");
 const u8 gText_Quest_NeighborhoodCleanUp_Sub1_Desc[] = _("Sub Lorem");
@@ -1358,6 +1368,28 @@ const u8 gText_Quest_SieboldsTraining_Sub3_Map[] = _("Lorem");
 const u8 gText_Quest_SieboldsTraining_Sub4_Name[] = _("Lorem");
 const u8 gText_Quest_SieboldsTraining_Sub4_Desc[] = _("Lorem");
 const u8 gText_Quest_SieboldsTraining_Sub4_Map[] = _("Lorem");
+
+const u8 gText_Quest_Skilllibrary_Sub1_Name[] = _("14%");
+const u8 gText_Quest_Skilllibrary_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub1_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub2_Name[] = _("28%");
+const u8 gText_Quest_Skilllibrary_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub2_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub3_Name[] = _("42%");
+const u8 gText_Quest_Skilllibrary_Sub3_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub3_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub4_Name[] = _("57%");
+const u8 gText_Quest_Skilllibrary_Sub4_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub4_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub5_Name[] = _("71%");
+const u8 gText_Quest_Skilllibrary_Sub5_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub5_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub6_Name[] = _("85%");
+const u8 gText_Quest_Skilllibrary_Sub6_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub6_Map[] = _("N/A");
+const u8 gText_Quest_Skilllibrary_Sub7_Name[] = _("100%");
+const u8 gText_Quest_Skilllibrary_Sub7_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_Skilllibrary_Sub7_Map[] = _("N/A");
 
 //quest flavor
 const u8 gText_ChampionsAdventure_Flavor2[] =_("Enjoy your celebration party!");
