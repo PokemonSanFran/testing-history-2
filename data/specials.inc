@@ -617,6 +617,8 @@ gSpecials::
     def_special Quest_Persuasivepassenger_CheckQuestAndChooseDriver
     def_special Quest_Persuasivepassenger_CheckNeededItems
     def_special Quest_Persuasivepassenger_TakeNeededItems
+    def_special Quest_Skilllibrary_StoreAndCompare
+    def_special Quest_Skilllibrary_Debug
 
 @ Restored Frontier
 

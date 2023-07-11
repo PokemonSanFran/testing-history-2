@@ -2328,71 +2328,6 @@ static const struct SubQuest sSieboldsTraining_Sub[QUEST_RESTAURANTEXPANSION2_SU
 	        sText_Recruited
 	),
 };
-static const struct SubQuest sSkilllibrary_Sub[QUEST_SKILLLIBRARY_SUB_COUNT] = {
-    sub_quest(
-            228,
-            gText_Quest_Skilllibrary_Sub1_Name,
-            gText_Quest_Skilllibrary_Sub1_Desc,
-            gText_Quest_Skilllibrary_Sub1_Map,
-            ITEM_TM01,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            229,
-            gText_Quest_Skilllibrary_Sub2_Name,
-            gText_Quest_Skilllibrary_Sub2_Desc,
-            gText_Quest_Skilllibrary_Sub2_Map,
-            ITEM_TM02,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            230,
-            gText_Quest_Skilllibrary_Sub3_Name,
-            gText_Quest_Skilllibrary_Sub3_Desc,
-            gText_Quest_Skilllibrary_Sub3_Map,
-            ITEM_TM03,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            231,
-            gText_Quest_Skilllibrary_Sub4_Name,
-            gText_Quest_Skilllibrary_Sub4_Desc,
-            gText_Quest_Skilllibrary_Sub4_Map,
-            ITEM_TM04,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            232,
-            gText_Quest_Skilllibrary_Sub5_Name,
-            gText_Quest_Skilllibrary_Sub5_Desc,
-            gText_Quest_Skilllibrary_Sub5_Map,
-            ITEM_TM05,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            233,
-            gText_Quest_Skilllibrary_Sub6_Name,
-            gText_Quest_Skilllibrary_Sub6_Desc,
-            gText_Quest_Skilllibrary_Sub6_Map,
-            ITEM_TM06,
-            ITEM,
-            sText_Recruited
-            ),
-    sub_quest(
-            234,
-            gText_Quest_Skilllibrary_Sub7_Name,
-            gText_Quest_Skilllibrary_Sub7_Desc,
-            gText_Quest_Skilllibrary_Sub7_Map,
-            ITEM_TM07,
-            ITEM,
-            sText_Recruited
-            ),
-};
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -3413,8 +3348,8 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_Skilllibrary_Map,
             OBJ_EVENT_GFX_NURSE,
 	        OBJECT,
-            sSkilllibrary_Sub,
-	        7
+            NULL,
+            0
 	),
 	side_quest(
 	        gText_Quest_Miniarcade_Name,

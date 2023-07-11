@@ -1655,3 +1655,5 @@ Script_RemoveTint::
 	.include "data/maps/Haightashbury_Gym_Lobby/scripts.inc"
 
 	.include "data/maps/Haightashbury_Gym_Battle_Room/scripts.inc"
+
+	.include "data/maps/Treasureisland_Skilllibrary/scripts.inc"

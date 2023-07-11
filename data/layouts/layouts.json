@@ -6910,6 +6910,16 @@
       "secondary_tileset": "gTileset_BattleFrontier",
       "border_filepath": "data/layouts/Haightashbury_Gym_Battle_Room/border.bin",
       "blockdata_filepath": "data/layouts/Haightashbury_Gym_Battle_Room/map.bin"
+    },
+    {
+      "id": "LAYOUT_TREASUREISLAND_SKILLLIBRARY",
+      "name": "Treasureisland_Skilllibrary_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Treasureisland_Skilllibrary/border.bin",
+      "blockdata_filepath": "data/layouts/Treasureisland_Skilllibrary/map.bin"
     }
   ]
 }

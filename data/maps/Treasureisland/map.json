@@ -48,7 +48,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRUCK",
-      "x": 21,
+      "x": 8,
       "y": 20,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -73,6 +73,13 @@
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_TREASUREISLAND_POKEMONCENTER_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_TREASUREISLAND_SKILLLIBRARY",
       "dest_warp_id": "0"
     }
   ],

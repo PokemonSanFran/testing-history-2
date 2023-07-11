@@ -294,6 +294,7 @@
 // gMapGroup_IndoorTreasureisland
 #define MAP_TREASUREISLAND_POKEMONCENTER_1F (0 | (21 << 8))
 #define MAP_TREASUREISLAND_RESTAURANT       (1 | (21 << 8))
+#define MAP_TREASUREISLAND_SKILLLIBRARY     (2 | (21 << 8))
 
 // gMapGroup_IndoorAlameda
 #define MAP_ALAMEDA_ARCHER_HOUSE     (0 | (22 << 8))

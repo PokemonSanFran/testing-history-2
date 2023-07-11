@@ -62,32 +62,23 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	completequest QUEST_RESTOREHAIGHTASHBURY
-	givecustommon SPECIES_PHEROMOSA, 95, ITEM_FOCUS_SASH, ITEM_PREMIER_BALL, NATURE_ADAMANT, 0, 4, 252, 0, 252, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_CLOSE_COMBAT, MOVE_LUNGE, MOVE_POISON_JAB, MOVE_THROAT_CHOP
-	givecustommon SPECIES_NIHILEGO, 95, ITEM_POWER_HERB, ITEM_BEAST_BALL, NATURE_TIMID, 0, 184, 0, 0, 252, 72, 0, 31, 31, 31, 31, 31, 31, MOVE_SLUDGE_WAVE, MOVE_METEOR_BEAM, MOVE_THUNDERBOLT, MOVE_GRASS_KNOT
-	givecustommon SPECIES_URSHIFU, 95, ITEM_ASSAULT_VEST, ITEM_MASTER_BALL, NATURE_JOLLY, 0, 4, 252, 0, 252, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_WICKED_BLOW, MOVE_CLOSE_COMBAT, MOVE_IRON_HEAD, MOVE_SUCKER_PUNCH
-	warp MAP_HAIGHTASHBURY, 1
+	additem ITEM_TM08
+	additem ITEM_TM90
+	warp MAP_TREASUREISLAND_SKILLLIBRARY, 0
 	return
 
 
 Debug_Script_2::
-	warp MAP_PRESIDIO_IMPROV, 0
+	additem ITEM_TM42
 	end
 
 
 Debug_Script_3::
-	goto_if_set FLAG_FACILITY_UNLOCK_CHARLOTTE, Debug_Script_3_2
-	msgbox Debug_Script_3_Text_1
-Debug_Script_3_1:
-	return
-
-Debug_Script_3_2:
-	msgbox Debug_Script_3_Text_0
-	goto Debug_Script_3_1
+	special Quest_Skilllibrary_Debug
+	end
 
 
 Debug_Script_4::
-	special Debug_MakeStreak90
 	end
 
 
@@ -125,12 +116,6 @@ Debug_CheckSaveBlock::
 	release
 	end
 
-
-Debug_Script_3_Text_0:
-	.string "unlocked$"
-
-Debug_Script_3_Text_1:
-	.string "nope$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

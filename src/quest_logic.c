@@ -1241,3 +1241,52 @@ void Quest_Persuasivepassenger_TakeNeededItems(void){
         RemoveBagItem(ITEM_LEMONADE,2);
     }
 }
+
+// ***********************************************************************
+// Quest: Skill Library
+// ***********************************************************************
+
+u16 Quest_Skilllibrary_CountObtainedTechnicalMachines(void){
+    u16 count = 0, i = 0;
+    u16 machineRange = (ITEM_TM01 + NUM_TECHNICAL_MACHINE);
+
+    for (i = ITEM_TM01;i < machineRange;i++){
+        if (CheckBagHasItem(i,1))
+            count++;
+    }
+
+    return count;
+}
+
+void Quest_Skilllibrary_StoreAndCompare(void){
+    u16 numMachines = Quest_Skilllibrary_CountObtainedTechnicalMachines();
+    u16 previousNumMachines = VarGet(VAR_QUEST_SKILLLIBRARY_TM_COUNT);
+    u16 diff = (numMachines - previousNumMachines);
+    u16 remainingMachines = (NUM_TECHNICAL_MACHINES - numMachines);
+    bool8 hasMoreMachines = FALSE;
+
+    if (diff > 0){
+        VarSet(VAR_QUEST_SKILLLIBRARY_TM_COUNT,numMachines);
+        ConvertIntToDecimalStringN(gStringVar2, diff, STR_CONV_MODE_LEFT_ALIGN, 3);
+        ConvertIntToDecimalStringN(gStringVar3, remainingMachines, STR_CONV_MODE_LEFT_ALIGN, 3);
+        hasMoreMachines = TRUE;
+    }
+
+    gSpecialVar_Result = hasMoreMachines;
+    ConvertIntToDecimalStringN(gStringVar1, numMachines, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
+u16 Quest_Skilllibrary_GetPercentage(void){
+    u16 numMachines = Quest_Skilllibrary_CountObtainedTechnicalMachines();
+
+    return (numMachines / NUM_TECHNICAL_MACHINES) * 100;
+}
+
+void Quest_Skilllibrary_Debug(void){
+    u32 i = 0;
+
+    for (i = ITEM_TM01; i < (NUM_TECHNICAL_MACHINES + ITEM_TM01); i++)
+    {
+        AddBagItem(i, 1);
+    }
+}
