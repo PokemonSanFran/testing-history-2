@@ -72,6 +72,8 @@ script Quest_Skilllibrary_CopyTM_Script{
 }
 
 script Quest_Skilllibrary_Reward_Dialogue{
+//PSF TODO currently impossible to finish this quest until TMs are expanded to 399 but I swear it works
+// BAG_TMHM_COUNT needs to be increased or the bag won't hold enough
     msgbox(gText_Skilllibrary_OhWait)
     msgbox(gText_Skilllibrary_ThatsAllOfThem)
     msgbox(gText_Skilllibrary_YouveHelpedMe)
