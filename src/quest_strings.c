@@ -288,12 +288,12 @@ const u8 gText_Quest_ArtisanBalls3_Desc[] =_("Defeat one of the Gym Leaders usin
 const u8 gText_Quest_ArtisanBalls3_DoneDesc[] =_("Serey's PokéBalls got enough publicity to get acquired by Silph Co.!");
 const u8 gText_Quest_ArtisanBalls3_Map[] =_("Japantown");
 
-const u8 gText_Quest_Mutualaidfund_Name[] = _("Shelter Switcheroo");
+const u8 gText_Quest_Mutualaidfund_Name[] = _("Mutual Aid Fund");
 const u8 gText_Quest_Mutualaidfund_Desc[] =_("Description");
 const u8 gText_Quest_Mutualaidfund_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_Mutualaidfund_Map[] =_("SouthBay");
 
-const u8 gText_Quest_Volunteerfirefighter_Name[] = _("Shelter Taxi Solution");
+const u8 gText_Quest_Volunteerfirefighter_Name[] = _("Volunteer Firefighter");
 const u8 gText_Quest_Volunteerfirefighter_Desc[] =_("Description");
 const u8 gText_Quest_Volunteerfirefighter_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_Volunteerfirefighter_Map[] =_("SouthBay");

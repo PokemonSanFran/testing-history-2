@@ -619,6 +619,9 @@ gSpecials::
     def_special Quest_Persuasivepassenger_TakeNeededItems
     def_special Quest_Skilllibrary_StoreAndCompare
     def_special Quest_Skilllibrary_Debug
+    def_special Quest_Mutaidaidfund_CalculateMoneyAndText
+    def_special Quest_Mutualaidfund_CheckMoney
+    def_special Quest_Mutualaidfund_TakeDonation
 
 @ Restored Frontier
 

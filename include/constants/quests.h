@@ -63,7 +63,7 @@
 #define QUEST_GETTHEBANDBACKTOGETHER              43
 #define QUEST_FOODTRUCKBUREACRACY                 44
 #define QUEST_DETECTIVEARIANA                     45
-#define QUEST_BRUCELEEQUEST                46
+#define QUEST_BRUCELEEQUEST                       46
 #define QUEST_CHALLENGEOFTHE7SISTERS              47
 #define QUEST_ESPORTS                             48
 #define QUEST_CUTEPOKEMON                         49
@@ -74,8 +74,8 @@
 #define QUEST_ARTISANBALLS1                       54
 #define QUEST_ARTISANBALLS2                       55
 #define QUEST_ARTISANBALLS3                       56
-#define QUEST_MUTUALAIDFUND                   57
-#define QUEST_SHELTERTAXISOLUTION                 58
+#define QUEST_MUTUALAIDFUND                       57
+#define QUEST_VOLUNTEERFIREFIGHTER                58
 #define QUEST_LASTMUSICVENUEINSANFRANCISCO        59
 #define QUEST_GARDENCLEANUP                       60
 #define QUEST_GARDENCLEANUPADVANCED               61

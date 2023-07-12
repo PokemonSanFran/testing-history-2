@@ -5276,7 +5276,7 @@
       "name": "Mission_Consulting_Layout",
       "width": 10,
       "height": 9,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Mission_Consulting/border.bin",
       "blockdata_filepath": "data/layouts/Mission_Consulting/map.bin"
