@@ -903,22 +903,6 @@ extern const u8 gText_Quest_ArtisanBalls2_Sub3_Name[];
 extern const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[];
 extern const u8 gText_Quest_ArtisanBalls2_Sub3_Map[];
 
-extern const u8 gText_Quest_Mutualaidfund_Sub1_Name[];
-extern const u8 gText_Quest_Mutualaidfund_Sub1_Desc[];
-extern const u8 gText_Quest_Mutualaidfund_Sub1_Map[];
-extern const u8 gText_Quest_Mutualaidfund_Sub2_Name[];
-extern const u8 gText_Quest_Mutualaidfund_Sub2_Desc[];
-extern const u8 gText_Quest_Mutualaidfund_Sub2_Map[];
-extern const u8 gText_Quest_Mutualaidfund_Sub3_Name[];
-extern const u8 gText_Quest_Mutualaidfund_Sub3_Desc[];
-extern const u8 gText_Quest_Mutualaidfund_Sub3_Map[];
-extern const u8 gText_Quest_Mutualaidfund_Sub4_Name[];
-extern const u8 gText_Quest_Mutualaidfund_Sub4_Desc[];
-extern const u8 gText_Quest_Mutualaidfund_Sub4_Map[];
-extern const u8 gText_Quest_Mutualaidfund_Sub5_Name[];
-extern const u8 gText_Quest_Mutualaidfund_Sub5_Desc[];
-extern const u8 gText_Quest_Mutualaidfund_Sub5_Map[];
-
 extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Name[];
 extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Desc[];
 extern const u8 gText_Quest_Volunteerfirefighter_Sub1_Map[];

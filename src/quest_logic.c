@@ -1286,107 +1286,15 @@ void Quest_Skilllibrary_Debug(void){
     u16 i = 0;
     u16 machineRange = (ITEM_TM01 + NUM_TECHNICAL_MACHINES);
 
-    AddBagItem(ITEM_TM01 + 0,1);
-AddBagItem(ITEM_TM01 + 1,1);
-AddBagItem(ITEM_TM01 + 2,1);
-AddBagItem(ITEM_TM01 + 3,1);
-AddBagItem(ITEM_TM01 + 4,1);
-AddBagItem(ITEM_TM01 + 5,1);
-AddBagItem(ITEM_TM01 + 6,1);
-AddBagItem(ITEM_TM01 + 7,1);
-AddBagItem(ITEM_TM01 + 8,1);
-AddBagItem(ITEM_TM01 + 9,1);
-AddBagItem(ITEM_TM01 + 10,1);
-AddBagItem(ITEM_TM01 + 11,1);
-AddBagItem(ITEM_TM01 + 12,1);
-AddBagItem(ITEM_TM01 + 13,1);
-AddBagItem(ITEM_TM01 + 14,1);
-AddBagItem(ITEM_TM01 + 15,1);
-AddBagItem(ITEM_TM01 + 16,1);
-AddBagItem(ITEM_TM01 + 17,1);
-AddBagItem(ITEM_TM01 + 18,1);
-AddBagItem(ITEM_TM01 + 19,1);
-AddBagItem(ITEM_TM01 + 20,1);
-AddBagItem(ITEM_TM01 + 21,1);
-AddBagItem(ITEM_TM01 + 22,1);
-AddBagItem(ITEM_TM01 + 23,1);
-AddBagItem(ITEM_TM01 + 24,1);
-AddBagItem(ITEM_TM01 + 25,1);
-AddBagItem(ITEM_TM01 + 26,1);
-AddBagItem(ITEM_TM01 + 27,1);
-AddBagItem(ITEM_TM01 + 28,1);
-AddBagItem(ITEM_TM01 + 29,1);
-AddBagItem(ITEM_TM01 + 30,1);
-AddBagItem(ITEM_TM01 + 31,1);
-AddBagItem(ITEM_TM01 + 32,1);
-AddBagItem(ITEM_TM01 + 33,1);
-AddBagItem(ITEM_TM01 + 34,1);
-AddBagItem(ITEM_TM01 + 35,1);
-AddBagItem(ITEM_TM01 + 36,1);
-AddBagItem(ITEM_TM01 + 37,1);
-AddBagItem(ITEM_TM01 + 38,1);
-AddBagItem(ITEM_TM01 + 39,1);
-AddBagItem(ITEM_TM01 + 40,1);
-AddBagItem(ITEM_TM01 + 41,1);
-AddBagItem(ITEM_TM01 + 42,1);
-AddBagItem(ITEM_TM01 + 43,1);
-AddBagItem(ITEM_TM01 + 44,1);
-AddBagItem(ITEM_TM01 + 45,1);
-AddBagItem(ITEM_TM01 + 46,1);
-AddBagItem(ITEM_TM01 + 47,1);
-AddBagItem(ITEM_TM01 + 48,1);
-AddBagItem(ITEM_TM01 + 49,1);
-AddBagItem(ITEM_TM01 + 50,1);
-AddBagItem(ITEM_TM01 + 51,1);
-AddBagItem(ITEM_TM01 + 52,1);
-AddBagItem(ITEM_TM01 + 53,1);
-AddBagItem(ITEM_TM01 + 54,1);
-AddBagItem(ITEM_TM01 + 55,1);
-AddBagItem(ITEM_TM01 + 56,1);
-AddBagItem(ITEM_TM01 + 57,1);
-AddBagItem(ITEM_TM01 + 58,1);
-AddBagItem(ITEM_TM01 + 59,1);
-AddBagItem(ITEM_TM01 + 60,1);
-AddBagItem(ITEM_TM01 + 61,1);
-AddBagItem(ITEM_TM01 + 62,1);
-AddBagItem(ITEM_TM01 + 63,1);
-AddBagItem(ITEM_TM01 + 64,1);
-AddBagItem(ITEM_TM01 + 65,1);
-AddBagItem(ITEM_TM01 + 66,1);
-AddBagItem(ITEM_TM01 + 67,1);
-AddBagItem(ITEM_TM01 + 68,1);
-AddBagItem(ITEM_TM01 + 69,1);
-AddBagItem(ITEM_TM01 + 70,1);
-AddBagItem(ITEM_TM01 + 71,1);
-AddBagItem(ITEM_TM01 + 72,1);
-AddBagItem(ITEM_TM01 + 73,1);
-AddBagItem(ITEM_TM01 + 74,1);
-AddBagItem(ITEM_TM01 + 75,1);
-AddBagItem(ITEM_TM01 + 76,1);
-AddBagItem(ITEM_TM01 + 77,1);
-AddBagItem(ITEM_TM01 + 78,1);
-AddBagItem(ITEM_TM01 + 79,1);
-AddBagItem(ITEM_TM01 + 80,1);
-AddBagItem(ITEM_TM01 + 81,1);
-AddBagItem(ITEM_TM01 + 82,1);
-AddBagItem(ITEM_TM01 + 83,1);
-AddBagItem(ITEM_TM01 + 84,1);
-AddBagItem(ITEM_TM01 + 85,1);
-AddBagItem(ITEM_TM01 + 86,1);
-AddBagItem(ITEM_TM01 + 87,1);
-AddBagItem(ITEM_TM01 + 88,1);
-AddBagItem(ITEM_TM01 + 89,1);
-AddBagItem(ITEM_TM01 + 90,1);
-AddBagItem(ITEM_TM01 + 91,1);
-AddBagItem(ITEM_TM01 + 92,1);
-AddBagItem(ITEM_TM01 + 93,1);
-AddBagItem(ITEM_TM01 + 94,1);
-AddBagItem(ITEM_TM01 + 95,1);
-AddBagItem(ITEM_TM01 + 96,1);
-AddBagItem(ITEM_TM01 + 97,1);
-AddBagItem(ITEM_TM01 + 98,1);
-AddBagItem(ITEM_TM01 + 99,1);
-
     for (i = ITEM_TM01;i < machineRange;i++){
+        AddBagItem(i,1);
     }
+}
+
+// ***********************************************************************
+// Quest: Mutual Aid Fund
+// ***********************************************************************
+
+script Quest_Mutualaidfund_AddFunds(void){
+
 }

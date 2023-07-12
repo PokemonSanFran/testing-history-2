@@ -870,22 +870,6 @@ const u8 gText_Quest_ArtisanBalls2_Sub3_Name[] = _("Customer Service");
 const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[] = _("You battled a Customer Service rep that\nis interested in working with Sergey.");
 const u8 gText_Quest_ArtisanBalls2_Sub3_Map[] = _("Psfroute61");
 
-const u8 gText_Quest_Mutualaidfund_Sub1_Name[] = _("Goal 1");
-const u8 gText_Quest_Mutualaidfund_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_Mutualaidfund_Sub1_Map[] = _("GldnGtePark");
-const u8 gText_Quest_Mutualaidfund_Sub2_Name[] = _("Goal 2");
-const u8 gText_Quest_Mutualaidfund_Sub2_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_Mutualaidfund_Sub2_Map[] = _("Dogpatch");
-const u8 gText_Quest_Mutualaidfund_Sub3_Name[] = _("Goal 3");
-const u8 gText_Quest_Mutualaidfund_Sub3_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_Mutualaidfund_Sub3_Map[] = _("Marin");
-const u8 gText_Quest_Mutualaidfund_Sub4_Name[] = _("Goal 4");
-const u8 gText_Quest_Mutualaidfund_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_Mutualaidfund_Sub4_Map[] = _("Mission");
-const u8 gText_Quest_Mutualaidfund_Sub5_Name[] = _("Goal 5");
-const u8 gText_Quest_Mutualaidfund_Sub5_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_Mutualaidfund_Sub5_Map[] = _("Chinatown");
-
 const u8 gText_Quest_Volunteerfirefighter_Sub1_Name[] = _("Shelter 1");
 const u8 gText_Quest_Volunteerfirefighter_Sub1_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_Volunteerfirefighter_Sub1_Map[] = _("GldnGtePark");

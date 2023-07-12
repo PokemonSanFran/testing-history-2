@@ -1,0 +1,107 @@
+//gText_Mutualaidfund_
+//Quest_Mutualaidfund_
+
+script Quest_Mutualaidfund_Event_Script{
+    goto_if_quest_complete(QUEST_MUTUALAIDFUND,Quest_Mutualaidfund_Completed_Dialogue)
+    goto_if_quest_active(QUEST_MUTUALAIDFUND,Quest_Mutualaidfund_Active_Dialogue)
+    goto(Quest_Mutualaidfund_StartQuest_Script)
+}
+
+script Quest_Mutualaidfund_StartQuest_Script{
+    startquest(QUEST_MUTUALAIDFUND)
+}
+
+script Quest_Mutualaidfund_Active_Dialogue{
+    call(Quest_Mutualaidfund_LoadDonationAmount_Script)
+    call(Quest_Mutualaidfund_LoadGoalDescription_Script)
+    checkmoney(VAR_0x8004)
+    if(var(VAR_RESULT)){
+        call(Quest_Mutualaidfund_AskForDonation_Dialogue)
+    }
+
+    goto(Quest_Mutualaidfund_NoDonation_Dialogue)
+}
+
+script Quest_Mutualaidfund_LoadGoalDescription_Script{
+    switch(var(VAR_QUEST_MUTUALAIDFUND_AMOUNT)){
+        case 0: msgbox(gText_Mutualaidfund_Goal1,MSGBOX_NPC)
+        case 1: msgbox(gText_Mutualaidfund_Goal2,MSGBOX_NPC)
+        case 2: msgbox(gText_Mutualaidfund_Goal3,MSGBOX_NPC)
+        case 3: msgbox(gText_Mutualaidfund_Goal4,MSGBOX_NPC)
+        case 4: msgbox(gText_Mutualaidfund_Goal5,MSGBOX_NPC)
+        case 5: msgbox(gText_Mutualaidfund_Goal6,MSGBOX_NPC)
+        case 6: msgbox(gText_Mutualaidfund_Goal7,MSGBOX_NPC)
+        case 7: msgbox(gText_Mutualaidfund_Goal8,MSGBOX_NPC)
+        case 8: msgbox(gText_Mutualaidfund_Goal9,MSGBOX_NPC)
+        case 9: msgbox(gText_Mutualaidfund_Goal10,MSGBOX_NPC)
+        case 10: msgbox(gText_Mutualaidfund_Goal11,MSGBOX_NPC)
+        case 11: msgbox(gText_Mutualaidfund_Goal12,MSGBOX_NPC)
+        case 12: msgbox(gText_Mutualaidfund_Goal13,MSGBOX_NPC)
+        case 13: msgbox(gText_Mutualaidfund_Goal14,MSGBOX_NPC)
+    }
+    showmoneybox(0,0)
+    msgbox(gText_Mutualaidfund_WeThinkWell)
+return
+}
+
+script Quest_Mutualaidfund_AskForDonation_Dialogue{
+    msgbox(gText_Mutualaidfund_WouldYouLike,MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES){
+        goto(Quest_Mutualaidfund_MakeDonationScript)
+    }
+
+    msgbox(gText_Mutualaidfund_NoBig)
+    goto(Quest_Mutualaidfund_NoDonation_Dialogue)
+}
+
+script Quest_Mutualaidfund_MakeDonationScript{
+    removemoney(VAR_0x8004)
+    special(RandomlyBoostPartyMemberFriendship)
+    updatemoneybox(0)
+
+    msgbox(gText_Mutualaidfund_Thanks)
+    addvar(VAR_QUEST_MUTUALAIDFUND_AMOUNT,1)
+
+    if(var(VAR_QUEST_MUTUALAIDFUND_AMOUNT)){
+        goto(Quest_Mutualaidfund_Reward_Dialogue)
+    }
+    release
+    end
+}
+
+script Quest_Mutualaidfund_NoDonation_Dialogue{
+    msgbox(gText_Mutualaidfund_ThanksForHearing)
+    release
+    end
+}
+
+script Quest_Mutualaidfund_LoadDonationAmount_Script{
+    switch(var(VAR_QUEST_MUTUALAIDFUND_AMOUNT)){
+        case 0: setvar(VAR_0x8004,5000)
+        case 1: setvar(VAR_0x8004,10000)
+        case 2: setvar(VAR_0x8004,20000)
+        case 3: setvar(VAR_0x8004,30000)
+        case 4: setvar(VAR_0x8004,40000)
+        case 5: setvar(VAR_0x8004,50000)
+        case 6: setvar(VAR_0x8004,100000)
+        case 7: setvar(VAR_0x8004,200000)
+        case 8: setvar(VAR_0x8004,300000)
+        case 9: setvar(VAR_0x8004,400000)
+        case 10: setvar(VAR_0x8004,500000)
+        case 11: setvar(VAR_0x8004,800000)
+        case 12: setvar(VAR_0x8004,1000000)
+        case 13: setvar(VAR_0x8004,3280000)
+    }
+    buffernumberstring(STR_VAR_1,VAR_0x8004)
+    return
+}
+
+script Quest_Mutualaidfund_Reward_Dialogue{
+    completequest(QUEST_MUTUALAIDFUND)
+}
+
+script Quest_Mutualaidfund_Completed_Dialogue{
+    msgbox(gText_Mutualaidfund_Thanks)
+}
+

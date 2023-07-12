@@ -1143,54 +1143,6 @@ static const struct SubQuest sArtisanBalls2_Sub[QUEST_ARTISANBALLS2_SUB_COUNT] =
 	),
 };
 
-static const struct SubQuest sMutualaidfund_Sub[QUEST_MUTUALAIDFUND_SUB_COUNT] = {
-	sub_quest(
-	        94,
-	        gText_Quest_Mutualaidfund_Sub1_Name,
-	        gText_Quest_Mutualaidfund_Sub1_Desc,
-	        gText_Quest_Mutualaidfund_Sub1_Map,
-	        ITEM_REAPER_CLOTH,
-	        ITEM,
-	        sText_Delievered
-	),
-	sub_quest(
-	        95,
-	        gText_Quest_Mutualaidfund_Sub2_Name,
-	        gText_Quest_Mutualaidfund_Sub2_Desc,
-	        gText_Quest_Mutualaidfund_Sub2_Map,
-	        ITEM_REAPER_CLOTH,
-	        ITEM,
-	        sText_Delievered
-	),
-	sub_quest(
-	        96,
-	        gText_Quest_Mutualaidfund_Sub3_Name,
-	        gText_Quest_Mutualaidfund_Sub3_Desc,
-	        gText_Quest_Mutualaidfund_Sub3_Map,
-	        ITEM_REAPER_CLOTH,
-	        ITEM,
-	        sText_Delievered
-	),
-	sub_quest(
-	        97,
-	        gText_Quest_Mutualaidfund_Sub4_Name,
-	        gText_Quest_Mutualaidfund_Sub4_Desc,
-	        gText_Quest_Mutualaidfund_Sub4_Map,
-	        ITEM_REAPER_CLOTH,
-	        ITEM,
-	        sText_Delievered
-	),
-	sub_quest(
-	        98,
-	        gText_Quest_Mutualaidfund_Sub5_Name,
-	        gText_Quest_Mutualaidfund_Sub5_Desc,
-	        gText_Quest_Mutualaidfund_Sub5_Map,
-	        ITEM_REAPER_CLOTH,
-	        ITEM,
-	        sText_Delievered
-	),
-};
-
 static const struct SubQuest sNeighborhoodCleanUp_Sub[QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT] = {
 	sub_quest(
 	        104,
@@ -2914,8 +2866,8 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_Mutualaidfund_Map,
 	        OBJ_EVENT_GFX_FAT_MAN,
 	        OBJECT,
-	        sMutualaidfund_Sub,
-            QUEST_MUTUALAIDFUND_SUB_COUNT
+            NULL,
+            0
 	),
 	side_quest(
 	        gText_Quest_Volunteerfirefighter_Name,
