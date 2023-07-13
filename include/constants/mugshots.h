@@ -246,5 +246,6 @@
 #define SPEAKER_IMPROV_1                213
 #define SPEAKER_IMPROV_2                214
 #define SPEAKER_IMPROV_3                215
+#define SPEAKER_CHRIS                   216
 
 #endif

@@ -62,16 +62,11 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WILDFIRERISK
+	warp MAP_FISHERMANSWHARF_ARCADE, 0
 	return
 
 
 Debug_Script_2::
-	givemon SPECIES_SQUIRTLE, 1, 0
-	givemon SPECIES_SQUIRTLE, 1, 0
-	givemon SPECIES_SQUIRTLE, 1, 0
-	givemon SPECIES_SQUIRTLE, 1, 0
-	warp MAP_CHINATOWN, 25, 27
 	end
 
 

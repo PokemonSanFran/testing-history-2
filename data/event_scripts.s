@@ -1319,7 +1319,7 @@ Script_RemoveTint::
 .include "data/quests/sieboldstraining.inc"
 .include "data/quests/temporaryshelter.inc"
 .include "data/quests/skilllibrary.inc"
-// .include "data/quests/miniarcade.inc"
+.include "data/quests/miniarcade.inc"
 .include "data/quests/mutualaidfund.inc"
 .include "data/quests/volunteerfirefighter.inc"
 
@@ -1657,3 +1657,5 @@ Script_RemoveTint::
 	.include "data/maps/Haightashbury_Gym_Battle_Room/scripts.inc"
 
 	.include "data/maps/Treasureisland_Skilllibrary/scripts.inc"
+
+	.include "data/maps/Fishermanswharf_Arcade/scripts.inc"

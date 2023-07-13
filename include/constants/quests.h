@@ -118,8 +118,8 @@
 #define QUEST_BECOMECHAMPION                      98
 #define QUEST_DANCEBATTLE                         99
 #define QUEST_SKILLLIBRARY                        100
-#define QUEST_ARCADEMINI                          101
-#define QUEST_COUNT (QUEST_ARCADEMINI + 1)
+#define QUEST_MINIARCADE                          101
+#define QUEST_COUNT (QUEST_MINIARCADE + 1)
 
 #define SOCIAL_MEDIA_QUESTS_START QUEST_RABIESOUTBREAK
 #define SOCIAL_MEDIA_QUESTS_END QUEST_BETWEENASTONEANDAHARD

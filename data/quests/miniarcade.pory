@@ -1,0 +1,132 @@
+//Quest_Miniarcade_
+//gText_Miniarcade_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CHRIS = 1
+
+script Quest_Miniarcade_Event_Script{
+    goto_if_quest_complete(QUEST_MINIARCADE,Quest_Miniarcade_Complete_Script)
+    goto_if_quest_active(QUEST_MINIARCADE,Quest_Miniarcade_Active_Script)
+    goto(Quest_Miniarcade_StartQuest_Script)
+}
+
+script Quest_Miniarcade_StartQuest_Script{
+    lock
+    msgbox(gText_Blank,MSGBOX_YESNO,SPEAKER_IMPROV_1)
+    call(Quest_Miniarcade_AskStartChallenge_Script)
+    release
+    end
+}
+
+script Quest_Miniarcade_AskStartChallenge_Script{
+    if (var(VAR_RESULT) == YES){
+        call(Quest_Miniarcade_CheckQuestAndStart)
+        goto(Quest_Miniarcade_SaveBeforeChallenge_Script)
+    }else{
+        goto(Quest_Miniarcade_CancelChallenge)
+    }
+    return
+}
+
+script Quest_Miniarcade_CheckQuestAndStart{
+    returnqueststate(QUEST_MINIARCADE)
+
+    if (var(VAR_RESULT)< QUEST_MENU_SET_ACTIVE){
+        startquest(QUEST_MINIARCADE)
+    }
+    return
+}
+
+script Quest_Miniarcade_CancelChallenge{
+
+    release
+    end
+}
+
+script Quest_Miniarcade_Active_Script{
+
+    goto(Quest_Miniarcade_SaveBeforeChallenge_Script)
+}
+
+script Quest_Miniarcade_Complete_Script{
+
+    goto(Quest_Miniarcade_SaveBeforeChallenge_Script)
+}
+
+script Quest_Miniarcade_SaveBeforeChallenge_Script{
+
+    closemessage
+    call(Common_EventScript_SaveGame)
+
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Miniarcade_CancelChallenge)
+    }
+
+    goto(Quest_Miniarcade_StartChallenge)
+}
+
+script Quest_Miniarcade_StartChallenge{
+    special(SavePlayerParty)
+    //special(SwapOutPokemon)
+    //special(LoadEnemyParty)
+    call(Quest_Miniarcade_MovePlayer_Script)
+    applymovement(CHRIS,Common_Movement_WalkInPlaceDown)
+    waitmovement(CHRIS)
+
+    closemessage
+    goto(Quest_Miniarcade_Battle1_Script)
+}
+
+script Quest_Miniarcade_MovePlayer_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    if (var(VAR_TEMP_1) != 3){
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,2,3)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(PLAYER)
+        TeleportCamera(2,3)
+        fadescreen(FADE_FROM_BLACK)
+    }
+    return
+}
+
+script Quest_Miniarcade_Battle1_Script{
+    trainerbattle_continue_after_lose(TRAINER_IMPROV_1,gText_Improvbattling_AndScene)
+
+        if(var(VAR_RESULT) == B_OUTCOME_WON){
+            goto(Quest_Miniarcade_PostBattle1_Script)
+        }
+
+    goto(Quest_Miniarcade_ExitChallenge_Script)
+}
+
+script Quest_Miniarcade_PostBattle1_Script{
+    call(Quest_Miniarcade_RestoreParty_Script)
+    call_if_quest_not_complete(QUEST_MINIARCADE,Quest_Miniarcade_Reward_Dialogue)
+    closemessage
+    release
+    end
+}
+
+script Quest_Miniarcade_Reward_Dialogue{
+
+    giveitem(ITEM_TM48)
+    completequest(QUEST_MINIARCADE)
+    return
+}
+
+script Quest_Miniarcade_RestoreParty_Script{
+    fadescreen(FADE_TO_BLACK)
+    special(LoadPlayerParty)
+    special(HealPlayerParty)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_Miniarcade_ExitChallenge_Script{
+    call(Quest_Miniarcade_RestoreParty_Script)
+
+    closemessage
+    release
+    end
+}
