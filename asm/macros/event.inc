@@ -1962,7 +1962,7 @@
         .byte \isShiny
     .endif
     .endm
-    
+
     .macro givemonmoves species:req, level:req, move1:req, move2:req, move3:req, move4:req
     customgivemon \species, \level, 0, 0, NUM_NATURES, 0xFF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \move1, \move2, \move3, \move4, 0
     .endm
@@ -2280,7 +2280,7 @@
     .2byte \parentId
     .2byte \childId
     .endm
-    
+
     @ Check the quest state and return a number associated with quest state
     .macro returnqueststate questId:req
     .byte 0xe7
@@ -2298,7 +2298,7 @@
 	questmenu QUEST_MENU_SET_ACTIVE, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestActive
-	playfanfare MUS_LEVEL_UP 
+	playfanfare MUS_LEVEL_UP
 	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm
@@ -2310,7 +2310,7 @@
 	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestComplete
-	playfanfare MUS_LEVEL_UP 
+	playfanfare MUS_LEVEL_UP
 	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm
@@ -2467,7 +2467,15 @@
     .4byte \name
     .2byte \id
     .endm
-    
+
     .macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
     _dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
     .endm
+
+	@ Writes the species name of the Pokemon in 'slot' (zero-indexed) of the player's party to the specified buffer.
+	@ If an empty or invalid slot is specified, ten spaces ("") are written to the buffer.
+	.macro bufferpartymonspecies stringVarId:req, slot:req
+	.byte 0xeb
+	stringvar \stringVarId
+	.2byte \slot
+	.endm

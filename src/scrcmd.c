@@ -2637,3 +2637,14 @@ bool8 ScrCmd_givefrontierbattlepoints(struct ScriptContext *ctx)
     GiveFrontierBattlePoints(amount);
     return FALSE;
 }
+
+bool8 ScrCmd_bufferpartymonspecies(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 partyIndex = VarGet(ScriptReadHalfword(ctx));
+
+    u8 *dest = sScriptStringVars[stringVarIndex];
+    u32 species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
+    StringCopy(dest, gSpeciesNames[species]);
+    return FALSE;
+}
