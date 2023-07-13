@@ -622,6 +622,8 @@ gSpecials::
     def_special Quest_Mutaidaidfund_CalculateMoneyAndText
     def_special Quest_Mutualaidfund_CheckMoney
     def_special Quest_Mutualaidfund_TakeDonation
+    def_special Quest_Volunteerfirefighter_CheckIfWater
+    def_special Quest_Volunteerfirefighter_GetRemainingNumberOfMons
 
 @ Restored Frontier
 

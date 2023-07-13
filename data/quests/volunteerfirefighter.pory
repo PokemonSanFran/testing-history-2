@@ -1,0 +1,141 @@
+//gText_Volunteerfirefighter_
+//Quest_Volunteerfirefighter_
+
+const FILIP = 16
+const FLAG_HIDE_FILIP = FLAG_TEMP_8
+
+script Quest_Volunteerfirefighter_Event_Script{
+    goto_if_quest_complete(QUEST_VOLUNTEERFIREFIGHTER,Quest_Volunteerfirefighter_Completed_Dialogue)
+    goto_if_quest_active(QUEST_VOLUNTEERFIREFIGHTER,Quest_Volunteerfirefighter_Active_Dialogue)
+    goto(Quest_Volunteerfirefighter_StartQuest_Script)
+}
+
+script Quest_Volunteerfirefighter_Hide_Filip_Script{
+    setflag(FLAG_HIDE_FILIP)
+    return
+}
+
+script Quest_Volunteerfirefighter_StartQuest_Script{
+    msgbox(gText_Volunteerfirefighter_OhItsYou,MSGBOX_NPC,SPEAKER_FILIP)
+    msgbox(gText_Volunteerfirefighter_IQuit,,SPEAKER_FILIP)
+    msgbox(gText_Volunteerfirefighter_IveDecidedToJoin,,SPEAKER_FILIP)
+    msgbox(gText_Volunteerfirefighter_TheyBeenGreat,,SPEAKER_FILIP)
+    msgbox(gText_Volunteerfirefighter_YoureClearly,,SPEAKER_FILIP)
+    startquest(QUEST_VOLUNTEERFIREFIGHTER)
+}
+
+script Quest_Volunteerfirefighter_Active_Dialogue{
+    special(Quest_Volunteerfirefighter_GetRemainingNumberOfMons)
+    msgbox(gText_Volunteerfirefighter_INeedXMore,MSGBOX_NPC,SPEAKER_FILIP)
+    special(ChoosePartyMon)
+    waitstate
+
+    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        goto(Quest_Volunteerfirefighter_NoRefusePokemon_Dialogue)
+    }
+
+    specialvar(VAR_RESULT,Quest_Volunteerfirefighter_CheckIfWater)
+
+    if (!var(VAR_RESULT)){
+        goto(Quest_Volunteerfirefighter_WrongPokemon_Dialogue)
+    }
+    bufferpartymonspecies(STR_VAR_1,VAR_0x8004)
+    msgbox(gText_Volunteerfirefighter_AskForMon,MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Volunteerfirefighter_NoRefusePokemon_Dialogue)
+    }
+
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+        goto(Quest_Volunteerfirefighter_NotEnough_Dialogue)
+    }
+
+    goto(Quest_Volunteerfirefighter_TakeMonMarkSubquest_Script)
+}
+
+script Quest_Volunteerfirefighter_NoRefusePokemon_Dialogue{
+    msgbox(gText_Volunteerfirefighter_DontHaveAnything,,SPEAKER_FILIP)
+    closemessage
+    end
+}
+
+script Quest_Volunteerfirefighter_WrongPokemon_Dialogue{
+    msgbox(gText_Volunteerfirefighter_ThatsNotAWater,,SPEAKER_FILIP)
+    closemessage
+    end
+}
+
+script Quest_Volunteerfirefighter_NotEnough_Dialogue{
+    msgbox(gText_Volunteerfirefighter_YouCantGiveMe,,SPEAKER_FILIP)
+    closemessage
+    end
+}
+
+script Quest_Volunteerfirefighter_TakeMonMarkSubquest_Script{
+    bufferpartymonnick(STR_VAR_2,VAR_0x8004)
+    msgbox(gText_Volunteerfirefighter_OkayLetsMake,,SPEAKER_FILIP)
+    closemessage
+    special(DeleteChosenPartyMon)
+
+    addvar(VAR_QUEST_VOLUNTEER_FIREFIGHTER_COUNT,1)
+    specialvar(VAR_TEMP_1,Quest_Volunteerfirefighter_GetRemainingNumberOfMons)
+        if (var(VAR_TEMP_1) == 0){
+            goto(Quest_Volunteerfirefighter_Reward_Dialogue)
+        }
+    release
+    end
+}
+
+script Quest_Volunteerfirefighter_Reward_Dialogue{
+    msgbox(gText_Volunteerfirefighter_OkayIThinkIHave,,SPEAKER_FILIP)
+    giveitem(ITEM_GANLON_BERRY,1)
+    completequest(QUEST_VOLUNTEERFIREFIGHTER)
+    release
+    end
+}
+
+script Quest_Volunteerfirefighter_Completed_Dialogue{
+    msgbox(gText_Volunteerfirefighter_IHopeICanMake,MSGBOX_NPC,SPEAKER_FILIP)
+    release
+    end
+}
+
+text gText_Volunteerfirefighter_OhItsYou{
+    format("Oh, hey there {PLAYER}.")
+}
+text gText_Volunteerfirefighter_IQuit{
+    format("I quit working at Pacificgaselectric after you helped me. Don't get me wrong, I think your efforts helped, but I think it was a drop in the bucket.")
+}
+text gText_Volunteerfirefighter_IveDecidedToJoin{
+    format("I couldn't justify working there anymore, being part of the problem. So I got a new job, but more important, I've decided to join a volunteer firefigher force!")
+}
+text gText_Volunteerfirefighter_TheyBeenGreat{
+    format("Its been great training with them! I want to step up my game, but that means I need to have my own Pokémon... and as you know, that's not really my specialty, you know?.")
+}
+text gText_Volunteerfirefighter_YoureClearly{
+    format("You're clearly a better Trainer than I am, you've proven that! Can you help me out? I need five more Water-type Pokémon.")
+}
+text gText_Volunteerfirefighter_INeedXMore{
+    format("I need {STR_VAR_1} more Water-Type Pokémon!")
+}
+text gText_Volunteerfirefighter_AskForMon{
+    format("Are you sure you're okay with giving me this {STR_VAR_1}?")
+}
+text gText_Volunteerfirefighter_DontHaveAnything{
+    format("Don't have one? That's fine, come back when you do!")
+}
+text gText_Volunteerfirefighter_ThatsNotAWater{
+    format("That's not a Water-type Pokémon, is it?")
+}
+text gText_Volunteerfirefighter_OkayLetsMake{
+    format("Okay, let's make a real difference, {STR_VAR_2}.")
+}
+text gText_Volunteerfirefighter_YouCantGiveMe{
+    format("You can't give me the last Pokémon in your party!")
+}
+text gText_Volunteerfirefighter_OkayIThinkIHave{
+    format("Okay, I think I have enough Pokémon now! Awesome, thanks.")
+}
+text gText_Volunteerfirefighter_IHopeICanMake{
+    format("I hope I can make a real difference!")
+}

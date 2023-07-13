@@ -257,7 +257,7 @@ static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
     {
         VarSet(VAR_PSFROUTE9_STATE, numFrames);
         VarSet(VAR_FISHERMANSWHARF_STATE, numFrames >> 16);
-        VarSet(VAR_NATIVERIVALALPHA_STATE, numBikeCollisions);
+        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
     }
 }
 
@@ -269,7 +269,7 @@ u16 GetRecordedCyclingRoadResults(void) {
     if (framesRecord == 0)
         return FALSE;
 
-    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_NATIVERIVALALPHA_STATE));
+    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
     return TRUE;
 }
 

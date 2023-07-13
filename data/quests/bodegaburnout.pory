@@ -40,7 +40,7 @@ script Quest_Bodegaburnout_LoadRequest_Script{
 }
 
 script Quest_Bodegaburnout_Deliver_Dialogue{
-   msgbox(gText_Bodegaburnout_CanYouDeliever) 
+   msgbox(gText_Bodegaburnout_CanYouDeliever)
 
     specialvar(VAR_RESULT,Quest_Bodegaburnout_CheckLocationAndMatchItem)
     if (!var(VAR_RESULT)){
@@ -62,7 +62,7 @@ script Quest_Bodegaburnout_Rescue_Dialogue{
     end
 }
 
-script Quest_Bodegaburnout_Catch_Dialogue{ 
+script Quest_Bodegaburnout_Catch_Dialogue{
     msgbox(gText_Bodegaburnout_DoYouHave,MSGBOX_YESNO)
 
     if (var(VAR_RESULT) == NO){

@@ -2,6 +2,12 @@
 //Quest_Wildfirerisk_
 
 const FILIP = 11
+const FLAG_HIDE_FILIP = FLAG_TEMP_8
+
+script Quest_Wildfirerisk_Hide_Filip_Script{
+    setflag(FLAG_HIDE_FILIP)
+    return
+}
 
 script Quest_Wildfirerisk_Interact_Filip_Script{
     goto_if_quest_complete(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Complete_Dialogue)
@@ -33,7 +39,7 @@ script Quest_Wildfirerisk_Secret_Dialogue{
     lock
     msgbox(gText_Wildfirerisk_NowThat,,SPEAKER_ZOEY)
     //PSF TODO replace with a fire/flying/electric mon on a nearby route
-    random(NUM_SPECIES) 
+    random(NUM_SPECIES)
     bufferspeciesname(STR_VAR_1,VAR_RESULT)
     msgbox(gText_Wildfirerisk_OhWow,,SPEAKER_FILIP,,EMOTE_SHOCK)
     goto(Quest_Wildfirerisk_Reward_Dialogue)
@@ -112,7 +118,7 @@ script Quest_Wildfirerisk_CheckQuestProgress_Script{
 }
 
 script Quest_Wildfirerisk_Reward_Dialogue{
-    msgbox(gText_Wildfirerisk_YourPokemonYourEffortsWillHelpKeep,MSGBOX_NPC,SPEAKER_FILIP)    
+    msgbox(gText_Wildfirerisk_YourPokemonYourEffortsWillHelpKeep,MSGBOX_NPC,SPEAKER_FILIP)
     giveitem(ITEM_TM43)
     completequest(QUEST_WILDFIRERISK)
     goto(Quest_Wildfirerisk_Complete_Dialogue)

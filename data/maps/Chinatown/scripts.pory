@@ -7,6 +7,7 @@ mapscripts Chinatown_MapScripts{
         call(Quest_Restorechinatown_HidePewfatOutside_Script)
         call(LetsGrabLunch_CheckRestorationProgress_Script)
         special(Quest_Bodegaburnout_CheckAndSetRescueFlag)
+        call_if_quest_not_complete(QUEST_WILDFIRERISK,Quest_Volunteerfirefighter_Hide_Filip_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [

@@ -1359,3 +1359,37 @@ void Quest_Mutualaidfund_TakeDonation(void){
 
     RemoveMoney(&gSaveBlock1Ptr->money,askAmount);
 }
+
+// ***********************************************************************
+// Quest: Volunteer Firefighter
+// ***********************************************************************
+
+bool8 Quest_Volunteerfirefighter_CheckIfWater(void)
+{
+    u32 species = 0;
+    u32 type[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    type[0] = gSpeciesInfo[species].types[0];
+    type[1] = gSpeciesInfo[species].types[1];
+
+        if (
+             (type[0] != TYPE_WATER) &&
+             (type[1] != TYPE_WATER)
+           )
+            {
+                doesPokemonMatch = FALSE;
+            }
+    return doesPokemonMatch;
+}
+
+
+u8 Quest_Volunteerfirefighter_GetRemainingNumberOfMons(void)
+{
+    u8 numberCapturedMons = VarGet(VAR_QUEST_VOLUNTEER_FIREFIGHTER_COUNT);
+    u8 remainingCapturedMons = (REQUIRED_NUMBER_OF_POKEMON - numberCapturedMons);
+
+    ConvertIntToDecimalStringN(gStringVar1, remainingCapturedMons, STR_CONV_MODE_LEFT_ALIGN, 1);
+    return remainingCapturedMons;
+}

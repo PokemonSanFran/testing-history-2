@@ -6,6 +6,7 @@ mapscripts Sunset_MapScripts {
         call(Quest_CutePokemon_HideMelissaB_Script)
         call(Quest_ButOnlyIn_HideGunda_Script)
         call(Quest_Breaktheinternet_SunsetGuy_Visibility_Script)
+        call_if_quest_complete(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Hide_Filip_Script)
     }
     MAP_SCRIPT_ON_LOAD {
         call(ImIn_DestroyWall_Script)

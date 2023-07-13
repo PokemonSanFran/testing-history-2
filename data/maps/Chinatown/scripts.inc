@@ -12,6 +12,7 @@ Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restorechinatown_HidePewfatOutside_Script
 	call LetsGrabLunch_CheckRestorationProgress_Script
 	special Quest_Bodegaburnout_CheckAndSetRescueFlag
+	call_if_quest_not_complete QUEST_WILDFIRERISK, Quest_Volunteerfirefighter_Hide_Filip_Script
 	return
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_LOAD:

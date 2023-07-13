@@ -1321,7 +1321,7 @@ Script_RemoveTint::
 .include "data/quests/skilllibrary.inc"
 // .include "data/quests/miniarcade.inc"
 .include "data/quests/mutualaidfund.inc"
-// .include "data/quests/volunteerfirefighter.inc"
+.include "data/quests/volunteerfirefighter.inc"
 
 ## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"

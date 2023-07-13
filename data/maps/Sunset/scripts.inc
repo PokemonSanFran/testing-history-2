@@ -10,6 +10,7 @@ Sunset_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_CutePokemon_HideMelissaB_Script
 	call Quest_ButOnlyIn_HideGunda_Script
 	call Quest_Breaktheinternet_SunsetGuy_Visibility_Script
+	call_if_quest_complete QUEST_WILDFIRERISK, Quest_Wildfirerisk_Hide_Filip_Script
 	return
 
 Sunset_MapScripts_MAP_SCRIPT_ON_LOAD:

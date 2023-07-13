@@ -62,19 +62,20 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	additem ITEM_TM08
-	additem ITEM_TM90
-	warp MAP_TREASUREISLAND_SKILLLIBRARY, 0
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WILDFIRERISK
 	return
 
 
 Debug_Script_2::
-	additem ITEM_TM42
+	givemon SPECIES_SQUIRTLE, 1, 0
+	givemon SPECIES_SQUIRTLE, 1, 0
+	givemon SPECIES_SQUIRTLE, 1, 0
+	givemon SPECIES_SQUIRTLE, 1, 0
+	warp MAP_CHINATOWN, 25, 27
 	end
 
 
 Debug_Script_3::
-	special Quest_Skilllibrary_Debug
 	end
 
 
