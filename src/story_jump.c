@@ -497,6 +497,7 @@ void JumpPlayerTo_swagbag()
 	VarSet(VAR_PLAYER_HOME_STATE, POST_SWAGBAG);
 	FlagSet(FLAG_SYS_POKENAV_GET);
 	FlagSet(FLAG_SYS_QUEST_MENU_GET);
+    FlagSet(FLAG_SYS_CLOCK_SET);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_ACTIVE);
 	SetWarpDestination(2, 0, 0, -1, -1);
@@ -866,7 +867,7 @@ void JumpPlayerTo_HaveYouSeenTheNews()
     QuestMenu_GetSetSubquestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED, SUB_QUEST_3);
     QuestMenu_GetSetSubquestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED, SUB_QUEST_4);
 	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED);
-    
+
 	SetWarpDestination(10, 17, 1, -1, -1);
 }
 void JumpPlayerTo_WelcometotheWarRoom()

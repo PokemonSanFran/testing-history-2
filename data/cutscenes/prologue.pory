@@ -16,6 +16,7 @@ const GUARD = 8
 script Prologue_SetUp_Script{
     setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
         setflag(FLAG_SYS_QUEST_MENU_GET)
+        setflag(FLAG_SYS_CLOCK_SET)
         call(Prologue_IntroTime_Dialogue)
 //PSF TODO open modal to tell player about teaching their pokemon new moves
         startquest(QUEST_BECOMECHAMPION)
@@ -289,7 +290,7 @@ text gText_Prologue_March17{
 
 text gText_Prologue_HelpModal{
     format("In the final build, this will be a modal explaining that you can teach your Pokémon different moves from the Summary Screen.")
-}   
+}
 
 text gText_Prologue_YouMadeIt{
     format("You made it, Adam. Welcome to your final battle.")
