@@ -48,8 +48,9 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/flags.h"
+#include "save_screen.h"
 /*
- * 
+ *
  */
 
 //==========DEFINES==========//
@@ -126,7 +127,7 @@ static const struct BgTemplate sMenuBgTemplates[] =
         .charBaseIndex = 0,
         .mapBaseIndex = 31,
         .priority = 1
-    }, 
+    },
     {
         .bg = 1,    // this bg loads the UI tilemap
         .charBaseIndex = 3,
@@ -141,9 +142,9 @@ static const struct BgTemplate sMenuBgTemplates[] =
     }
 };
 
-static const struct WindowTemplate sMenuWindowTemplates[] = 
+static const struct WindowTemplate sMenuWindowTemplates[] =
 {
-    [WINDOW_1] = 
+    [WINDOW_1] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
@@ -199,7 +200,7 @@ enum Colors
     FONT_RED,
     FONT_BLUE,
 };
-static const u8 sMenuWindowFontColors[][3] = 
+static const u8 sMenuWindowFontColors[][3] =
 {
     [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  2, TEXT_COLOR_TRANSPARENT},
     [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  1,  TEXT_COLOR_TRANSPARENT},
@@ -243,7 +244,7 @@ void Menu_Init(MainCallback callback)
     // initialize stuff
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
-    
+
     sMenuDataPtr->currentAppId = VarGet(CURRENT_APP_ID_VAR) % NUM_APPS_PER_SCREEN;
     if(VarGet(CURRENT_APP_ID_VAR) >= NUM_APPS_PER_SCREEN){
         sMenuDataPtr->areYouOnSecondScreen = TRUE;
@@ -251,7 +252,7 @@ void Menu_Init(MainCallback callback)
     else{
         sMenuDataPtr->areYouOnSecondScreen = FALSE;
     }
-    
+
     sMenuDataPtr->TempAppId = 0;
     sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
     sMenuDataPtr->isAppSelectedForMove = FALSE;
@@ -610,38 +611,38 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     switch(GetCurrentAppfromIndex(CurrentApp)){
         case APP_POKEMON:
-            str_SelectedOption  = sText_App_Pokemon;	
+            str_SelectedOption  = sText_App_Pokemon;
         break;
-        case APP_BAG:	
-            str_SelectedOption = sText_App_Bag;	
+        case APP_BAG:
+            str_SelectedOption = sText_App_Bag;
         break;
-        case APP_MAP:	
-            str_SelectedOption = sText_App_Map;	
-        break;			
-        case APP_QUEST:	
+        case APP_MAP:
+            str_SelectedOption = sText_App_Map;
+        break;
+        case APP_QUEST:
             str_SelectedOption = sText_App_Quest;
         break;
-        case APP_DEXNAV:		
+        case APP_DEXNAV:
             str_SelectedOption = sText_App_Dexnav;
         break;
-        case APP_POKEDEX:	
+        case APP_POKEDEX:
             str_SelectedOption = sText_App_Pokedex;
         break;
-        case APP_TWITTER:		
+        case APP_TWITTER:
             str_SelectedOption = sText_App_Twitter;
         break;
-        case APP_OPTIONS:	
+        case APP_OPTIONS:
             str_SelectedOption = sText_App_Options;
         break;
-        case APP_PROFILE:	
+        case APP_PROFILE:
             StringCopy(&strArray[0], gSaveBlock2Ptr->playerName);
             str_SelectedOption = strArray;
         break;
-        case APP_AMAZON:	
+        case APP_AMAZON:
             str_SelectedOption = sText_App_Amazon;
         break;
-        default:	
-            str_SelectedOption = sText_App_None;	
+        default:
+            str_SelectedOption = sText_App_None;
         break;
 	}
 
@@ -671,8 +672,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Map_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 40, 40);
-            break;			
-            case APP_QUEST:	
+            break;
+            case APP_QUEST:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
@@ -708,13 +709,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_AMAZON:	
+            case APP_AMAZON:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 40, 40);
             break;
-            default:	
+            default:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Default_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
@@ -842,12 +843,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     // Quest Information --------------------------------------------------------------------------------------------------------------------
 	x = 0;
 	y = 14;
-	
+
     if(!sMenuDataPtr->shouldShowErrorMessage){
         if(VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR){
             str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
-        }  
+        }
         else if(firstFavoritedQuest != SUB_QUEST_COUNT){
             GenerateQuestFlavorText(firstFavoritedQuest);
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
@@ -979,6 +980,12 @@ void Task_OpenSaveMenuStartMenu(u8 taskId)
     }
 }
 
+void Task_OpenSaveScreenStartMenu(u8 taskId){
+    if (!gPaletteFade.active){
+		SetMainCallback2(CB2_InitSaveScreen);
+    }
+}
+
 // App Callbacks ----------------------------------------------------------------------------------------------------
 void Task_OpenPokedexFromStartMenu(u8 taskId)
 {
@@ -1018,7 +1025,7 @@ void Task_OpenTrainerCardFromStartMenu(u8 taskId)
     {
 		PlayRainStoppingSoundEffect();
 		CleanupOverworldWindowsAndTilemaps();
-		
+
 		if (InUnionRoom())
 			ShowPlayerTrainerCard(CB2_ReturnToUIMenu); // Display trainer card
 		else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
@@ -1036,7 +1043,7 @@ void Task_OpenPokenavStartMenu(u8 taskId)
 		CleanupOverworldWindowsAndTilemaps();
 		SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
     }
-}  
+}
 
 void Task_OpenOptionsMenuStartMenu(u8 taskId)
 {
@@ -1062,7 +1069,7 @@ void Task_OpenAmazonStartMenu(u8 taskId)
         //SetMainCallback2(Option_Menu_Init); // Display option menu
         gMain.savedCallback = CB2_ReturnToUIMenu;
     }
-}  
+}
 
 static u8 GetCurrentAppfromIndex(u8 index)
 {
@@ -1077,7 +1084,7 @@ static u8 GetCurrentSignal()
     //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
     //here you can change the signal this menu will get in certain areas in the game
     //the flag 0x89 is currently being used so I can't insert it but when anyone inserts it just remove the comments below
-    //if(FlagGet(FLAG_PHONE_NO_SERVICE)) 
+    //if(FlagGet(FLAG_PHONE_NO_SERVICE))
     //    return 0;
     //else
         return 3;
@@ -1112,7 +1119,7 @@ static void Task_MenuMain(u8 taskId)
             gTasks[taskId].func = Task_MenuTurnOff;
         }
     }
-	
+
 	if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
     {
         if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
@@ -1120,13 +1127,14 @@ static void Task_MenuMain(u8 taskId)
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
-	
+
 	if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
     {
         PlaySE(SE_PC_OFF);
         ClearStartMenuDataBeforeExit();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
+        //gTasks[taskId].func = Task_OpenSaveScreenStartMenu;
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
@@ -1169,7 +1177,7 @@ static void Task_MenuMain(u8 taskId)
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
-	
+
 	if(JOY_NEW(DPAD_UP))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
@@ -1237,7 +1245,7 @@ static void Task_MenuMain(u8 taskId)
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
-	
+
 	if(JOY_NEW(DPAD_DOWN))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
@@ -1288,7 +1296,7 @@ static void Task_MenuMain(u8 taskId)
                         PlaySE(SE_BOO);
                         sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
-					
+
                 break;
                 case APP_POKEMON:
                     PlaySE(SE_SELECT);
@@ -1321,6 +1329,8 @@ static void Task_MenuMain(u8 taskId)
                         PlaySE(SE_PC_OFF);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_MenuTurnOff;
+                        //gTasks[taskId].func = Task_MenuTurnOff;
+                        gTasks[taskId].func = Task_OpenSaveScreenStartMenu;
                     }
                     else{
                         PlaySE(SE_BOO);
@@ -1352,10 +1362,10 @@ static void Task_MenuMain(u8 taskId)
                 case APP_DEXNAV:
                     if(GetCurrentSignal() != 0){
                         /*/
-                        This should be added when this branch merges with the one with the dexnav and the HasMapMons its a 
+                        This should be added when this branch merges with the one with the dexnav and the HasMapMons its a
                         function that checks that there are wild encounter in that specific area since there were reports
                         of the game crashing with ghoulslash's dexnav if there are no pokemon in some emulators so I think
-                        its safer to add this as a check 
+                        its safer to add this as a check
                         remove everything else in this if when we merge the dexnav
                         if(HasMapMons()){
                             PlaySE(SE_SELECT);
@@ -1385,7 +1395,7 @@ static void Task_MenuMain(u8 taskId)
         }
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
-    } 
+    }
 
     if(JOY_NEW(SELECT_BUTTON))
 	{
