@@ -168,7 +168,7 @@
 #define FLAG_UNLOCKED_DIVE                                   0x90
 #define FLAG_UNLOCKED_STRENGTH                               0x91
 #define FLAG_UNLOCKED_WHIRLPOOL                              0x92
-#define PSF_FLAG_149                                         0x93
+#define FLAG_SET_WALL_CLOCK                                  0x93
 #define PSF_FLAG_150                                         0x94
 #define PSF_FLAG_151                                         0x95
 #define PSF_FLAG_152                                         0x96
@@ -1692,7 +1692,7 @@
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
-#define FLAG_SET_WALL_CLOCK                      0x51
+//#define FLAG_SET_WALL_CLOCK                      0x51
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 

@@ -1393,3 +1393,50 @@ u8 Quest_Volunteerfirefighter_GetRemainingNumberOfMons(void)
     ConvertIntToDecimalStringN(gStringVar1, remainingCapturedMons, STR_CONV_MODE_LEFT_ALIGN, 1);
     return remainingCapturedMons;
 }
+
+// ***********************************************************************
+// Quest: Bruce Lee
+// ***********************************************************************
+bool8 Quest_Brucelee_UpdateType(u16 days)
+{
+    u16 randomType = Random() % NUMBER_OF_MON_TYPES;
+
+    if (days != 0){
+
+        while(randomType == TYPE_MYSTERY)
+            randomType = Random () % NUMBER_OF_MON_TYPES;
+
+        VarSet(VAR_QUEST_BRUCE_LEE_DAILY_TYPE,randomType);
+    }
+}
+
+bool8 Quest_Brucelee_BufferTypeName(void)
+{
+    u16 dailyType = VarGet(VAR_QUEST_BRUCE_LEE_DAILY_TYPE);
+    StringCopy(gStringVar1,gTypeNames[dailyType]);
+}
+
+bool8 Quest_Brucelee_CheckIfPartyTypes(void)
+{
+    u8 i;
+    u16 species;
+    u16 dailyType = VarGet(VAR_QUEST_BRUCE_LEE_DAILY_TYPE);
+
+    bool8 partyMatchesType = TRUE;
+
+    struct Pokemon *pokemon;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        pokemon = &gPlayerParty[i];
+        if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(pokemon, MON_DATA_IS_EGG))
+        {
+            species = GetMonData(pokemon, MON_DATA_SPECIES);
+            if (gSpeciesInfo[species].types[0] != dailyType && gSpeciesInfo[species].types[1] != dailyType)
+            {
+                partyMatchesType = FALSE;
+            }
+        }
+    }
+    return partyMatchesType;
+}

@@ -624,6 +624,9 @@ gSpecials::
     def_special Quest_Mutualaidfund_TakeDonation
     def_special Quest_Volunteerfirefighter_CheckIfWater
     def_special Quest_Volunteerfirefighter_GetRemainingNumberOfMons
+    def_special Quest_Brucelee_UpdateType
+    def_special Quest_Brucelee_BufferTypeName
+    def_special Quest_Brucelee_CheckIfPartyTypes
 
 @ Restored Frontier
 

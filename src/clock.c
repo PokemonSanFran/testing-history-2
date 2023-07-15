@@ -54,6 +54,7 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
+        Quest_Brucelee_UpdateType(daysSince);
         GenerateMazeLayoutSeed();
         Quest_Rockcollector_RespawnStones();
         *days = localTime->days;

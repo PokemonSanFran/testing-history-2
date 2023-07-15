@@ -1,0 +1,203 @@
+//Quest_Brucelee_
+//gText_Brucelee_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const LEE_PYRON = 1
+
+script Quest_Brucelee_Event_Script{
+    goto_if_quest_complete(QUEST_BRUCELEEQUEST,Quest_Brucelee_Complete_Script)
+    goto_if_quest_active(QUEST_BRUCELEEQUEST,Quest_Brucelee_Active_Script)
+    goto(Quest_Brucelee_StartQuest_Script)
+}
+
+script Quest_Brucelee_StartQuest_Script{
+    lock
+    msgbox(gText_Brucelee_HelloTrainer,MSGBOX_NPC,SPEAKER_LEE_PYRON)
+    msgbox(gText_Brucelee_IHaveDevotedMyLife,,SPEAKER_LEE_PYRON)
+    msgbox(gText_Brucelee_ComeJoinMe,,SPEAKER_LEE_PYRON)
+    goto(Quest_Brucelee_PreChallengeChecks_Script)
+    release
+    end
+}
+
+script Quest_Brucelee_PreChallengeChecks_Script{
+    call(Quest_Brucelee_CheckQuestAndStart)
+    call(Quest_Brucelee_CheckParty_Script)
+    call(Quest_Brucelee_SaveBeforeChallenge_Script)
+    goto(Quest_Brucelee_StartChallenge)
+}
+
+script Quest_Brucelee_CheckQuestAndStart{
+    returnqueststate(QUEST_BRUCELEEQUEST)
+
+    if (var(VAR_RESULT)< QUEST_MENU_SET_ACTIVE){
+        startquest(QUEST_BRUCELEEQUEST)
+    }
+    return
+}
+
+script Quest_Brucelee_CheckParty_Script{
+    special(Quest_Brucelee_UpdateType) //PSF TODO replace with dotimebasedevents
+    special(Quest_Brucelee_BufferTypeName)
+    msgbox(gText_Brucelee_TodayIMustTrain,,SPEAKER_LEE_PYRON)
+
+    specialvar(VAR_RESULT,Quest_Brucelee_CheckIfPartyTypes)
+    if(!var(VAR_RESULT)){
+        goto(Quest_Brucelee_PartyDoesNotMatch_Dialogue)
+    }
+    return
+}
+
+script Quest_Brucelee_PartyDoesNotMatch_Dialogue{
+    msgbox(gText_Brucelee_YouHaveAPokemonInYour,,SPEAKER_LEE_PYRON)
+    closemessage
+    release
+    end
+}
+
+script Quest_Brucelee_SaveBeforeChallenge_Script{
+    msgbox(gText_Brucelee_OurTrainingWillBe,,SPEAKER_LEE_PYRON)
+    closemessage
+
+    call(Common_EventScript_SaveGame)
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Brucelee_CancelChallenge)
+    }
+    return
+}
+
+script Quest_Brucelee_CancelChallenge{
+    msgbox(gText_Brucelee_ThenIWillMeditate,MSGBOX_NPC,SPEAKER_LEE_PYRON)
+    end
+}
+
+script Quest_Brucelee_Active_Script{
+    msgbox(gText_Brucelee_AreYouReady,,SPEAKER_LEE_PYRON)
+    goto(Quest_Brucelee_PreChallengeChecks_Script)
+}
+
+script Quest_Brucelee_Complete_Script{
+    msgbox(gText_Brucelee_AWorthyPartner,,SPEAKER_LEE_PYRON)
+    goto(Quest_Brucelee_PreChallengeChecks_Script)
+}
+
+script Quest_Brucelee_StartChallenge{
+    special(SavePlayerParty)
+    //special(LoadEnemyParty)
+    //special(ScalePartyTo100)
+    msgbox(gText_Brucelee_MyAuraWillRaise,,SPEAKER_LEE_PYRON)
+    goto(Quest_Brucelee_Battle1_Script)
+}
+
+script Quest_Brucelee_Battle1_Script{
+    msgbox(gText_Brucelee_Hiyah,,SPEAKER_LEE_PYRON)
+    closemessage
+
+    trainerbattle_continue_after_lose(TRAINER_LEE_PYRON,gText_Brucelee_Hah)
+    if(var(VAR_RESULT) == B_OUTCOME_WON){
+        goto(Quest_Brucelee_Battle2_Script)
+    }
+    goto(Quest_Brucelee_ExitChallenge_Script)
+}
+
+script Quest_Brucelee_Battle2_Script{
+    msgbox(gText_Brucelee_AndAgain,,SPEAKER_LEE_PYRON)
+    closemessage
+
+    trainerbattle_continue_after_lose(TRAINER_LEE_PYRON,gText_Brucelee_Kiyah)
+    if(var(VAR_RESULT) == B_OUTCOME_WON){
+        goto(Quest_Brucelee_PostBattle_Script)
+    }
+    goto(Quest_Brucelee_ExitChallenge_Script)
+}
+
+script Quest_Brucelee_PostBattle_Script{
+    msgbox(gText_Brucelee_YouveExhaustedMe,,SPEAKER_LEE_PYRON)
+    msgbox(gText_Brucelee_ThankYou,,SPEAKER_LEE_PYRON)
+    call_if_quest_not_complete(QUEST_BRUCELEEQUEST,Quest_Brucelee_Reward_Dialogue)
+    closemessage
+    release
+    end
+}
+
+script Quest_Brucelee_Reward_Dialogue{
+    msgbox(gText_Brucelee_IUseThisPerhaps,,SPEAKER_LEE_PYRON)
+    giveitem(ITEM_TM46)
+    completequest(QUEST_BRUCELEEQUEST)
+    call(Quest_Brucelee_RestoreParty_Script)
+    return
+}
+
+script Quest_Brucelee_RestoreParty_Script{
+    msgbox(gText_Brucelee_AndNowToRest,,SPEAKER_LEE_PYRON)
+    fadescreen(FADE_TO_BLACK)
+    special(LoadPlayerParty)
+    special(HealPlayerParty)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_Brucelee_ExitChallenge_Script{
+    msgbox(gText_Brucelee_WellFought,,SPEAKER_LEE_PYRON)
+    call(Quest_Brucelee_RestoreParty_Script)
+    closemessage
+    release
+    end
+}
+text gText_Brucelee_HelloTrainer{
+    format("Hello Trainer. I can sense a powerful aura in you.")
+}
+text gText_Brucelee_IHaveDevotedMyLife{
+    format("I have devoted my life to growing together with my Pokémon, and testing myself against specific auras... and I can sense that you a capable sparring partner.")
+}
+text gText_Brucelee_ComeJoinMe{
+    format("Come, join me.")
+}
+text gText_Brucelee_TodayIMustTrain{
+    format("Today, I have decided to hone myself against {STR_VAR_1}-type Pokémon.")
+}
+text gText_Brucelee_YouHaveAPokemonInYour{
+    format("You have a Pokémon in your party that is not {STR_VAR_1}-type. Remedy this, and return to me.")
+}
+text gText_Brucelee_OurTrainingWillBe{
+    format("Our training will be intense. Reality bending, even. First, we must save.")
+}
+text gText_Brucelee_ThenIWillMeditate{
+    format("Then I will meditate until you are ready.")
+}
+text gText_Brucelee_AreYouReady{
+    format("Are you ready for more?")
+}
+text gText_Brucelee_AWorthyPartner{
+    format("A worthy partner has returned! Let us get right to it.")
+}
+text gText_Brucelee_MyAuraWillRaise{
+    format("My aura will raise our Pokémon to their ultimate levels. Prepare yourself!")
+}
+text gText_Brucelee_Hiyah{
+    format("Hiyah!")
+}
+text gText_Brucelee_Hah{
+    format("Hah!")
+}
+text gText_Brucelee_AndAgain{
+    format("And again!")
+}
+text gText_Brucelee_Kiyah{
+    format("Kiyah!")
+}
+text gText_Brucelee_YouveExhaustedMe{
+    format("You've exhausted me. Excellent work.")
+}
+text gText_Brucelee_ThankYou{
+    format("Thank you for training with me today.")
+}
+text gText_Brucelee_IUseThisPerhaps{
+    format("I use this to train. Perhaps it will serve you as well.")
+}
+text gText_Brucelee_AndNowToRest{
+    format("And now to rest...")
+}
+text gText_Brucelee_WellFought{
+    format("Well fought, {PLAYER}.")
+}

@@ -247,5 +247,6 @@
 #define SPEAKER_IMPROV_2                214
 #define SPEAKER_IMPROV_3                215
 #define SPEAKER_CHRIS                   216
+#define SPEAKER_LEE_PYRON               217
 
 #endif

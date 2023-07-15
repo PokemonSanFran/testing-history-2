@@ -62,11 +62,15 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	warp MAP_FISHERMANSWHARF_ARCADE, 0
+	warp MAP_MUIRWOODS, 22, 43
 	return
 
 
 Debug_Script_2::
+	special Quest_Brucelee_UpdateType
+	special Quest_Brucelee_BufferTypeName
+	msgbox Debug_Script_2_Text_0
+	closemessage
 	end
 
 
@@ -112,6 +116,9 @@ Debug_CheckSaveBlock::
 	release
 	end
 
+
+Debug_Script_2_Text_0:
+	.string "{STR_VAR_1}$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

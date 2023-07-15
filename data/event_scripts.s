@@ -1272,7 +1272,7 @@ Script_RemoveTint::
 .include "data/quests/getthebandbacktogether.inc"
 .include "data/quests/foodtruckbureaucracy.inc"
 // .include "data/quests/detectiveariana.inc"
-// .include "data/quests/bruceleequest.inc"
+.include "data/quests/bruceleequest.inc"
 .include "data/quests/challengeofthe7sisters.inc"
 .include "data/quests/cutepokemon.inc"
 .include "data/quests/wallacearmy.inc"
