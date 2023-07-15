@@ -980,12 +980,6 @@ void Task_OpenSaveMenuStartMenu(u8 taskId)
     }
 }
 
-void Task_OpenSaveScreenStartMenu(u8 taskId){
-    if (!gPaletteFade.active){
-		SetMainCallback2(CB2_InitSaveScreen);
-    }
-}
-
 // App Callbacks ----------------------------------------------------------------------------------------------------
 void Task_OpenPokedexFromStartMenu(u8 taskId)
 {
@@ -1330,7 +1324,7 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_MenuTurnOff;
                         //gTasks[taskId].func = Task_MenuTurnOff;
-                        gTasks[taskId].func = Task_OpenSaveScreenStartMenu;
+                        gTasks[taskId].func = Task_OpenSampleUi_StartHere;
                     }
                     else{
                         PlaySE(SE_BOO);
