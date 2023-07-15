@@ -32,6 +32,7 @@
 #include "quest_flavor_lookup.h"
 #include "rtc.h"
 #include "region_map.h"
+#include "ui_map_system.h"
 #include "trainer_card.h"
 #include "scanline_effect.h"
 #include "script.h"
@@ -50,6 +51,7 @@
 #include "constants/flags.h"
 #include "printf.h"
 #include "mgba.h"
+#include "ui_map_system.h"
 
 /*
  * 
@@ -1037,7 +1039,8 @@ void Task_OpenPokenavStartMenu(u8 taskId)
     {
 		PlayRainStoppingSoundEffect();
 		CleanupOverworldWindowsAndTilemaps();
-		SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
+        CreateTask(Task_OpenMapSystemFromStartMenu, 0);
+		//SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
     }
 }  
 

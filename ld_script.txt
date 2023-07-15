@@ -350,6 +350,7 @@ SECTIONS {
         src/quest_flavor_lookup.o(.text);
         src/quest_strings.o(.text);
         src/twitter.o(.text);
+        src/ui_map_system.o(.text);
         src/ui_start_menu.o(.text);
         src/ui_options_menu.o(.text);
         src/ui_amazon.o(.text);
@@ -726,6 +727,7 @@ SECTIONS {
         src/quest_flavor_lookup.o(.rodata);
         src/quest_strings.o(.rodata);
         src/twitter.o(.rodata);
+        src/ui_map_system.o(.rodata);
         src/ui_start_menu.o(.rodata);
         src/ui_options_menu.o(.rodata);
         src/ui_amazon.o(.rodata);
