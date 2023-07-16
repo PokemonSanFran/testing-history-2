@@ -103,7 +103,6 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 //EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_6  = 0;
 
 //==========STATIC=DEFINES==========//
-static void Menu_RunSetup(void);
 static bool8 Menu_DoGfxSetup(void);
 static bool8 Menu_InitBgs(void);
 static void Menu_FadeAndBail(void);
@@ -300,7 +299,7 @@ static void StartMenuIndextoTempIndex()
     sMenuDataPtr->areYouOnSecondScreenTemp = sMenuDataPtr->areYouOnSecondScreen;
 }
 
-static void Menu_RunSetup(void)
+void Menu_RunSetup(void)
 {
     while (1)
     {
@@ -401,7 +400,7 @@ static bool8 Menu_DoGfxSetup(void)
         Free(*ptr__);                  \
 })
 
-static void Menu_FreeResources(void)
+void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
@@ -1084,7 +1083,7 @@ static u8 GetCurrentSignal()
         return 3;
 }
 
-static void ClearStartMenuDataBeforeExit()
+void ClearStartMenuDataBeforeExit()
 {
     sMenuDataPtr->isAppSelectedForMove = FALSE;
     FlagClear(FLAG_START_MENU_MOVE_MODE);
@@ -1128,7 +1127,6 @@ static void Task_MenuMain(u8 taskId)
         ClearStartMenuDataBeforeExit();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
-        //gTasks[taskId].func = Task_OpenSaveScreenStartMenu;
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
@@ -1322,8 +1320,6 @@ static void Task_MenuMain(u8 taskId)
                     if(GetCurrentSignal() != 0){
                         PlaySE(SE_PC_OFF);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                        gTasks[taskId].func = Task_MenuTurnOff;
-                        //gTasks[taskId].func = Task_MenuTurnOff;
                         gTasks[taskId].func = Task_OpenSampleUi_StartHere;
                     }
                     else{

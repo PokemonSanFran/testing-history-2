@@ -765,7 +765,7 @@ u8 HandleSavingData(u8 saveType)
 
 u8 TrySavingData(u8 saveType)
 {
-    saveType = SAVE_OVERWRITE_DIFFERENT_FILE;
+    //saveType = SAVE_OVERWRITE_DIFFERENT_FILE;
     if (gFlashMemoryPresent != TRUE)
     {
         gSaveAttemptStatus = SAVE_STATUS_ERROR;

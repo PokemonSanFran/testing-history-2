@@ -1,4 +1,8 @@
 #include "save_screen.h"
+#include "save.h"
+#include "start_menu.h"
+#include "ui_start_menu.h"
+#include "strings.h"
 
 #include "gba/types.h"
 #include "gba/defines.h"
@@ -129,7 +133,6 @@
  */
 struct SampleUiState
 {
-    // Save the callback to run when we exit: i.e. where do we want to go after closing the menu
     MainCallback savedCallback;
     // We will use this later to track some loading state
     u8 loadState;
@@ -141,23 +144,14 @@ struct SampleUiState
     u16 monIconDexNum;
 };
 
-// GF window system passes window IDs around, so define this to avoid using magic numbers everywhere
 enum WindowIds
 {
     WIN_UI_HINTS,
-    WIN_MON_INFO
+    WIN_MON_INFO,
+    WIN_SAVE_MESSAGE,
+    WIN_YESNO_BOX
 };
 
-/*
- * We'll need this data in order to access the Pokedex descriptions. We have declared it `extern' because the actual
- * data is defined in pokedex.c (which becomes pokedex.o) as .rodata (via a direct inclusion from pokedex_entries.h),
- * so if we tried to include the array directly here we'd get duplicate definition errors.
- *
- * For a helpful primer on the difference between declarations and definitions in C, as well as some clarification of
- * the `extern' keyword:
- *      https://www.cprogramming.com/declare_vs_define.html
- */
-extern const struct PokedexEntry gPokedexEntries[];
 
 /*
  * Both of these can be pointers that live in EWRAM -- allocating the actual data on the heap will save precious WRAM
@@ -173,7 +167,6 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
  */
 #define MON_ICON_X     39
 #define MON_ICON_Y     36
-static const u8 sRegionNameKanto[] =  _("Kanto");
 /*
  * Dex mode defines. Info mode shows dex number and description. Stats and Other modes will show placeholder text, but
  * you can change this to show whatever info you want.
@@ -329,31 +322,22 @@ static const struct WindowTemplate sSampleUiWindowTemplates[] =
          */
         .baseBlock = 1 + (16 * 7)
     },
-    // Mark the end of the templates so the `InitWindow' library function doesn't run past the end
+    [WIN_YESNO_BOX] =
+    {
+        .bg = 0,
+        .tilemapLeft = 23,
+        .tilemapTop = 6,
+        .width = 54,
+        .height = 46,
+        .paletteNum = 15,
+        .baseBlock = 1 + (26 * 10)
+    },
     DUMMY_WIN_TEMPLATE
 };
 
 
-/*
- * The tile file is generated from properly a indexed tile PNG image. You MUST use an indexed PNG with 4bpp indexing
- * (you can technically get away with 8bpp indexing as long as each individual index is between 0-15). The easiest way
- * to make indexed PNGs is using a program like GraphicsGale or Aseprite (in Index mode).
- */
 static const u32 sSampleUiTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.lz");
-
-/*
- * I created this tilemap in TilemapStudio using the above tile PNG. I highly recommend TilemapStudio for exporting maps
- * like this.
- */
 static const u32 sSampleUiTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.lz");
-
-/*
- * This palette was built from a JASC palette file that you can export using GraphicsGale or Aseprite. Please note: the
- * palette conversion tool REQUIRES that JASC palette files end in CRLF, the standard Windows line ending. If you are
- * using the Mac/Linux version of a tool like Aseprite, you may get errors complaining that your lines end in LF and not
- * CRLF. To remedy this, run your JASC palette file through a tool like unix2dos and you shouldn't have any more
- * problems.
- */
 static const u16 sSampleUiPalette[] = INCBIN_U16("graphics/sample_ui/00.gbapal");
 
 // Define some font color values that will index into our font color table below.
@@ -399,24 +383,12 @@ static void SampleUi_PrintUiMonInfo(void);
 static void SampleUi_DrawMonIcon(u16 dexNum);
 static void SampleUi_FreeResources(void);
 
-// Declared in sample_ui.h
 void Task_OpenSampleUi_StartHere(u8 taskId)
 {
-    /*
-     * We are still in the overworld callback, so wait until the palette fade is finished (i.e. the screen is entirely
-     * black) before we start cleaning things up and changing callbacks (which might affect displayed graphics and cause
-     * artifacting)
-     */
     if (!gPaletteFade.active)
     {
-        /*
-         * Free overworld related heap stuff -- if you are entering this menu from somewhere else you may want to do
-         * other cleanup. We're entering from overworld start menu so this works for us.
-         */
-        CleanupOverworldWindowsAndTilemaps();
-        // Allocate heap space for menu state and set up callbacks
-        SampleUi_Init(CB2_ReturnToFieldWithOpenMenu);
-        // Our setup is done, so destroy ourself.
+        Menu_FreeResources();
+        SampleUi_Init(CB2_ReturnToUIMenu);
         DestroyTask(taskId);
     }
 }
@@ -426,11 +398,6 @@ void SampleUi_Init(MainCallback callback)
     sSampleUiState = AllocZeroed(sizeof(struct SampleUiState));
     if (sSampleUiState == NULL)
     {
-        /*
-         * If the heap allocation failed for whatever reason, then set the callback to just return to the overworld.
-         * This really shouldn't ever happen but if it does, this is better than hard crashing and making the user think
-         * you bricked their Game Boy.
-         */
         SetMainCallback2(callback);
         return;
     }
@@ -438,82 +405,36 @@ void SampleUi_Init(MainCallback callback)
     sSampleUiState->loadState = 0;
     sSampleUiState->savedCallback = callback;
 
-    /*
-     * Next frame start running UI setup code. SetMainCallback2 also resets gMain.state to zero, which we will need for
-     * the SetupCB
-     */
     SetMainCallback2(SampleUi_SetupCB);
 }
 
 static void SampleUi_SetupCB(void)
 {
     u8 taskId;
-    /*
-     * You may ask: why are these tasks in a giant switch statement? For one thing, it is because this is how GameFreak
-     * does things, and cargo cult programming is a glorious institution. On a more serious note, the intention is to
-     * control how much work is done each frame, and to prevent our setup code from getting interrupted in the middle of
-     * something important. So ideally, we do a small bit of work in each case statement, exit the function, and then
-     * wait for VBlank. Then next frame, we come back around and complete the work in the subsequent case statement.
-     *
-     * You may ask further: how can we be sure that the code in each case finishes before the end of the frame? The
-     * short answer is (besides counting cycles, which is really hard to do given the complexity of the code being
-     * called) we can't. The size of each case is generally a best guess, a crude attempt at doing a small amount of
-     * work before stopping and letting the next frame handle the next bit.
-     */
     switch (gMain.state)
     {
     case 0:
-        // Use DMA to completely clear VRAM
         DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
-        // Null out V/H blanking callbacks since we are not drawing anything atm
         SetVBlankHBlankCallbacksToNull();
-        /*
-         * If previous game state had scheduled any copies to VRAM, cancel these now so we don't accidentally draw
-         * garbage to the screen.
-         */
         ClearScheduledBgCopiesToVram();
         gMain.state++;
         break;
     case 1:
-        /*
-         * Unclear on what this does, I think it is related to some of the screen transition effects. In any case, we
-         * don't want any of those since this is a menu, dammit
-         */
         ScanlineEffect_Stop();
-        /*
-         * Clear all sprite palette tags in the sprite system. Sprite palette tags will be explained in more detail in
-         * the next tutorial. For now, just accept that we need to clear them for things to work properly.
-         */
         FreeAllSpritePalettes();
-        /*
-         * Reset palette fade settings -- we are currently in a fade-to-black initiated by whatever code opened this
-         * menu screen. Since we don't know what they were doing with the palettes, just reset everything so we can do a
-         * simple fade-in when we're done loading.
-         */
         ResetPaletteFade();
-        // Completely clear all sprite buffers and settings
         ResetSpriteData();
-        /*
-         * Completely clear all task data. There should be no tasks running right now so make sure nothing is hanging
-         * around from whatever code got us into this menu.
-         */
         ResetTasks();
         gMain.state++;
         break;
     case 2:
-        // Try to run the BG init code
         if (SampleUi_InitBgs())
         {
-            // If we successfully init the BGs, we can move on
             sSampleUiState->loadState = 0;
             gMain.state++;
         }
         else
         {
-            /*
-             * Otherwise, fade out, free the heap data, and return to main menu. Like before, this shouldn't ever really
-             * happen but it's better to handle it then have a surprise hard-crash.
-             */
             SampleUi_FadeAndBail();
             return;
         }
@@ -582,25 +503,11 @@ static void SampleUi_SetupCB(void)
 
 static void SampleUi_MainCB(void)
 {
-    // Iterate through the Tasks list and run any active task callbacks
     RunTasks();
     // For all active sprites, call their callbacks and update their animation state
     AnimateSprites();
-    /*
-     * After all sprite state is updated, we need to sort their information into the OAM buffer which will be copied
-     * into actual OAM during VBlank. This makes sure sprites are drawn at the correct positions and in the correct
-     * order (recall sprite draw order determines which sprites appear on top of each other).
-     */
     BuildOamBuffer();
-    /*
-     * This one is a little confusing because there are actually two layers of scheduling. Regular game code can call
-     * `ScheduleBgCopyTilemapToVram(u8 bgId)' which will simply mark the tilemap for `bgId' as "ready to be copied".
-     * Then, calling `DoScheduledBgTilemapCopiesToVram' here does not actually perform the copy. Rather it simply adds a
-     * DMA transfer request to the DMA manager for this buffer copy. Only during VBlank when DMA transfers are processed
-     * does the copy into VRAM actually occur.
-     */
     DoScheduledBgTilemapCopiesToVram();
-    // If a palette fade is active, tick the udpate
     UpdatePaletteFade();
 }
 
@@ -624,7 +531,6 @@ static void SampleUi_VBlankCB(void)
 
 static void Task_SampleUiWaitFadeIn(u8 taskId)
 {
-     // Do nothing until the palette fade finishes, then replace ourself with the main menu task.
     if (!gPaletteFade.active)
     {
         gTasks[taskId].func = Task_SampleUiMainInput;
@@ -637,9 +543,7 @@ static void Task_SampleUiMainInput(u8 taskId)
     if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_PC_OFF);
-        // Fade screen to black
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        // Replace ourself with the "exit gracefully" task function
         gTasks[taskId].func = Task_SampleUiWaitFadeAndExitGracefully;
     }
     // User pressed or held DPAD_DOWN, scroll down through dex list
@@ -681,6 +585,7 @@ static void Task_SampleUiMainInput(u8 taskId)
     // User pressed A, cycle to next dex mode
     if (JOY_NEW(A_BUTTON))
     {
+        /*
         PlaySE(SE_SELECT);
         if (sSampleUiState->mode == MODE_OTHER)
         {
@@ -693,6 +598,8 @@ static void Task_SampleUiMainInput(u8 taskId)
         }
         SampleUi_PrintUiButtonHints();
         SampleUi_PrintUiMonInfo();
+    */
+
     }
 }
 
@@ -961,8 +868,6 @@ static void SampleUi_PrintUiButtonHints(void)
      * `AddTextPrinterX' a lot of separate times, getting everything into VRAM is going to take multiple frames, and you
      * will see the partially drawn text show up as each subsequent DMA transfer finishes.
      */
-    AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_NORMAL, 0, 3, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
-        TEXT_SKIP_DRAW, sRegionNameKanto);
     AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_SMALL, 47, 0, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
         TEXT_SKIP_DRAW, sText_SampleUiButtonHint1);
     AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_SMALL, 47, 10, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
@@ -977,7 +882,6 @@ static void SampleUi_PrintUiButtonHints(void)
     CopyWindowToVram(WIN_UI_HINTS, COPYWIN_GFX);
 }
 
-static const u8 sText_SampleUiMonInfoSpecies[] = _("{NO}{STR_VAR_1} {STR_VAR_2}");
 static const u8 sText_SampleUiMonStats[] = _("Put stats info here");
 static const u8 sText_SampleUiMonOther[] = _("Put other info here");
 static void SampleUi_PrintUiMonInfo(void)
@@ -993,10 +897,7 @@ static void SampleUi_PrintUiMonInfo(void)
          * Use the string manipulation library to put the National Dex num, species name, and dex description into
          * strings, ready to be drawn.
          */
-        ConvertIntToDecimalStringN(gStringVar1, sSampleUiState->monIconDexNum, STR_CONV_MODE_LEADING_ZEROS, 3);
-        StringCopy(gStringVar2, gSpeciesNames[speciesId]);
-        StringExpandPlaceholders(gStringVar3, sText_SampleUiMonInfoSpecies);
-        StringCopy(gStringVar4, gPokedexEntries[sSampleUiState->monIconDexNum].description);
+        StringCopy(gStringVar4, gText_ConfirmSave);
 
         // The window drawing code here works just like in `SampleUi_PrintUiButtonHints'
         AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SHORT, 5, 3, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
