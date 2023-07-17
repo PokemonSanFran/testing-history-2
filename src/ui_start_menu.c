@@ -49,6 +49,10 @@
 #include "constants/rgb.h"
 #include "constants/flags.h"
 #include "save_screen.h"
+#include "new_game.h"
+#include "save.h"
+#include "start_menu.h"
+
 /*
  *
  */
@@ -64,6 +68,7 @@ struct MenuResources
     bool8 areYouOnSecondScreenTemp;
     bool8 isAppSelectedForMove;
     bool8 shouldShowErrorMessage;
+    u8 saveMode;
     u8 startMenuAppTempIndex[NUM_TOTAL_APPS];
     u8 PartyPokemonIcon;
     u8 PartyPokemonIcon_1;
@@ -79,12 +84,24 @@ enum WindowIds
     WINDOW_1,
 };
 
+enum
+{
+    SAVE_MODE_NOT_ENGAGED,
+    SAVE_MODE_ASK,
+    SAVE_MODE_IN_PROGRESS,
+    SAVE_MODE_SUCCESS,
+    SAVE_MODE_CANCELED,
+    SAVE_MODE_ERROR,
+    SAVE_MODE_OVERWRITE
+};
+
 //Defines
 #define  NUM_APPS_PER_SCREEN    5
 
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+static EWRAM_DATA u8 sSaveDialogTimer = 0;
 //static EWRAM_DATA u8  sMenuDataPtr->currentAppId = 0;
 //static EWRAM_DATA u8  sMenuDataPtr->TempAppId = 0;
 //static EWRAM_DATA bool8 sMenuDataPtr->areYouOnSecondScreen = FALSE;
@@ -117,6 +134,13 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
 static void DestroySpeciesIcon(u8 slot);
 static void StartMenuTempIndextoIndex(void);
 static void StartMenuIndextoTempIndex(void);
+
+static void Task_SaveDialog(u8 taskId);
+static void SaveDialog_CheckSave(void);
+static void SaveDialog_DoSave(void);
+static void SaveDialog_ReturnToField(void);
+static void SaveDialog_ReturnToMenu(u8 taskId);
+static void SaveDialog_GetMessage(u8 windowId, u8 x, u8 y);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -349,6 +373,7 @@ static bool8 Menu_DoGfxSetup(void)
         if (Menu_InitBgs())
         {
             sMenuDataPtr->gfxLoadState = 0;
+            sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
             gMain.state++;
         }
         else
@@ -590,13 +615,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str_SelectedOption;
     const u8 *str_CurrentLocation = sText_Unknown_Location;
-	const u8 *str_QuestFlavorLookup = gText_CommErrorEllipsis;
+    const u8 *str_QuestFlavorLookup = gText_CommErrorEllipsis;
     u8 i, j;
     u8 CurrentApp = sMenuDataPtr->currentAppId;
     u8 x = 1;
     u8 y = 1;
     u8 hours = gLocalTime.hours;
-	u8 minutes = gLocalTime.minutes;
+    u8 minutes = gLocalTime.minutes;
     u8 strArray[16];
     u8 signal = GetCurrentSignal();
     u8 firstFavoritedQuest = getFirstFavoriteQuest();
@@ -605,52 +630,54 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 19;
     y = 11;
 
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
     if(sMenuDataPtr->areYouOnSecondScreen)
         CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
     switch(GetCurrentAppfromIndex(CurrentApp)){
         case APP_POKEMON:
             str_SelectedOption  = sText_App_Pokemon;
-        break;
+            break;
         case APP_BAG:
             str_SelectedOption = sText_App_Bag;
-        break;
+            break;
         case APP_MAP:
             str_SelectedOption = sText_App_Map;
-        break;
+            break;
         case APP_QUEST:
             str_SelectedOption = sText_App_Quest;
-        break;
+            break;
         case APP_DEXNAV:
             str_SelectedOption = sText_App_Dexnav;
-        break;
+            break;
         case APP_POKEDEX:
             str_SelectedOption = sText_App_Pokedex;
-        break;
+            break;
         case APP_TWITTER:
             str_SelectedOption = sText_App_Twitter;
-        break;
+            break;
         case APP_OPTIONS:
             str_SelectedOption = sText_App_Options;
-        break;
+            break;
         case APP_PROFILE:
             StringCopy(&strArray[0], gSaveBlock2Ptr->playerName);
             str_SelectedOption = strArray;
-        break;
+            break;
         case APP_AMAZON:
             str_SelectedOption = sText_App_Amazon;
-        break;
+            break;
         default:
             str_SelectedOption = sText_App_None;
-        break;
-	}
+            break;
+    }
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str_SelectedOption);
 
     // App Icons --------------------------------------------------------------------------------------------------------
     x = 1;
-	y = 6;
+    y = 6;
 
     for(i = 0; i < NUM_APPS_PER_SCREEN; i++){
         switch(GetCurrentAppfromIndex(CurrentApp + NUM_TOTAL_APPS - i + 2)){
@@ -659,67 +686,67 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_BAG:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_MAP:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Map_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_QUEST:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_DEXNAV:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_POKEDEX:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_TWITTER:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_OPTIONS:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Options_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Options_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_PROFILE:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             case APP_AMAZON:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
             default:
                 if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
                     BlitBitmapToWindow(windowId, sStartMenuApp_Default_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
                 else
                     BlitBitmapToWindow(windowId, sStartMenuApp_Default_Gfx, (x*8), (y*8), 40, 40);
-            break;
+                break;
         }
 
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
@@ -730,7 +757,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     // Move Mode Text --------------------------------------------------------------------------------------------------------
     x = 0;
-	y = 18;
+    y = 18;
 
     if(FlagGet(FLAG_START_MENU_MOVE_MODE))
         BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 96, 16);
@@ -741,8 +768,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     // Selection Sprite --------------------------------------------------------------------------------------------------------
-	x = 13;
-	y = 6;
+    x = 13;
+    y = 6;
 
     BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 40, 40);
 
@@ -790,59 +817,66 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     // Signal ------------------------------------------------------------------------------------------------------------------------------------
     x = 21;
-	y = 0;
+    y = 0;
 
     switch(signal){
         case 0:
             BlitBitmapToWindow(windowId, sStartMenuApp_Signal_0_Gfx, (x*8), (y*8), 16, 16);
-        break;
+            break;
         case 1:
             BlitBitmapToWindow(windowId, sStartMenuApp_Signal_1_Gfx, (x*8), (y*8), 16, 16);
-        break;
+            break;
         case 2:
             BlitBitmapToWindow(windowId, sStartMenuApp_Signal_2_Gfx, (x*8), (y*8), 16, 16);
-        break;
+            break;
         default:
             BlitBitmapToWindow(windowId, sStartMenuApp_Signal_3_Gfx, (x*8), (y*8), 16, 16);
-        break;
+            break;
     }
 
     //Time --------------------------------------------------------------------------------------------------------------------
-	x = 24;
-	y = 0;
-	ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
-	ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEFT_ALIGN, 2);
-	if(minutes >= 10)
-		StringExpandPlaceholders(gStringVar4, Time);
-	else
-		StringExpandPlaceholders(gStringVar4, Time2);
-	AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+    x = 24;
+    y = 0;
+    ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEFT_ALIGN, 2);
+    if(minutes >= 10)
+        StringExpandPlaceholders(gStringVar4, Time);
+    else
+        StringExpandPlaceholders(gStringVar4, Time2);
+    AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
     // Current Location --------------------------------------------------------------------------------------------------------------------
-	x = 1;
-	y = 11;
+    x = 1;
+    y = 11;
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
+    AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
 
     // Time of the Day --------------------------------------------------------------------------------------------------------------------
-	x = 25;
-	y = 2;
+    x = 25;
+    y = 2;
 
     if(hours >= 6 && hours < 10)
-	    StringExpandPlaceholders(gStringVar1, sText_App_Morning);
+        StringExpandPlaceholders(gStringVar1, sText_App_Morning);
     else if(hours < 19)
-	    StringExpandPlaceholders(gStringVar1, sText_App_Day);
+        StringExpandPlaceholders(gStringVar1, sText_App_Day);
     else if(hours < 20)
-	    StringExpandPlaceholders(gStringVar1, sText_App_Evening);
+        StringExpandPlaceholders(gStringVar1, sText_App_Evening);
     else
-	    StringExpandPlaceholders(gStringVar1, sText_App_Night);
+        StringExpandPlaceholders(gStringVar1, sText_App_Night);
 
     AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8) + 2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
 
     // Quest Information --------------------------------------------------------------------------------------------------------------------
-	x = 0;
-	y = 14;
+    x = 0;
+    y = 14;
 
+
+    if (sMenuDataPtr->saveMode != SAVE_MODE_NOT_ENGAGED)
+    {
+        SaveDialog_GetMessage(windowId,x,y);
+    }
+    else
+    {
     if(!sMenuDataPtr->shouldShowErrorMessage){
         if(VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR){
             str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
@@ -861,9 +895,35 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
     }
     sMenuDataPtr->shouldShowErrorMessage = FALSE;
+    }
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
+}
+
+static void SaveDialog_GetMessage(u8 windowId, u8 x, u8 y)
+{
+    switch (sMenuDataPtr->saveMode)
+    {
+        case SAVE_MODE_ASK:
+            StringCopy(gStringVar1, gText_SaveYourAdventure);
+            break;
+        case SAVE_MODE_IN_PROGRESS:
+            StringCopy(gStringVar1, gText_NowSavingAdventure);
+            break;
+        case SAVE_MODE_SUCCESS:
+            StringCopy(gStringVar1, gText_YouSaved);
+            break;
+        case SAVE_MODE_ERROR:
+            StringCopy(gStringVar1, gText_ThereWasAnError);
+            break;
+        case SAVE_MODE_OVERWRITE:
+            StringCopy(gStringVar1, gText_EraseOldAdventure);
+            break;
+        default:
+            break;
+    }
+    AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
 }
 
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
@@ -1121,15 +1181,6 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
 
-	if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
-    {
-        PlaySE(SE_PC_OFF);
-        ClearStartMenuDataBeforeExit();
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
-
-        PrintToWindow(WINDOW_1, FONT_BLACK);
-    }
 
     if(JOY_NEW(DPAD_LEFT))
 	{
@@ -1402,4 +1453,105 @@ static void Task_MenuMain(u8 taskId)
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
+
+	if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
+    {
+        sMenuDataPtr->saveMode = SAVE_MODE_ASK;
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+        gTasks[taskId].func = Task_SaveDialog;
+    }
+}
+
+static void Task_SaveDialog(u8 taskId)
+{
+    switch(sMenuDataPtr->saveMode)
+    {
+        case SAVE_MODE_ASK:
+            if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
+                SaveDialog_CheckSave();
+            }
+
+            if (JOY_NEW(B_BUTTON)){
+                SaveDialog_ReturnToMenu(taskId);
+            }
+
+            break;
+
+        case SAVE_MODE_NOT_ENGAGED:
+        case SAVE_MODE_IN_PROGRESS:
+        case SAVE_MODE_CANCELED:
+            break;
+
+        case SAVE_MODE_ERROR:
+        case SAVE_MODE_SUCCESS:
+            if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
+                SaveDialog_ReturnToField();
+            }
+
+            if (JOY_NEW(B_BUTTON)){
+                SaveDialog_ReturnToMenu(taskId);
+            }
+            break;
+
+        case SAVE_MODE_OVERWRITE:
+            if (JOY_NEW(START_BUTTON)){
+                SaveDialog_DoSave();
+            }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
+                SaveDialog_ReturnToMenu(taskId);
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+static void SaveDialog_CheckSave(void)
+{
+    if (gDifferentSaveFile == TRUE){
+        sMenuDataPtr->saveMode = SAVE_MODE_OVERWRITE;
+    }else{
+        SaveDialog_DoSave();
+    }
+    PrintToWindow(WINDOW_1, FONT_BLACK);
+
+}
+static void SaveDialog_DoSave(void)
+{
+    u8 saveStatus;
+
+    PlaySE(SE_SELECT);
+
+    sMenuDataPtr->saveMode = SAVE_MODE_IN_PROGRESS;
+    PrintToWindow(WINDOW_1, FONT_BLACK);
+
+    IncrementGameStat(GAME_STAT_SAVED_GAME);
+
+    if (gDifferentSaveFile == TRUE)
+    {
+        saveStatus = TrySavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
+        gDifferentSaveFile = FALSE;
+    }
+    else
+    {
+        saveStatus = TrySavingData(SAVE_NORMAL);
+    }
+
+    if (saveStatus == SAVE_STATUS_OK)
+        sMenuDataPtr->saveMode = SAVE_MODE_SUCCESS;
+    else
+        sMenuDataPtr->saveMode = SAVE_MODE_ERROR;
+
+    SaveStartTimer();
+    PrintToWindow(WINDOW_1, FONT_BLACK);
+}
+
+static void SaveDialog_ReturnToMenu(u8 taskId)
+{
+    sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+    PrintToWindow(WINDOW_1, FONT_BLACK);
+    gTasks[taskId].func = Task_MenuMain;
+}
+static void SaveDialog_ReturnToField(void)
+{
+	Menu_FadeAndBail();
 }
