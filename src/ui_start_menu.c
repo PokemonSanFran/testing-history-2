@@ -196,9 +196,6 @@ static const u16 sMenuPalette_Yellow[]   = INCBIN_U16("graphics/start_menu/palet
 static const u8 sStartMenuCursor_Gfx[]              = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
 static const u8 sStartMenuCursorMoveMode_Gfx[]      = INCBIN_U8("graphics/start_menu/menu_cursor_move.4bpp");
 static const u8 sStartMenuCursorMoveMode2_Gfx[]     = INCBIN_U8("graphics/start_menu/menu_cursor_move2.4bpp");
-static const u8 sStartMenuMoveModeText_Gfx[]        = INCBIN_U8("graphics/start_menu/move_mode.4bpp");
-static const u8 sStartMenuNormalModeText1_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar.4bpp");
-static const u8 sStartMenuNormalModeText2_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar_2.4bpp");
 static const u8 sStartMenuRowIcon_Gfx[]             = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
 
 //HP Bar
@@ -758,18 +755,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 40, 40);
 
         x = x + 6;
-    }
-
-    // Move Mode Text --------------------------------------------------------------------------------------------------------
-    x = 0;
-    y = 18;
-
-    if(FlagGet(FLAG_START_MENU_MOVE_MODE))
-        BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 96, 16);
-    else{
-        BlitBitmapToWindow(windowId, sStartMenuNormalModeText1_Gfx, (x*8), (y*8), 88, 16);
-        x = 12;
-        BlitBitmapToWindow(windowId, sStartMenuNormalModeText2_Gfx, (x*8), (y*8), 120, 16);
     }
 
     // Selection Sprite --------------------------------------------------------------------------------------------------------
