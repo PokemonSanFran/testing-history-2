@@ -1649,7 +1649,7 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
             FrontierSpeechToString(gSaveBlock2Ptr->frontier.ereaderTrainer.greeting);
         else if (trainerId == TRAINER_FRONTIER_BRAIN)
 #else
-            if (trainer == TRAINER_FRONTIER_BRAIN)
+            if (trainerId == TRAINER_FRONTIER_BRAIN)
                 #endif
             CopyFrontierBrainText(FALSE);
         else if (trainerId < FRONTIER_TRAINERS_COUNT)
