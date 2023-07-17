@@ -48,7 +48,6 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/flags.h"
-#include "save_screen.h"
 #include "new_game.h"
 #include "save.h"
 #include "start_menu.h"
@@ -1412,7 +1411,7 @@ static void Task_MenuMain(u8 taskId)
                     if(GetCurrentSignal() != 0){
                         PlaySE(SE_PC_OFF);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                        gTasks[taskId].func = Task_OpenSampleUi_StartHere;
+                        gTasks[taskId].func = Task_MenuTurnOff;
                     }
                     else{
                         PlaySE(SE_BOO);
