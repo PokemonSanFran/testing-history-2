@@ -14,7 +14,8 @@ void HideStartMenu(void);
 void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 void ShowUIStartMenu(void);
 
-void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
-u8 SaveYesNoCallback(void);
+void SaveStartTimer(void);
+bool8 SaveSuccesTimer(void);
+bool8 SaveErrorTimer(void);
 
 #endif // GUARD_START_MENU_H

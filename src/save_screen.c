@@ -3,6 +3,8 @@
 #include "start_menu.h"
 #include "ui_start_menu.h"
 #include "strings.h"
+#include "fieldmap.h"
+#include "new_game.h"
 
 #include "gba/types.h"
 #include "gba/defines.h"
@@ -146,12 +148,21 @@ struct SampleUiState
 
 enum WindowIds
 {
-    WIN_UI_HINTS,
     WIN_MON_INFO,
     WIN_SAVE_MESSAGE,
     WIN_YESNO_BOX
 };
 
+enum
+{
+    SAVE_ASK,
+    SAVE_CHECK,
+    SAVE_IN_PROGRESS,
+    SAVE_SUCCESS,
+    SAVE_CANCELED,
+    SAVE_ERROR,
+    SAVE_OVERWRITE
+};
 
 /*
  * Both of these can be pointers that live in EWRAM -- allocating the actual data on the heap will save precious WRAM
@@ -161,6 +172,9 @@ enum WindowIds
  */
 static EWRAM_DATA struct SampleUiState *sSampleUiState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+
+EWRAM_DATA static u8 sSaveDialogTimer = 0;
+
 
 /*
  * Defines and read-only data for on-screen dex.
@@ -242,70 +256,6 @@ static const struct BgTemplate sSampleUiBgTemplates[] =
  */
 static const struct WindowTemplate sSampleUiWindowTemplates[] =
 {
-    [WIN_UI_HINTS] =
-    {
-        // This window will print on BG0
-        .bg = 0,
-        /*
-         * The tilemap position for this window, if we imagine the tilemap as a 2D matrix. These positions refer to
-         * tiles, so to get the actual pixel position you should multiply by 8.
-         */
-        .tilemapLeft = 14,
-        .tilemapTop = 0,
-        /*
-         * The tilemap dimensions for this window, if we imagine the tilemap as a 2D matrix. These dimensions refer to
-         * tiles, so to get the actual pixel dimensions you should multiply by 8.
-         */
-        .width = 16,
-        .height = 7,
-        /*
-         * Use BG palette 15 for all tilemap entries that fall within this window. Tilemap entries store the palette for
-         * the given tile in bits F, E, D, C (top four) of the entry. We'll need to load the right palette into BG
-         * palette slot 15.
-         */
-        .paletteNum = 15,
-
-        /*
-         * This next parameter is where things get interesting. The window base block is the tile offset, relative to
-         * the window BG's charblock, where the window's graphics live in VRAM. Since we might be cramming multiple
-         * windows into the same BG, we need to tell the engine where exactly to place each window's graphics, lest they
-         * overlap.
-         *
-         * Typically, you want each subsequent window's baseBlock to be at least:
-         *     previousBaseBlock + (prevWindowWidth * prevWindowHeight)
-         * which makes sense if you think about it. (Try changing the second window's baseBlock to see how important
-         * this parameter is!)
-         *
-         * And another thing -- why is this value set to 1 and not 0? You will understand this better once you finish
-         * going through the tutorial code, but I will put the explanation here:
-         *
-         * It's because this window lives on BG0. If we set the baseBlock to 0, then the text writing code will draw the
-         * first section of window text into tile 0 of charblock 0 (because baseBlock=0 and BG0_charblock=0). When we
-         * init our window, BG0's tilemap buffer is zeroed out (because it gets AllocZeroed'd by the window init code).
-         * But since the tilemap buffer ultimately gets copied into BG0's screenblock, it is effectively telling the
-         * hardware to draw tile 0 across the entire screen. And since we put some text in tile 0, you are going to end
-         * up seeing a small bit of text drawn across the screen, which looks really bad.
-         *
-         * We obviously don't want that, so we offset the window text by one so that tile 0 of charblock 0 is empty. And
-         * as a result our zeroed BG tilemap draws transparent tiles instead of the text fragment. (Recall that the
-         * value in each tilemap buffer entry is basically a pointer into our charblock, so `tilemapBuffer[i] == 0'
-         * means draw `tile 0' onto wherever `tilemap position i' maps on the LCD. The various LCD register settings
-         * will define where on the LCD that `tilemap position i' is actually drawn. And technically, it's actually a
-         * tad more complicated than this. See here for details: https://www.coranac.com/tonc/text/regbg.htm#sec-map)
-         *
-         * If this is confusing, try changing this value to 0, rebuild and see what the menu does. Looking at the mGBA
-         * tile viewer will illuminate what is happening.
-         */
-        .baseBlock = 1
-        /*
-         * Just like with the BgTemplates, I encourage you to open:
-         *     "mGBA Tools/Game State Views/View Tiles"
-         * to see how this above code gets translated into an actual VRAM layout. In this case, try changing the
-         * baseBlock value for this window and see where in VRAM the text gets drawn. If you want to really work your
-         * brain, change the charblock base for BG0 *and* the baseBlock for this window and try to guess where in VRAM
-         * your window text will show up.
-         */
-    },
     [WIN_MON_INFO] =
     {
         // This window will also print on BG0
@@ -320,7 +270,7 @@ static const struct WindowTemplate sSampleUiWindowTemplates[] =
          * Here we will set the baseBlock to the previous window's baseblock + the width*height in tiles of the previous
          * window. Try changing this value around and use the mGBA tile viewer to see what happens.
          */
-        .baseBlock = 1 + (16 * 7)
+        .baseBlock = 1
     },
     [WIN_YESNO_BOX] =
     {
@@ -378,7 +328,10 @@ static bool8 SampleUi_InitBgs(void);
 static void SampleUi_FadeAndBail(void);
 static bool8 SampleUi_LoadGraphics(void);
 static void SampleUi_InitWindows(void);
-static void SampleUi_PrintUiButtonHints(void);
+static void SaveScreen_ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
+static void SaveScreen_DoSave(void);
+static u8 SaveScreen_SaveYesNoCallback(void);
+static u8 SaveScreen_SaveConfirmSaveCallback(void);
 static void SampleUi_PrintUiMonInfo(void);
 static void SampleUi_DrawMonIcon(u16 dexNum);
 static void SampleUi_FreeResources(void);
@@ -476,9 +429,10 @@ static void SampleUi_SetupCB(void)
         SampleUi_DrawMonIcon(sSampleUiState->monIconDexNum);
 
         // Print the UI button hints in the top-right
-        SampleUi_PrintUiButtonHints();
 
         // Print the mon info in the main text box
+        SaveMapView();
+        sSampleUiState->mode = SAVE_ASK;
         SampleUi_PrintUiMonInfo();
 
         // Create a task that does nothing until the palette fade is done. We will start the palette fade next frame.
@@ -585,22 +539,51 @@ static void Task_SampleUiMainInput(u8 taskId)
     // User pressed A, cycle to next dex mode
     if (JOY_NEW(A_BUTTON))
     {
-        /*
-        PlaySE(SE_SELECT);
-        if (sSampleUiState->mode == MODE_OTHER)
+        switch(sSampleUiState)
         {
-            // Wrap back around to Info after the last mode
-            sSampleUiState->mode = MODE_INFO;
+            case SAVE_ASK:
+                SaveScreen_SaveAsk_Confirm();
+            case SAVE_SUCCESS:
+                SaveScreen_SaveSuccess_Confirm();
+            case SAVE_OVERWRITE:
         }
-        else
-        {
-            sSampleUiState->mode++;
-        }
-        SampleUi_PrintUiButtonHints();
-        SampleUi_PrintUiMonInfo();
-    */
-
+        if (sSampleUiState->mode == SAVE_ASK)
+            {
+            }
     }
+}
+
+static void SaveScreen_SaveAskConfirm(void)
+{
+    PlaySE(SE_SELECT);
+    sSampleUiState->mode = SAVE_IN_PROGRESS;
+    SampleUi_PrintUiMonInfo();
+    SaveScreen_DoSave();
+}
+
+static void SaveScreen_DoSave(void)
+{
+    u8 saveStatus;
+
+    IncrementGameStat(GAME_STAT_SAVED_GAME);
+
+    if (gDifferentSaveFile == TRUE)
+    {
+        saveStatus = TrySavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
+        gDifferentSaveFile = FALSE;
+    }
+    else
+    {
+        saveStatus = TrySavingData(SAVE_NORMAL);
+    }
+
+    if (saveStatus == SAVE_STATUS_OK)
+        sSampleUiState->mode = SAVE_SUCCESS;
+    else
+        sSampleUiState->mode = SAVE_ERROR;
+
+    SaveStartTimer();
+    SampleUi_PrintUiMonInfo();
 }
 
 static void Task_SampleUiWaitFadeAndBail(u8 taskId)
@@ -807,7 +790,6 @@ static void SampleUi_InitWindows(void)
      * Fill each entire window pixel buffer (i.e. window.tileData) with the given value. In this case, fill it with 0s
      * to make the window completely transparent. We will draw text into the window pixel buffer later.
      */
-    FillWindowPixelBuffer(WIN_UI_HINTS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WIN_MON_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     /*
@@ -820,7 +802,6 @@ static void SampleUi_InitWindows(void)
      * to VRAM locations, which in reality is basically a 1D array). I will leave exploration of the inner-workings of
      * this function as an exercise to the reader.
      */
-    PutWindowTilemap(WIN_UI_HINTS);
     PutWindowTilemap(WIN_MON_INFO);
 
     /*
@@ -829,93 +810,48 @@ static void SampleUi_InitWindows(void)
      * and the tiles themselves. Typically when updating text on a window, you only need to copy the tile canvas (i.e.
      * using COPYWIN_GFX) since the tilemap should never change. But to init the window we need to get both into VRAM.
      */
-    CopyWindowToVram(WIN_UI_HINTS, COPYWIN_FULL);
     CopyWindowToVram(WIN_MON_INFO, COPYWIN_FULL);
 }
 
 static const u8 sText_SampleUiButtonHint1[] = _("{DPAD_UPDOWN}Change POKéMON");
 static const u8 sText_SampleUiButtonHint2[] = _("{A_BUTTON}Mode: {STR_VAR_1}");
 static const u8 sText_SampleUiButtonHint3[] = _("{B_BUTTON}Exit");
-static void SampleUi_PrintUiButtonHints(void)
+
+static u8 SaveScreen_SaveYesNoCallback(void)
 {
-    /*
-     * Fill the window with transparent. You normally want to do this before drawing new text to remove the old text
-     * from the window (otherwise you'll see strange remnants of the previous text's pixels underneath your new text).
-     */
-    FillWindowPixelBuffer(WIN_UI_HINTS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
-    // Copy the current mode name into a temp string variable
-    StringCopy(gStringVar1, sModeNames[sSampleUiState->mode]);
-
-    /*
-     * `StringExpandPlaceholders' takes the src string, expands all placeholders (i.e. those bits in braces that look
-     * like {FOO}), then copies the expanded string into dest. The {STR_VAR_1} placeholder will expand to the current
-     * contents of temp string gStringVar1, which is very useful for constructing dynamic strings. Note that above we
-     * saved the mode name into gStringVar1.
-     */
-    StringExpandPlaceholders(gStringVar2, sText_SampleUiButtonHint2);
-
-    /*
-     * Use the text printing system to add text to this window. We set the speed value to TEXT_SKIP_DRAW to tell the
-     * printer to draw into the pixel buffer but skip the actual VRAM copy. Why? Because we want to wait until all the
-     * text is rendered before we actually copy to VRAM and make the text visible. This prevents flickering from
-     * occuring (for a technical reason explained below). Try changing the speed parameter TEXT_SKIP_DRAW to 0 (which
-     * tells the text printer to copy to VRAM on the next VBlank) and observe the slight flicker that occurs.
-     *
-     * The reason you see flickering when drawing lots of text without setting TEXT_SKIP_DRAW is because without this,
-     * each `AddTextPrinterX' call actually schedules a separate DMA transfer of the partially draw window pixel buffer.
-     * Since the each transfer is transfering the entire buffer, if you queue up a lot of these by calling
-     * `AddTextPrinterX' a lot of separate times, getting everything into VRAM is going to take multiple frames, and you
-     * will see the partially drawn text show up as each subsequent DMA transfer finishes.
-     */
-    AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_SMALL, 47, 0, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
-        TEXT_SKIP_DRAW, sText_SampleUiButtonHint1);
-    AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_SMALL, 47, 10, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
-        TEXT_SKIP_DRAW, gStringVar2);
-    AddTextPrinterParameterized4(WIN_UI_HINTS, FONT_SMALL, 47, 20, 0, 0, sSampleUiWindowFontColors[FONT_WHITE],
-        TEXT_SKIP_DRAW, sText_SampleUiButtonHint3);
-
-    /*
-     * Explicitly copy to VRAM now that all text is drawn into the window pixel buffer. We use COPYWIN_GFX here since no
-     * changes were made to the BG tilemap, so no need to copy it again (recall that GF windows use tile rendering).
-     */
-    CopyWindowToVram(WIN_UI_HINTS, COPYWIN_GFX);
+    return 0;
 }
 
 static const u8 sText_SampleUiMonStats[] = _("Put stats info here");
 static const u8 sText_SampleUiMonOther[] = _("Put other info here");
+
 static void SampleUi_PrintUiMonInfo(void)
 {
-    u16 speciesId = NationalPokedexNumToSpecies(sSampleUiState->monIconDexNum);
-
     // Clear the window before drawing new text
     FillWindowPixelBuffer(WIN_MON_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     switch (sSampleUiState->mode)
     {
-    case MODE_INFO:
-        /*
-         * Use the string manipulation library to put the National Dex num, species name, and dex description into
-         * strings, ready to be drawn.
-         */
-        StringCopy(gStringVar4, gText_ConfirmSave);
-
-        // The window drawing code here works just like in `SampleUi_PrintUiButtonHints'
-        AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SHORT, 5, 3, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
-            TEXT_SKIP_DRAW, gStringVar3);
-        AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SMALL, 5, 25, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
-            TEXT_SKIP_DRAW, gStringVar4);
-        break;
-    case MODE_STATS:
-        AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SHORT, 5, 3, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
-            TEXT_SKIP_DRAW, sText_SampleUiMonStats);
-        break;
-    case MODE_OTHER:
-        AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SHORT, 5, 3, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
-            TEXT_SKIP_DRAW, sText_SampleUiMonOther);
-        break;
-    default:
-        break;
+        case SAVE_ASK:
+            StringCopy(gStringVar4, gText_SaveYourAdventure);
+            break;
+        case SAVE_IN_PROGRESS:
+            StringCopy(gStringVar4, gText_NowSavingAdventure);
+            break;
+        case SAVE_SUCCESS:
+            StringCopy(gStringVar4, gText_YouSaved);
+            break;
+        case SAVE_ERROR:
+            StringCopy(gStringVar4, gText_ThereWasAnError);
+            break;
+        case SAVE_OVERWRITE:
+            StringCopy(gStringVar4, gText_EraseOldAdventure);
+            break;
+        default:
+            break;
     }
+
+    AddTextPrinterParameterized4(WIN_MON_INFO, FONT_SMALL, 5, 3, 0, 0, sSampleUiWindowFontColors[FONT_BLACK],
+            TEXT_SKIP_DRAW, gStringVar4);
 
     // Copy pixel buffer to VRAM now that we are done drawing text
     CopyWindowToVram(WIN_MON_INFO, COPYWIN_GFX);

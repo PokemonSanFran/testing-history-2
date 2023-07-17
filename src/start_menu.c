@@ -97,7 +97,7 @@ EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
-EWRAM_DATA bool8 sSavingComplete = FALSE;
+EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
 
 // Menu action callbacks
@@ -127,8 +127,8 @@ static bool8 BattlePyramidRetireCallback(void);
 static bool8 HandleStartMenuInput(void);
 
 // Save dialog callbacks
-u8 SaveConfirmSaveCallback(void);
-u8 SaveYesNoCallback(void);
+u8 static SaveConfirmSaveCallback(void);
+u8 static SaveYesNoCallback(void);
 static u8 SaveConfirmInputCallback(void);
 static u8 SaveFileExistsCallback(void);
 static u8 SaveConfirmOverwriteDefaultNoCallback(void);
@@ -252,12 +252,12 @@ static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
 static u8 RunSaveCallback(void);
-void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
+static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
 static void HideSaveInfoWindow(void);
-static void SaveStartTimer(void);
-static bool8 SaveSuccesTimer(void);
-static bool8 SaveErrorTimer(void);
+void SaveStartTimer(void);
+bool8 SaveSuccesTimer(void);
+bool8 SaveErrorTimer(void);
 static void InitBattlePyramidRetire(void);
 static void VBlankCB_LinkBattleSave(void);
 static bool32 InitSaveWindowAfterLinkBattle(u8 *par1);
@@ -1007,12 +1007,12 @@ static void HideSaveInfoWindow(void)
     RemoveSaveInfoWindow();
 }
 
-static void SaveStartTimer(void)
+void SaveStartTimer(void)
 {
     sSaveDialogTimer = 60;
 }
 
-static bool8 SaveSuccesTimer(void)
+bool8 SaveSuccesTimer(void)
 {
     sSaveDialogTimer--;
 
@@ -1029,7 +1029,7 @@ static bool8 SaveSuccesTimer(void)
     return FALSE;
 }
 
-static bool8 SaveErrorTimer(void)
+bool8 SaveErrorTimer(void)
 {
     if (sSaveDialogTimer != 0)
     {
