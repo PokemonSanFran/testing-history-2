@@ -568,6 +568,12 @@ static const u8 sText_App_Night[]   = _("Night");
 
 static const u8 sText_Quest_No_Quest[]   = _("");
 
+static const u8 sText_HelpBar_Default[] = _("{A_BUTTON} Open {B_BUTTON} Close {SELECT_BUTTON} Move {START_BUTTON} Save");
+static const u8 sText_HelpBar_MoveMode[] = _("{A_BUTTON} Place {B_BUTTON} Close");
+static const u8 sText_HelpBar_SaveAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Cancel");
+static const u8 sText_HelpBar_SaveComplete[] = _("{START_BUTTON} Return to Overworld {B_BUTTON} Return to Menu");
+static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Return to Menu");
+
 enum AppsIds
 {
     APP_POKEMON,
@@ -899,6 +905,41 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
+
+    // Help Bar --------------------------------------------------------------------------------------------------------------------
+    x = 0;
+    y = 18;
+
+    if (FlagGet(FLAG_START_MENU_MOVE_MODE))
+    {
+        StringCopy(gStringVar1, sText_HelpBar_MoveMode);
+    }
+    if (sMenuDataPtr->saveMode == SAVE_MODE_ASK)
+    {
+        StringCopy(gStringVar1, sText_HelpBar_SaveAsk);
+    }
+    if (sMenuDataPtr->saveMode == SAVE_MODE_IN_PROGRESS)
+    {
+        StringCopy(gStringVar1, gText_Blank);
+    }
+    if (sMenuDataPtr->saveMode == SAVE_MODE_SUCCESS)
+    {
+        StringCopy(gStringVar1, sText_HelpBar_SaveComplete);
+    }
+    if (sMenuDataPtr->saveMode == SAVE_MODE_ERROR)
+    {
+        StringCopy(gStringVar1, sText_HelpBar_SaveComplete);
+    }
+    if (sMenuDataPtr->saveMode == SAVE_MODE_OVERWRITE)
+    {
+        StringCopy(gStringVar1, sText_HelpBar_SaveOverwriteAsk);
+    }
+    else
+    {
+        StringCopy(gStringVar1, sText_HelpBar_Default);
+    }
+
+    AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
 }
 
 static void SaveDialog_GetMessage(u8 windowId, u8 x, u8 y)
