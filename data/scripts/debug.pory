@@ -72,7 +72,8 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_MUIRWOODS,22,43)
+    giveegg(SPECIES_LUGIA)
+    //warp(MAP_MUIRWOODS,22,43)
 }
 
 script Debug_Script_2{

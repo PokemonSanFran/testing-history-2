@@ -62,7 +62,7 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	warp MAP_MUIRWOODS, 22, 43
+	giveegg SPECIES_LUGIA
 	return
 
 

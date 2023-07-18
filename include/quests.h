@@ -18,7 +18,7 @@
 #define SORT_SUBQUEST 100
 
 #define INCREMENT 1
-#define ALPHA 2 
+#define ALPHA 2
 #define SUB 3
 
 #define OBJECT 1
@@ -34,7 +34,7 @@ struct SubQuest
 	const u16 sprite;
     const u8 spritetype;
     const u8 *type;
-}; 
+};
 
 struct SideQuest
 {
@@ -46,7 +46,7 @@ struct SideQuest
     const u8 spritetype;
 	const struct SubQuest *subquests;
 	const u8 numSubquests;
-}; 
+};
 
 extern const struct SideQuest sSideQuests[QUEST_COUNT];
 
@@ -79,7 +79,7 @@ void Task_QuestMenu_OpenFromStartMenu(u8);
 void QuestMenu_CopyQuestName(u8 *dst, u8 questId);
 void QuestMenu_CopySubquestName(u8 *dst, u8 parentId, u8 childId);
 void QuestMenu_ResetMenuSaveData(void);
-u8 getFirstFavoriteQuest();
 void GenerateQuestFlavorText(s32 questId);
+void QuestMenu_UpdateQuestDesc(s32 questId);
 
 #endif // GUARD_QUESTS_H
