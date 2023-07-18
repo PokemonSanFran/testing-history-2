@@ -130,7 +130,6 @@ static EWRAM_DATA u8 sSaveDialogTimer = 0;
 //EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_6  = 0;
 
 //==========STATIC=DEFINES==========//
-void Menu_Init(MainCallback callback);
 static void Menu_RunSetup(void);
 static bool8 Menu_DoGfxSetup(void);
 static bool8 Menu_InitBgs(void);
@@ -381,7 +380,7 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        Menu_Init(CB2_ReturnToField);
+        StartMenu_Menu_Init(CB2_ReturnToField);
         DestroyTask(taskId);
     }
 }
@@ -390,7 +389,7 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
 //#define DEBUG_VAR          VAR_TEMP_E
 
 // This is our main initialization function if you want to call the menu from elsewhere
-void Menu_Init(MainCallback callback)
+void StartMenu_Menu_Init(MainCallback callback)
 {
     /*
     //This is to test a EWRAM issue when opening and closing the menu a lot
