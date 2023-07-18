@@ -91,7 +91,6 @@ enum WindowIds
     WINDOW_NAME_APP,
     WINDOW_QUEST_INFO,
     WINDOW_HELP_BAR,
-    WINDOW_1,
 };
 
 enum
@@ -196,93 +195,102 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
     [WINDOW_PHONE_SIGNAL] =
     {
         .bg = 0,
-        .tilemapLeft = 21,
+        .tilemapLeft = 22,
         .tilemapTop = 0,
         .width = 2,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 1,
     },
+
     [WINDOW_TIME_NUMBER] =
     {
         .bg = 0,
-        .tilemapLeft = 24,
+        .tilemapLeft = 25,
         .tilemapTop = 0,
         .width = 6,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 5,
     },
+
     [WINDOW_PARTY] =
     {
         .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 3,
+        .tilemapLeft = 0,
+        .tilemapTop = 2,
         .width = 25,
         .height = 5,
         .paletteNum = 15,
         .baseBlock = 17,
     },
+
     [WINDOW_TIME_STRING] =
     {
         .bg = 0,
         .tilemapLeft = 25,
-        .tilemapTop = 2,
-        .width = 2,
+        .tilemapTop = 3,
+        .width = 6,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 142,
     },
+
     [WINDOW_PHONE_APPS] =
     {
         .bg = 0,
-        .tilemapLeft = 1,
+        .tilemapLeft = 0,
         .tilemapTop = 6,
         .width = 30,
-        .height = 6,
+        .height = 5,
         .paletteNum = 15,
-        .baseBlock = 146,
+        .baseBlock = 154,
     },
+
     [WINDOW_NAME_MAP] =
     {
         .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 11,
+        .tilemapLeft = 0,
+        .tilemapTop = 12,
         .width = 12,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 326,
+        .baseBlock = 304,
     },
+
     [WINDOW_SELECTOR] =
     {
         .bg = 0,
         .tilemapLeft = 13,
         .tilemapTop = 6,
-        .width = 2,
-        .height = 3,
+        .width = 5,
+        .height = 5,
         .paletteNum = 15,
-        .baseBlock = 350,
+        .baseBlock = 328,
     },
+
     [WINDOW_POINTER] =
     {
         .bg = 0,
         .tilemapLeft = 14,
         .tilemapTop = 11,
         .width = 2,
-        .height = 2,
+        .height = 3,
         .paletteNum = 15,
-        .baseBlock = 356,
+        .baseBlock = 353,
     },
+
     [WINDOW_NAME_APP] =
     {
         .bg = 0,
         .tilemapLeft = 19,
-        .tilemapTop = 11,
+        .tilemapTop = 12,
         .width = 12,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 360,
+        .baseBlock = 359,
     },
+
     [WINDOW_QUEST_INFO] =
     {
         .bg = 0,
@@ -291,28 +299,18 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .width = 30,
         .height = 5,
         .paletteNum = 15,
-        .baseBlock = 384,
+        .baseBlock = 383,
     },
+
     [WINDOW_HELP_BAR] =
     {
         .bg = 0,
         .tilemapLeft = 0,
-        .tilemapTop = 18,
+        .tilemapTop = 19,
         .width = 30,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 534,
-    },
-    [WINDOW_1] =
-    {
-        .bg = 0,
-        .tilemapLeft = 0,
-        .tilemapTop = 0,
-        .width = 30,
-        .height = 20,
-        .paletteNum = 0,
-        .baseBlock = 594,
-        //.baseBlock = 1,
+        .baseBlock = 533,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -589,6 +587,7 @@ static void Menu_FadeAndBail(void)
 static bool8 Menu_InitBgs(void)
 {
     ResetAllBgsCoordinates();
+
     sBg1TilemapBuffer = Alloc(0x800);
     if (sBg1TilemapBuffer == NULL)
         return FALSE;
@@ -600,7 +599,6 @@ static bool8 Menu_InitBgs(void)
     ScheduleBgCopyTilemapToVram(1);
     ShowBg(0);
     ShowBg(1);
-    ShowBg(2);
     return TRUE;
 }
 
@@ -664,13 +662,9 @@ static bool8 Menu_LoadGraphics(void)
 
 static void Menu_InitWindows(void)
 {
-    u32 i;
-
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
-    ScheduleBgCopyTilemapToVram(0);
 
-    FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -682,7 +676,18 @@ static void Menu_InitWindows(void)
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    CopyWindowToVram(WINDOW_1, COPYWIN_FULL);
+    PutWindowTilemap(WINDOW_PHONE_SIGNAL);
+    PutWindowTilemap(WINDOW_TIME_NUMBER);
+    PutWindowTilemap(WINDOW_PARTY);
+    PutWindowTilemap(WINDOW_TIME_STRING);
+    PutWindowTilemap(WINDOW_PHONE_APPS);
+    PutWindowTilemap(WINDOW_NAME_MAP);
+    PutWindowTilemap(WINDOW_SELECTOR);
+    PutWindowTilemap(WINDOW_POINTER);
+    PutWindowTilemap(WINDOW_NAME_APP);
+    PutWindowTilemap(WINDOW_QUEST_INFO);
+    PutWindowTilemap(WINDOW_HELP_BAR);
+
     CopyWindowToVram(WINDOW_PHONE_SIGNAL, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_TIME_NUMBER, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_PARTY, COPYWIN_FULL);
@@ -712,7 +717,6 @@ static const u8 sText_Unknown_Location[] = _("Unknown");
 
 static const u8 sText_ClockDigits[] =  _("{STR_VAR_2}:{STR_VAR_3}$");
 static const u8 sText_ClockDigitsLeadingZero[] =  _("{STR_VAR_2}:0{STR_VAR_3}$");
-
 
 static const u8 sText_App_Morning[] = _("Morning");
 static const u8 sText_App_Day[]     = _("Day");
@@ -804,7 +808,7 @@ static void StartMenu_PrintTime(void){
     else
         StringExpandPlaceholders(gStringVar4, sText_ClockDigitsLeadingZero);
 
-    AddTextPrinterParameterized4(WINDOW_1, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized4(WINDOW_TIME_NUMBER, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar4);
 }
 
 static void StartMenu_DisplayParty(void){
@@ -814,7 +818,7 @@ static void StartMenu_DisplayHP(void)
 {
     u8 x = sMenuWindowTemplates[WINDOW_PARTY].tilemapLeft;
     u8 y = sMenuWindowTemplates[WINDOW_PARTY].tilemapTop;
-    u16 maxHP = 0, currentHP = 0, i = 0, windowId = WINDOW_1;
+    u16 maxHP = 0, currentHP = 0, i = 0, windowId = WINDOW_PARTY;
 
     for(i = 0; i < PARTY_SIZE; i++){
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE){
@@ -853,7 +857,7 @@ static void StartMenu_PrintTimeOfDay(void){
     u8 hours = gLocalTime.hours;
     u8 x = (sMenuWindowTemplates[WINDOW_TIME_STRING].tilemapLeft * 8);
     u8 y = (sMenuWindowTemplates[WINDOW_TIME_STRING].tilemapTop * 8) + 2;
-    u8 windowId = WINDOW_1;
+    u8 windowId = WINDOW_TIME_STRING;
 
     if(hours >= 6 && hours < 10)
         StringExpandPlaceholders(gStringVar1, sText_App_Morning);
@@ -880,7 +884,7 @@ static void StartMenu_DrawPhoneAppIcon(u8 i, u8 windowId, const u8 * gfx, const 
 static void StartMenu_DisplayPhoneApps(void){
     u8 x = sMenuWindowTemplates[WINDOW_PHONE_APPS].tilemapLeft;
     u8 y = sMenuWindowTemplates[WINDOW_PHONE_APPS].tilemapTop;
-    u8 phoneIconSlot = 0, phoneApp = 0, appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_1;
+    u8 phoneIconSlot = 0, phoneApp = 0, appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_PHONE_APPS;
     u8 currentApp = StartMenu_GetCurrentApp();
 
     for(phoneIconSlot = 0; phoneIconSlot < NUM_APPS_PER_SCREEN; phoneIconSlot++){
@@ -929,7 +933,7 @@ static void StartMenu_DisplayPhoneApps(void){
 static void StartMenu_PrintMapName(void){
     u8 x = (sMenuWindowTemplates[WINDOW_NAME_MAP].tilemapLeft * 8)+ 4;
     u8 y = sMenuWindowTemplates[WINDOW_NAME_MAP].tilemapTop * 8;
-    u8 windowId = WINDOW_1;
+    u8 windowId = WINDOW_NAME_APP;
 
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
     AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gStringVar1);
@@ -938,14 +942,14 @@ static void StartMenu_PrintMapName(void){
 static void StartMenu_DisplaySelector(void){
     u8 x = sMenuWindowTemplates[WINDOW_SELECTOR].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_SELECTOR].tilemapTop * 8;
-    u8 appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_1;
+    u8 appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_SELECTOR;
 
     BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, x, y, appIconWidth, appIconHeight);
 }
 
 static void StartMenu_DisplayPointer(void)
 {
-    u8 windowId = WINDOW_1;
+    u8 windowId = WINDOW_POINTER;
     u8 x = sMenuWindowTemplates[WINDOW_POINTER].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_POINTER].tilemapTop * 8;
     u8 pointerWidth = 16, pointerHeight = 24;
@@ -999,7 +1003,7 @@ static void StartMenu_PrintAppName(void)
 
     StringCopy(gStringVar3,str_SelectedOption);
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    AddTextPrinterParameterized4(WINDOW_1, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, str_SelectedOption);
+    AddTextPrinterParameterized4(WINDOW_NAME_APP, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, str_SelectedOption);
 }
 
 static void SaveDialog_GetMessage(void)
@@ -1046,7 +1050,7 @@ u8 StartMenu_GetQuestForStartMenu(void){
 static void StartMenu_PrintQuestInfo(void){
     u8 x = (sMenuWindowTemplates[WINDOW_QUEST_INFO].tilemapLeft * 8) + 4;
     u8 y = (sMenuWindowTemplates[WINDOW_QUEST_INFO].tilemapTop * 8);
-    u8 windowId = WINDOW_1;
+    u8 windowId = WINDOW_QUEST_INFO;
     bool8 hasCommunicationError = sMenuDataPtr->shouldShowErrorMessage;
     bool8 isSaveModeEngaged = (sMenuDataPtr->saveMode != SAVE_MODE_NOT_ENGAGED);
     bool8 storyNotClear = (VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR);
@@ -1083,7 +1087,7 @@ static void StartMenu_PrintHelpBar(void)
 {
     u8 x = (sMenuWindowTemplates[WINDOW_HELP_BAR].tilemapLeft * 8) + 4;
     u8 y = (sMenuWindowTemplates[WINDOW_HELP_BAR].tilemapTop * 8);
-    u8 windowId = WINDOW_1;
+    u8 windowId = WINDOW_HELP_BAR;
 
     switch(sMenuDataPtr->saveMode)
     {
@@ -1129,55 +1133,49 @@ static u8 StartMenu_GetCurrentApp(void){
 
 static void PrintToWindow(void)
 {
-    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
     StartMenu_PrintAppName(); // Current App Title
-    StartMenu_DisplayPhoneApps(); //App Icons
-    StartMenu_DisplaySelector(); //Selection Sprite
-    StartMenu_DisplayPointer(); //Screen Indicator
-    StartMenu_DisplayHP(); //HP Bars
-    StartMenu_DisplayPhoneSignal(); //Signal
-    StartMenu_PrintTime(); //Time
-    StartMenu_PrintMapName(); //Current Location
-    StartMenu_PrintTimeOfDay(); //Time of the Day
-    StartMenu_PrintQuestInfo(); //Print Quest Info
-    StartMenu_PrintHelpBar(); //Print Help Bar
-
-    PutWindowTilemap(WINDOW_PHONE_SIGNAL);
-    PutWindowTilemap(WINDOW_TIME_NUMBER);
-    PutWindowTilemap(WINDOW_PARTY);
-    PutWindowTilemap(WINDOW_TIME_STRING);
-    PutWindowTilemap(WINDOW_PHONE_APPS);
-    PutWindowTilemap(WINDOW_NAME_MAP);
-    PutWindowTilemap(WINDOW_SELECTOR);
-    PutWindowTilemap(WINDOW_POINTER);
-    PutWindowTilemap(WINDOW_NAME_APP);
-    PutWindowTilemap(WINDOW_QUEST_INFO);
-    PutWindowTilemap(WINDOW_HELP_BAR);
-    PutWindowTilemap(WINDOW_1);
-
-    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_SELECTOR,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
     CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayPhoneApps(); //App Icons
+    CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_SELECTOR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplaySelector(); //Selection Sprite
+    CopyWindowToVram(WINDOW_SELECTOR,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayPointer(); //Screen Indicator
+    CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayHP(); //HP Bars
+    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayPhoneSignal(); //Signal
+    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintTime(); //Time
+    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintMapName(); //Current Location
+    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintTimeOfDay(); //Time of the Day
+    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintQuestInfo(); //Print Quest Info
     CopyWindowToVram(WINDOW_QUEST_INFO,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintHelpBar(); //Print Help Bar
     CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
-    CopyWindowToVram(WINDOW_1, COPYWIN_GFX);
 }
 
 
