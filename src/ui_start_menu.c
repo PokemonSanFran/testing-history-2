@@ -80,7 +80,6 @@ struct MenuResources
 
 enum WindowIds
 {
-    WINDOW_1,
     WINDOW_PHONE_SIGNAL,
     WINDOW_TIME_NUMBER,
     WINDOW_PARTY,
@@ -92,6 +91,7 @@ enum WindowIds
     WINDOW_NAME_APP,
     WINDOW_QUEST_INFO,
     WINDOW_HELP_BAR,
+    WINDOW_1,
 };
 
 enum
@@ -178,23 +178,17 @@ static void StartMenu_Menu_FreeResources(void);
 static const struct BgTemplate sMenuBgTemplates[] =
 {
     {
-        .bg = 0,    // windows, etc
+        .bg = 0,
         .charBaseIndex = 0,
         .mapBaseIndex = 31,
         .priority = 1
     },
     {
-        .bg = 1,    // this bg loads the UI tilemap
+        .bg = 1,
         .charBaseIndex = 3,
         .mapBaseIndex = 30,
         .priority = 2
     },
-    {
-        .bg = 2,    // this bg loads the UI tilemap
-        .charBaseIndex = 0,
-        .mapBaseIndex = 28,
-        .priority = 0
-    }
 };
 
 static const struct WindowTemplate sMenuWindowTemplates[] =
@@ -311,15 +305,16 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
     },
     [WINDOW_1] =
     {
-        .bg = 0,            // which bg to print text on
-        .tilemapLeft = 0,   // position from left (per 8 pixels)
-        .tilemapTop = 0,    // position from top (per 8 pixels)
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 0,
         .width = 30,
         .height = 20,
-        .paletteNum = 0,   // palette index to use for text
-                           //.baseBlock = 594,
-        .baseBlock = 1,
-    }
+        .paletteNum = 0,
+        .baseBlock = 594,
+        //.baseBlock = 1,
+    },
+    DUMMY_WIN_TEMPLATE
 };
 
 static const u32 sMenuTiles[]                       = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
@@ -675,7 +670,7 @@ static void Menu_InitWindows(void)
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
 
-    FillWindowPixelBuffer(WINDOW_1, 0);
+    FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -686,20 +681,6 @@ static void Menu_InitWindows(void)
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
-    LoadUserWindowBorderGfx(WINDOW_1, 720, 14 * 16);
-
-    PutWindowTilemap(WINDOW_1);
-    PutWindowTilemap(WINDOW_PHONE_SIGNAL);
-    PutWindowTilemap(WINDOW_TIME_NUMBER);
-    PutWindowTilemap(WINDOW_PARTY);
-    PutWindowTilemap(WINDOW_TIME_STRING);
-    PutWindowTilemap(WINDOW_PHONE_APPS);
-    PutWindowTilemap(WINDOW_NAME_MAP);
-    PutWindowTilemap(WINDOW_POINTER);
-    PutWindowTilemap(WINDOW_NAME_APP);
-    PutWindowTilemap(WINDOW_QUEST_INFO);
-    PutWindowTilemap(WINDOW_HELP_BAR);
 
     CopyWindowToVram(WINDOW_1, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_PHONE_SIGNAL, COPYWIN_FULL);
@@ -712,8 +693,6 @@ static void Menu_InitWindows(void)
     CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_HELP_BAR, COPYWIN_FULL);
-
-    ScheduleBgCopyTilemapToVram(2);
 }
 
 static const u8 sText_App_None[] = _("No App");
@@ -793,7 +772,7 @@ static void StartMenu_DisplayPhoneSignal(void){
     u8 signal = GetCurrentSignal();
     u8 x = sMenuWindowTemplates[WINDOW_PHONE_SIGNAL].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_PHONE_SIGNAL].tilemapTop * 8;
-    u8 signalIconHeight = 16, signalIconWidth = 16, windowId = WINDOW_1;
+    u8 signalIconHeight = 16, signalIconWidth = 16, windowId = WINDOW_PHONE_SIGNAL;
 
     switch(signal){
         case 0:
@@ -1150,6 +1129,16 @@ static u8 StartMenu_GetCurrentApp(void){
 
 static void PrintToWindow(void)
 {
+    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     StartMenu_PrintAppName(); // Current App Title
@@ -1164,8 +1153,31 @@ static void PrintToWindow(void)
     StartMenu_PrintQuestInfo(); //Print Quest Info
     StartMenu_PrintHelpBar(); //Print Help Bar
 
+    PutWindowTilemap(WINDOW_PHONE_SIGNAL);
+    PutWindowTilemap(WINDOW_TIME_NUMBER);
+    PutWindowTilemap(WINDOW_PARTY);
+    PutWindowTilemap(WINDOW_TIME_STRING);
+    PutWindowTilemap(WINDOW_PHONE_APPS);
+    PutWindowTilemap(WINDOW_NAME_MAP);
+    PutWindowTilemap(WINDOW_SELECTOR);
+    PutWindowTilemap(WINDOW_POINTER);
+    PutWindowTilemap(WINDOW_NAME_APP);
+    PutWindowTilemap(WINDOW_QUEST_INFO);
+    PutWindowTilemap(WINDOW_HELP_BAR);
     PutWindowTilemap(WINDOW_1);
-    CopyWindowToVram(WINDOW_1, 3);
+
+    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_SELECTOR,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_QUEST_INFO,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_1, COPYWIN_GFX);
 }
 
 
