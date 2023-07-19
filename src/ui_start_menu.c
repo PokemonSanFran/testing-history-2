@@ -788,6 +788,7 @@ static void StartMenu_DisplayPhoneSignal(void)
 {
     u8 signal = GetCurrentSignal();
 
+    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     u8 x = 0, y = 0, signalIconHeight = 16, signalIconWidth = 16, windowId = WINDOW_PHONE_SIGNAL;
 
     switch(signal){
@@ -804,6 +805,7 @@ static void StartMenu_DisplayPhoneSignal(void)
             BlitBitmapToWindow(windowId, sStartMenuApp_Signal_3_Gfx, x, y, signalIconWidth, signalIconHeight);
             break;
     }
+    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintTime(void)
@@ -811,6 +813,8 @@ static void StartMenu_PrintTime(void)
     u8 hours = gLocalTime.hours;
     u8 minutes = gLocalTime.minutes;
     u8 x = 0, y = 0;
+
+    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
     ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEFT_ALIGN, 2);
@@ -821,12 +825,15 @@ static void StartMenu_PrintTime(void)
         StringExpandPlaceholders(gStringVar4, sText_ClockDigitsLeadingZero);
 
     AddTextPrinterParameterized4(WINDOW_TIME_NUMBER, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar4);
+    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
 }
 
 static void StartMenu_DisplayHP(void)
 {
     u16 maxHP = 0, currentHP = 0, i = 0;
     u8 windowId = WINDOW_PARTY, x = 0, y = 1;
+
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     for(i = 0; i < PARTY_SIZE; i++){
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE){
@@ -860,12 +867,14 @@ static void StartMenu_DisplayHP(void)
         }
         x = x + 4;
     }
+    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintTimeOfDay(void)
 {
     u8 hours = gLocalTime.hours;
     u8 windowId = WINDOW_TIME_STRING, x = 0, y = 2;
+    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     if(hours >= 6 && hours < 10)
         StringExpandPlaceholders(gStringVar1, sText_App_Morning);
@@ -877,6 +886,7 @@ static void StartMenu_PrintTimeOfDay(void)
         StringExpandPlaceholders(gStringVar1, sText_App_Night);
 
     AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gStringVar1);
+    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
 }
 
 static void StartMenu_DrawPhoneAppIcon(u8 i, u8 windowId, const u8 * gfx, const u8 * moveModeGfx, u8 x, u8 y, u8 width, u8 height)
@@ -893,6 +903,8 @@ static void StartMenu_DisplayPhoneApps(void)
 {
     u8 phoneIconSlot = 0, phoneApp = 0, appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_PHONE_APPS, x = 0, y = 0;
     u8 currentApp = StartMenu_GetCurrentApp();
+
+    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     for(phoneIconSlot = 0; phoneIconSlot < NUM_APPS_PER_SCREEN; phoneIconSlot++){
 
@@ -935,14 +947,19 @@ static void StartMenu_DisplayPhoneApps(void)
         }
         x += 6;
     }
+
+    StartMenu_DisplaySelector(); //Selection Sprite
+    CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintMapName(void)
 {
     u8 windowId = WINDOW_NAME_MAP, x = 4, y = 0;
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
     AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gStringVar1);
+    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
 }
 
 static void StartMenu_DisplaySelector(void)
@@ -956,8 +973,12 @@ static void StartMenu_DisplayPointer(void)
 {
     u8 pointerWidth = 16, pointerHeight = 24, windowId = WINDOW_POINTER, x = 0, y = 0;
 
+    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
     if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
         BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, x, y, pointerWidth, pointerHeight);
+
+    CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintAppName(void)
@@ -965,6 +986,7 @@ static void StartMenu_PrintAppName(void)
     const u8 *str_SelectedOption;
     u8 x = 0, y = 0;
     u8 currentApp = StartMenu_GetCurrentApp();
+    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     switch(GetCurrentAppFromIndex(currentApp)){
         case APP_POKEMON:
@@ -1005,6 +1027,7 @@ static void StartMenu_PrintAppName(void)
     StringCopy(gStringVar3,str_SelectedOption);
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     AddTextPrinterParameterized4(WINDOW_NAME_APP, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, str_SelectedOption);
+    CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
 }
 
 static void StartMenu_SaveDialog_GetMessage(void)
@@ -1057,6 +1080,8 @@ static void StartMenu_PrintQuestInfo(void)
     bool8 isSaveModeEngaged = (sMenuDataPtr->saveMode != SAVE_MODE_NOT_ENGAGED);
     bool8 storyNotClear = (VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR);
 
+    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
     u8 selectedQuest = StartMenu_GetQuestForStartMenu();
 
     if (hasCommunicationError)
@@ -1084,11 +1109,15 @@ static void StartMenu_PrintQuestInfo(void)
     }
 
     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, x, y, GetFontAttribute(FONT_SMALL_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_SMALL_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar1);
+
+    CopyWindowToVram(WINDOW_QUEST_INFO,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintHelpBar(void)
 {
     u8 windowId = WINDOW_HELP_BAR, x = 4, y = 0;
+
+    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     switch(sMenuDataPtr->saveMode)
     {
@@ -1116,6 +1145,8 @@ static void StartMenu_PrintHelpBar(void)
     }
 
     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, x, y,GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar1);
+
+    CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
 }
 
 static void StartMenu_PrintAllText(void){
@@ -1134,46 +1165,16 @@ static u8 StartMenu_GetCurrentApp(void){
 
 static void PrintToWindow(void)
 {
-    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplayPhoneSignal(); //Signal
-    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintTime(); //Time
-    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplayHP(); //HP Bars
-    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintTimeOfDay(); //Time of the Day
-    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplayPhoneApps(); //App Icons
-    StartMenu_DisplaySelector(); //Selection Sprite
-    CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintMapName(); //Current Location
-    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplayPointer(); //Screen Indicator
-    CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintAppName(); // Current App Title
-    CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintQuestInfo(); //Print Quest Info
-    CopyWindowToVram(WINDOW_QUEST_INFO,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintHelpBar(); //Print Help Bar
-    CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
 }
 
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
