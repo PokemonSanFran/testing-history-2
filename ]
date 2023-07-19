@@ -132,10 +132,8 @@ static bool8 Menu_DoGfxSetup(void);
 static bool8 Menu_InitBgs(void);
 static void Menu_FadeAndBail(void);
 static bool8 Menu_LoadGraphics(void);
-static void StartMenu_LoadBackgroundPalette(void);
 static void Menu_InitWindows(void);
 
-static void StartMenu_DisplayPartyIcons(void);
 static void StartMenu_DisplayPhoneSignal(void);
 static void StartMenu_PrintTime(void);
 static void StartMenu_DisplayParty(void);
@@ -156,14 +154,14 @@ static u8 StartMenu_GetCurrentApp(void);
 static void PrintToWindow(void);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
-static u8 GetCurrentAppFromIndex(u8 index);
+static u8 GetCurrentAppfromIndex(u8 index);
 static u8 GetCurrentSignal();
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
 static void DestroySpeciesIcon(u8 slot);
 static void StartMenuTempIndextoIndex(void);
 static void StartMenuIndextoTempIndex(void);
 
-static void StartMenu_Task_SaveDialog(u8 taskId);
+static void Task_SaveDialog(u8 taskId);
 static void StartMenu_SaveDialog_CheckSave(void);
 static void StartMenu_SaveDialog_DoSave(void);
 static void StartMenu_SaveDialog_ReturnToField(void);
@@ -203,6 +201,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .baseBlock = 1,
     },
 
+    /*
     [WINDOW_TIME_NUMBER] =
     {
         .bg = 0,
@@ -312,6 +311,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 533,
     },
+    */
     DUMMY_WIN_TEMPLATE
 };
 
@@ -405,13 +405,12 @@ void StartMenu_Menu_Init(MainCallback callback)
 
     sMenuDataPtr->currentAppId = currentApp % NUM_APPS_PER_SCREEN;
 
-    sMenuDataPtr->areYouOnSecondScreen = (currentApp >= NUM_APPS_PER_SCREEN) ? TRUE : FALSE;
+    sMenuDataPtr->areYouOnSecondScreen = (current >= NUM_APPS_PER_SCREEN) ? TRUE : FALSE;
 
     sMenuDataPtr->TempAppId = 0;
     sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
     sMenuDataPtr->isAppSelectedForMove = FALSE;
     sMenuDataPtr->shouldShowErrorMessage = FALSE;
-    sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
 
     sMenuDataPtr->PartyPokemonIcon 	 = 0;
     sMenuDataPtr->PartyPokemonIcon_1  = 0;
@@ -444,19 +443,11 @@ static void StartMenuTempIndextoIndex()
     sMenuDataPtr->areYouOnSecondScreen = sMenuDataPtr->areYouOnSecondScreenTemp;
 }
 
-static u8 GetCurrentAppFromIndex(u8 index)
-{
-    if(index >= NUM_TOTAL_APPS)
-        return gSaveBlock2Ptr->startMenuAppIndex[index % NUM_TOTAL_APPS];
-    else
-        return gSaveBlock2Ptr->startMenuAppIndex[index];
-}
-
 static void StartMenuIndextoTempIndex()
 {
     u8 i;
     for(i = 0; i < NUM_TOTAL_APPS; i++){
-        sMenuDataPtr->startMenuAppTempIndex[i] = GetCurrentAppFromIndex(i);
+        sMenuDataPtr->startMenuAppTempIndex[i] = GetCurrentAppfromIndex(i);
     }
     sMenuDataPtr->TempAppId = sMenuDataPtr->currentAppId;
     sMenuDataPtr->areYouOnSecondScreenTemp = sMenuDataPtr->areYouOnSecondScreen;
@@ -496,7 +487,7 @@ static bool8 Menu_DoGfxSetup(void)
     {
         case 0:
             DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000)
-            SetVBlankHBlankCallbacksToNull();
+                SetVBlankHBlankCallbacksToNull();
             ClearScheduledBgCopiesToVram();
             gMain.state++;
             break;
@@ -512,6 +503,7 @@ static bool8 Menu_DoGfxSetup(void)
             if (Menu_InitBgs())
             {
                 sMenuDataPtr->gfxLoadState = 0;
+                sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
                 gMain.state++;
             }
             else
@@ -525,18 +517,28 @@ static bool8 Menu_DoGfxSetup(void)
                 gMain.state++;
             break;
         case 4:
+            LoadMessageBoxAndBorderGfx();
             Menu_InitWindows();
             gMain.state++;
             break;
         case 5:
-            StartMenu_DisplayPartyIcons();
             PrintToWindow();
-            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
             taskId = CreateTask(Task_MenuWaitFadeIn, 0);
+            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+
+            // Pokemon Icons --------------------------------------------------------------------------------------------------------------------
+            x = 2;
+            y = 3;
+
+            for(i = 0; i < PARTY_SIZE; i++){
+                if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+                    ShowSpeciesIcon(i, (x*8) + 4, (y*8));
+                x = x + 4;
+            }
             gMain.state++;
             break;
         case 6:
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
             gMain.state++;
             break;
         default:
@@ -614,7 +616,38 @@ static bool8 Menu_LoadGraphics(void)
             }
             break;
         case 2:
-            StartMenu_LoadBackgroundPalette();
+            switch(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_COLOR]){
+                case OPTIONS_MENU_COLOR_BLACK:
+                    LoadPalette(sMenuPalette_Black, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_BLUE:
+                    LoadPalette(sMenuPalette_Blue, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_GREEN:
+                    LoadPalette(sMenuPalette_Green, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_PLATINUM:
+                    LoadPalette(sMenuPalette_Platinum, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_RED:
+                    LoadPalette(sMenuPalette_Red, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_SCARLET:
+                    LoadPalette(sMenuPalette_Scarlet, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_VIOLET:
+                    LoadPalette(sMenuPalette_Violet, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_WHITE:
+                    LoadPalette(sMenuPalette_White, 0, 32);
+                    break;
+                case OPTIONS_MENU_COLOR_YELLOW:
+                    LoadPalette(sMenuPalette_Yellow, 0, 32);
+                    break;
+                default:
+                    LoadPalette(sMenuPalette, 0, 32);
+                    break;
+            }
             sMenuDataPtr->gfxLoadState++;
             break;
         default:
@@ -624,51 +657,13 @@ static bool8 Menu_LoadGraphics(void)
     return FALSE;
 }
 
-static void StartMenu_LoadBackgroundPalette(void)
-{
-    u8 chosenBackgroundColor = gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_COLOR];
-
-    switch(chosenBackgroundColor){
-        case OPTIONS_MENU_COLOR_BLACK:
-            LoadPalette(sMenuPalette_Black, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_BLUE:
-            LoadPalette(sMenuPalette_Blue, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_GREEN:
-            LoadPalette(sMenuPalette_Green, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_PLATINUM:
-            LoadPalette(sMenuPalette_Platinum, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_RED:
-            LoadPalette(sMenuPalette_Red, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_SCARLET:
-            LoadPalette(sMenuPalette_Scarlet, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_VIOLET:
-            LoadPalette(sMenuPalette_Violet, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_WHITE:
-            LoadPalette(sMenuPalette_White, 0, 32);
-            break;
-        case OPTIONS_MENU_COLOR_YELLOW:
-            LoadPalette(sMenuPalette_Yellow, 0, 32);
-            break;
-        default:
-            LoadPalette(sMenuPalette, 0, 32);
-            break;
-    }
-}
-
 static void Menu_InitWindows(void)
 {
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
-    ScheduleBgCopyTilemapToVram(0);
 
     FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    /*
     FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -679,8 +674,10 @@ static void Menu_InitWindows(void)
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    */
 
     PutWindowTilemap(WINDOW_PHONE_SIGNAL);
+    /*
     PutWindowTilemap(WINDOW_TIME_NUMBER);
     PutWindowTilemap(WINDOW_PARTY);
     PutWindowTilemap(WINDOW_TIME_STRING);
@@ -691,8 +688,10 @@ static void Menu_InitWindows(void)
     PutWindowTilemap(WINDOW_NAME_APP);
     PutWindowTilemap(WINDOW_QUEST_INFO);
     PutWindowTilemap(WINDOW_HELP_BAR);
+    */
 
     CopyWindowToVram(WINDOW_PHONE_SIGNAL, COPYWIN_FULL);
+    /*
     CopyWindowToVram(WINDOW_TIME_NUMBER, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_PARTY, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_TIME_STRING, COPYWIN_FULL);
@@ -703,6 +702,7 @@ static void Menu_InitWindows(void)
     CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_HELP_BAR, COPYWIN_FULL);
+    */
 }
 
 static const u8 sText_App_None[] = _("No App");
@@ -776,32 +776,6 @@ static const u8 sStartMenuApp_Signal_0_Gfx[]  = INCBIN_U8("graphics/start_menu/s
 static const u8 sStartMenuApp_Signal_1_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_1.4bpp");
 static const u8 sStartMenuApp_Signal_2_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_2.4bpp");
 static const u8 sStartMenuApp_Signal_3_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_3.4bpp");
-
-static void StartMenu_DisplayPartyIcons(void)
-{
-    u8 x = sMenuWindowTemplates[WINDOW_PARTY].tilemapLeft + 2;
-    u8 y = sMenuWindowTemplates[WINDOW_PARTY].tilemapTop + 1;
-
-    u8 i;
-
-    for(i = 0; i < PARTY_SIZE; i++){
-        if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
-            ShowSpeciesIcon(i, (x*8) + 4, (y*8));
-        x = x + 4;
-    }
-
-}
-
-static u8 GetCurrentSignal()
-{
-    //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
-    //here you can change the signal this menu will get in certain areas in the game
-    //the flag 0x89 is currently being used so I can't insert it but when anyone inserts it just remove the comments below
-    //if(FlagGet(FLAG_PHONE_NO_SERVICE))
-    //    return 0;
-    //else
-    return 3;
-}
 
 static void StartMenu_DisplayPhoneSignal(void)
 {
@@ -924,7 +898,7 @@ static void StartMenu_DisplayPhoneApps(void)
 
     for(phoneIconSlot = 0; phoneIconSlot < NUM_APPS_PER_SCREEN; phoneIconSlot++){
 
-        phoneApp = GetCurrentAppFromIndex(currentApp + NUM_TOTAL_APPS - phoneIconSlot + 2);
+        phoneApp = GetCurrentAppfromIndex(currentApp + NUM_TOTAL_APPS - phoneIconSlot + 2);
 
         switch(phoneApp){
             case APP_POKEMON:
@@ -1002,7 +976,7 @@ static void StartMenu_PrintAppName(void)
     const u8 *str_SelectedOption;
     u8 currentApp = StartMenu_GetCurrentApp();
 
-    switch(GetCurrentAppFromIndex(currentApp)){
+    switch(GetCurrentAppfromIndex(currentApp)){
         case APP_POKEMON:
             str_SelectedOption  = sText_App_Pokemon;
             break;
@@ -1180,6 +1154,7 @@ static void PrintToWindow(void)
     StartMenu_DisplayPhoneSignal(); //Signal
     CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
 
+    /*
     FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintTime(); //Time
     CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
@@ -1219,6 +1194,7 @@ static void PrintToWindow(void)
     FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintHelpBar(); //Print Help Bar
     CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
+    */
 }
 
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
@@ -1282,6 +1258,42 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 
             gSprites[sMenuDataPtr->PartyPokemonIcon_5].invisible = FALSE;
             return sMenuDataPtr->PartyPokemonIcon_5;
+            break;
+    }
+}
+
+static void DestroySpeciesIcon(u8 slot)
+{
+    switch(slot){
+        case 0:
+            if (sMenuDataPtr->PartyPokemonIcon != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon]);
+            sMenuDataPtr->PartyPokemonIcon = 0xFF;
+            break;
+        case 1:
+            if (sMenuDataPtr->PartyPokemonIcon_1 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_1]);
+            sMenuDataPtr->PartyPokemonIcon_1 = 0xFF;
+            break;
+        case 2:
+            if (sMenuDataPtr->PartyPokemonIcon_2 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_2]);
+            sMenuDataPtr->PartyPokemonIcon_2 = 0xFF;
+            break;
+        case 3:
+            if (sMenuDataPtr->PartyPokemonIcon_3 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_3]);
+            sMenuDataPtr->PartyPokemonIcon_3 = 0xFF;
+            break;
+        case 4:
+            if (sMenuDataPtr->PartyPokemonIcon_4 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_4]);
+            sMenuDataPtr->PartyPokemonIcon_4 = 0xFF;
+            break;
+        case 5:
+            if (sMenuDataPtr->PartyPokemonIcon_5 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_5]);
+            sMenuDataPtr->PartyPokemonIcon_5 = 0xFF;
             break;
     }
 }
@@ -1397,6 +1409,25 @@ void Task_OpenAmazonStartMenu(u8 taskId)
         //SetMainCallback2(Option_Menu_Init); // Display option menu
         gMain.savedCallback = CB2_ReturnToUIMenu;
     }
+}
+
+static u8 GetCurrentAppfromIndex(u8 index)
+{
+    if(index >= NUM_TOTAL_APPS)
+        return gSaveBlock2Ptr->startMenuAppIndex[index % NUM_TOTAL_APPS];
+    else
+        return gSaveBlock2Ptr->startMenuAppIndex[index];
+}
+
+static u8 GetCurrentSignal()
+{
+    //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
+    //here you can change the signal this menu will get in certain areas in the game
+    //the flag 0x89 is currently being used so I can't insert it but when anyone inserts it just remove the comments below
+    //if(FlagGet(FLAG_PHONE_NO_SERVICE))
+    //    return 0;
+    //else
+    return 3;
 }
 
 void ClearStartMenuDataBeforeExit(void)
@@ -1578,7 +1609,7 @@ static void Task_MenuMain(u8 taskId)
     {
         if(!FlagGet(FLAG_START_MENU_MOVE_MODE)){
             ClearStartMenuDataBeforeExit();
-            switch(GetCurrentAppFromIndex(CurrentApp))
+            switch(GetCurrentAppfromIndex(CurrentApp))
             {
                 case APP_BAG:
                     PlaySE(SE_SELECT);
@@ -1714,22 +1745,11 @@ static void Task_MenuMain(u8 taskId)
     {
         sMenuDataPtr->saveMode = SAVE_MODE_ASK;
         PrintToWindow();
-        gTasks[taskId].func = StartMenu_Task_SaveDialog;
+        gTasks[taskId].func = Task_SaveDialog;
     }
 }
 
-static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
-{
-    sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
-    PrintToWindow();
-    gTasks[taskId].func = Task_MenuMain;
-}
-static void StartMenu_SaveDialog_ReturnToField(void)
-{
-    Menu_FadeAndBail();
-}
-
-static void StartMenu_Task_SaveDialog(u8 taskId)
+static void Task_SaveDialog(u8 taskId)
 {
     switch(sMenuDataPtr->saveMode)
     {
@@ -1812,3 +1832,13 @@ static void StartMenu_SaveDialog_DoSave(void)
     PrintToWindow();
 }
 
+static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
+{
+    sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+    PrintToWindow();
+    gTasks[taskId].func = Task_MenuMain;
+}
+static void StartMenu_SaveDialog_ReturnToField(void)
+{
+    Menu_FadeAndBail();
+}
