@@ -63,6 +63,9 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 Debug_Script_1::
 	giveegg SPECIES_LUGIA
+	givemon SPECIES_LUGIA, 100, 0
+	givemon SPECIES_LUGIA, 100, 0
+	givemon SPECIES_LUGIA, 100, 0
 	return
 
 

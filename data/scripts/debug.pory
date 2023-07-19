@@ -73,6 +73,9 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 
 script Debug_Script_1{
     giveegg(SPECIES_LUGIA)
+    givemon(SPECIES_LUGIA,100,0)
+    givemon(SPECIES_LUGIA,100,0)
+    givemon(SPECIES_LUGIA,100,0)
     //warp(MAP_MUIRWOODS,22,43)
 }
 
