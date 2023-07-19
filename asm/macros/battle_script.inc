@@ -1380,6 +1380,12 @@
 	.byte \counter
 	.4byte \ptr
 	.endm
+	
+	.macro jumpifcantloseitem battler:req, ptr:req
+	callnative BS_JumpIfCantLoseItem
+	.byte \battler
+	.4byte \ptr
+	.endm
 
 @ various command changed to more readable macros
 	.macro cancelmultiturnmoves battler:req
@@ -2305,3 +2311,4 @@
 	various 0, VARIOUS_TRY_REVIVAL_BLESSING
 	.4byte \jumpInstr
 	.endm
+	

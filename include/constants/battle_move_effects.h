@@ -407,6 +407,7 @@
 #define EFFECT_REVIVAL_BLESSING             401
 #define EFFECT_FROSTBITE_HIT                402
 #define EFFECT_SNOWSCAPE                    403
+#define EFFECT_CORROSIVE_GAS                404
 
 #define NUM_BATTLE_MOVE_EFFECTS             404
 
