@@ -3143,6 +3143,8 @@ extern const u8 gText_AfterFirst[];
 extern const u8 gText_SaveYourAdventure[];
 extern const u8 gText_NowSavingAdventure[];
 extern const u8 gText_ThereWasAnError[];
+extern const u8 gText_EraseHeader[];
 extern const u8 gText_EraseOldAdventure[];
+extern const u8 gText_EraseQuestion[];
 extern const u8 gText_YouSaved[];
 #endif // GUARD_STRINGS_H

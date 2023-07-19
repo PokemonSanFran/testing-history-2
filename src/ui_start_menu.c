@@ -148,7 +148,7 @@ static void StartMenu_PrintAllText();
 static void StartMenu_CreateAllSprites();
 static u8 StartMenu_GetCurrentApp(void);
 
-static void PrintToWindow(void);
+static void PrintToAllWindows(void);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static u8 GetCurrentAppFromIndex(u8 index);
@@ -480,7 +480,7 @@ static bool8 Menu_DoGfxSetup(void)
     {
         case 0:
             DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000)
-            SetVBlankHBlankCallbacksToNull();
+                SetVBlankHBlankCallbacksToNull();
             ClearScheduledBgCopiesToVram();
             gMain.state++;
             break;
@@ -514,7 +514,8 @@ static bool8 Menu_DoGfxSetup(void)
             break;
         case 5:
             StartMenu_DisplayPartyIcons();
-            PrintToWindow();
+            PrintToAllWindows();
+            StartMenu_PrintHelpBar(); //Print Help Bar
             BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
             taskId = CreateTask(Task_MenuWaitFadeIn, 0);
             gMain.state++;
@@ -1163,12 +1164,12 @@ static u8 StartMenu_GetCurrentApp(void){
     return adjustedAppId;
 }
 
-static void PrintToWindow(void)
+static void PrintToAllWindows(void)
 {
     StartMenu_DisplayPhoneSignal(); //Signal
     StartMenu_PrintTime(); //Time
-    StartMenu_DisplayHP(); //HP Bars
     StartMenu_PrintTimeOfDay(); //Time of the Day
+    StartMenu_DisplayHP(); //HP Bars
     StartMenu_DisplayPhoneApps(); //App Icons
     StartMenu_PrintMapName(); //Current Location
     StartMenu_DisplayPointer(); //Screen Indicator
@@ -1375,7 +1376,11 @@ static void Task_MenuMain(u8 taskId)
             StartMenuTempIndextoIndex();
             FlagClear(FLAG_START_MENU_MOVE_MODE);
             sMenuDataPtr->isAppSelectedForMove = FALSE;
-            PrintToWindow();
+
+            StartMenu_DisplayPhoneApps(); //App Icons
+            StartMenu_DisplayPointer(); //Screen Indicator
+            StartMenu_PrintHelpBar(); //Print Help Bar
+
         }
         else{
             PlaySE(SE_PC_OFF);
@@ -1390,7 +1395,8 @@ static void Task_MenuMain(u8 taskId)
         if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
             sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_PrintAppName(); // Current App Title
     }
 
 
@@ -1430,7 +1436,8 @@ static void Task_MenuMain(u8 taskId)
 
         PlaySE(SE_SELECT);
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_PrintAppName(); // Current App Title
     }
 
     if(JOY_NEW(DPAD_UP))
@@ -1459,7 +1466,8 @@ static void Task_MenuMain(u8 taskId)
         }
         PlaySE(SE_SELECT);
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_PrintAppName(); // Current App Title
     }
 
     if(JOY_NEW(DPAD_RIGHT))
@@ -1498,7 +1506,8 @@ static void Task_MenuMain(u8 taskId)
 
         PlaySE(SE_SELECT);
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_PrintAppName(); // Current App Title
     }
 
     if(JOY_NEW(DPAD_DOWN))
@@ -1527,7 +1536,8 @@ static void Task_MenuMain(u8 taskId)
         }
         PlaySE(SE_SELECT);
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_PrintAppName(); // Current App Title
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1647,7 +1657,9 @@ static void Task_MenuMain(u8 taskId)
             PlaySE(SE_SELECT);
         }
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_DisplayPointer(); //Screen Indicator
+        StartMenu_PrintHelpBar(); //Print Help Bar
     }
 
     if(JOY_NEW(SELECT_BUTTON))
@@ -1663,13 +1675,16 @@ static void Task_MenuMain(u8 taskId)
         PlaySE(SE_SELECT);
         StartMenuIndextoTempIndex();
 
-        PrintToWindow();
+        StartMenu_DisplayPhoneApps(); //App Icons
+        StartMenu_DisplayPointer(); //Screen Indicator
+        StartMenu_PrintHelpBar(); //Print Help Bar
     }
 
     if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
     {
         sMenuDataPtr->saveMode = SAVE_MODE_ASK;
-        PrintToWindow();
+        StartMenu_PrintQuestInfo(); //Print Quest Info
+        StartMenu_PrintHelpBar(); //Print Help Bar
         gTasks[taskId].func = StartMenu_Task_SaveDialog;
     }
 }
@@ -1677,7 +1692,8 @@ static void Task_MenuMain(u8 taskId)
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 {
     sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
-    PrintToWindow();
+    StartMenu_PrintQuestInfo(); //Print Quest Info
+    StartMenu_PrintHelpBar(); //Print Help Bar
     gTasks[taskId].func = Task_MenuMain;
 }
 static void StartMenu_SaveDialog_ReturnToField(void)
@@ -1735,7 +1751,7 @@ static void StartMenu_SaveDialog_CheckSave(void)
     }else{
         StartMenu_SaveDialog_DoSave();
     }
-    PrintToWindow();
+    StartMenu_PrintQuestInfo(); //Print Quest Info
 
 }
 static void StartMenu_SaveDialog_DoSave(void)
@@ -1745,7 +1761,8 @@ static void StartMenu_SaveDialog_DoSave(void)
     PlaySE(SE_SELECT);
 
     sMenuDataPtr->saveMode = SAVE_MODE_IN_PROGRESS;
-    PrintToWindow();
+    StartMenu_PrintQuestInfo(); //Print Quest Info
+    StartMenu_PrintHelpBar(); //Print Help Bar
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
 
@@ -1765,6 +1782,7 @@ static void StartMenu_SaveDialog_DoSave(void)
         sMenuDataPtr->saveMode = SAVE_MODE_ERROR;
 
     SaveStartTimer();
-    PrintToWindow();
+    StartMenu_PrintQuestInfo(); //Print Quest Info
+    StartMenu_PrintHelpBar(); //Print Help Bar
 }
 
