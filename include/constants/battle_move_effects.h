@@ -409,6 +409,6 @@
 #define EFFECT_SNOWSCAPE                    403
 #define EFFECT_CORROSIVE_GAS                404
 
-#define NUM_BATTLE_MOVE_EFFECTS             404
+#define NUM_BATTLE_MOVE_EFFECTS             405
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
