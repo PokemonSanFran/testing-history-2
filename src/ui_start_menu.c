@@ -164,11 +164,11 @@ static void StartMenuTempIndextoIndex(void);
 static void StartMenuIndextoTempIndex(void);
 
 static void Task_SaveDialog(u8 taskId);
-static void SaveDialog_CheckSave(void);
-static void SaveDialog_DoSave(void);
-static void SaveDialog_ReturnToField(void);
-static void SaveDialog_ReturnToMenu(u8 taskId);
-static void SaveDialog_GetMessage(void);
+static void StartMenu_SaveDialog_CheckSave(void);
+static void StartMenu_SaveDialog_DoSave(void);
+static void StartMenu_SaveDialog_ReturnToField(void);
+static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId);
+static void StartMenu_SaveDialog_GetMessage(void);
 u8 StartMenu_GetQuestForStartMenu(void);
 void ClearStartMenuDataBeforeExit(void);
 static void StartMenu_Menu_FreeResources(void);
@@ -671,6 +671,7 @@ static void Menu_InitWindows(void)
     FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_SELECTOR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -694,6 +695,7 @@ static void Menu_InitWindows(void)
     CopyWindowToVram(WINDOW_TIME_STRING, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_PHONE_APPS, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_NAME_MAP, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_SELECTOR, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_POINTER, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
     CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
@@ -772,10 +774,13 @@ static const u8 sStartMenuApp_Signal_1_Gfx[]  = INCBIN_U8("graphics/start_menu/s
 static const u8 sStartMenuApp_Signal_2_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_2.4bpp");
 static const u8 sStartMenuApp_Signal_3_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_3.4bpp");
 
-static void StartMenu_DisplayPhoneSignal(void){
+static void StartMenu_DisplayPhoneSignal(void)
+{
     u8 signal = GetCurrentSignal();
+
     u8 x = sMenuWindowTemplates[WINDOW_PHONE_SIGNAL].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_PHONE_SIGNAL].tilemapTop * 8;
+
     u8 signalIconHeight = 16, signalIconWidth = 16, windowId = WINDOW_PHONE_SIGNAL;
 
     switch(signal){
@@ -794,9 +799,11 @@ static void StartMenu_DisplayPhoneSignal(void){
     }
 }
 
-static void StartMenu_PrintTime(void){
+static void StartMenu_PrintTime(void)
+{
     u8 hours = gLocalTime.hours;
     u8 minutes = gLocalTime.minutes;
+
     u8 x = sMenuWindowTemplates[WINDOW_TIME_NUMBER].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_TIME_NUMBER].tilemapTop * 8;
 
@@ -809,9 +816,6 @@ static void StartMenu_PrintTime(void){
         StringExpandPlaceholders(gStringVar4, sText_ClockDigitsLeadingZero);
 
     AddTextPrinterParameterized4(WINDOW_TIME_NUMBER, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, gStringVar4);
-}
-
-static void StartMenu_DisplayParty(void){
 }
 
 static void StartMenu_DisplayHP(void)
@@ -853,7 +857,8 @@ static void StartMenu_DisplayHP(void)
     }
 }
 
-static void StartMenu_PrintTimeOfDay(void){
+static void StartMenu_PrintTimeOfDay(void)
+{
     u8 hours = gLocalTime.hours;
     u8 x = (sMenuWindowTemplates[WINDOW_TIME_STRING].tilemapLeft * 8);
     u8 y = (sMenuWindowTemplates[WINDOW_TIME_STRING].tilemapTop * 8) + 2;
@@ -881,7 +886,8 @@ static void StartMenu_DrawPhoneAppIcon(u8 i, u8 windowId, const u8 * gfx, const 
     }
 }
 
-static void StartMenu_DisplayPhoneApps(void){
+static void StartMenu_DisplayPhoneApps(void)
+{
     u8 x = sMenuWindowTemplates[WINDOW_PHONE_APPS].tilemapLeft;
     u8 y = sMenuWindowTemplates[WINDOW_PHONE_APPS].tilemapTop;
     u8 phoneIconSlot = 0, phoneApp = 0, appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_PHONE_APPS;
@@ -930,16 +936,18 @@ static void StartMenu_DisplayPhoneApps(void){
     }
 }
 
-static void StartMenu_PrintMapName(void){
+static void StartMenu_PrintMapName(void)
+{
     u8 x = (sMenuWindowTemplates[WINDOW_NAME_MAP].tilemapLeft * 8)+ 4;
     u8 y = sMenuWindowTemplates[WINDOW_NAME_MAP].tilemapTop * 8;
-    u8 windowId = WINDOW_NAME_APP;
+    u8 windowId = WINDOW_NAME_MAP;
 
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
     AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gStringVar1);
 }
 
-static void StartMenu_DisplaySelector(void){
+static void StartMenu_DisplaySelector(void)
+{
     u8 x = sMenuWindowTemplates[WINDOW_SELECTOR].tilemapLeft * 8;
     u8 y = sMenuWindowTemplates[WINDOW_SELECTOR].tilemapTop * 8;
     u8 appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_SELECTOR;
@@ -1006,7 +1014,7 @@ static void StartMenu_PrintAppName(void)
     AddTextPrinterParameterized4(WINDOW_NAME_APP, FONT_NARROW, x, y, GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, str_SelectedOption);
 }
 
-static void SaveDialog_GetMessage(void)
+static void StartMenu_SaveDialog_GetMessage(void)
 {
     switch (sMenuDataPtr->saveMode)
     {
@@ -1030,7 +1038,8 @@ static void SaveDialog_GetMessage(void)
     }
 }
 
-u8 StartMenu_GetQuestForStartMenu(void){
+u8 StartMenu_GetQuestForStartMenu(void)
+{
     u8 i;
     u8 selectedQuest = QUEST_COUNT;
 
@@ -1047,13 +1056,17 @@ u8 StartMenu_GetQuestForStartMenu(void){
     return selectedQuest;
 }
 
-static void StartMenu_PrintQuestInfo(void){
+static void StartMenu_PrintQuestInfo(void)
+{
     u8 x = (sMenuWindowTemplates[WINDOW_QUEST_INFO].tilemapLeft * 8) + 4;
     u8 y = (sMenuWindowTemplates[WINDOW_QUEST_INFO].tilemapTop * 8);
+
     u8 windowId = WINDOW_QUEST_INFO;
+
     bool8 hasCommunicationError = sMenuDataPtr->shouldShowErrorMessage;
     bool8 isSaveModeEngaged = (sMenuDataPtr->saveMode != SAVE_MODE_NOT_ENGAGED);
     bool8 storyNotClear = (VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR);
+
     u8 selectedQuest = StartMenu_GetQuestForStartMenu();
 
     if (hasCommunicationError)
@@ -1064,7 +1077,7 @@ static void StartMenu_PrintQuestInfo(void){
 
     else if (isSaveModeEngaged)
     {
-        SaveDialog_GetMessage();
+        StartMenu_SaveDialog_GetMessage();
     }
 
     else if (storyNotClear)
@@ -1087,6 +1100,7 @@ static void StartMenu_PrintHelpBar(void)
 {
     u8 x = (sMenuWindowTemplates[WINDOW_HELP_BAR].tilemapLeft * 8) + 4;
     u8 y = (sMenuWindowTemplates[WINDOW_HELP_BAR].tilemapTop * 8);
+
     u8 windowId = WINDOW_HELP_BAR;
 
     switch(sMenuDataPtr->saveMode)
@@ -1133,13 +1147,29 @@ static u8 StartMenu_GetCurrentApp(void){
 
 static void PrintToWindow(void)
 {
-    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_PrintAppName(); // Current App Title
-    CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
+    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayPhoneSignal(); //Signal
+    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintTime(); //Time
+    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_DisplayHP(); //HP Bars
+    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintTimeOfDay(); //Time of the Day
+    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
 
     FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplayPhoneApps(); //App Icons
     CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
+
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintMapName(); //Current Location
+    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
 
     FillWindowPixelBuffer(WINDOW_SELECTOR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_DisplaySelector(); //Selection Sprite
@@ -1149,25 +1179,9 @@ static void PrintToWindow(void)
     StartMenu_DisplayPointer(); //Screen Indicator
     CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
 
-    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_DisplayHP(); //HP Bars
-    CopyWindowToVram(WINDOW_PARTY,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_DisplayPhoneSignal(); //Signal
-    CopyWindowToVram(WINDOW_PHONE_SIGNAL,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_PrintTime(); //Time
-    CopyWindowToVram(WINDOW_TIME_NUMBER,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_PrintMapName(); //Current Location
-    CopyWindowToVram(WINDOW_NAME_MAP,COPYWIN_GFX);
-
-    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    StartMenu_PrintTimeOfDay(); //Time of the Day
-    CopyWindowToVram(WINDOW_TIME_STRING,COPYWIN_GFX);
+    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    StartMenu_PrintAppName(); // Current App Title
+    CopyWindowToVram(WINDOW_NAME_APP,COPYWIN_GFX);
 
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     StartMenu_PrintQuestInfo(); //Print Quest Info
@@ -1177,7 +1191,6 @@ static void PrintToWindow(void)
     StartMenu_PrintHelpBar(); //Print Help Bar
     CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
 }
-
 
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 {
@@ -1737,11 +1750,11 @@ static void Task_SaveDialog(u8 taskId)
     {
         case SAVE_MODE_ASK:
             if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
-                SaveDialog_CheckSave();
+                StartMenu_SaveDialog_CheckSave();
             }
 
             if (JOY_NEW(B_BUTTON)){
-                SaveDialog_ReturnToMenu(taskId);
+                StartMenu_SaveDialog_ReturnToMenu(taskId);
             }
 
             break;
@@ -1754,19 +1767,19 @@ static void Task_SaveDialog(u8 taskId)
         case SAVE_MODE_ERROR:
         case SAVE_MODE_SUCCESS:
             if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
-                SaveDialog_ReturnToField();
+                StartMenu_SaveDialog_ReturnToField();
             }
 
             if (JOY_NEW(B_BUTTON)){
-                SaveDialog_ReturnToMenu(taskId);
+                StartMenu_SaveDialog_ReturnToMenu(taskId);
             }
             break;
 
         case SAVE_MODE_OVERWRITE:
             if (JOY_NEW(START_BUTTON)){
-                SaveDialog_DoSave();
+                StartMenu_SaveDialog_DoSave();
             }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
-                SaveDialog_ReturnToMenu(taskId);
+                StartMenu_SaveDialog_ReturnToMenu(taskId);
             }
             break;
         default:
@@ -1774,17 +1787,17 @@ static void Task_SaveDialog(u8 taskId)
     }
 }
 
-static void SaveDialog_CheckSave(void)
+static void StartMenu_SaveDialog_CheckSave(void)
 {
     if (gDifferentSaveFile == TRUE){
         sMenuDataPtr->saveMode = SAVE_MODE_OVERWRITE;
     }else{
-        SaveDialog_DoSave();
+        StartMenu_SaveDialog_DoSave();
     }
     PrintToWindow();
 
 }
-static void SaveDialog_DoSave(void)
+static void StartMenu_SaveDialog_DoSave(void)
 {
     u8 saveStatus;
 
@@ -1814,13 +1827,13 @@ static void SaveDialog_DoSave(void)
     PrintToWindow();
 }
 
-static void SaveDialog_ReturnToMenu(u8 taskId)
+static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 {
     sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
     PrintToWindow();
     gTasks[taskId].func = Task_MenuMain;
 }
-static void SaveDialog_ReturnToField(void)
+static void StartMenu_SaveDialog_ReturnToField(void)
 {
     Menu_FadeAndBail();
 }
