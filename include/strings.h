@@ -3147,4 +3147,6 @@ extern const u8 gText_EraseHeader[];
 extern const u8 gText_EraseOldAdventure[];
 extern const u8 gText_EraseQuestion[];
 extern const u8 gText_YouSaved[];
+extern const u8 gText_ConfirmOverwrite[];
+extern const u8 gText_CancelOverwrite[];
 #endif // GUARD_STRINGS_H

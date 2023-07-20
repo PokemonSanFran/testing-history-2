@@ -85,6 +85,7 @@ enum WindowIds
     WINDOW_NAME_APP,
     WINDOW_QUEST_INFO,
     WINDOW_HELP_BAR,
+    WINDOW_OVERWRITE_MODAL,
 };
 
 enum
@@ -129,6 +130,7 @@ static void Menu_FadeAndBail(void);
 static bool8 Menu_LoadGraphics(void);
 static void StartMenu_LoadBackgroundPalette(void);
 static void Menu_InitWindows(void);
+static void Menu_BufferToVram_Windows(void);
 
 static void StartMenu_DisplayPartyIcons(void);
 static void StartMenu_DisplayPhoneSignal(void);
@@ -144,8 +146,6 @@ static void StartMenu_DisplayPointer(void);
 static void StartMenu_PrintAppName(void);
 static void StartMenu_PrintQuestInfo(void);
 static void StartMenu_PrintHelpBar(void);
-static void StartMenu_PrintAllText();
-static void StartMenu_CreateAllSprites();
 static u8 StartMenu_GetCurrentApp(void);
 
 static void PrintToAllWindows(void);
@@ -296,6 +296,16 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 508,
     },
+    [WINDOW_OVERWRITE_MODAL] =
+    {
+        .bg = 0,
+        .tilemapLeft = 1.5,
+        .tilemapTop = 5,
+        .width = 28.5,
+        .height = 13,
+        .paletteNum = 15,
+        .baseBlock = 508 + (30 * 2),
+    },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -338,14 +348,12 @@ enum Colors
     FONT_BLACK,
     FONT_WHITE,
     FONT_RED,
-    FONT_BLUE,
 };
 static const u8 sMenuWindowFontColors[][3] =
 {
-    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  2, TEXT_COLOR_TRANSPARENT},
-    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  1,  TEXT_COLOR_TRANSPARENT},
-    [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  11, TEXT_COLOR_TRANSPARENT},
-    [FONT_BLUE]   = {TEXT_COLOR_TRANSPARENT,  13, TEXT_COLOR_TRANSPARENT},
+    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GRAY, TEXT_COLOR_TRANSPARENT},
+    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,  TEXT_COLOR_TRANSPARENT},
+    [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_RED, TEXT_COLOR_TRANSPARENT},
 };
 
 //==========FUNCTIONS==========//
@@ -652,40 +660,67 @@ static void Menu_InitWindows(void)
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
+    Menu_BufferToVram_Windows();
+
+    FillWindowPixelBuffer(WINDOW_OVERWRITE_MODAL, PIXEL_FILL(TEXT_COLOR_WHITE));
+}
+
+static void Menu_BufferToVram_Windows(void)
+{
+    u8 windowIndex;
+
+    for (windowIndex = WINDOW_PHONE_SIGNAL; windowIndex < WINDOW_OVERWRITE_MODAL; windowIndex++)
+    {
+        FillWindowPixelBuffer(windowIndex, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        PutWindowTilemap(windowIndex);
+        CopyWindowToVram(windowIndex, COPYWIN_FULL);
+    }
+}
+
+    /*
+
+       originally part of Menu_InitWindows
 
     FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
     PutWindowTilemap(WINDOW_PHONE_SIGNAL);
-    PutWindowTilemap(WINDOW_TIME_NUMBER);
-    PutWindowTilemap(WINDOW_PARTY);
-    PutWindowTilemap(WINDOW_TIME_STRING);
-    PutWindowTilemap(WINDOW_PHONE_APPS);
-    PutWindowTilemap(WINDOW_NAME_MAP);
-    PutWindowTilemap(WINDOW_POINTER);
-    PutWindowTilemap(WINDOW_NAME_APP);
-    PutWindowTilemap(WINDOW_QUEST_INFO);
-    PutWindowTilemap(WINDOW_HELP_BAR);
-
     CopyWindowToVram(WINDOW_PHONE_SIGNAL, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_TIME_NUMBER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_TIME_NUMBER);
     CopyWindowToVram(WINDOW_TIME_NUMBER, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_PARTY);
     CopyWindowToVram(WINDOW_PARTY, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_TIME_STRING, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_TIME_STRING);
     CopyWindowToVram(WINDOW_TIME_STRING, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_PHONE_APPS);
     CopyWindowToVram(WINDOW_PHONE_APPS, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_NAME_MAP);
     CopyWindowToVram(WINDOW_NAME_MAP, COPYWIN_FULL);
+
+    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_POINTER);
     CopyWindowToVram(WINDOW_POINTER, COPYWIN_FULL);
+
+    PutWindowTilemap(WINDOW_NAME_APP);
+    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
+
+    PutWindowTilemap(WINDOW_QUEST_INFO);
+    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
+
+    PutWindowTilemap(WINDOW_HELP_BAR);
+    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     CopyWindowToVram(WINDOW_HELP_BAR, COPYWIN_FULL);
-}
+    */
 
 static const u8 sText_App_None[] = _("No App");
 
@@ -714,7 +749,7 @@ static const u8 sText_HelpBar_Default[] = _("{A_BUTTON} Open {B_BUTTON} Return {
 static const u8 sText_HelpBar_MoveMode[] = _("{A_BUTTON} Place {B_BUTTON} Return to Menu");
 static const u8 sText_HelpBar_SaveAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Cancel");
 static const u8 sText_HelpBar_SaveComplete[] = _("{START_BUTTON} Return to Overworld {B_BUTTON} Return to Menu");
-static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Return to Menu");
+static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON} Overwrite Old Adventure {B_BUTTON} Cancel");
 
 enum AppsIds
 {
@@ -1048,7 +1083,7 @@ static void StartMenu_SaveDialog_GetMessage(void)
             StringCopy(gStringVar1, gText_ThereWasAnError);
             break;
         case SAVE_MODE_OVERWRITE:
-            StringCopy(gStringVar1, gText_EraseOldAdventure);
+            StringCopy(gStringVar1, gText_Blank);
             break;
         default:
             break;
@@ -1150,18 +1185,65 @@ static void StartMenu_PrintHelpBar(void)
     CopyWindowToVram(WINDOW_HELP_BAR,COPYWIN_GFX);
 }
 
-static void StartMenu_PrintAllText(void){
-}
-
-static void StartMenu_CreateAllSprites(void){
-}
-
 static u8 StartMenu_GetCurrentApp(void){
     u8 currentAppId = sMenuDataPtr->currentAppId;
     bool8 isOnSecondScreen = sMenuDataPtr->areYouOnSecondScreen;
     u8 adjustedAppId = isOnSecondScreen ? (currentAppId + NUM_APPS_PER_SCREEN) : currentAppId;
 
     return adjustedAppId;
+}
+
+static void StartMenu_PrintOverwriteModal(void)
+{
+    u8 windowId = WINDOW_OVERWRITE_MODAL;
+
+    FillWindowPixelBuffer(WINDOW_OVERWRITE_MODAL, PIXEL_FILL(TEXT_COLOR_WHITE));
+    PutWindowTilemap(WINDOW_OVERWRITE_MODAL);
+    CopyWindowToVram(WINDOW_OVERWRITE_MODAL,COPYWIN_FULL);
+
+        AddTextPrinterParameterized4(windowId, FONT_NORMAL, 88, 8,GetFontAttribute(FONT_NORMAL,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NORMAL,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gText_EraseHeader);
+        AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, 33, 18,GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gText_EraseOldAdventure);
+        AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, 33, 48,GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_RED], TEXT_SKIP_DRAW, gText_ConfirmOverwrite);
+        AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, 33, 68,GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NARROW,FONTATTR_LETTER_SPACING), sMenuWindowFontColors[FONT_BLACK], TEXT_SKIP_DRAW, gText_CancelOverwrite);
+
+        CopyWindowToVram(WINDOW_OVERWRITE_MODAL, COPYWIN_GFX);
+        StartMenu_PrintQuestInfo(); //Print Quest Info
+}
+
+static void StartMenu_DestroyOverwriteModal(void)
+{
+    FillWindowPixelBuffer(WINDOW_OVERWRITE_MODAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    CopyWindowToVram(WINDOW_OVERWRITE_MODAL, COPYWIN_GFX);
+
+    Menu_BufferToVram_Windows();
+
+    /*
+    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
+    PutWindowTilemap(WINDOW_PARTY);
+    PutWindowTilemap(WINDOW_PHONE_APPS);
+    PutWindowTilemap(WINDOW_NAME_MAP);
+    PutWindowTilemap(WINDOW_POINTER);
+    PutWindowTilemap(WINDOW_NAME_APP);
+    PutWindowTilemap(WINDOW_QUEST_INFO);
+    PutWindowTilemap(WINDOW_HELP_BAR);
+
+    CopyWindowToVram(WINDOW_PARTY, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_PHONE_APPS, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_NAME_MAP, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_POINTER, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
+    CopyWindowToVram(WINDOW_HELP_BAR, COPYWIN_FULL);
+    */
+
+    PrintToAllWindows();
 }
 
 static void PrintToAllWindows(void)
@@ -1692,8 +1774,7 @@ static void Task_MenuMain(u8 taskId)
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 {
     sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
-    StartMenu_PrintQuestInfo(); //Print Quest Info
-    StartMenu_PrintHelpBar(); //Print Help Bar
+    StartMenu_DestroyOverwriteModal();
     gTasks[taskId].func = Task_MenuMain;
 }
 static void StartMenu_SaveDialog_ReturnToField(void)
@@ -1708,6 +1789,7 @@ static void StartMenu_Task_SaveDialog(u8 taskId)
         case SAVE_MODE_ASK:
             if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
                 StartMenu_SaveDialog_CheckSave();
+                StartMenu_PrintHelpBar(); //Print Help Bar
             }
 
             if (JOY_NEW(B_BUTTON)){
@@ -1748,11 +1830,10 @@ static void StartMenu_SaveDialog_CheckSave(void)
 {
     if (gDifferentSaveFile == TRUE){
         sMenuDataPtr->saveMode = SAVE_MODE_OVERWRITE;
+        StartMenu_PrintOverwriteModal();
     }else{
         StartMenu_SaveDialog_DoSave();
     }
-    StartMenu_PrintQuestInfo(); //Print Quest Info
-
 }
 static void StartMenu_SaveDialog_DoSave(void)
 {
@@ -1761,8 +1842,7 @@ static void StartMenu_SaveDialog_DoSave(void)
     PlaySE(SE_SELECT);
 
     sMenuDataPtr->saveMode = SAVE_MODE_IN_PROGRESS;
-    StartMenu_PrintQuestInfo(); //Print Quest Info
-    StartMenu_PrintHelpBar(); //Print Help Bar
+    StartMenu_DestroyOverwriteModal();
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
 
