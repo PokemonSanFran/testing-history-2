@@ -62,6 +62,7 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
+	setflag FLAG_OVERWORLD_SAVE
 	giveegg SPECIES_LUGIA
 	givemon SPECIES_LUGIA, 100, 0
 	givemon SPECIES_LUGIA, 100, 0

@@ -159,6 +159,7 @@ static void StartMenuTempIndextoIndex(void);
 static void StartMenuIndextoTempIndex(void);
 
 static void StartMenu_Task_SaveDialog(u8 taskId);
+static void StartMenu_Task_OverworldSave(u8 taskId);
 static void StartMenu_SaveDialog_CheckSave(void);
 static void StartMenu_SaveDialog_DoSave(void);
 static void StartMenu_SaveDialog_ReturnToField(void);
@@ -370,6 +371,12 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
     }
 }
 
+void Task_OpenMenuFromScript(u8 taskId)
+{
+    bool8 isFromScript = TRUE;
+    Task_OpenPokedexFromStartMenu(taskId, isFromScript);
+}
+
 #define CURRENT_APP_ID_VAR VAR_CURRENT_START_MENU_APP
 //#define DEBUG_VAR          VAR_TEMP_E
 
@@ -403,7 +410,11 @@ void StartMenu_Menu_Init(MainCallback callback)
     sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
     sMenuDataPtr->isAppSelectedForMove = FALSE;
     sMenuDataPtr->shouldShowErrorMessage = FALSE;
-    sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+
+    if (FlagGet(FLAG_OVERWORLD_SAVE))
+        sMenuDataPtr->saveMode = SAVE_MODE_ASK;
+    else
+        sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
 
     sMenuDataPtr->PartyPokemonIcon 	 = 0;
     sMenuDataPtr->PartyPokemonIcon_1  = 0;
@@ -1327,7 +1338,9 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 
 static void Task_MenuWaitFadeIn(u8 taskId)
 {
-    if (!gPaletteFade.active)
+    if (!gPaletteFade.active && FlagGet(FLAG_OVERWORLD_SAVE))
+        gTasks[taskId].func = StartMenu_Task_OverworldSave;
+    else if (!gPaletteFade.active)
         gTasks[taskId].func = Task_MenuMain;
 }
 
@@ -1780,6 +1793,51 @@ static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 static void StartMenu_SaveDialog_ReturnToField(void)
 {
     Menu_FadeAndBail();
+    FlagClear(FLAG_OVERWORLD_SAVE);
+}
+
+static void StartMenu_Task_OverworldSave(u8 taskId)
+{
+    switch(sMenuDataPtr->saveMode)
+    {
+        case SAVE_MODE_ASK:
+            if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
+                StartMenu_SaveDialog_CheckSave();
+                StartMenu_PrintHelpBar(); //Print Help Bar
+            }
+
+            if (JOY_NEW(B_BUTTON)){
+                StartMenu_SaveDialog_ReturnToField();
+            }
+
+            break;
+
+        case SAVE_MODE_NOT_ENGAGED:
+        case SAVE_MODE_IN_PROGRESS:
+        case SAVE_MODE_CANCELED:
+            break;
+
+        case SAVE_MODE_ERROR:
+        case SAVE_MODE_SUCCESS:
+            if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON))){
+                StartMenu_SaveDialog_ReturnToField();
+            }
+
+            if (JOY_NEW(B_BUTTON)){
+                StartMenu_SaveDialog_ReturnToField();
+            }
+            break;
+
+        case SAVE_MODE_OVERWRITE:
+            if (JOY_NEW(START_BUTTON)){
+                StartMenu_SaveDialog_DoSave();
+            }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
+                StartMenu_SaveDialog_ReturnToField();
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 static void StartMenu_Task_SaveDialog(u8 taskId)
