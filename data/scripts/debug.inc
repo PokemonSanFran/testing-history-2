@@ -62,11 +62,11 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	setflag FLAG_OVERWORLD_SAVE
-	giveegg SPECIES_LUGIA
-	givemon SPECIES_LUGIA, 100, 0
-	givemon SPECIES_LUGIA, 100, 0
-	givemon SPECIES_LUGIA, 100, 0
+	msgbox Debug_Script_1_Text_0
+	closemessage
+	startmenu_savescreen
+	waitstate
+	trainerbattle_no_intro TRAINER_RICK, gText_Blank
 	return
 
 
@@ -120,6 +120,9 @@ Debug_CheckSaveBlock::
 	release
 	end
 
+
+Debug_Script_1_Text_0:
+	.string "hi$"
 
 Debug_Script_2_Text_0:
 	.string "{STR_VAR_1}$"

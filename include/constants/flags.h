@@ -169,7 +169,7 @@
 #define FLAG_UNLOCKED_STRENGTH                               0x91
 #define FLAG_UNLOCKED_WHIRLPOOL                              0x92
 #define FLAG_SET_WALL_CLOCK                                  0x93
-#define FLAG_OVERWORLD_SAVE                                  0x94
+#define PSF_FLAG_150                                         0x94
 #define PSF_FLAG_151                                         0x95
 #define PSF_FLAG_152                                         0x96
 #define PSF_FLAG_153                                         0x97

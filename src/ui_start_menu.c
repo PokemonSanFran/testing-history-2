@@ -63,6 +63,7 @@ struct MenuResources
     bool8 areYouOnSecondScreenTemp;
     bool8 isAppSelectedForMove;
     bool8 shouldShowErrorMessage;
+    bool8 calledFromOverworld;
     u8 saveMode;
     u8 startMenuAppTempIndex[NUM_TOTAL_APPS];
     u8 PartyPokemonIcon;
@@ -139,11 +140,11 @@ static void StartMenu_DisplayParty(void);
 static void StartMenu_DisplayHP(void);
 static void StartMenu_PrintTimeOfDay(void);
 static void StartMenu_DrawPhoneAppIcon(u8 i, u8 windowId, const u8 * gfx, const u8 * moveModeGfx, u8 x, u8 y, u8 width, u8 height);
-static void StartMenu_DisplayPhoneApps(void);
+static bool8 StartMenu_DisplayPhoneApps(void);
 static void StartMenu_PrintMapName(void);
 static void StartMenu_DisplaySelector(void);
-static void StartMenu_DisplayPointer(void);
-static void StartMenu_PrintAppName(void);
+static bool8 StartMenu_DisplayPointer(void);
+static bool8 StartMenu_PrintAppName(void);
 static void StartMenu_PrintQuestInfo(void);
 static void StartMenu_PrintHelpBar(void);
 static u8 StartMenu_GetCurrentApp(void);
@@ -366,22 +367,43 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        StartMenu_Menu_Init(CB2_ReturnToField);
+        StartMenu_Menu_Init(CB2_ReturnToField, FALSE);
         DestroyTask(taskId);
     }
 }
 
-void Task_OpenMenuFromScript(u8 taskId)
+void Task_OpenMenuFromOverworld(u8 taskId)
 {
-    bool8 isFromScript = TRUE;
-    Task_OpenPokedexFromStartMenu(taskId, isFromScript);
+    s16 *data = gTasks[taskId].data;
+    bool8 calledFromOverworld = TRUE;
+
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        StartMenu_Menu_Init(CB2_ReturnToFieldContinueScript, calledFromOverworld);
+        DestroyTask(taskId);
+    }
+}
+
+static void StartMenu_InitAsSaveScreen(bool8 calledFromOverworld)
+{
+    if(calledFromOverworld)
+    {
+        sMenuDataPtr->calledFromOverworld = TRUE;
+        sMenuDataPtr->saveMode = SAVE_MODE_ASK;
+    }
+    else
+    {
+        sMenuDataPtr->calledFromOverworld = FALSE;
+        sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+    }
 }
 
 #define CURRENT_APP_ID_VAR VAR_CURRENT_START_MENU_APP
 //#define DEBUG_VAR          VAR_TEMP_E
 
 // This is our main initialization function if you want to call the menu from elsewhere
-void StartMenu_Menu_Init(MainCallback callback)
+void StartMenu_Menu_Init(MainCallback callback, bool8 calledFromOverworld)
 {
     u16 currentApp = VarGet(CURRENT_APP_ID_VAR);
     bool8 firstRunStartMenu = !(FlagGet(FLAG_START_MENU_SETUP));
@@ -399,22 +421,17 @@ void StartMenu_Menu_Init(MainCallback callback)
     }
 
     // initialize stuff
+
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
-
     sMenuDataPtr->currentAppId = currentApp % NUM_APPS_PER_SCREEN;
-
     sMenuDataPtr->areYouOnSecondScreen = (currentApp >= NUM_APPS_PER_SCREEN) ? TRUE : FALSE;
 
     sMenuDataPtr->TempAppId = 0;
     sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
     sMenuDataPtr->isAppSelectedForMove = FALSE;
     sMenuDataPtr->shouldShowErrorMessage = FALSE;
-
-    if (FlagGet(FLAG_OVERWORLD_SAVE))
-        sMenuDataPtr->saveMode = SAVE_MODE_ASK;
-    else
-        sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+    StartMenu_InitAsSaveScreen(calledFromOverworld);
 
     sMenuDataPtr->PartyPokemonIcon 	 = 0;
     sMenuDataPtr->PartyPokemonIcon_1  = 0;
@@ -946,10 +963,13 @@ static void StartMenu_DrawPhoneAppIcon(u8 i, u8 windowId, const u8 * gfx, const 
     }
 }
 
-static void StartMenu_DisplayPhoneApps(void)
+static bool8 StartMenu_DisplayPhoneApps(void)
 {
     u8 phoneIconSlot = 0, phoneApp = 0, appIconHeight = 40, appIconWidth = 40, windowId = WINDOW_PHONE_APPS, x = 0, y = 0;
     u8 currentApp = StartMenu_GetCurrentApp();
+
+    if(sMenuDataPtr->calledFromOverworld)
+        return FALSE;
 
     FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -997,6 +1017,7 @@ static void StartMenu_DisplayPhoneApps(void)
 
     StartMenu_DisplaySelector(); //Selection Sprite
     CopyWindowToVram(WINDOW_PHONE_APPS,COPYWIN_GFX);
+    return TRUE;
 }
 
 static void StartMenu_PrintMapName(void)
@@ -1016,9 +1037,12 @@ static void StartMenu_DisplaySelector(void)
     BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, x, y, appIconWidth, appIconHeight);
 }
 
-static void StartMenu_DisplayPointer(void)
+static bool8 StartMenu_DisplayPointer(void)
 {
     u8 pointerWidth = 16, pointerHeight = 24, windowId = WINDOW_POINTER, x = 0, y = 0;
+
+    if(sMenuDataPtr->calledFromOverworld)
+        return FALSE;
 
     FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -1026,13 +1050,18 @@ static void StartMenu_DisplayPointer(void)
         BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, x, y, pointerWidth, pointerHeight);
 
     CopyWindowToVram(WINDOW_POINTER,COPYWIN_GFX);
+    return TRUE;
 }
 
-static void StartMenu_PrintAppName(void)
+static bool8 StartMenu_PrintAppName(void)
 {
     const u8 *str_SelectedOption;
     u8 x = 0, y = 0;
     u8 currentApp = StartMenu_GetCurrentApp();
+
+    if(sMenuDataPtr->calledFromOverworld)
+        return FALSE;
+
     FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     switch(GetCurrentAppFromIndex(currentApp)){
@@ -1338,7 +1367,7 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 
 static void Task_MenuWaitFadeIn(u8 taskId)
 {
-    if (!gPaletteFade.active && FlagGet(FLAG_OVERWORLD_SAVE))
+    if (!gPaletteFade.active && (sMenuDataPtr->calledFromOverworld))
         gTasks[taskId].func = StartMenu_Task_OverworldSave;
     else if (!gPaletteFade.active)
         gTasks[taskId].func = Task_MenuMain;
@@ -1793,7 +1822,6 @@ static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 static void StartMenu_SaveDialog_ReturnToField(void)
 {
     Menu_FadeAndBail();
-    FlagClear(FLAG_OVERWORLD_SAVE);
 }
 
 static void StartMenu_Task_OverworldSave(u8 taskId)

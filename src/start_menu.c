@@ -117,6 +117,7 @@ static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
 static bool8 TwitterCallback(void);
 static bool8 StartMenuUiStartMenuCallback(void);
+static bool8 StartMenuSaveScreenCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -633,6 +634,18 @@ void ShowUIStartMenu(void)
         StopPlayerAvatar();
     }
 	StartMenuUiStartMenuCallback();
+    LockPlayerFieldControls();
+}
+
+void ShowStartMenuSaveScreen(void)
+{
+    if (!IsOverworldLinkActive())
+    {
+        FreezeObjectEvents();
+        PlayerFreeze();
+        StopPlayerAvatar();
+    }
+    StartMenuSaveScreenCallback();
     LockPlayerFieldControls();
 }
 
@@ -1535,5 +1548,11 @@ static bool8 TwitterCallback(void)
 static bool8 StartMenuUiStartMenuCallback(void)
 {
     CreateTask(Task_OpenMenuFromStartMenu, 0);
+    return TRUE;
+}
+
+static bool8 StartMenuSaveScreenCallback(void)
+{
+    CreateTask(Task_OpenMenuFromOverworld, 0);
     return TRUE;
 }

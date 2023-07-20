@@ -627,6 +627,7 @@ gSpecials::
     def_special Quest_Brucelee_UpdateType
     def_special Quest_Brucelee_BufferTypeName
     def_special Quest_Brucelee_CheckIfPartyTypes
+    def_special ShowStartMenuSaveScreen
 
 @ Restored Frontier
 

@@ -1716,7 +1716,7 @@ void CB2_ReturnToFieldWithOpenMenu(void)
 void CB2_ReturnToUIMenu(void)
 {
     FieldClearVBlankHBlankCallbacks();
-	StartMenu_Menu_Init(CB2_ReturnToField);
+	StartMenu_Menu_Init(CB2_ReturnToField, FALSE);
 }
 
 void CB2_ReturnToFieldContinueScript(void)

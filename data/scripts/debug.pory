@@ -72,12 +72,12 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    setflag(FLAG_OVERWORLD_SAVE)
-    giveegg(SPECIES_LUGIA)
-    givemon(SPECIES_LUGIA,100,0)
-    givemon(SPECIES_LUGIA,100,0)
-    givemon(SPECIES_LUGIA,100,0)
-    //warp(MAP_MUIRWOODS,22,43)
+    msgbox("hi")
+    closemessage
+    startmenu_savescreen
+    //factory_swapmons
+    waitstate
+    trainerbattle_no_intro(TRAINER_RICK,gText_Blank)
 }
 
 script Debug_Script_2{
