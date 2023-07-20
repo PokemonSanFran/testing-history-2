@@ -165,7 +165,7 @@ static void StartMenu_SaveDialog_CheckSave(void);
 static void StartMenu_SaveDialog_DoSave(void);
 static void StartMenu_SaveDialog_ReturnToField(void);
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId);
-static void StartMenu_UpdateTextAndSetSaveMode(void);
+static void StartMenu_UpdateTextAndSetSaveMode(u8 saveMode);
 static void StartMenu_SaveDialog_GetMessage(void);
 void StartMenu_SetSaveSuccessState(void);
 u8 StartMenu_GetQuestForStartMenu(void);
@@ -1812,14 +1812,14 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
     {
-        StartMenu_UpdateTextAndSetSaveMode();
+        StartMenu_UpdateTextAndSetSaveMode(SAVE_MODE_ASK);
         gTasks[taskId].func = StartMenu_Task_SaveDialog;
     }
 }
 
-static void StartMenu_UpdateTextAndSetSaveMode(void)
+static void StartMenu_UpdateTextAndSetSaveMode(u8 saveMode)
 {
-    sMenuDataPtr->saveMode = SAVE_MODE_ASK;
+    sMenuDataPtr->saveMode = saveMode;
     StartMenu_PrintQuestInfo(); //Print Quest Info
     StartMenu_PrintHelpBar(); //Print Help Bar
 }
@@ -1873,7 +1873,7 @@ static void StartMenu_Task_OverworldSave(u8 taskId)
                 StartMenu_SaveDialog_DoSave();
             }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
                 StartMenu_DestroyOverwriteModal();
-                StartMenu_UpdateTextAndSetSaveMode();
+                StartMenu_UpdateTextAndSetSaveMode(SAVE_MODE_ASK);
                 gTasks[taskId].func = StartMenu_Task_OverworldSave;
             }
             break;
@@ -1944,7 +1944,7 @@ static void StartMenu_SaveDialog_DoSave(void)
     if (sMenuDataPtr->saveMode == SAVE_MODE_OVERWRITE)
         StartMenu_DestroyOverwriteModal();
 
-    sMenuDataPtr->saveMode = SAVE_MODE_IN_PROGRESS;
+    StartMenu_UpdateTextAndSetSaveMode(SAVE_MODE_IN_PROGRESS);
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
 
