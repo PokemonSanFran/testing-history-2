@@ -66,8 +66,16 @@ Debug_Script_1::
 	closemessage
 	startmenu_savescreen
 	waitstate
-	trainerbattle_no_intro TRAINER_RICK, gText_Blank
+	compare VAR_RESULT, TRUE
+	goto_if_eq Debug_Script_1_2
+	msgbox Debug_Script_1_Text_2
+Debug_Script_1_1:
+	closemessage
 	return
+
+Debug_Script_1_2:
+	msgbox Debug_Script_1_Text_1
+	goto Debug_Script_1_1
 
 
 Debug_Script_2::
@@ -122,7 +130,14 @@ Debug_CheckSaveBlock::
 
 
 Debug_Script_1_Text_0:
-	.string "hi$"
+	.string "if you save, we'll say hi to crim. if you\n"
+	.string "don't save, we'll say hi to rioluwott.$"
+
+Debug_Script_1_Text_1:
+	.string "hi crim!$"
+
+Debug_Script_1_Text_2:
+	.string "hi rioluwott!$"
 
 Debug_Script_2_Text_0:
 	.string "{STR_VAR_1}$"

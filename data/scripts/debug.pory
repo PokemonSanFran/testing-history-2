@@ -72,12 +72,17 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    msgbox("hi")
+    msgbox(format("if you save, we'll say hi to crim. if you don't save, we'll say hi to rioluwott."))
     closemessage
     startmenu_savescreen
-    //factory_swapmons
     waitstate
-    trainerbattle_no_intro(TRAINER_RICK,gText_Blank)
+
+    if(var(VAR_RESULT) == TRUE){
+       msgbox("hi crim!")
+    }else{
+        msgbox("hi rioluwott!")
+    }
+    closemessage
 }
 
 script Debug_Script_2{

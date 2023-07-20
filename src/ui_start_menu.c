@@ -165,7 +165,9 @@ static void StartMenu_SaveDialog_CheckSave(void);
 static void StartMenu_SaveDialog_DoSave(void);
 static void StartMenu_SaveDialog_ReturnToField(void);
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId);
+static void StartMenu_UpdateTextAndSetSaveMode(void);
 static void StartMenu_SaveDialog_GetMessage(void);
+void StartMenu_SetSaveSuccessState(void);
 u8 StartMenu_GetQuestForStartMenu(void);
 void ClearStartMenuDataBeforeExit(void);
 static void StartMenu_Menu_FreeResources(void);
@@ -777,6 +779,7 @@ static const u8 sText_HelpBar_Default[] = _("{A_BUTTON} Open {B_BUTTON} Return {
 static const u8 sText_HelpBar_MoveMode[] = _("{A_BUTTON} Place {B_BUTTON} Return to Menu");
 static const u8 sText_HelpBar_SaveAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Cancel");
 static const u8 sText_HelpBar_SaveComplete[] = _("{START_BUTTON} Return to Overworld {B_BUTTON} Return to Menu");
+static const u8 sText_HelpBar_OverworldSaveComplete[]  = _("{START_BUTTON} Return to Overworld");
 static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON} Overwrite Old Adventure {B_BUTTON} Cancel");
 
 enum AppsIds
@@ -1206,6 +1209,9 @@ static void StartMenu_PrintHelpBar(void)
         case SAVE_MODE_SUCCESS:
         case SAVE_MODE_ERROR:
             StringCopy(gStringVar1, sText_HelpBar_SaveComplete);
+
+            if(sMenuDataPtr->calledFromOverworld)
+                StringCopy(gStringVar1, sText_HelpBar_OverworldSaveComplete);
             break;
         case SAVE_MODE_OVERWRITE:
             StringCopy(gStringVar1, sText_HelpBar_SaveOverwriteAsk);
@@ -1806,11 +1812,16 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
     {
-        sMenuDataPtr->saveMode = SAVE_MODE_ASK;
-        StartMenu_PrintQuestInfo(); //Print Quest Info
-        StartMenu_PrintHelpBar(); //Print Help Bar
+        StartMenu_UpdateTextAndSetSaveMode();
         gTasks[taskId].func = StartMenu_Task_SaveDialog;
     }
+}
+
+static void StartMenu_UpdateTextAndSetSaveMode(void)
+{
+    sMenuDataPtr->saveMode = SAVE_MODE_ASK;
+    StartMenu_PrintQuestInfo(); //Print Quest Info
+    StartMenu_PrintHelpBar(); //Print Help Bar
 }
 
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
@@ -1821,6 +1832,7 @@ static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 }
 static void StartMenu_SaveDialog_ReturnToField(void)
 {
+    StartMenu_SetSaveSuccessState();
     Menu_FadeAndBail();
 }
 
@@ -1860,7 +1872,9 @@ static void StartMenu_Task_OverworldSave(u8 taskId)
             if (JOY_NEW(START_BUTTON)){
                 StartMenu_SaveDialog_DoSave();
             }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
-                StartMenu_SaveDialog_ReturnToField();
+                StartMenu_DestroyOverwriteModal();
+                StartMenu_UpdateTextAndSetSaveMode();
+                gTasks[taskId].func = StartMenu_Task_OverworldSave;
             }
             break;
         default:
@@ -1927,8 +1941,10 @@ static void StartMenu_SaveDialog_DoSave(void)
 
     PlaySE(SE_SELECT);
 
+    if (sMenuDataPtr->saveMode == SAVE_MODE_OVERWRITE)
+        StartMenu_DestroyOverwriteModal();
+
     sMenuDataPtr->saveMode = SAVE_MODE_IN_PROGRESS;
-    StartMenu_DestroyOverwriteModal();
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
 
@@ -1950,5 +1966,9 @@ static void StartMenu_SaveDialog_DoSave(void)
     SaveStartTimer();
     StartMenu_PrintQuestInfo(); //Print Quest Info
     StartMenu_PrintHelpBar(); //Print Help Bar
+}
+
+void StartMenu_SetSaveSuccessState(void){
+    gSpecialVar_Result = (sMenuDataPtr->saveMode == SAVE_MODE_SUCCESS);
 }
 
