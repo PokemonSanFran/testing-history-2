@@ -78,7 +78,7 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         msgbox(gText_WaitEvenThen_IFoundTheAccess,,SPEAKER_DRASNA)
 
         msgbox(gText_WaitEvenThen_AndICanHandle,,SPEAKER_ARCHER)
-        
+
         closemessage
 
         applymovement(DRASNA,WaitEvenThen_WalkToComputer)
@@ -106,7 +106,7 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         setobjectxyperm(DRASNA,39,4)
         setobjectxy(DRASNA,39,4)
         setobjectnewmovementtype(DRASNA,MOVEMENT_TYPE_FACE_UP)
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         goto(WaitEvenThen_BossEncounter_Script)
 }
 
@@ -122,7 +122,7 @@ script WaitEvenThen_MovePlayerToBoss {
     }
         goto(WaitEvenThen_BossEncounter_Script)
 }
-        
+
 script WaitEvenThen_BossEncounter_Script {
     //PSF TODO Rewrite to have two pokemon OR make it a 1v1 battle instead
     setwildbattle(SPECIES_EXCADRILL,70,ITEM_MUSCLE_BAND,SPECIES_NONE)
@@ -169,7 +169,7 @@ script WaitEvenThen_PostBossDialogue {
         msgbox(gText_WaitEvenThen_AndTheGovernment,,SPEAKER_DRASNA)
 
         msgbox(gText_WaitEvenThen_IllHaveSomeOther,,SPEAKER_ARIANA)
-        
+
         closemessage
 
         applymovement(DRASNA,WaitEvenThen_LeaveLabA)
@@ -180,7 +180,7 @@ script WaitEvenThen_PostBossDialogue {
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         msgbox(gText_WaitEvenThen_ComingWithMe,MSGBOX_YESNO,,SPEAKER_ARCHER)
-        
+
         closemessage
 
         if (var(VAR_RESULT) == YES){
@@ -189,7 +189,7 @@ script WaitEvenThen_PostBossDialogue {
         }else {
                 msgbox(gText_WaitEvenThen_MeetUsIn,,SPEAKER_ARCHER)
                 closemessage
-                
+
                 applymovement(ARCHER,WaitEvenThen_WalkAwayFromPlayer)
                 waitmovement(ARCHER)
 

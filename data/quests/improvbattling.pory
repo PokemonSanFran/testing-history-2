@@ -65,9 +65,9 @@ script Quest_Improvbattling_Complete_Script{
 script Quest_Improvbattling_SaveBeforeChallenge_Script{
     msgbox(gText_Improvbattling_BeforeWeStartLetsSave,,SPEAKER_IMPROV_1)
     closemessage
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
 
-    if (var(VAR_RESULT) == NO){
+    if (var(VAR_RESULT) == FALSE){
         goto(Quest_Improvbattling_CancelChallenge)
     }
 

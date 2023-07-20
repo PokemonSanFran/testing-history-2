@@ -362,8 +362,7 @@ waitse
     msgbox(gText_Breaktheinternet_YouAppearToBe,,SPEAKER_TWITTER_CEO)
     lockall
     closemessage
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
 }
     goto(Quest_Breaktheinternet_CEO_Battle_Script)
 }

@@ -5,7 +5,7 @@ const MARIA_B = 2
 script Quest_GardenCleanUpAdvanced_HideObjects_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_GARDENCLEANUP)
         if (!var(VAR_RESULT)){
-            setflag(FLAG_HIDE_MARIA) 
+            setflag(FLAG_HIDE_MARIA)
         }
     return
 }
@@ -23,7 +23,7 @@ script Quest_GardenCleanUpAdvanced_Event_Script{
         }
 }
 
-script Quest_GardenCleanUpAdvanced_Start_Dialogue{    
+script Quest_GardenCleanUpAdvanced_Start_Dialogue{
     msgbox(gText_GardenCleanUpAdvanced_WeStartedThisCommunityGarden)
     giveitem(ITEM_WAILMER_PAIL,1)
 
@@ -118,7 +118,7 @@ script Quest_GardenCleanUpAdvanced_FinalShake_Cutscene{
         setvar(VAR_TEMP_0,0)
        release
       end
-    } 
+    }
 
     call(Quest_GardenCleanUpAdvanced_ShakeScreen_Script)
 
@@ -127,7 +127,7 @@ script Quest_GardenCleanUpAdvanced_FinalShake_Cutscene{
     msgbox(gText_GardenCleanUpAdvanced_SomethingSwoopedDown)
     closemessage
     setvar(VAR_QUEST_GARDENCLEANUPADVANCED,SAVED_BEFORE_BATTLE)
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
     goto(Quest_GardenCleanUpAdvanced_Battle_Script)
 }
 

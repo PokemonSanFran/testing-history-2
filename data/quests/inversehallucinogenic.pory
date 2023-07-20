@@ -51,7 +51,7 @@ script Quest_Inversehallucinogenic_StartQuest_Script{
     lock
     msgbox(gText_Inversehallucinogenic_Player,MSGBOX_NPC,SPEAKER_PRYCE,,EMOTE_HAPPY)
     startquest(QUEST_INVERSEHALLUCINOGENIC)
-     
+
     opendoor(4,26)
     waitdooranim
     applymovement(PRYCE_OUTSIDE,Common_Movement_WalkUp)
@@ -132,8 +132,7 @@ script Quest_Inversehallucinogenic_Pryce_PreBattle_Dialogue{
     setvar(VAR_GYM_7_STATE,GYM_REMATCH_SAVE_BEFORE_LEADER)
     msgbox(gText_Inversehallucinogenic_IGotTo,MSGBOX_NPC,SPEAKER_PRYCE)
     closemessage
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(Quest_Inversehallucinogenic_Pryce_Battle_Script)
 }
 
@@ -146,7 +145,7 @@ script Quest_Inversehallucinogenic_Pryce_Battle_Script{
 script Quest_Inversehallucinogenic_PostBattle_Script{
     msgbox(gText_Inversehallucinogenic_ItsBeen,,SPEAKER_PRYCE)
     fadescreen(FADE_TO_BLACK)
-    delay(20)   
+    delay(20)
     applymovement(PRYCE,Common_Movement_FaceAwayPlayer)
     waitmovement(PRYCE)
     fadescreen(FADE_FROM_BLACK)

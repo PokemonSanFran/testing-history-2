@@ -216,8 +216,7 @@ script Quest_Warehousewarfare_Barge3_CEO_Battle_Script{
         msgbox(gText_Warehousewarfare_YouAreInteresting,,SPEAKER_AMAZON_CEO)
         lockall
         closemessage
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         }
     goto(Quest_Warehousewarfare_CEO_Battle_Script)
 }

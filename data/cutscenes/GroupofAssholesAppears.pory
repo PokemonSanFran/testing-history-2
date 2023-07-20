@@ -1,9 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const GRUNT1 = 1 
-const GRUNT2 = 2 
-const GRUNT3 = 3 
-const GRUNT4 = 4 
-const GRUNT5 = 5 
+const GRUNT1 = 1
+const GRUNT2 = 2
+const GRUNT3 = 3
+const GRUNT4 = 4
+const GRUNT5 = 5
 const GRUNT6 = 6
 const DAVID = 7
 
@@ -32,7 +32,7 @@ script GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script {
             case 36: applymovement(PLAYER,Common_Movement_WalkRight)
             default: applymovement(PLAYER,Common_Movement_WalkDown)
         }
-    waitmovement(0) 
+    waitmovement(0)
 }
 
 script GroupOfAssholesAppears_GroupAssault_Dialogue {
@@ -73,7 +73,7 @@ script GroupOfAssholesAppears_PlayerToDavid_Script {
             case 36: applymovement(PLAYER,GroupOfAssholesAppears_WalkFromEast_Movement)
             default: applymovement(PLAYER,GroupOfAssholesAppears_WalkFromWest_Movement)
         }
-    waitmovement(0) 
+    waitmovement(0)
 }
 
 script GroupOfAssholesAppears_PlayerIntervene_Dialogue {
@@ -95,8 +95,7 @@ script GroupOfAssholesAppears_PlayerIntervene_Dialogue {
         msgbox(gText_GroupOfAssholesAppears_HeMightBeAsking,MSGBOX_DEFAULT,SPEAKER_ZOEY)
                 setvar(VAR_GROUP_OF_ASSHOLES_STATE,SAVE_TEAMROCKET_FISHERMANSWHARF)
         closemessage
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(GroupOfAssholes_StartBattle_Script)
 }
 
@@ -182,7 +181,7 @@ script GroupOfAssholesAppears_GiveRewards_Dialogue {
 script GroupOfAssholesAppears_LookForXanax_Dialogue {
         lockall
         applymovement(DAVID,GroupOfAssholesAppears_LookAround_Movement)
-        
+
         if (var(VAR_GROUP_OF_ASSHOLES_STATE) == SAVE_TEAMROCKET_FISHERMANSWHARF)   {
             msgbox(gText_GroupOfAssholesAppears_Cries,,SPEAKER_DAVID,,EMOTE_SAD)
         }else{

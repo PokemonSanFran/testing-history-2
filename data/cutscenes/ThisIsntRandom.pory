@@ -10,7 +10,7 @@ script ThisIsntRandom_CheckDoor_Script {
     setvar(VAR_UNDERGROUND_DOOR,1)
 
         if (var(VAR_UNDERGROUNDLAB_STATE) == PLAYER_DISCOVERED_LAB){
-            if (var(VAR_STORYLINE_STATE) == STORY_POST_EARTHQUAKE){ 
+            if (var(VAR_STORYLINE_STATE) == STORY_POST_EARTHQUAKE){
                 call(ThisIsntRandom_UnlockDoor_Dialogue)
             }
         }
@@ -213,7 +213,7 @@ script ThisIsntRandom_StopProgress_Script {
 }
 
 script ThisIsntRandom_CoreEncounter_Script {
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
         faceplayer
 
         if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
@@ -466,7 +466,7 @@ text gText_ThisIsntRandom_AndTheyAttackedUs {
 
 text gText_ThisIsntRandom_LetsKeepGoing {
     format("…Let’s keep going.")
-}    
+}
 
 text gText_ThisIsntRandom_ItsInPain {
     format("That Pokemon looks likes its in pain...")
@@ -501,16 +501,16 @@ movement ThisIsntRandom_WalkToKeypad {
 
 movement ThisIsntRandom_WalkDownHallwayA {
     walk_right * 15
-        step_end 
+        step_end
 }
 movement ThisIsntRandom_WalkDownHallwayB {
     walk_right * 20
-        step_end 
+        step_end
 }
 movement ThisIsntRandom_WalkDownHallwayC {
     walk_down
-        walk_right * 18 
-        step_end 
+        walk_right * 18
+        step_end
 }
 
 movement ThisIsntRandom_WalkIntoLabA {

@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const POLICEA = 1 
+const POLICEA = 1
 const POLICEB = 2
 const POLICEC = 3
-const CHIEF = 4 
+const CHIEF = 4
 const ARIANA = 5
 const GRUNTA = 6
 const GRUNTB = 7
@@ -13,8 +13,8 @@ const FLAG_HIDE_ROCKET = FLAG_TEMP_5
 
 script HowDisappointing_ManageObject_Script{
     switch (var(VAR_HOW_DISAPPOINTING_STATE)){
-        case MISSION_ASSIGNED: call(HowDisappointing_HideTeamRocket_Script) 
-        case GYM_RAID_STARTED: 
+        case MISSION_ASSIGNED: call(HowDisappointing_HideTeamRocket_Script)
+        case GYM_RAID_STARTED:
         case SAVED_BEFORE_ARIANA: call(HowDisappointing_HidePolice_Script)
         default: call(HowDisappointing_HideAll_Script)
     }
@@ -81,12 +81,12 @@ waitmovement(POLICEC)
 msgbox(gText_HowDisappointing_OhAndChampion)
 
 msgbox(gText_HowDisappointing_YeahQuestion,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-    
+
 
 msgbox(gText_HowDisappointing_TryToNotLet)
 
 msgbox(gText_HowDisappointing_Yeah,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-    
+
 
 msgbox(gText_HowDisappointing_Hehehehee)
 closemessage
@@ -181,16 +181,15 @@ msgbox(gText_HowDisappointing_ThenWhyAreYou,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 msgbox(gText_HowDisappointing_TheseCompanies,,SPEAKER_ARIANA)
 
 msgbox(gText_HowDisappointing_AllISeeIs,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-    
-    call(Common_EventScript_SaveGame)
 
+    startmenu_savescreen
     goto(HowDisappointing_StartBattle_Script)
 }
 
 script HowDisappointing_StartBattle_Script {
     lock
 msgbox(gText_HowDisappointing_SighHowDisappointing,MSGBOX_NPC,SPEAKER_ARIANA)
-    
+
     trainerbattle_no_intro(TRAINER_SHELLY_WEATHER_INSTITUTE,gText_HowDisappointing_YouAllDidYour)
     goto(HowDisappointing_ArrestScene_Dialogue)
 }
@@ -229,7 +228,7 @@ script HowDisappointing_MissionComplete_Dialogue {
     setvar(VAR_HOW_DISAPPOINTING_STATE,HOW_DISAPPOINTING_COMPLETE)
 
     msgbox(gText_HowDisappointing_ExcellentWorkEverybody,,SPEAKER_ROSE,,EMOTE_HAPPY)
-    
+
     closemessage
     applymovement(BIANCA,Common_Movement_WalkUp)
     applymovement(CHIEF2,Common_Movement_WalkUp)
@@ -368,7 +367,7 @@ movement HowDisappointing_RunIntoGymC {
     step_end
 }
 movement HowDisappointing_RunIntoGymD {
-    walk_up 
+    walk_up
     step_end
 }
 movement HowDisappointing_Escape {
@@ -408,10 +407,10 @@ movement HowDisappointing_LeaveRoomA {
     walk_up * 3
     walk_left
     walk_up * 6
-    step_end 
+    step_end
 }
 
 movement HowDisappointing_LeaveRoomB {
     walk_up * 6
-    step_end 
+    step_end
 }

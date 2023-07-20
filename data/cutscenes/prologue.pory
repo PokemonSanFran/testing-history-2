@@ -41,7 +41,7 @@ script Prologue_InteractDrasna_Script{
         msgbox(gText_Prologue_WeveBeenWatching,,SPEAKER_DRASNA)
         msgbox(gText_Prologue_YoureGoingToBe,,SPEAKER_DRASNA)
         closemessage
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         setvar(VAR_PROLOGUE_STATE,LOST_TO_DRASNA)
         trainerbattle_no_intro(TRAINER_DRASNA_PROLOGUE,gText_Prologue_Fantastic)
         goto(Prologue_PostBattle_Script)

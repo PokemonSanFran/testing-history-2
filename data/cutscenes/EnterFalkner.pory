@@ -46,8 +46,7 @@ script EnterFalkner_Intro_Dialogue {
   lock
   msgbox(gText_EnterFalkner_MyLatestCreation,,SPEAKER_FALKNER)
   msgbox(gText_EnterFalkner_YourSenseOfTaste)
-    call(Common_EventScript_SaveGame)
-  closemessage
+    startmenu_savescreen
   goto(EnterFalkner_StartGymBattle_Script)
 }
 

@@ -27,13 +27,13 @@ script OldAssholeAppears_Intro_Dialogue {
     playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
     applymovement(BIANCA, Common_Movement_FaceDown)
     msgbox(gText_OldAssholeAppears_StandingOnVolcano,,SPEAKER_BIANCA)
-    
+
     msgbox(gText_OldAssholeAppears_ImSorryWhat,,SPEAKER_ZOEY)
-    
+
     msgbox(gText_OldAssholeAppears_RegionCloseFaultline,,SPEAKER_BIANCA)
-    
+
     msgbox(gText_OldAssholeAppears_DontKnowMagical,,SPEAKER_ZOEY)
-    
+
     goto(OldAssholeAppears_HealPlayer_Dialogue)
 }
 
@@ -41,13 +41,12 @@ script OldAssholeAppears_HealPlayer_Dialogue {
     setvar(VAR_LOMBARDSTREET_STATE,SAVE_BIANCA_LOMBARD)
     msgbox(gText_OldAssholeAppears_IllHealYou,,SPEAKER_BIANCA)
     playse(SE_USE_ITEM)
-    
+
     msgbox(gText_OldAssholeAppears_OhUhThanks,,SPEAKER_ZOEY)
     special(HealPlayerParty)
     msgbox(gText_OldAssholeAppears_DaddyShippedFullRestores,,SPEAKER_BIANCA)
-    
-    call(Common_EventScript_SaveGame)
-    closemessage
+
+    startmenu_savescreen
     goto(OldAssholeAppears_StartBattle_Script)
 }
 
@@ -61,7 +60,7 @@ script OldAssholeAppears_StartBattle_Script {
     lockall
     msgbox(gText_OldAssholeAppears_HowFarBehind,,SPEAKER_BIANCA)
     closemessage
-    
+
     playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
     trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, gText_OldAssholeAppers_ImStartingToQuestion)
     goto(OldAssholeAppears_GiveCorviknightCard_Script)
@@ -71,7 +70,7 @@ script OldAssholeAppears_GiveCorviknightCard_Script {
     lockall
     applymovement(BIANCA,Common_Movement_FacePlayer)
     msgbox(gText_OldAssholeAppears_TakingThisAllSeriously,,SPEAKER_BIANCA)
-    
+
     giveitem(ITEM_SS_TICKET)
     msgbox(gText_OldAssholeAppears_FamiliarWith, MSGBOX_YESNO,,SPEAKER_BIANCA)
     if (var (VAR_RESULT) == 1){
@@ -80,10 +79,10 @@ script OldAssholeAppears_GiveCorviknightCard_Script {
         msgbox(gText_OldAssholeAppears_LetsYouCallARide,,SPEAKER_BIANCA)
     }
     msgbox(gText_OldAssholeAppears_LetsYouUse,,SPEAKER_BIANCA)
-    
+
     msgbox(gText_OldAssholeAppears_YouveBeenSuperNice,,SPEAKER_ZOEY)
     msgbox(gText_OldAssholeAppears_NowWereEven,,SPEAKER_BIANCA)
-    
+
     closemessage
     goto(OldAssholeAppears_BiancaExit_Script)
 }

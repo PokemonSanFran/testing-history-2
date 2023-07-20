@@ -110,7 +110,7 @@ script WhyAreYouHelpingThem_StartRaid {
         msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry,,SPEAKER_ZOEY)
 
         msgbox(gText_WhyAreYouHelpingThem_SeeYa,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         applymovement(BIANCA,WhyAreYouHelpingThem_PoliceRunIn)
@@ -131,7 +131,7 @@ script WhyAreYouHelpingThem_WitnessBattle {
         call(WhyAreYouHelpingThem_MoveObjectBoss_Script)
 
         msgbox(gText_WhyAreYouHelpingThem_GoAfterIllHold,,SPEAKER_BIANCA)
-        
+
         closemessage
         release
         end
@@ -144,14 +144,14 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
         applymovement(PLAYER,WhyAreYouHelpingThem_ApproachGiovanni)
         waitmovement(0)
         msgbox(gText_WhyAreYouHelpingThem_ItsAShameThatThe,,SPEAKER_GIOVANNI)
-        
+
         closemessage
 
         applymovement(GIOVANNI,Common_Movement_WalkLeft)
         waitmovement(0)
 
         msgbox(gText_WhyAreYouHelpingThem_ButBeatingYou,,SPEAKER_GIOVANNI)
-        
+
         closemessage
 
         trainerbattle_continue_after_lose(TRAINER_ARCHIE,gText_WhyAreYouHelpingThem_WaitAMinute)
@@ -167,7 +167,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
 
                 msgbox(gText_WhyAreYouHelpingThem_YoureIncredible,,SPEAKER_GIOVANNI)
                 closemessage
-                
+
                 applymovement(GIOVANNI,Common_Movement_WalkInPlaceLeft)
                 waitmovement(0)
                 giveitem(ITEM_MASTER_BALL,1)
@@ -179,7 +179,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         }
 
         msgbox(gText_WhyAreYouHelpingThem_ImSorryYouHad,,SPEAKER_GIOVANNI)
-        
+
         closemessage
 
         applymovement(ARIANA,WhyAreYouHelpingThem_WalkPastPlayer)
@@ -188,7 +188,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         call(Common_EventScript_OutOfCenterPartyHeal)
 
         msgbox(gText_WhyAreYouHelpingThem_IHandledTheBrat,,SPEAKER_ARIANA)
-        
+
         closemessage
 
         playse(SE_PIN)
@@ -201,7 +201,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         msgbox(gText_WhyAreYouHelpingThem_WhatWasAllThatShit,,SPEAKER_ZOEY)
 
         msgbox(gText_WhyAreYouHelpingThem_WeveGotToHelp,,SPEAKER_GIOVANNI)
-        
+
         closemessage
 
         applymovement(GIOVANNI,WhyAreYouHelpingThem_BeginEscape)
@@ -237,7 +237,7 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         msgbox(gText_WhyAreYouHelpingThem_IThinkTheyreRight,,SPEAKER_ARIANA)
 
         msgbox(gText_WhyAreYouHelpingThem_Sigh,,SPEAKER_GIOVANNI)
-        
+
         closemessage
         applymovement(GIOVANNI,WhyAreYouHelpingThem_WalkIntoHoleA)
         applymovement(ARIANA,WhyAreYouHelpingThem_WalkIntoHoleB)
@@ -250,8 +250,8 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         waitmovement(0)
 
         msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith,,SPEAKER_ZOEY)
-        
-        call(Common_EventScript_SaveGame)
+
+        startmenu_savescreen
         goto(WhyAreYouHelpingThem_StartBattle_Script)
 }
 
@@ -266,7 +266,7 @@ script WhyAreYouHelpingThem_StartBattle_Script{
         msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen,,SPEAKER_ARCHER)
         trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
         closemessage
-        
+
         goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
 }
 
@@ -278,7 +278,7 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         msgbox(gText_WhyAreYouHelpingThem_WhyWouldIt,,SPEAKER_ARCHER)
 
         msgbox(gText_WhyAreYouHelpingThem_Player,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceLeft)
@@ -295,7 +295,7 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         msgbox(gText_WhyAreYouHelpingThem_IGotKnockedOut,,SPEAKER_BIANCA)
 
         msgbox(gText_WhyAreYouHelpingThem_NoILostToo,,SPEAKER_ZOEY)
-        
+
         closemessage
         setvar(VAR_ALAMEDA_STATE,WHY_ARE_YOU_HELPING_THEM)
         fadescreen(FADE_TO_BLACK)
@@ -329,7 +329,7 @@ script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
         waitmovement(0)
 
         msgbox(gText_WhyAreYouHelpingThem_NotBadInThere)
-    
+
         msgbox(gText_WhyAreYouHelpingThem_WannaCome,MSGBOX_YESNO,,SPEAKER_BIANCA)
 
         if (var(VAR_RESULT) == YES){
@@ -360,7 +360,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         msgbox(gText_WhyAreYouHelpingThem_DontWorryAboutIt,,SPEAKER_OAK)
 
         msgbox(gText_WhyAreYouHelpingThem_NowIveGotALot,,SPEAKER_OAK)
-        
+
         closemessage
 
         applymovement(2,WhyAreYouHelpingThem_LeaveCompoundA)
@@ -370,7 +370,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         removeobject(2)
 
         msgbox(gText_WhyAreYouHelpingThem_WeveAllGot,,SPEAKER_BIANCA)
-        
+
         closemessage
 
 
@@ -606,7 +606,7 @@ movement WhyAreYouHelpingThem_ExclaimAndFacePlayer {
 }
 
 movement WhyAreYouHelpingThem_WalkOutOfHole {
-    walk_down 
+    walk_down
         walk_left * 3
         face_down
         step_end

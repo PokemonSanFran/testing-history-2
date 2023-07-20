@@ -85,7 +85,7 @@ script Quest_Allthatglittersmightbegold_Active_Dialogue{
 
 script Quest_Allthatglittersmightbegold_CoreEncounter_Script{
         call(Quest_Allthatglittersmightbegold_StartSparkle_Script)
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
         faceplayer
         setflag(FLAG_FORCE_SHINY)
         setwildbattle(SPECIES_FLOATZEL, 60, ITEM_NONE)

@@ -2484,4 +2484,5 @@
     .macro startmenu_savescreen
     fadescreen FADE_TO_BLACK
     special ShowStartMenuSaveScreen
+    waitstate
     .endm

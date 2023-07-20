@@ -169,8 +169,7 @@ script HousingProtest_LandlordTalkToCrowd_Dialogue {
     copyobjectxytoperm(LANDLORD)
     copyobjectxytoperm(RABIA)
     copyobjectxytoperm(VITOMIR)
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(HousingProtest_StartBattle_Script)
 }
 
@@ -235,7 +234,7 @@ script HousingProtest_MoveGruntsAroundPlayer_Script {
 
 script HousingProtest_InteractLandlord_Script {
     lock
-    
+
     if (var (VAR_PSFROUTE63_STATE) < DEFEATED_TEAMROCKET_PSFROUTE63){
         msgbox(gText_HousingProtest_OhGod, MSGBOX_NPC,SPEAKER_LANDLORD)
     } elif (!flag (FLAG_TALKED_LANDLORD)){

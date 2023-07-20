@@ -114,8 +114,7 @@ script LetsBurnThisMotherDown_ConfrontPlayer {
 
         msgbox(gText_LetsBurnThisMotherDown_IAlwaysHeld,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(LetsBurnThisMotherDown_StartBattle_Script)
 }
 
@@ -124,7 +123,7 @@ script LetsBurnThisMotherDown_StartBattle_Script {
 
         if (var(VAR_TEMP_0) != 1){
             applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromRight)
-        } elif (var(VAR_TEMP_1) == 9){ 
+        } elif (var(VAR_TEMP_1) == 9){
         } else {
             applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromUp)
         }

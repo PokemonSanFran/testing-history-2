@@ -62,10 +62,10 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
+	call Battle8_ExplainAttraction_Dialogue
 	msgbox Debug_Script_1_Text_0
 	closemessage
 	startmenu_savescreen
-	waitstate
 	compare VAR_RESULT, TRUE
 	goto_if_eq Debug_Script_1_2
 	msgbox Debug_Script_1_Text_2

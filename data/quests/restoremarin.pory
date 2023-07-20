@@ -96,7 +96,7 @@ script Quest_Restoremarin_StartQuest_Dialogue{
         call(Quest_Restoremarin_BufferStrings_Part2_Script)
         msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA)
         msgbox(gText_Restoremarin_ComeBack,,SPEAKER_LENORA)
-        
+
 
         startquest(QUEST_RESTOREMARIN)
         release
@@ -119,7 +119,7 @@ script Quest_Restoremarin_Active_Script{
                 msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA)
         }
 
-        
+
 
         goto(Quest_Restoremarin_CheckPokemon_Script)
 }
@@ -149,7 +149,7 @@ script Quest_Restoremarin_CheckPokemon_Script{
 script Quest_Restoremarin_TakeMon_Dialogue{
         msgbox(gText_Restoremarin_Excellent,MSGBOX_NPC,SPEAKER_LENORA)
         //PSF TODO special(TakePlayerMon)
-        
+
 
         call(Quest_Restoremarin_CheckProgress_Script)
         questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTOREMARIN)
@@ -164,9 +164,9 @@ script Quest_Restoremarin_Cancel_Dialogue{
         call(Quest_Restoremarin_BufferStrings_Part1_Script)
         msgbox(gText_Restoremarin_WeNeed_A,,SPEAKER_LENORA)
         call(Quest_Restoremarin_BufferStrings_Part2_Script)
-        msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA) 
+        msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA)
         msgbox(gText_Restoremarin_ComeBack,,SPEAKER_LENORA)
-        
+
         closemessage
         return
 }
@@ -182,10 +182,9 @@ script Quest_Restoremarin_Reward_Dialogue{
         msgbox(gText_Quest_Restoremarin_IAbsolutely,,SPEAKER_ZOEY)
 
         msgbox(gText_Quest_Restoremarin_HellIKindaWanna,,SPEAKER_LENORA)
-        
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+
+        startmenu_savescreen
 
         goto(Quest_Restoremarin_StartBattle_Script)
 }
@@ -195,7 +194,7 @@ script Quest_Restoremarin_StartBattle_Script{
         msgbox(gText_Quest_Restoremarin_OkayChampion,,SPEAKER_LENORA)
         trainerbattle_no_intro(TRAINER_GRETA,gText_Quest_Restoremarin_YoureTougherThan)
         closemessage
-        
+
         goto(Quest_Restoremarin_PostBattle_Dialogue)
 }
 
@@ -220,7 +219,7 @@ script Quest_Restoremarin_PostBattle_Dialogue{
         msgbox(gText_Quest_Restoremarin_IWasntHere,,SPEAKER_ZOEY)
 
         msgbox(gText_Quest_Restoremarin_YourHeartFeels,,SPEAKER_LENORA)
-        
+
         closemessage
 
         opendoor(12,17)

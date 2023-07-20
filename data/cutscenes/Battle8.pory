@@ -62,8 +62,7 @@ script Battle8_ExplainAttraction_Dialogue {
         msgbox(gText_Battle8_TheSistersAreExperts,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(Battle8_StartBattle_Script)
 }
 

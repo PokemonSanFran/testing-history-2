@@ -70,7 +70,7 @@ script VSGarbodor_ChooseSide_Script {
 }
 
 script VSGarbodor_ChooseLeft_Script {
-    setvar(VAR_INNER_CONSTRUCTION_SITE_STATE,PLAYER_LEFT_SIDE) 
+    setvar(VAR_INNER_CONSTRUCTION_SITE_STATE,PLAYER_LEFT_SIDE)
         msgbox(gText_VSGarbodor_ThenIllTakeTheRight,,SPEAKER_BIANCA)
 
         closemessage
@@ -128,7 +128,7 @@ script VSGarbodor_TeamRocketGrunt4_Battle_Script {
 }
 
 script VS_Garbodor_CoreEncounter_Script {
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
         faceplayer
         setwildbattle(SPECIES_GARBODOR, 40, ITEM_NONE)
         playmoncry(SPECIES_GARBODOR, CRY_MODE_ENCOUNTER)

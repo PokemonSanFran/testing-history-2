@@ -17,7 +17,7 @@ script NewAssholeAppears_WalkToPlayer_Script {
         case 4: applymovement(ARCHER,NewAssholeAppears_X4_WalkToPlayer_Movement)
     }
     waitmovement(0)
-    
+
     switch(var(VAR_TEMP_1)){
         case 2: applymovement(ARCHER,NewAssholeAppears_Y2_WalkToPlayer_Movement)
         case 6: applymovement(ARCHER,NewAssholeAppears_Y6_WalkToPlayer_Movement)
@@ -46,7 +46,7 @@ script NewAssholeAppears_Intro_Dialogue {
 
 script NewAssholeAppears_BadgeJudge_Dialogue {
 
-    special(GetNumberOfBadges) 
+    special(GetNumberOfBadges)
 
     switch (var(VAR_RESULT)){
         case 0: msgbox(gText_NewAssholeAppears_NotDoingMuchGood,,SPEAKER_ARCHER)
@@ -55,10 +55,9 @@ script NewAssholeAppears_BadgeJudge_Dialogue {
     }
 
     msgbox(gText_NewAssholeAppears_WhatIsYourProblem,,SPEAKER_ZOEY)
-    
+
     lockall
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(NewAssholeAppears_StartBattle_Script)
 }
 
@@ -66,7 +65,7 @@ script NewAssholeAppears_StartBattle_Script{
     lockall
     trainerbattle_single(TRAINER_WALLY_MAUVILLE,gText_NewAssholeAppears_GoMindYourBusiness,gText_NewAssholeAppears_YoureTough,NewAssholeAppears_PostBattle_Script, NO_MUSIC)
     closemessage
-    
+
 }
 
 script NewAssholeAppears_PostBattle_Script {
@@ -78,14 +77,14 @@ script NewAssholeAppears_PostBattle_Script {
     msgbox(gText_NewAssholeAppears_NotStupidJustIgnorant,,SPEAKER_ARCHER)
     msgbox(gText_NewAssholeAppears_SeeYouAround,,SPEAKER_ARCHER)
     msgbox(gText_NewAssholeAppears_IHopeNot,,SPEAKER_ZOEY)
-    
+
     closemessage
     goto(NewAssholeAppears_ArcherExit_Script)
 }
 
 script NewAssholeAppears_ArcherExit_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    
+
     switch(var(VAR_TEMP_1)){
         case 2: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwaySouth_Movement)
         case 6: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwayNorth_Movement)

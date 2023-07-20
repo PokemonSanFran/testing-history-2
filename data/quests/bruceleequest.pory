@@ -59,7 +59,7 @@ script Quest_Brucelee_SaveBeforeChallenge_Script{
     msgbox(gText_Brucelee_OurTrainingWillBe,,SPEAKER_LEE_PYRON)
     closemessage
 
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
     if (var(VAR_RESULT) == NO){
         goto(Quest_Brucelee_CancelChallenge)
     }

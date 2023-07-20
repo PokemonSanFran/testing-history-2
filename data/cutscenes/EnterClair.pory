@@ -30,8 +30,7 @@ script EnterClair_AskAboutGym_Dialogue {
 
         msgbox(gText_EnterClair_WhenIWasAwarded,,SPEAKER_CLAIR)
                 closemessage
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(EnterClair_StartGymBattle_Script)
 }
 
@@ -61,7 +60,7 @@ script EnterClair_ClairDeafeated_Script {
     release
     end
 }
-    
+
 
 script EnterClair_PostGymBattle1_Dialogue {
     lock

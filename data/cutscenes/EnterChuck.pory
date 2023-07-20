@@ -32,7 +32,7 @@ script EnterChuck_Intro_Dialogue {
     msgbox(gText_EnterChuck_ThatRawPower,MSGBOX_DEFAULT,SPEAKER_CHUCK)
         setvar(VAR_GYM_5_STATE, GYM_SAVE_BEFORE_LEADER)
     closemessage
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
     closemessage
     goto(EnterChuck_StartBattle_Script)
 }

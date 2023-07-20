@@ -14,7 +14,7 @@ script EnterBugsy_BugsyIntro_Dialogue {
         msgbox(gText_EnterBugsy_ThisCheapImitation,,SPEAKER_BUGSY,TAIL_SHOUT)
                 applymovement(BUGSY,Common_Movement_FacePlayer)
                 closemessage
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         closemessage
         goto(EnterBugsy_StartGymBattle_Script)
 }
