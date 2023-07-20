@@ -16,7 +16,7 @@ script BeachBattle_ObjectSetUp_Script {
 }
 
 script BeachBattle_BattleSetUp_Script {
-    setobjectxyperm(BIANCA,10,24) 
+    setobjectxyperm(BIANCA,10,24)
 }
 
 script BeachBattle_BiancaWalkToPlayer {
@@ -50,7 +50,7 @@ script BeachBattle_Bianca_Event_Script {
 
 script BeachBattle_Approach_Dialogue {
         setvar(VAR_BEACH_BATTLE_STATE,SAVE_BIANCA_BEACH)
-        setobjectxyperm(BIANCA,10,24) 
+        setobjectxyperm(BIANCA,10,24)
         msgbox(gText_BeachBattle_ImHeadingNorth,MSGBOX_DEFAULT,SPEAKER_BIANCA)
 
         special(GetNumberOfBadges)
@@ -82,8 +82,7 @@ script BeachBattle_FourBadges_Dialogue {
 
 script BeachBattle_SaveProgress {
     closemessage
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(BeachBattle_StartBattle_Script)
 }
 

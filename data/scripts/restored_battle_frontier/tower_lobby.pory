@@ -283,10 +283,10 @@ script BattleTower_EventScript_SaveBeforeChallenge{
         tower_save(0)
     }
 
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
     setvar(VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_END)
 
-    if (var(VAR_RESULT) == 0){
+    if (var(VAR_RESULT) == FALSE){
         frontier_set(FRONTIER_DATA_CHALLENGE_STATUS)  // No status provided, so it relies on VAR_0x8006 being 0 already
         goto(BattleTower_EventScript_CancelChallenge)
     }

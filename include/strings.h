@@ -3138,4 +3138,15 @@ extern const u8 gText_Prolouge[];
 extern const u8 gText_StarterChoice[];
 extern const u8 gText_BeforeFirst[];
 extern const u8 gText_AfterFirst[];
+
+//Save Screen
+extern const u8 gText_SaveYourAdventure[];
+extern const u8 gText_NowSavingAdventure[];
+extern const u8 gText_ThereWasAnError[];
+extern const u8 gText_EraseHeader[];
+extern const u8 gText_EraseOldAdventure[];
+extern const u8 gText_EraseQuestion[];
+extern const u8 gText_YouSaved[];
+extern const u8 gText_ConfirmOverwrite[];
+extern const u8 gText_CancelOverwrite[];
 #endif // GUARD_STRINGS_H

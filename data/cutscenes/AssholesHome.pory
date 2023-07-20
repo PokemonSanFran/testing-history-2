@@ -36,7 +36,7 @@ script AssholesHome_Archer_Dialogue {
         msgbox(gText_AssholesHome_JudgingFromSwarm,,SPEAKER_ARCHER)
         msgbox(gText_AssholesHome_ReallyHopingLastTime,,SPEAKER_ZOEY)
         closemessage
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         closemessage
         goto(AssholesHome_StartBattle_Script)
 }

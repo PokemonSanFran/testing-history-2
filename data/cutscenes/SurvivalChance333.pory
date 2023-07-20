@@ -78,7 +78,7 @@ msgbox(gText_SurvivalChance333_AndIDidntAsk,,SPEAKER_CHIEF)
 msgbox(gText_SurvivalChance333_IllProveIt,,SPEAKER_BIANCA)
 
 setvar(VAR_FERRYBUILDING_STATE,SAVE_SURVIVAL_CHANCE_BATTLE)
-call(Common_EventScript_SaveGame)
+startmenu_savescreen
 goto(SurvivalChance333_Battle_Script)
 }
 

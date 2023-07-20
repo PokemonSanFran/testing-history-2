@@ -71,7 +71,7 @@ script WaitHeDidWhat_CalledToSkybox_Script {
         playse(SE_POKENAV_CALL)
         waitmessage
         msgbox(gText_WaitHeDidWhat_CongratsComeOnUp,,SPEAKER_LANCE,,PHONE_ON)
-        
+
         playse(SE_POKENAV_HANG_UP)
         waitse
         setvar(VAR_STORYLINE_STATE,STORY_WATCH_SEMIFINAL)
@@ -84,7 +84,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         lock
 
         msgbox(gText_WaitHeDidWhat_GoodShitDownThere,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         applymovement(PLAYER,WaitHeDidWhat_GetOutOfWay)
@@ -113,7 +113,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         waitmovement(0)
 
         msgbox(gText_WaitHeDidWhat_HolyShit,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_WaitHeDidWhat_WellTakeAQuick)
         closemessage
@@ -127,12 +127,12 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         msgbox(gText_WaitHeDidWhat_MakeSureYouGive,,SPEAKER_ROSE)
         msgbox(gText_WaitHeDidWhat_WhatEmail,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
         closemessage
-        
+
 
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(0)
         msgbox(gText_WaitHeDidWhat_GoodLuck,,SPEAKER_OAK)
-        
+
         closemessage
         release
         end
@@ -148,7 +148,7 @@ script WaitHeDidWhat_BiancaMeltdown_Dialogue {
             case 3:msgbox(gText_WaitHeDidWhat_AbsoluteBullshit,,SPEAKER_BIANCA)
         }
 
-    
+
         closemessage
 }
 
@@ -173,10 +173,10 @@ script WaitHeDidWhat_WalkIntoChampionshipPosition {
 
 
         msgbox(gText_WaitHeDidWhat_ImReallyHappy,,SPEAKER_ZOEY)
-        
+
         setvar(VAR_STORYLINE_STATE,STORY_SAVE_FINALS)
 
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         goto(WaitHeDidWhat_StartBattle_Script)
 }
 
@@ -188,13 +188,13 @@ script WaitHeDidWhat_StartBattle_Script{
         msgbox(gText_WaitHeDidWhat_ForPsfregion,,SPEAKER_ARCHER)
         trainerbattle_no_intro(TRAINER_STEVEN,gText_WaitHeDidWhat_SoClose)
         closemessage
-        
+
         goto(WelcomeToTheHallOfFame_PostBattle_Dialogue)
 }
 
 text gText_WaitHeDidWhat_AreYouReady {
     format("Are you ready to battle for the Championship?")
-} 
+}
 
 text gText_WaitHeDidWhat_CongratsComeOnUp {
     format("Congrats on making it to the Finals! Come to the Skybox to watch Bianca's battle!")

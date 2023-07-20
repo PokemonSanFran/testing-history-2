@@ -117,6 +117,7 @@ static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
 static bool8 TwitterCallback(void);
 static bool8 StartMenuUiStartMenuCallback(void);
+static bool8 StartMenuSaveScreenCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -127,8 +128,8 @@ static bool8 BattlePyramidRetireCallback(void);
 static bool8 HandleStartMenuInput(void);
 
 // Save dialog callbacks
-static u8 SaveConfirmSaveCallback(void);
-static u8 SaveYesNoCallback(void);
+u8 static SaveConfirmSaveCallback(void);
+u8 static SaveYesNoCallback(void);
 static u8 SaveConfirmInputCallback(void);
 static u8 SaveFileExistsCallback(void);
 static u8 SaveConfirmOverwriteDefaultNoCallback(void);
@@ -255,9 +256,9 @@ static u8 RunSaveCallback(void);
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
 static void HideSaveInfoWindow(void);
-static void SaveStartTimer(void);
-static bool8 SaveSuccesTimer(void);
-static bool8 SaveErrorTimer(void);
+void SaveStartTimer(void);
+bool8 SaveSuccesTimer(void);
+bool8 SaveErrorTimer(void);
 static void InitBattlePyramidRetire(void);
 static void VBlankCB_LinkBattleSave(void);
 static bool32 InitSaveWindowAfterLinkBattle(u8 *par1);
@@ -341,7 +342,7 @@ static void BuildNormalStartMenu(void)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
         AddStartMenuAction(MENU_ACTION_TWITTER);
     }
-	
+
 	AddStartMenuAction(MENU_ACTION_UI_MENU);
 
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -633,6 +634,18 @@ void ShowUIStartMenu(void)
         StopPlayerAvatar();
     }
 	StartMenuUiStartMenuCallback();
+    LockPlayerFieldControls();
+}
+
+void ShowStartMenuSaveScreen(void)
+{
+    if (!IsOverworldLinkActive())
+    {
+        FreezeObjectEvents();
+        PlayerFreeze();
+        StopPlayerAvatar();
+    }
+    StartMenuSaveScreenCallback();
     LockPlayerFieldControls();
 }
 
@@ -967,7 +980,7 @@ void SaveGame(void)
     CreateTask(SaveGameTask, 0x50);
 }
 
-static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
+void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
 {
     StringExpandPlaceholders(gStringVar4, message);
     LoadMessageBoxAndFrameGfx(0, TRUE);
@@ -1007,12 +1020,12 @@ static void HideSaveInfoWindow(void)
     RemoveSaveInfoWindow();
 }
 
-static void SaveStartTimer(void)
+void SaveStartTimer(void)
 {
     sSaveDialogTimer = 60;
 }
 
-static bool8 SaveSuccesTimer(void)
+bool8 SaveSuccesTimer(void)
 {
     sSaveDialogTimer--;
 
@@ -1029,7 +1042,7 @@ static bool8 SaveSuccesTimer(void)
     return FALSE;
 }
 
-static bool8 SaveErrorTimer(void)
+bool8 SaveErrorTimer(void)
 {
     if (sSaveDialogTimer != 0)
     {
@@ -1043,7 +1056,7 @@ static bool8 SaveErrorTimer(void)
     return FALSE;
 }
 
-static u8 SaveConfirmSaveCallback(void)
+u8 SaveConfirmSaveCallback(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
     RemoveStartMenuWindow();
@@ -1061,7 +1074,7 @@ static u8 SaveConfirmSaveCallback(void)
     return SAVE_IN_PROGRESS;
 }
 
-static u8 SaveYesNoCallback(void)
+u8 SaveYesNoCallback(void)
 {
     DisplayYesNoMenuDefaultYes(); // Show Yes/No menu
     sSaveDialogCallback = SaveConfirmInputCallback;
@@ -1535,5 +1548,11 @@ static bool8 TwitterCallback(void)
 static bool8 StartMenuUiStartMenuCallback(void)
 {
     CreateTask(Task_OpenMenuFromStartMenu, 0);
+    return TRUE;
+}
+
+static bool8 StartMenuSaveScreenCallback(void)
+{
+    CreateTask(Task_OpenMenuFromOverworld, 0);
     return TRUE;
 }

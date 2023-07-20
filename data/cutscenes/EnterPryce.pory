@@ -31,7 +31,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
 
     msgbox(gText_EnterPryce_TheyJustDontUnderstand,,SPEAKER_PRYCE,TAIL_WHISPER)
     closemessage
-    
+
     applymovement(PRYCE, EnterPryce_PaceRightFrontOfDesk)
     waitmovement(0)
 
@@ -39,7 +39,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
 
     msgbox(gText_EnterPryce_HeyYouSeemBusy,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     closemessage
-    
+
     playse(SE_PIN)
     applymovement(PRYCE, Common_Movement_ExclamationMark)
     waitmovement(0)
@@ -48,7 +48,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
 
     msgbox(gText_EnterPryce_ShitShitShit, MSGBOX_NPC,SPEAKER_PRYCE)
     closemessage
-    
+
     applymovement(PRYCE, EnterPryce_TakeDrugs)
     waitmovement(PRYCE)
     applymovement(PLAYER,Common_Movement_WalkLeft)
@@ -128,8 +128,7 @@ script EnterPsf7leader_ExplainLab_Dialogue {
     msgbox(gText_EnterPryce_SoBackHere,,SPEAKER_PRYCE)
 
     msgbox(gText_EnterPryce_WaitDoesTheLeague,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-        call(Common_EventScript_SaveGame)
-    closemessage
+        startmenu_savescreen
     goto(EnterPryce_StartBattle_Script)
 }
 

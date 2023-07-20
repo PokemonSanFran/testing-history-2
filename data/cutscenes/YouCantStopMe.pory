@@ -49,7 +49,7 @@ script YouCantStopMe_MoveOakPlayer_Script{
 script YouCantStopMe_LastChance_Dialogue {
     lock
         msgbox(gText_YouCantStopMe_Wait,,SPEAKER_OAK)
-        
+
         closemessage
 
         call(YouCantStopMe_MoveOakPlayer_Script)
@@ -78,7 +78,7 @@ script YouCantStopMe_LastChance_Dialogue {
 
         msgbox(gText_YouCantStopMe_IThoughtSo,,SPEAKER_ZOEY)
         closemessage
-        
+
 
         applymovement(OAK,YouCantStopMe_LeaveFloor_Movement)
         waitmovement(OAK)
@@ -100,7 +100,7 @@ script YouCantStopMe_Confront_Dialogue {
         msgbox(gText_YouCantStopMe_OneMassCasualty,,SPEAKER_ZOEY)
 
         msgbox(gText_YouCantStopMe_HahIThinkMass,,SPEAKER_ROSE)
-        
+
         closemessage
 
         applymovement(ROSE,Common_Movement_FaceUp)
@@ -114,7 +114,7 @@ script YouCantStopMe_Confront_Dialogue {
         msgbox(gText_YouCantStopMe_NopeIDoWish,,SPEAKER_ROSE)
 
         msgbox(gText_YouCantStopMe_JustAGlorified,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         setvar(VAR_TOWER_RAID_STATE,SAVE_ROSE_SALESFORCETOWER)
@@ -137,15 +137,14 @@ script YouCantStopMe_Confront_Dialogue {
         waitmovement(ROSE)
         waitmovement(PLAYER)
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(YouCantStopMe_StartBossBattle_Script)
 }
 
 script YouCantStopMe_StartBossBattle_Script {
         msgbox(gText_YouCantStopMe_YouWere,MSGBOX_NPC,SPEAKER_ROSE)
         closemessage
-        
+
 
         trainerbattle_no_intro(TRAINER_MAXIE_MAGMA_HIDEOUT,gText_YouCantStopMe_WowGuessWeShould)
         goto(WeCanStopYouActually_PostBattle_Dialogue)

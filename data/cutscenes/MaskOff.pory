@@ -20,7 +20,7 @@ script MaskOff_QuestH_Dialogue {
 
     if (var(VAR_MASK_OFF_STATE) == ASSIGNED_MASK_OFF){
             msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-            
+
             addvar(VAR_MASK_OFF_STATE,1)
     }
     msgbox(gText_MaskOff_IRememberMeeting,,SPEAKER_CHERIE)
@@ -33,7 +33,7 @@ script MaskOff_QuestF_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_1){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
                 addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_IMissWorking,,SPEAKER_TEODORO)
@@ -44,7 +44,7 @@ script MaskOff_QuestI_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
                 addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToCome,,SPEAKER_FANNY)
@@ -56,7 +56,7 @@ script MaskOff_QuestD_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
                 addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToBeHere,,SPEAKER_DUDLEY)
@@ -71,7 +71,7 @@ script MaskOff_QuestG_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_3){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
                 addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_GaveATalkHereOnce,,SPEAKER_CRAIG)
@@ -83,7 +83,7 @@ script MaskOff_QuestA_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_5){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
         }
     msgbox(gText_MaskOff_IUsedToSee,,SPEAKER_ANTONE)
         msgbox(gText_MaskOff_HeWorkedInThe,,SPEAKER_ANTONE)
@@ -94,7 +94,7 @@ script MaskOff_QuestE_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_4){
                 msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
-                
+
         }
     msgbox(gText_MaskOff_WasBornAndRaised,,SPEAKER_MATTHEW)
         msgbox(gText_MaskOff_IKnowHeUsedToLive,,SPEAKER_MATTHEW)
@@ -105,10 +105,10 @@ script MaskOff_QuestE_Dialogue {
 script MaskOff_Encounter_Giovanni_Dialogue {
     lock
         setvar(VAR_MASK_OFF_STATE,SAVE_GIOVANNI_LAKEMERRITT_TRUE)
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
 
         msgbox(gText_MaskOff_FancyABattle,MSGBOX_NPC,SPEAKER_GIOVANNI)
-        
+
         lock
 
         trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Placeholder)
@@ -128,7 +128,7 @@ msgbox(gText_MaskOff_YouWontNeedTo,,SPEAKER_GIOVANNI)
 msgbox(gText_MaskOff_WhatDoYouMean,,SPEAKER_ZOEY)
 
 msgbox(gText_MaskOff_AllowMeTo,,SPEAKER_GIOVANNI)
-    
+
     closemessage
 
     fadescreen(FADE_TO_BLACK)
@@ -138,7 +138,7 @@ msgbox(gText_MaskOff_AllowMeTo,,SPEAKER_GIOVANNI)
 
 msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC,SPEAKER_WIKSTROM)
     lock
-    
+
     playse(SE_PIN)
     applymovement(PLAYER,Common_Movement_ExclamationMark)
     waitmovement(PLAYER)
@@ -150,7 +150,7 @@ msgbox(gText_MaskOff_ButWhyGo,,SPEAKER_ZOEY)
 msgbox(gText_MaskOff_IHidMyIdentity,,SPEAKER_WIKSTROM)
 
 msgbox(gText_MaskOff_ThingsAre,,SPEAKER_ZOEY)
-    
+
     closemessage
 
     fadescreen(FADE_TO_BLACK)
@@ -164,7 +164,7 @@ msgbox(gText_MaskOff_WaitWhatDO,,SPEAKER_ZOEY)
 msgbox(gText_MaskOff_IHaventExplicitly,,SPEAKER_WIKSTROM)
 
 msgbox(gText_MaskOff_IShouldApologize,,SPEAKER_WIKSTROM)
-    
+
     closemessage
     goto(MaskOff_End_Dialogue)
 }

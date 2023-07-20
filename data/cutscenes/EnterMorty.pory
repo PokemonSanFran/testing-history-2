@@ -33,8 +33,7 @@ msgbox(gText_EnterMorty_SoundsExciting,MSGBOX_NPC,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
     setvar(VAR_GYM_4_STATE, GYM_SAVE_BEFORE_LEADER)
 
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(EnterMorty_StartGymBattle_Script)
 }
 
@@ -56,7 +55,7 @@ msgbox(gText_EnterMorty_ThatBattleWasHype,MSGBOX_NPC,SPEAKER_MORTY)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM17)
     closemessage
-    
+
     release
     end
 }
@@ -64,7 +63,7 @@ msgbox(gText_EnterMorty_ThatBattleWasHype,MSGBOX_NPC,SPEAKER_MORTY)
 script EnterMorty_PostDefeat1_Dialogue {
     lock
 msgbox(gText_EnterMorty_KeepingTheBabiesSafe,MSGBOX_NPC,SPEAKER_MORTY)
-    
+
     setvar(VAR_GYM_4_STATE,GYM_EXPLAINED_BADGE_AND_TM)
     closemessage
     release
@@ -74,7 +73,7 @@ msgbox(gText_EnterMorty_KeepingTheBabiesSafe,MSGBOX_NPC,SPEAKER_MORTY)
 script EnterMorty_PostDefeat2_Dialogue {
     lock
 msgbox(gText_EnterMorty_HeadOutToHoenn,MSGBOX_NPC,SPEAKER_MORTY)
-		
+
     closemessage
     release
     end

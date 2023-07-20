@@ -35,8 +35,7 @@ script LetsGrabLunch_StartConversation_Dialogue {
 
         msgbox(gText_LetsGrabLunch_HeyYouBeatMe,,SPEAKER_ARCHER)
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(LetsGrabLunch_StartBattle_Script)
 }
 

@@ -366,9 +366,9 @@ BattleTower_EventScript_SaveBeforeChallenge::
 	compare VAR_LAST_TALKED, 4
 	goto_if_eq BattleTower_EventScript_SaveBeforeChallenge_2
 BattleTower_EventScript_SaveBeforeChallenge_1:
-	call Common_EventScript_SaveGame
+	startmenu_savescreen
 	setvar VAR_TEMP_0, 255
-	compare VAR_RESULT, 0
+	compare VAR_RESULT, FALSE
 	goto_if_eq BattleTower_EventScript_SaveBeforeChallenge_5
 BattleTower_EventScript_SaveBeforeChallenge_4:
 	call BattleTower_EventScript_HandleMultiplayer

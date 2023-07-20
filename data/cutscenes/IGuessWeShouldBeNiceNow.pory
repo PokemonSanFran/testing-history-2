@@ -136,7 +136,7 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
 
         applymovement(5,Common_Movement_WalkLeft)
         waitmovement(0)
-        
+
         fadescreen(FADE_TO_BLACK)
         turnobject(BIANCA, DIR_NORTH)
         setobjectxy(BIANCA,9,12)
@@ -176,7 +176,7 @@ script IGuessWeShouldBeNiceNow_BossProtectBook_Script {
         closemessage
                 applymovement(PLAYER,Common_Movement_WalkUp)
             waitmovement(0)
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         goto(IGuessWeShouldBeNiceNow_CoreEncounter_Script)
 }
 
@@ -258,7 +258,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
             msgbox(gText_IGuessWeShouldBeNiceNow_WellTheChallenges)
         }
         closemessage
-            
+
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_LeaveCave)
         waitmovement(0)
@@ -287,7 +287,7 @@ script IGuessWeShouldBeNiceNow_ExitCave_Script {
 }
 
 script IGuessWeShouldBeNiceNow_End_Dialogue {
-    //PSF TODO move to inside of the airbnb behind a sleep script    
+    //PSF TODO move to inside of the airbnb behind a sleep script
         setvar(VAR_MUIRWOODS_STATE,BIANCA_WAITING_MUIRWOODS)
 
         msgbox(gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming,,SPEAKER_BIANCA)

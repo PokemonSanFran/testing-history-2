@@ -13,5 +13,10 @@ void SaveForBattleTowerLink(void);
 void HideStartMenu(void);
 void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 void ShowUIStartMenu(void);
+void ShowStartMenuSaveScreen(void);
+
+void SaveStartTimer(void);
+bool8 SaveSuccesTimer(void);
+bool8 SaveErrorTimer(void);
 
 #endif // GUARD_START_MENU_H

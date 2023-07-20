@@ -124,7 +124,7 @@ script ImIn_MoveObject_BeforeWarp_Script {
 
 script ImIn_CheckPlayer_Script {
     lock
-      
+
     //If Elite Four has specifically told you to go to the house to break in, nothing happens here.
     if (var(VAR_STORYLINE_STATE) != STORY_BEFORE_SABRINA_BREAKIN){
         release
@@ -166,7 +166,7 @@ script ImIn_StartHouseBreak_Script {
 
         msgbox(gText_ImIn_LetsMoveThen,,SPEAKER_MALVA)
         closemessage
-        
+
         applymovement(ARCHER,ImIn_WalkToSideDoor)
         waitmovement(ARCHER)
 
@@ -218,7 +218,7 @@ script Imin_BeginHouseSearch_Script {
         setvar(VAR_TOWER_RAID_STATE,SEARCHING_SABRINA_HOUSE)
         msgbox(gText_ImIn_OkaySpreadOut,,SPEAKER_MALVA)
         closemessage
-        
+
         applymovement(MALVA,ImIn_SpreadOutHouse)
         applymovement(DRASNA,ImIn_SpreadOutHouse)
         applymovement(SIEBOLD,ImIn_SpreadOutHouse)
@@ -257,7 +257,7 @@ script ImIn_FindLockedDoor_Script {
 }
 
 script ImIn_InteractDoor_Script {
-    checkitem(ITEM_MAGMA_EMBLEM) 
+    checkitem(ITEM_MAGMA_EMBLEM)
 
         if (var(VAR_RESULT)){
             goto(ImIn_EnterCorrectCode_Script)
@@ -341,7 +341,7 @@ script ImIn_PostWarpSplit_Dialogue {
 
         msgbox(gText_ImIn_LetsGoSecure,,SPEAKER_SIEBOLD)
         closemessage
-        
+
         applymovement(SIEBOLD_B,ImIn_WalkAwayFromWarpA)
         applymovement(DRASNA_B,ImIn_WalkAwayFromWarpA)
 
@@ -351,7 +351,7 @@ script ImIn_PostWarpSplit_Dialogue {
 
         msgbox(gText_ImIn_FloorThenLets,,SPEAKER_MALVA)
         closemessage
-        
+
         applymovement(MALVA_B,ImIn_WalkAwayFromWarpC)
         applymovement(WIKSTROM_B,ImIn_WalkAwayFromWarpC)
         applymovement(ARCHER_B,ImIn_WalkAwayFromWarpC)
@@ -398,7 +398,7 @@ script ImIn_OfficeReveal_Dialogue{
 
         msgbox(gText_ImIn_DoYouLikeMy,,SPEAKER_BIANCA)
         closemessage
-        
+
         msgbox(gText_ImIn_WhatAreYouDoing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
         msgbox(gText_ImIn_IDidntChooseToAlign,,SPEAKER_BIANCA)
@@ -413,13 +413,12 @@ script ImIn_OfficeReveal_Dialogue{
 
         msgbox(gText_ImIn_DaddyWontBeAble,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         closemessage
-        
+
         applymovement(BIANCA,ImIn_WalkFromDesk_Movement)
         waitmovement(BIANCA)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
         goto(ImIn_StartBiancaBattle_Script)
 }
 
@@ -428,7 +427,7 @@ script ImIn_StartBiancaBattle_Script {
     lock
         msgbox(gText_ImIn_AreDeadDoYou,,SPEAKER_BIANCA)
         closemessage
-        
+
         trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
         goto(ImIn_BiancaDefeated_Dialogue)
 }

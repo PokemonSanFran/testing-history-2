@@ -79,7 +79,7 @@ script ExhibitionBattle_BattleDiantha_Script {
         trainerbattle_continue_after_lose(TRAINER_WALLACE,gText_ExhibitionBattle_Incredible)
         special(HealPlayerParty)
         msgbox(gText_ExhibitionBattle_WhatAnAmazing,MSGBOX_AUTOCLOSE)
-        setvar(VAR_STORYLINE_STATE,STORY_POST_DIANTHA) 
+        setvar(VAR_STORYLINE_STATE,STORY_POST_DIANTHA)
         warpsilent(MAP_CHASECENTER_LOCKERS,255,9,5)
 
         //PSF TODO Add crowd booing
@@ -151,7 +151,7 @@ script ExhibitionBattle_Sabrina_Dialogue {
 script ExhibitionBattle_FalseCredits_Script {
     lock
     fadescreen(FADE_TO_BLACK)
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
     msgbox("False credits roll. The....End?",MSGBOX_AUTOCLOSE)
     release
     closemessage

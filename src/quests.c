@@ -148,7 +148,6 @@ static void PrintDetailsForCancel();
 static void GenerateAndPrintQuestDetails(s32 questId);
 static void GenerateQuestLocation(s32 questId);
 static void PrintQuestLocation(s32 questId);
-static void UpdateQuestDesc(s32 questId);
 static void UpdateQuestDoneDesc(s32 questId);
 static const u8 *GetQuestDesc(s32 questId);
 static const u8 *GetQuestDoneDesc(s32 questId);
@@ -4131,22 +4130,6 @@ u8 GenerateList(bool8 isFiltered)
 	return numRow + offset;
 }
 
-u8 getFirstFavoriteQuest(){
-	u8 i;
-
-	for(i = 0; i < SUB_QUEST_COUNT; i++){
-		if(QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE) && QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
-			return i;
-	}
-
-	for(i = 0; i < SUB_QUEST_COUNT; i++){
-		if(QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
-			return i;
-	}
-
-	return SUB_QUEST_COUNT;
-}
-
 static void AssignCancelNameAndId(u8 numRow)
 {
 	if (IsSubsavedQuestMode()) {
@@ -4520,7 +4503,7 @@ void GenerateQuestFlavorText(s32 questId)
 			StringCopy(gStringVar1, sText_StartForMore);
 		}
 		if (IsQuestActiveState(questId) == TRUE) {
-			UpdateQuestDesc(questId);
+			QuestMenu_UpdateQuestDesc(questId);
 		}
 		if (IsQuestRewardState(questId) == TRUE) {
 			StringCopy(gStringVar1, sText_ReturnRecieveReward);
@@ -4539,7 +4522,7 @@ void GenerateQuestFlavorText(s32 questId)
 
 	StringExpandPlaceholders(gStringVar3, gStringVar1);
 }
-void UpdateQuestDesc(s32 questId)
+void QuestMenu_UpdateQuestDesc(s32 questId)
 {
 	StringExpandPlaceholders(gStringVar1, GetQuestDesc(questId));
 }

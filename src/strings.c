@@ -1929,3 +1929,14 @@ const u8 gText_Prolouge[] = _("Prologue");
 const u8 gText_StarterChoice[] =_("Starter selection");
 const u8 gText_BeforeFirst[] =_("Before meeting Bianca");
 const u8 gText_AfterFirst[] =_("After first cutscene");
+
+//New Save Screen
+const u8 gText_SaveYourAdventure[] = _("Would you like to save your adventure\nso far?");
+const u8 gText_NowSavingAdventure[] = _("Now saving your Pokémon adventure...\nDon't turn off the power.");
+const u8 gText_ThereWasAnError[] = _("There was an error. You did not save.");
+const u8 gText_EraseHeader[] = _("CAUTION!");
+const u8 gText_EraseOldAdventure[] = _("If you continue, this will overwrite the\npreviously saved adventure and its\nprogress. This cannot be recovered.");
+const u8 gText_EraseQuestion[] = _("Overwrite this save?");
+const u8 gText_YouSaved[] = _("You saved your progress!");
+const u8 gText_ConfirmOverwrite[] = _("{START_BUTTON} Overwrite Old Adventure");
+const u8 gText_CancelOverwrite[] = _("Press any other button to cancel.");

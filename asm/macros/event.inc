@@ -2479,3 +2479,10 @@
 	stringvar \stringVarId
 	.2byte \slot
 	.endm
+
+    @ Calls the start menu in Save Mode which only allows the player to save their game or not.
+    .macro startmenu_savescreen
+    fadescreen FADE_TO_BLACK
+    special ShowStartMenuSaveScreen
+    waitstate
+    .endm

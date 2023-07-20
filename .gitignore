@@ -47,3 +47,4 @@ make.txt
 *.vimsess
 data/cutscenes/*.inc
 data/quests/*.inc
+*.mermaid

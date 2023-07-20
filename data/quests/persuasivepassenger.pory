@@ -263,8 +263,7 @@ script Quest_Persuasivepassenger_Uber_CEO_Dialogue{
         msgbox(gText_Persuasivepassenger_WeDoThatMore,,SPEAKER_UBER_CEO)
         lockall
         closemessage
-        call(Common_EventScript_SaveGame)
-        closemessage
+        startmenu_savescreen
     }
     goto(Quest_Persuasivepassenger_Uber_CEO_Battle_Script)
 }
@@ -280,8 +279,7 @@ script Quest_Persuasivepassenger_PostRaid_Uber_CEO_Dialogue{
     msgbox(gText_Persuasivepassenger_IShouldHaveGuessed,MSGBOX_NPC,SPEAKER_UBER_CEO)
     lockall
     closemessage
-    call(Common_EventScript_SaveGame)
-    closemessage
+    startmenu_savescreen
     goto(Quest_Persuasivepassenger_Uber_CEO_Battle_Script)
 }
 

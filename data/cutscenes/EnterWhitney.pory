@@ -4,7 +4,7 @@ const FLAG_HIDE_PUZZLE = FLAG_TEMP_1
 const FLAG_HIDE_WHITNEY = FLAG_TEMP_3
 
 script EnterWhitney_LeaderPosition_Script{
-    switch (var (VAR_GYM_3_STATE)) { 
+    switch (var (VAR_GYM_3_STATE)) {
         case 0: return
         case 1: setflag(FLAG_TEMP_1)
         default: goto(EnterWhitney_StartBattle_ObjectSetup_Script)
@@ -67,8 +67,7 @@ script EnterWhitney_MuseumArrangement_Dialogue {
     msgbox(gText_EnterWhitney_HasYourVisit,,SPEAKER_WHITNEY)
         msgbox(gText_EnterWhitney_UhYup,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     msgbox(gText_EnterWhitney_ICanHearTheOrre,,SPEAKER_WHITNEY)
-        call(Common_EventScript_SaveGame)
-    closemessage
+        startmenu_savescreen
     goto(EnterWhitney_StartBattle_Script)
 }
 

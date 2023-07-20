@@ -59,7 +59,7 @@ script WarehouseRave_Intro_Dialogue {
     lock
         msgbox(gText_WarehouseRave_IsThisPlace,,SPEAKER_ZOEY)
         closemessage
-        
+
 
         call(WarehouseRave_LockDoors_Script)
         playse(SE_PIN)
@@ -68,7 +68,7 @@ script WarehouseRave_Intro_Dialogue {
 
         msgbox(gText_WarehouseRave_WhatTheHell,,SPEAKER_ZOEY)
         closemessage
-        
+
 
         clearflag(FLAG_HIDE_KOGA)
         addobject(KOGA)
@@ -84,13 +84,13 @@ script WarehouseRave_Intro_Dialogue {
         msgbox(gText_WarehouseRave_SoIDecideTo,,SPEAKER_ZOEY)
 
         msgbox(gText_WarehouseRave_HasInstructed,,SPEAKER_KOGA)
-        
+
         closemessage
 
         setvar(VAR_WAREHOUSE_RAVE_STATE,SAVE_KOGA_OAKLAND)
         applymovement(PLAYER,WarehouseRave_WalkToBattle)
         waitmovement(0)
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         goto(WarehouseRave_Battle_Script)
 }
 
@@ -105,7 +105,7 @@ script WarehouseRave_Battle_Script {
         msgbox(gText_WarehouseRave_PrepareToFight,,SPEAKER_KOGA)
         trainerbattle_no_intro(TRAINER_TABITHA_MT_CHIMNEY,gText_WarehouseRave_YesTheyllBelieve)
         closemessage
-        
+
         goto(WarehouseRave_PostBattle_Script)
 }
 
@@ -122,7 +122,7 @@ script WarehouseRave_PostBattle_Script {
         msgbox(gText_WarehouseRave_WaitWhyAreYou,,SPEAKER_ZOEY)
 
         msgbox(gText_WarehouseRave_Now,,SPEAKER_KOGA)
-        
+
         closemessage
 
         applymovement(PLAYER,WarehouseRave_RunOutTheWarehouse)
@@ -149,7 +149,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         msgbox(gText_WarehouseRave_HolyShitThatWas,,SPEAKER_ARCHER)
 
         msgbox(gText_WarehouseRave_TheBattleFelt,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceDown)
@@ -158,7 +158,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         msgbox(gText_WarehouseRave_AndThenHeToldMe,,SPEAKER_ZOEY)
 
         msgbox(gText_WarehouseRave_ThatDoesntMake,,SPEAKER_ARCHER)
-        
+
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceRight)
@@ -175,11 +175,11 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         if (var(VAR_STORYLINE_STATE) != STORY_RECIVED_RAVE_INVITE){
             msgbox(gText_WarehouseRave_ImHeadingIntoTheCity)
             msgbox(gText_WarehouseRave_IllSeeYou)
-        } else { 
+        } else {
             msgbox(gText_WarehouseRave_GladYouDidnt)
         }
         closemessage
-        
+
 
         applymovement(ARCHER,WarehouseRave_LeaveCity)
         waitmovement(0)
@@ -317,7 +317,7 @@ movement WarehouseRave_RunOutTheWarehouse {
 }
 
 movement WarehouseRave_ExitWarehouse {
-    face_up 
+    face_up
     step_end
 }
 

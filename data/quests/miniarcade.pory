@@ -55,9 +55,9 @@ script Quest_Miniarcade_Complete_Script{
 script Quest_Miniarcade_SaveBeforeChallenge_Script{
     msgbox(gText_Miniarcade_ThisGameIsPrettyWild,,SPEAKER_CHRIS)
     closemessage
-    call(Common_EventScript_SaveGame)
+    startmenu_savescreen
 
-    if (var(VAR_RESULT) == NO){
+    if (var(VAR_RESULT) == FALSE){
         goto(Quest_Miniarcade_CancelChallenge)
     }
     goto(Quest_Miniarcade_StartChallenge)

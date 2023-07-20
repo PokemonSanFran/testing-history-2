@@ -10,7 +10,7 @@ const FLAG_HIDE_SMEARGLE = FLAG_TEMP_1
 script Quest_Recruitlocalartists_Sabrina_Visibility_Script{
     setvar(VAR_TEMP_0,0)
 
-        special(GetNumberOfBadges) 
+        special(GetNumberOfBadges)
         if (var(VAR_RESULT) < 5){
             addvar(VAR_TEMP_0,1)
         }
@@ -54,28 +54,28 @@ script Quest_Recruitlocalartists_SetSmearglePosition_Script{
     random(8)
 
         switch(var(VAR_RESULT)){
-            case 0: 
+            case 0:
                 setobjectxy(SMEARGLE,3,8)
                 setobjectxyperm(SMEARGLE,3,8)
-            case 1: 
+            case 1:
                 setobjectxy(SMEARGLE,2,14)
                 setobjectxyperm(SMEARGLE,2,14)
-            case 2: 
+            case 2:
                 setobjectxy(SMEARGLE,7,19)
                 setobjectxyperm(SMEARGLE,7,19)
-            case 3: 
+            case 3:
                 setobjectxy(SMEARGLE,15,19)
                 setobjectxyperm(SMEARGLE,15,19)
-            case 4: 
+            case 4:
                 setobjectxy(SMEARGLE,36,24)
                 setobjectxyperm(SMEARGLE,36,24)
-            case 5: 
+            case 5:
                 setobjectxy(SMEARGLE,29,13)
                 setobjectxyperm(SMEARGLE,29,13)
-            case 6: 
+            case 6:
                 setobjectxy(SMEARGLE,21,13)
                 setobjectxyperm(SMEARGLE,21,13)
-            case 7: 
+            case 7:
                 setobjectxy(SMEARGLE,25,4)
                 setobjectxyperm(SMEARGLE,25,4)
             default:
@@ -89,17 +89,17 @@ script Quest_Recruitlocalartists_CountSubquest_Script{
 
     setvar(VAR_TEMP_0,0)
 
-        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_1) 
+        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_1)
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
         }
 
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_2) 
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_2)
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
         }
 
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_3) 
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RECRUITLOCALARTISTS,SUB_QUEST_3)
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
         }
@@ -124,7 +124,7 @@ script Quest_Recruitlocalartists_ProgressReward_Script{
 
 script Quest_Recruitlocalartists_StartQuest_Dialogue{
     lock
-    //PSF TODO move player if in sabrina's walking path 
+    //PSF TODO move player if in sabrina's walking path
     setvar(VAR_MUGSHOT,MUGSHOT_SABRINA)
 
     if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
@@ -156,7 +156,7 @@ script Quest_Recruitlocalartists_StartQuest_Dialogue{
     delay(30)
     fadescreen(FADE_FROM_BLACK)
     release
-    end 
+    end
 }
 
 script Quest_Recruitlocalartists_First_Dialogue{
@@ -186,7 +186,7 @@ script Quest_Recruitlocalartists_Second_Dialogue{
 
 script Quest_Recruitlocalartists_CoreEncounter_Script{
     lock
-        call(Common_EventScript_SaveGame)
+        startmenu_savescreen
         faceplayer
         call(Quest_Recruitlocalartists_SetSmeargle_Script)
         playmoncry(SPECIES_SMEARGLE,CRY_MODE_ENCOUNTER)
