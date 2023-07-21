@@ -131,7 +131,7 @@ script Quest_Brucelee_Reward_Dialogue{
 script Quest_Brucelee_RestoreParty_Script{
     msgbox(gText_Brucelee_AndNowToRest,,SPEAKER_LEE_PYRON)
     fadescreen(FADE_TO_BLACK)
-    special(LoadPlayerParty)
+    special(LoadPlayerPartyBattleFrontier)
     special(HealPlayerParty)
     fadescreen(FADE_FROM_BLACK)
     return

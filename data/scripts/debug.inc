@@ -62,28 +62,11 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	call Battle8_ExplainAttraction_Dialogue
-	msgbox Debug_Script_1_Text_0
-	closemessage
-	startmenu_savescreen
-	compare VAR_RESULT, TRUE
-	goto_if_eq Debug_Script_1_2
-	msgbox Debug_Script_1_Text_2
-Debug_Script_1_1:
-	closemessage
 	return
-
-Debug_Script_1_2:
-	msgbox Debug_Script_1_Text_1
-	goto Debug_Script_1_1
 
 
 Debug_Script_2::
-	special Quest_Brucelee_UpdateType
-	special Quest_Brucelee_BufferTypeName
-	msgbox Debug_Script_2_Text_0
-	closemessage
-	end
+	return
 
 
 Debug_Script_3::
@@ -128,19 +111,6 @@ Debug_CheckSaveBlock::
 	release
 	end
 
-
-Debug_Script_1_Text_0:
-	.string "if you save, we'll say hi to crim. if you\n"
-	.string "don't save, we'll say hi to rioluwott.$"
-
-Debug_Script_1_Text_1:
-	.string "hi crim!$"
-
-Debug_Script_1_Text_2:
-	.string "hi rioluwott!$"
-
-Debug_Script_2_Text_0:
-	.string "{STR_VAR_1}$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

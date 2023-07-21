@@ -183,7 +183,7 @@ script Quest_Improvbattling_Reward_Dialogue{
 
 script Quest_Improvbattling_RestoreParty_Script{
     fadescreen(FADE_TO_BLACK)
-    special(LoadPlayerParty)
+    special(LoadPlayerPartyBattleFrontier)
     special(HealPlayerParty)
     fadescreen(FADE_FROM_BLACK)
     return

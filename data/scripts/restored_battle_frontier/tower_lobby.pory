@@ -82,14 +82,14 @@ script BattleTower_EventScript_GiveBattlePoints{
 script BattleTower_EventScript_LookForwardToChallenge{
     msgbox(BattleTower_Text_LookForwardToAnotherChallenge, MSGBOX_DEFAULT)
     closemessage
-    special(LoadPlayerPartyBattleTower)
+    special(LoadPlayerPartyBattleFrontier)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_END)
     release
     end
 }
 
 script BattleTower_EventScript_LostChallenge {
-    special(LoadPlayerPartyBattleTower)
+    special(LoadPlayerPartyBattleFrontier)
     if (var(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_MULTIS ||
         flag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)) {
         goto(BattleTower_EventScript_CancelWinStreak)
@@ -241,7 +241,7 @@ script BattleTower_EventScript_TryEnterChallenge{
     setvar(VAR_RESULT,1)
     frontier_checkineligible
     goto_if_eq(VAR_0x8004, TRUE, BattleTower_EventScript_NotEnoughValidMons)
-    special(SavePlayerPartyBattleTower)
+    special(SavePlayerPartyBattleFrontier)
     frontier_set(FRONTIER_DATA_LVL_MODE, VAR_RESULT)
     switch(var(VAR_LAST_TALKED)){
         case ATTENDANT_SINGLES: msgbox(BattleTower_Text_SelectThreeMons, MSGBOX_DEFAULT)

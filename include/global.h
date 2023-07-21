@@ -1245,7 +1245,7 @@ struct SaveBlock1
     // sizeof: 0x3???
     /*??x??*/  u16 mazeLayoutSeed;
                u16 mazeItemsSeed;
-    /*0x??*/   struct Pokemon playerPartyBattleTower[PARTY_SIZE];
+    /*0x??*/   struct Pokemon playerPartyBattleFrontier[PARTY_SIZE];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

@@ -55,6 +55,7 @@ script Quest_Miniarcade_Complete_Script{
 script Quest_Miniarcade_SaveBeforeChallenge_Script{
     msgbox(gText_Miniarcade_ThisGameIsPrettyWild,,SPEAKER_CHRIS)
     closemessage
+    special(SavePlayerPartyBattleFrontier)
     startmenu_savescreen
 
     if (var(VAR_RESULT) == FALSE){
@@ -100,7 +101,6 @@ script Quest_Miniarcade_Battle1_Script{
     trainerbattle_continue_after_lose(TRAINER_MINI_ARCADE_CHRIS,gText_Miniarcade_ThatWasCrazy)
 
     call(Quest_Miniarcade_RestoreParty_Script)
-    msgbox(gText_Miniarcade_ThatsNeverNot,,SPEAKER_CHRIS)
     if(var(VAR_RESULT) == B_OUTCOME_WON){
         goto(Quest_Miniarcade_PostBattle1_Script)
     }
@@ -125,8 +125,9 @@ script Quest_Miniarcade_Reward_Dialogue{
 }
 
 script Quest_Miniarcade_RestoreParty_Script{
+    msgbox(gText_Miniarcade_ThatsNeverNot,,SPEAKER_CHRIS)
     fadescreen(FADE_TO_BLACK)
-    special(LoadPlayerParty)
+    special(LoadPlayerPartyBattleFrontier)
     special(HealPlayerParty)
     fadescreen(FADE_FROM_BLACK)
     return

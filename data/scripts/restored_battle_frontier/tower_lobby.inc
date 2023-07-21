@@ -64,14 +64,14 @@ BattleTower_EventScript_GiveBattlePoints::
 BattleTower_EventScript_LookForwardToChallenge::
 	msgbox BattleTower_Text_LookForwardToAnotherChallenge, MSGBOX_DEFAULT
 	closemessage
-	special LoadPlayerPartyBattleTower
+	special LoadPlayerPartyBattleFrontier
 	setvar VAR_TEMP_0, 255
 	release
 	end
 
 
 BattleTower_EventScript_LostChallenge::
-	special LoadPlayerPartyBattleTower
+	special LoadPlayerPartyBattleFrontier
 	compare VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS
 	goto_if_ne BattleTower_EventScript_LostChallenge_2
 	goto_if_set FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER, BattleTower_EventScript_LostChallenge_2
@@ -275,7 +275,7 @@ BattleTower_EventScript_TryEnterChallenge_1:
 	setvar VAR_RESULT, 1
 	frontier_checkineligible
 	goto_if_eq VAR_0x8004, TRUE, BattleTower_EventScript_NotEnoughValidMons
-	special SavePlayerPartyBattleTower
+	special SavePlayerPartyBattleFrontier
 	frontier_set FRONTIER_DATA_LVL_MODE, VAR_RESULT
 	switch VAR_LAST_TALKED
 	case 1, BattleTower_EventScript_TryEnterChallenge_9

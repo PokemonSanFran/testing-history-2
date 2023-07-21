@@ -292,22 +292,22 @@ static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey)
     ApplyNewEncryptionKeyToHword(&gSaveBlock1Ptr->coins, encryptionKey);
 }
 
-void SavePlayerPartyBattleTower(void)
+void SavePlayerPartyBattleFrontier(void)
 {
     int i;
 
     gSaveBlock1Ptr->playerPartyCount = gPlayerPartyCount;
 
     for (i = 0; i < PARTY_SIZE; i++)
-        gSaveBlock1Ptr->playerPartyBattleTower[i] = gPlayerParty[i];
+        gSaveBlock1Ptr->playerPartyBattleFrontier[i] = gPlayerParty[i];
 }
 
-void LoadPlayerPartyBattleTower(void)
+void LoadPlayerPartyBattleFrontier(void)
 {
     int i;
 
     gPlayerPartyCount = gSaveBlock1Ptr->playerPartyCount;
 
     for (i = 0; i < PARTY_SIZE; i++)
-        gPlayerParty[i] = gSaveBlock1Ptr->playerPartyBattleTower[i];
+        gPlayerParty[i] = gSaveBlock1Ptr->playerPartyBattleFrontier[i];
 }
