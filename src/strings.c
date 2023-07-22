@@ -1938,5 +1938,5 @@ const u8 gText_EraseHeader[] = _("CAUTION!");
 const u8 gText_EraseOldAdventure[] = _("If you continue, this will overwrite the\npreviously saved adventure and its\nprogress. This cannot be recovered.");
 const u8 gText_EraseQuestion[] = _("Overwrite this save?");
 const u8 gText_YouSaved[] = _("You saved your progress!");
-const u8 gText_ConfirmOverwrite[] = _("{START_BUTTON} Overwrite Old Adventure");
+const u8 gText_ConfirmOverwrite[] = _("{START_BUTTON}+{A_BUTTON} Overwrite Old Adventure");
 const u8 gText_CancelOverwrite[] = _("Press any other button to cancel.");

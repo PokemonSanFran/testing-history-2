@@ -780,7 +780,7 @@ static const u8 sText_HelpBar_MoveMode[] = _("{A_BUTTON} Place {B_BUTTON} Return
 static const u8 sText_HelpBar_SaveAsk[] = _("{START_BUTTON} Save Adventure {B_BUTTON} Cancel");
 static const u8 sText_HelpBar_SaveComplete[] = _("{START_BUTTON} Return to Overworld {B_BUTTON} Return to Menu");
 static const u8 sText_HelpBar_OverworldSaveComplete[]  = _("{START_BUTTON} Return to Overworld");
-static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON} Overwrite Old Adventure {B_BUTTON} Cancel");
+static const u8 sText_HelpBar_SaveOverwriteAsk[] = _("{START_BUTTON}+ {A_BUTTON} Overwrite Old Adventure {B_BUTTON} Cancel");
 
 enum AppsIds
 {
@@ -1827,7 +1827,6 @@ static void StartMenu_UpdateTextAndSetSaveMode(u8 saveMode)
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 {
     sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
-    StartMenu_DestroyOverwriteModal();
     gTasks[taskId].func = Task_MenuMain;
 }
 static void StartMenu_SaveDialog_ReturnToField(void)
@@ -1869,9 +1868,9 @@ static void StartMenu_Task_OverworldSave(u8 taskId)
             break;
 
         case SAVE_MODE_OVERWRITE:
-            if (JOY_NEW(START_BUTTON)){
+            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON)){
                 StartMenu_SaveDialog_DoSave();
-            }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
+            }else if(JOY_NEW(ALL_BUT_START_OR_A)){
                 StartMenu_DestroyOverwriteModal();
                 StartMenu_UpdateTextAndSetSaveMode(SAVE_MODE_ASK);
                 gTasks[taskId].func = StartMenu_Task_OverworldSave;
@@ -1915,9 +1914,9 @@ static void StartMenu_Task_SaveDialog(u8 taskId)
             break;
 
         case SAVE_MODE_OVERWRITE:
-            if (JOY_NEW(START_BUTTON)){
+            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON)){
                 StartMenu_SaveDialog_DoSave();
-            }else if(JOY_NEW(ANY_BUTTON_BUT_START)){
+            }else if(JOY_NEW(ALL_BUT_START_OR_A)){
                 StartMenu_SaveDialog_ReturnToMenu(taskId);
             }
             break;
