@@ -1,5 +1,13 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARCHER = 1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+
+script NewAssholeAppears_HideArcher_Script{
+    if (var(VAR_PSFROUTE9_STATE) > SAVED_BEFORE_ARCHER_PSFROUTE9){
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    return
+}
 
 script NewAssholeAppears_WalkToPlayer_Script {
     lockall
@@ -35,7 +43,7 @@ script ArcherAlpha_Event_Script{
 
 script NewAssholeAppears_Intro_Dialogue {
     setvar(VAR_PSFROUTE9_STATE,SAVED_BEFORE_ARCHER_PSFROUTE9)
-    msgbox(gText_NewAssholeAppears_YouLookFamiliar,MSGBOX_NPC,,SPEAKER_ARCHER)
+    msgbox(gText_NewAssholeAppears_YouLookFamiliar,,SPEAKER_ARCHER)
     if (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) > DEFEATED_WHITNEY){
         msgbox(gText_NewAssholeAppears_YeahYouHadSome,,SPEAKER_ZOEY)
     }else{

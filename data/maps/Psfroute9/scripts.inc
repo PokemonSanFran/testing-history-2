@@ -9,7 +9,7 @@ Psfroute9_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Psfroute9_MapScripts_OnTransition::
-	compare VAR_PSFROUTE9_STATE, 1
+	compare VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
 	goto_if_gt Psfroute9_MapScripts_OnTransition_1
 	return
 

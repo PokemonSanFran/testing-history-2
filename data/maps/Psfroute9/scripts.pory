@@ -1,15 +1,6 @@
 mapscripts Psfroute9_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         special(Quest_Bodegaburnout_CheckAndSetRescueFlag)
-        goto(Psfroute9_MapScripts_OnTransition)
+        call(NewAssholeAppears_HideArcher_Script)
     }
 }
-
-script Psfroute9_MapScripts_OnTransition {
-
-    if (var(VAR_PSFROUTE9_STATE) > 1){
-        setflag(FLAG_TEMP_1)
-    }
-}
-
-//need to make a script to hide FLAG_TEMP_1

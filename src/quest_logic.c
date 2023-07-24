@@ -1079,7 +1079,7 @@ void Quest_Bodegaburnout_CheckAndSetRescueFlag(void){
             flagStatus = FlagGet(rescueFlag);
             if (!flagStatus && !questStatus){
                 FlagSet(rescueFlag);
-                FlagSet(FLAG_QUEST_BODEGA_RESCUE1);
+                FlagSet(FLAG_QUEST_BODEGA_RESCUE1); //PSF TODO Is this a debug line?
             }
             break;
         }

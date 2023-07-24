@@ -203,7 +203,8 @@ static void ShowDebugStartChoices(void)
 
 static void Task_DebugStartScreenChoice(u8 taskId)
 {
-	u8 debugConstant = Menu_ProcessInput();
+	s32 debugConstant = Menu_ProcessInput();
+
 	switch (debugConstant) {
         case 0:
             PlaySE(SE_SELECT);
@@ -262,7 +263,9 @@ static void Task_GoToStarterChoice(u8 taskId)
 	//Erase all variables for a new game
 	DebugStart_NewGame();
 	//Skip monologue
-	VarSet(VAR_STARTER_MON, 1);
+	VarSet(VAR_STARTER_MON, 9);
+    SetWarpDestination(MAP_GROUP(BLACK_MAP), MAP_NUM(BLACK_MAP), 0, 0, 0);
+	DoWarp();
 	//Set callbacks and go to overworld
 	DebugStart_BeginAdventure();
 }
@@ -274,7 +277,7 @@ static void Task_GoToBeforeBianca(u8 taskId)
 	//Give player Pokémon to finish playthrough
 	ScriptContext_SetupScript(ThereCanOnlyBeOne_Debug_Script);
 	//Set warp to outside the compound, then warp
-	SetWarpDestination(0, 0, 255, 3, 10);
+	SetWarpDestination(MAP_GROUP(SOUTHBAY), MAP_NUM(SOUTHBAY), 0, 3, 10);
 	DoWarp();
 	//Set callbacks and go to overworld
 	DebugStart_BeginAdventure();
@@ -319,6 +322,7 @@ static void DebugStart_NewGame(void)
 
 static void DebugStart_BeginAdventure(void)
 {
+	DoWarp();
 	SetMainCallback1(CB1_Overworld);
 	SetMainCallback2(CB2_Overworld);
 }

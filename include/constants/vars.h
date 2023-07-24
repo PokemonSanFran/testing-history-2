@@ -68,7 +68,8 @@
 #define VAR_FERRY_STATE                                     0x402E
 #define VAR_FRONTIER_LAST_FOUGHT_BOSS                       0x402F
 //gym leader vars
-#define VAR_FALKNER_STATE                                   0x4030
+//except Falkner lol
+#define VAR_FRONTIER_GAMBLER_CHALLENGE                   0x4030
 #define VAR_BUGSY_STATE                                     0x4031
 #define VAR_WHITNEY_STATE                                   0x4032
 #define VAR_MORTY_STATE                                     0x4033
@@ -97,8 +98,8 @@
 #define VAR_GOLDENGATEBRIDGE_STATE                          0x4048
 #define VAR_HAIGHTASHBURY_STATE                             0x4049
 #define VAR_INNER_CONSTRUCTION_SITE_STATE                   0x404A
-#define VAR_KOGA_MANSION_STATE                              0x404B
-#define VAR_LOMBARDSTREET_STATE                             0x404C
+#define VAR_POKELOT_RND1                                    0x404B //Used by Emerald
+#define VAR_POKELOT_RND2                                    0x404C //Used by Emerald
 #define VAR_MARIN_STATE                                     0x404D
 #define VAR_MUIRWOODS_STATE                                 0x404E
 #define VAR_NAVALBASE_STATE                                 0x404F
@@ -162,9 +163,9 @@
 #define VAR_QUEST_BRUCE_LEE_DAILY_TYPE                      0x4087
 #define VAR_CHOSEN_PSF_STARTER                              0x4088
 #define VAR_TOWER_FLOOR                                     0x4089
-#define PSF_VAR_105                                        0x408A
-#define PSF_VAR_106                                        0x408B
-#define PSF_VAR_107                                        0x408C
+#define VAR_KOGA_MANSION_STATE                              0x408A
+#define VAR_LOMBARDSTREET_STATE                             0x408B
+#define VAR_FALKNER_STATE                                   0x408C
 #define PSF_VAR_108                                        0x408D
 #define PSF_VAR_109                                        0x408E
 #define PSF_VAR_110                                        0x408F
