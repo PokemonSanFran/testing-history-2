@@ -217,7 +217,7 @@
       "x": 5,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -226,7 +226,7 @@
       "x": 6,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -235,7 +235,7 @@
       "x": 7,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -244,7 +244,7 @@
       "x": 8,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -253,7 +253,7 @@
       "x": 9,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     }
