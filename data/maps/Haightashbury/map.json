@@ -401,7 +401,7 @@
       "x": 19,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -410,7 +410,7 @@
       "x": 22,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -419,7 +419,7 @@
       "x": 16,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -428,7 +428,7 @@
       "x": 25,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -437,7 +437,7 @@
       "x": 20,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -446,7 +446,7 @@
       "x": 23,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -455,7 +455,7 @@
       "x": 24,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -464,7 +464,7 @@
       "x": 26,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -473,7 +473,7 @@
       "x": 29,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -482,7 +482,7 @@
       "x": 29,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -491,7 +491,7 @@
       "x": 29,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -500,7 +500,7 @@
       "x": 29,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
@@ -509,7 +509,7 @@
       "x": 29,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_ROUTE108_STATE",
+      "var": "VAR_HAIGHTASHBURY_STATE",
       "var_value": "0",
       "script": "AndWeMarchOn_StartParadeMovement_Script"
     }
