@@ -1,5 +1,5 @@
 const ROSE = 1
-const ARCHER = 10
+const ARCHER = 9
 const CAMERA = OBJ_EVENT_ID_CAMERA
 const FLAG_HIDE_ROSE = FLAG_TEMP_1
 const FLAG_HIDE_ARCHER = FLAG_TEMP_6
@@ -18,7 +18,7 @@ script WowYoureStrong_WalkToPlayer_Script {
     lockall
     setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_WOW_YOURE_STRONG)
     playse(SE_PIN)
-    playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE) 
+    playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE)
     applymovement(ROSE,Common_Movement_ExclamationMark)
     waitmovement(ROSE)
     applymovement(ROSE,WowYoureStrong_WalkToPlayer_Movement)
@@ -29,16 +29,16 @@ script WowYoureStrong_WalkToPlayer_Script {
 
 script WowYoureStrong_Intro_Dialogue {
     msgbox(gText_WowYoureStrong_WhatAShow,,SPEAKER_ROSE)
-    
+
     msgbox(gText_WowYoureStrong_OhUhThanksALot,,SPEAKER_ZOEY)
-    
+
     msgbox(gText_WowYoureStrong_WhereMyManners,,SPEAKER_ROSE)
-    
+
     msgbox(gText_WowYoureStrong_ShouldHaveKnown,,SPEAKER_ZOEY)
-    
+
     msgbox(gText_WowYoureStrong_DreamBig,,SPEAKER_ROSE)
-    
-    goto(WowYoureStrong_ShowTower_Script) 
+
+    goto(WowYoureStrong_ShowTower_Script)
 }
 
 script WowYoureStrong_ShowTower_Script {
@@ -51,7 +51,7 @@ script WowYoureStrong_ShowTower_Script {
     msgbox(gText_WowYoureStrong_YouShouldComeBy,,SPEAKER_ROSE)
     waitmovement(CAMERA)
     closemessage
-    
+
 
     fadescreen(FADE_TO_BLACK)
     TeleportCamera(28,24)
@@ -63,13 +63,13 @@ script WowYoureStrong_ShowTower_Script {
 
 script WowYoureStrong_End_Dialouge {
     msgbox(gText_WowYoureStrong_RunToMeeting,,SPEAKER_ROSE)
-    
+
     closemessage
     applymovement(ROSE,WowYoureStrong_WalkToMeeting_Movement)
     waitmovement(ROSE)
     removeobject(ROSE)
     playbgm(MUS_RG_VERMILLION,TRUE)
-    
+
     if (var(VAR_PSFROUTE9_STATE) == SAVED_BEFORE_ARCHER_PSFROUTE9){
         release
         end
@@ -84,7 +84,7 @@ script WowYourStrong_ArcherConfrontation_Dialogue{
     waitmovement(ARCHER)
 
     msgbox(gText_WowYoureStrong_IDontGetIt,,SPEAKER_ARCHER)
-    
+
     if (var(VAR_PSFROUTE9_STATE) == DEFEATED_ARCHER_PSFROUTE9){
         msgbox(gText_WowYoureStrong_YouAgain,,SPEAKER_ZOEY)
     }else{
@@ -93,7 +93,7 @@ script WowYourStrong_ArcherConfrontation_Dialogue{
 
     msgbox(gText_WowYoureStrong_IJustCant,,SPEAKER_ARCHER)
     closemessage
-    
+
 
     applymovement(ARCHER,WowYoureStrong_WalkToMeeting_Movement)
     waitmovement(ARCHER)
@@ -105,7 +105,7 @@ script WowYourStrong_ArcherConfrontation_Dialogue{
         msgbox(gText_WowYoureStrong_ThisRegionHasSome,,SPEAKER_ZOEY)
     }
     closemessage
-    
+
 
     release
     end
