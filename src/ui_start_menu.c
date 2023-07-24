@@ -1827,6 +1827,7 @@ static void StartMenu_UpdateTextAndSetSaveMode(u8 saveMode)
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId)
 {
     sMenuDataPtr->saveMode = SAVE_MODE_NOT_ENGAGED;
+    StartMenu_PrintQuestInfo();
     gTasks[taskId].func = Task_MenuMain;
 }
 static void StartMenu_SaveDialog_ReturnToField(void)
@@ -1868,9 +1869,13 @@ static void StartMenu_Task_OverworldSave(u8 taskId)
             break;
 
         case SAVE_MODE_OVERWRITE:
-            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON)){
+            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON))
+            {
                 StartMenu_SaveDialog_DoSave();
-            }else if(JOY_NEW(ALL_BUT_START_OR_A)){
+            }
+            //else
+            if(JOY_NEW(ALL_BUT_START_OR_A))
+            {
                 StartMenu_DestroyOverwriteModal();
                 StartMenu_UpdateTextAndSetSaveMode(SAVE_MODE_ASK);
                 gTasks[taskId].func = StartMenu_Task_OverworldSave;
@@ -1914,9 +1919,13 @@ static void StartMenu_Task_SaveDialog(u8 taskId)
             break;
 
         case SAVE_MODE_OVERWRITE:
-            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON)){
+            if ((gMain.heldKeys & START_BUTTON) && (gMain.heldKeys & A_BUTTON))
+            {
                 StartMenu_SaveDialog_DoSave();
-            }else if(JOY_NEW(ALL_BUT_START_OR_A)){
+            }
+            if(JOY_NEW(ALL_BUT_START_OR_A))
+            {
+                StartMenu_DestroyOverwriteModal();
                 StartMenu_SaveDialog_ReturnToMenu(taskId);
             }
             break;
