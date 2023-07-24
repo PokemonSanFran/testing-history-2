@@ -462,7 +462,8 @@ bool32 ShouldDoRoxanneCall(void)
         return FALSE;
     }
 
-    return TRUE;
+    //return TRUE;
+    return FALSE; //PSF Roxanne should never call
 }
 
 bool32 ShouldDoRivalRayquazaCall(void)

@@ -53,7 +53,7 @@
       "x": 26,
       "y": 16,
       "elevation": 0,
-      "var": "VAR_ROUTE109_STATE",
+      "var": "VAR_BATTLE_8_STATE",
       "var_value": "0",
       "script": "Battle8_ArcherWalksOut_Script"
     },
@@ -62,7 +62,7 @@
       "x": 19,
       "y": 16,
       "elevation": 0,
-      "var": "VAR_ROUTE109_STATE",
+      "var": "VAR_BATTLE_8_STATE",
       "var_value": "0",
       "script": "Battle8_ArcherWalksOut_Script"
     }

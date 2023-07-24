@@ -108,7 +108,7 @@
       "x": 2,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
+      "var": "VAR_ROBINWILLIAMSTUNNEL_STATE",
       "var_value": "3",
       "script": "IGuessWeShouldBeNiceNow_SolvedPuzzleA"
     },
@@ -117,7 +117,7 @@
       "x": 4,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_ROUTE114_STATE",
+      "var": "VAR_ROBINWILLIAMSTUNNEL_STATE",
       "var_value": "4",
       "script": "IGuessWeShouldBeNiceNow_SolvedPuzzleB"
     }

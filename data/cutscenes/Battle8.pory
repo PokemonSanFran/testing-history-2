@@ -53,11 +53,11 @@ script Battle8_ExplainAttraction_Dialogue {
                 waitmovement(0)
         }
 
-        msgbox(gText_Battle8_GreatToSeeYouToo,MSGBOX_NPC,SPEAKER_ZOEY)
+        msgbox(gText_Battle8_GreatToSeeYouToo,,SPEAKER_ZOEY)
 
         msgbox(gText_Battle8_PrimaryAttraction,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        msgbox(gText_Battle8_SoWhatsTheChallenge,MSGBOX_NPC,SPEAKER_ZOEY)
+        msgbox(gText_Battle8_SoWhatsTheChallenge,,SPEAKER_ZOEY)
 
         msgbox(gText_Battle8_TheSistersAreExperts,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
@@ -69,7 +69,8 @@ script Battle8_ExplainAttraction_Dialogue {
 script Battle8_StartBattle_Script {
 
     lock
-        msgbox(gText_Battle8_YouTalkALot,MSGBOX_NPC,SPEAKER_ZOEY)
+    faceplayer
+        msgbox(gText_Battle8_YouTalkALot,,SPEAKER_ZOEY)
         closemessage
 
 
@@ -78,15 +79,8 @@ script Battle8_StartBattle_Script {
 }
 
 script Battle8_InteractBattle_Script {
-
     playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
-        lock
-        msgbox(gText_Battle8_YouTalkALot,MSGBOX_NPC,MSGBOX_NPC,SPEAKER_ZOEY)
-        closemessage
-
-
-        trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
-        goto(Battle8_ArcherDefeated_Dialogue)
+    goto(Battle8_StartBattle_Script)
 }
 
 script Battle8_ArcherDefeated_Dialogue {

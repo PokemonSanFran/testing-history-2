@@ -88,22 +88,22 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue{
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
-        msgbox(gText_TheStrikeStrikesBack_HelloPlayer,,SPEAKER_ROSE,,PHONE_ON)
-        msgbox(gText_TheStrikeStrikesBack_OhHi,,SPEAKER_ZOEY,,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_HelloPlayer,MSGBOX_DEFAULT,SPEAKER_ROSE,TAIL_DEFAULT,EMOTE_SHOCK,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_OhHi,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
 
         special(GetCurrentMap)
         switch(var(VAR_RESULT)){
             case 31:
             case 37:
             case 38:
-            case 42: msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat,,SPEAKER_ROSE,,PHONE_ON)
-            default: msgbox(gText_TheStrikeStrikesBack_IKnowImLate,,SPEAKER_ROSE,,PHONE_ON)
+            case 42: msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat,MSGBOX_DEFAULT,SPEAKER_ROSE,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
+            default: msgbox(gText_TheStrikeStrikesBack_IKnowImLate,MSGBOX_DEFAULT,SPEAKER_ROSE,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
         }
 
     msgbox(gText_TheStrikeStrikesBack_ThankYou,,SPEAKER_ZOEY)
-        msgbox(gText_TheStrikeStrikesBack_CutToTheChase,,SPEAKER_ROSE,,PHONE_ON)
-        msgbox(gText_TheStrikeStrikesBack_SureRightNow,,SPEAKER_ZOEY,,PHONE_ON)
-        msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan,,SPEAKER_ROSE,,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_CutToTheChase,MSGBOX_DEFAULT,SPEAKER_ROSE,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_SureRightNow,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan,MSGBOX_DEFAULT,SPEAKER_ROSE,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
 
         closemessage
         playse(SE_POKENAV_HANG_UP)
@@ -153,13 +153,13 @@ script TheStrikeStrikesBack_Intro_Dialogue {
 
                 msgbox(gText_TheStrikeStrikesBack_WeAreFighting,,SPEAKER_GIOVANNI)
 
-                msgbox(gText_TheStrikeStrikesBack_TheCityDoubles,,SPEAKER_DRASNA)
+                msgbox(gText_TheStrikeStrikesBack_TheCityDoubles,,SPEAKER_GIOVANNI)
 
-                msgbox(gText_TheStrikeStrikesBack_ManagementTriples,,SPEAKER_DRASNA)
+                msgbox(gText_TheStrikeStrikesBack_ManagementTriples,,SPEAKER_GIOVANNI)
 
-                msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples,,SPEAKER_DRASNA)
+                msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples,,SPEAKER_GIOVANNI)
 
-                msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore,,SPEAKER_DRASNA)
+                msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore,,SPEAKER_GIOVANNI)
 
                 closemessage
 

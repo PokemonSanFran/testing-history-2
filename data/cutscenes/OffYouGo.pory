@@ -12,7 +12,7 @@ script OffYouGo_ObjectCleanUp_Script {
 
 script OffYouGo_WarpPlayer_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    
+
     if (var(VAR_TEMP_1) < 11 && (var(VAR_GOLDENGATEBRIDGE_STATE) < POST_OFF_YOU_GO)){
         fadescreen(FADE_TO_BLACK)
         setobjectxy(PLAYER,16,11)
@@ -43,25 +43,25 @@ script OffYouGo_WakeUp_Dialogue {
         msgbox(gText_OffYouGo_ComeOnGetUp,,SPEAKER_BIANCA,,PHONE_ON)
 
         msgbox(gText_OffYouGo_WaitingForMe,,SPEAKER_ZOEY,,PHONE_ON)
-        
+
         closemessage
 
         //TODO PSF Mockup a SMS on the screen
         msgbox(gText_OffYouGo_PleaseMeetMeOn)
 
-        msgbox(gText_OffYouGo_IllBeRightOver,,PHONE_ON)
+        msgbox(gText_OffYouGo_IllBeRightOver,,SPEAKER_BIANCA,,PHONE_ON)
 
         msgbox(gText_OffYouGo_YeahIDidntSee,,SPEAKER_ZOEY)
 
         msgbox(gText_OffYouGo_UghFine,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         playse(SE_POKENAV_HANG_UP)
         waitse
 
         msgbox(gText_OffYouGo_HowAreTheyAlways,,SPEAKER_ZOEY,TAIL_THOUGHT)
-        
+
         closemessage
 }
 
@@ -77,14 +77,14 @@ script OffYouGo_WelcomeParty_Dialogue {
         msgbox(gText_OffYouGo_NeitherWasI,,SPEAKER_ZOEY)
 
         msgbox(gText_OffYouGo_WellYoureBothHere,,SPEAKER_OAK)
-        
+
         closemessage
 
         applymovement(BIANCA,Common_Movement_FaceRight)
         waitmovement(BIANCA)
 
         msgbox(gText_OffYouGo_ThanksButWho,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         applymovement(OAK,Common_Movement_FaceLeft)
@@ -97,7 +97,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         msgbox(gText_OffYouGo_AhYesWellTheyHave,,SPEAKER_OAK)
 
         msgbox(gText_OffYouGo_WeirdOkay,,SPEAKER_BIANCA)
-        
+
         closemessage
 
         applymovement(BIANCA,Common_Movement_FaceUp)
@@ -110,7 +110,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         removeobject(BIANCA)
 
         msgbox(gText_OffYouGo_OhWait,,SPEAKER_OAK)
-        
+
         closemessage
 
         applymovement(OAK,Common_Movement_FaceDown)
@@ -121,7 +121,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         msgbox(gText_OffYouGo_IllHurrySo,,SPEAKER_ZOEY)
 
         msgbox(gText_OffYouGo_GoodLuck,,SPEAKER_OAK)
-        
+
         closemessage
 
         releaseall
@@ -132,7 +132,7 @@ script OffYouGo_InteractOak_Event_Script {
     lockall
         call(OffYouGo_WarpPlayer_Script)
         msgbox(gText_OffYouGo_ItMightBeAGood,MSGBOX_NPC,SPEAKER_OAK)
-        
+
         closemessage
         releaseall
         end

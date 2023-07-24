@@ -62,7 +62,7 @@
 //region related vars
 #define VAR_STORYLINE_STATE                                 0x4029
 #define VAR_FAINTED_FOG_STATE                               0x402A
-#define VAR_PLAYER_HOME_STATE                               0x402B
+#define VAR_POISON_STEP_COUNTER                          0x402B
 #define VAR_GIVEN_UNHOUSED                                  0x402C
 #define VAR_CHASECENTER_TOURNAMENT_STATE                    0x402D
 #define VAR_FERRY_STATE                                     0x402E
@@ -166,7 +166,7 @@
 #define VAR_KOGA_MANSION_STATE                              0x408A
 #define VAR_LOMBARDSTREET_STATE                             0x408B
 #define VAR_FALKNER_STATE                                   0x408C
-#define PSF_VAR_108                                        0x408D
+#define VAR_PLAYER_HOME_STATE                              0x408D
 #define PSF_VAR_109                                        0x408E
 #define PSF_VAR_110                                        0x408F
 #define PSF_VAR_111                                        0x4090

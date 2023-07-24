@@ -62,7 +62,7 @@
       "x": 15,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_ROUTE113_STATE",
+      "var": "VAR_GOLDENGATEBRIDGE_STATE",
       "var_value": "1",
       "script": "OffYouGo_WelcomeParty_Dialogue"
     },
@@ -71,7 +71,7 @@
       "x": 16,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_ROUTE113_STATE",
+      "var": "VAR_GOLDENGATEBRIDGE_STATE",
       "var_value": "1",
       "script": "OffYouGo_WelcomeParty_Dialogue"
     }
