@@ -9,24 +9,24 @@ mapscripts Chasecenter_Arena_MapScripts {
         call(Chasecenter_Arena_Populate_Stands)
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_ROUTE119_STATE, 1: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience
-        VAR_ROUTE119_STATE, 2: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience
-        VAR_ROUTE119_STATE, 3: BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
-        VAR_ROUTE119_STATE, 4: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-        VAR_ROUTE119_STATE, 5: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_CHASECENTER_TOURNAMENT_STATE, 1: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience
+        VAR_CHASECENTER_TOURNAMENT_STATE, 2: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience
+        VAR_CHASECENTER_TOURNAMENT_STATE, 3: BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
+        VAR_CHASECENTER_TOURNAMENT_STATE, 4: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_CHASECENTER_TOURNAMENT_STATE, 5: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
         VAR_STORYLINE_STATE, 49: BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
         VAR_STORYLINE_STATE, 50: BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE119_STATE, 1: GroupStages_RoundRobinMatch_Script
-        VAR_ROUTE119_STATE, 4: Finals_StartSemifinals_Script 
+        VAR_CHASECENTER_TOURNAMENT_STATE, 1: GroupStages_RoundRobinMatch_Script
+        VAR_CHASECENTER_TOURNAMENT_STATE, 4: Finals_StartSemifinals_Script
         VAR_STORYLINE_STATE, 34: WaitHeDidWhat_WalkIntoChampionshipPosition
-        VAR_STORYLINE_STATE, 49: ExhibitionBattle_BattleDiantha_Script 
+        VAR_STORYLINE_STATE, 49: ExhibitionBattle_BattleDiantha_Script
     ]
 }
 
 script Chasecenter_Arena_Populate_Stands {
-    switch (var(VAR_ROUTE119_STATE)){
+    switch (var(VAR_CHASECENTER_TOURNAMENT_STATE)){
         case 1: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience)
         case 2: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience)
         case 3: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience)
@@ -53,7 +53,7 @@ script Chasecenter_Arena_MapScripts_OnTransition {
         case 49: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_LUCY)
     }
 
-    switch (var(VAR_ROUTE119_STATE)){
+    switch (var(VAR_CHASECENTER_TOURNAMENT_STATE)){
         case 1: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_BEAUTY)
         case 2: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN)
         case 3: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_CAMPER)

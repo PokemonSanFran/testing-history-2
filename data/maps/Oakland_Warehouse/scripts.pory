@@ -11,11 +11,11 @@ mapscripts Oakland_Warehouse_MapScripts {
 }
 
 script Oakland_Warehouse_MapScripts_OnTransition {
-    switch (var(VAR_FORTREE_CITY_STATE)){
-        case 1: 
+    switch (var(VAR_WAREHOUSE_RAVE_STATE)){
+        case 1:
             call(WarehouseRave_SetUpRave_Script)
                 call(WarehouseRave_HideObject_Script)
-        case 2: 
+        case 2:
                 call(WarehouseRave_MoveObject_Script)
                 call(WarehouseRave_SetUpRave_Script)
         default: call(WarehouseRave_HideObject_Script)

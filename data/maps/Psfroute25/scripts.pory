@@ -5,16 +5,16 @@ mapscripts Psfroute25_MapScripts {
         call(Psfroute25_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_DEWFORD_TOWN_STATE, 2:ThisIsntRandom_UndergroundDoor_Dialogue 
+        VAR_UNDERGROUNDLAB_STATE, 2:ThisIsntRandom_UndergroundDoor_Dialogue
     ]
 }
 
 script Psfroute25_MapScripts_OnLoad {
 
-    switch (var(VAR_DEWFORD_TOWN_STATE)){
+    switch (var(VAR_UNDERGROUNDLAB_STATE)){
         case 1: setflag(FLAG_TEMP_1)
         case 2: return
-        default: 
+        default:
             call(ThisIsntRandom_UnlockElectronicDoor_Script)
             setflag(FLAG_TEMP_1)
     }

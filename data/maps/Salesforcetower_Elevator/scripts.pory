@@ -5,7 +5,7 @@ mapscripts Salesforcetower_Elevator_MapScripts {
         goto(Salesforcetower_Elevator_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_TEMP_0, 0: Salesforcetower_Elevator_AttendantMissing_Dialogue 
+        VAR_TEMP_0, 0: Salesforcetower_Elevator_AttendantMissing_Dialogue
     ]
 }
 
@@ -17,13 +17,13 @@ script Salesforcetower_Elevator_MapScripts_OnTransition {
 
 script Salesforcetower_Elevator_AttendantMissing_Dialogue {
     setvar(VAR_TEMP_0,1)
-        if (var(VAR_MAUVILLE_CITY_STATE) > 4 || !flag(FLAG_BADGE03_GET)){
+        if (var(VAR_TOWER_RAID_STATE) > 4 || !flag(FLAG_BADGE03_GET)){
             lock
                 applymovement(PLAYER,Common_Movement_FaceLeft)
                 waitmovement(0)
                 msgbox(gText_Salesforcetower_Elevator_TheAttendantIsGone,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
                 closemessage
-                
+
                 release
                 end
         } else {
@@ -61,7 +61,7 @@ script Salesforcetower_ElevatorAttendant_Script {
         if (flag(FLAG_TEMP_2)){
             call(SalesforcetowerElevator_EventScript_SetFloor)
         }
-    copyvar(VAR_0x8005,VAR_DEPT_STORE_FLOOR)
+    copyvar(VAR_0x8005,VAR_TOWER_FLOOR)
 
         special(ShowSalesforcetowerElevatorFloorSelect) // PSF TODO Figure out why the floor does not display correctly when you walk from 2F to 1F and then use the elevator
         message(gText_WhichFloorWouldYouLike)
@@ -99,44 +99,44 @@ script SalesforcetowerElevator_EventScript_ChooseFloor{
 script SalesforcetowerElevator_EventScript_1stFloor{
     setvar(VAR_0x8006,SALESFORCETOWER_FLOORNUM_1F)
         setdynamicwarp(MAP_SALESFORCETOWER_1F,255,8,2)
-        if (var(VAR_DEPT_STORE_FLOOR) == SALESFORCETOWER_FLOORNUM_1F)    {
+        if (var(VAR_TOWER_FLOOR) == SALESFORCETOWER_FLOORNUM_1F)    {
             goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         }
     call(SalesforcetowerElevator_EventScript_MoveElevator)
-        setvar(VAR_DEPT_STORE_FLOOR,SALESFORCETOWER_FLOORNUM_1F)
+        setvar(VAR_TOWER_FLOOR,SALESFORCETOWER_FLOORNUM_1F)
         goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         end
 }
 script SalesforcetowerElevator_EventScript_2ndFloor{
     setvar(VAR_0x8006,SALESFORCETOWER_FLOORNUM_2F)
         setdynamicwarp(MAP_SALESFORCETOWER_2F,255,9,39)
-        if (var(VAR_DEPT_STORE_FLOOR) == SALESFORCETOWER_FLOORNUM_2F)    {
+        if (var(VAR_TOWER_FLOOR) == SALESFORCETOWER_FLOORNUM_2F)    {
             goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         }
     call(SalesforcetowerElevator_EventScript_MoveElevator)
-        setvar(VAR_DEPT_STORE_FLOOR,SALESFORCETOWER_FLOORNUM_2F)
+        setvar(VAR_TOWER_FLOOR,SALESFORCETOWER_FLOORNUM_2F)
         goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         end
 }
 script SalesforcetowerElevator_EventScript_5thFloor{
     setvar(VAR_0x8006,SALESFORCETOWER_FLOORNUM_5F)
         setdynamicwarp(MAP_SALESFORCETOWER_5F,255,16,28)
-        if (var(VAR_DEPT_STORE_FLOOR) == SALESFORCETOWER_FLOORNUM_5F)    {
+        if (var(VAR_TOWER_FLOOR) == SALESFORCETOWER_FLOORNUM_5F)    {
             goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         }
     call(SalesforcetowerElevator_EventScript_MoveElevator)
-        setvar(VAR_DEPT_STORE_FLOOR,SALESFORCETOWER_FLOORNUM_5F)
+        setvar(VAR_TOWER_FLOOR,SALESFORCETOWER_FLOORNUM_5F)
         goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         end
 }
 script SalesforcetowerElevator_EventScript_10thFloor{
     setvar(VAR_0x8006,SALESFORCETOWER_FLOORNUM_10F)
         setdynamicwarp(MAP_SALESFORCETOWER_10F,255,8,2)
-        if (var(VAR_DEPT_STORE_FLOOR) == SALESFORCETOWER_FLOORNUM_10F)   {
+        if (var(VAR_TOWER_FLOOR) == SALESFORCETOWER_FLOORNUM_10F)   {
             goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         }
     call(SalesforcetowerElevator_EventScript_MoveElevator)
-        setvar(VAR_DEPT_STORE_FLOOR,SALESFORCETOWER_FLOORNUM_10F)
+        setvar(VAR_TOWER_FLOOR,SALESFORCETOWER_FLOORNUM_10F)
         goto(SalesforcetowerElevator_EventScript_ExitFloorSelect)
         end
 }

@@ -250,7 +250,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         waitmovement(0)
 
         msgbox(gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting,MSGBOX_YESNO,,SPEAKER_BIANCA)
-        setvar(VAR_ROUTE115_STATE,1)
+        setvar(VAR_MARIN_STATE,1)
 
         if (var(VAR_RESULT) == YES) {
             msgbox(gText_IGuessWeShouldBeNiceNow_GreatSeeYou)

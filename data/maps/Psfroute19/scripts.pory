@@ -10,7 +10,7 @@ mapscripts Psfroute19_MapScripts {
 script Psfroute19_MapScripts_OnTransition {
     call(WaitYouWentWhere_ObjectSetUp_Script)
 
-    switch (var(VAR_ROUTE104_STATE)){
+    switch (var(VAR_WAIT_YOU_WENT_WHERE)){
         case 0: goto(WaitYouWentWhere_ObjectSetUp_Script)
         case 1: goto(WaitYouWentWhere_ObjectCleanUp_Script)
     }

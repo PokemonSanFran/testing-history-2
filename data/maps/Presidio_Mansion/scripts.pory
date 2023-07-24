@@ -4,12 +4,12 @@ mapscripts Presidio_Mansion_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE105_STATE, 0: KogaRaisonDetre_MoveIntoFoyer_Script
+        VAR_KOGA_RAISON_DETRE_STATE, 0: KogaRaisonDetre_MoveIntoFoyer_Script
     ]
 }
 
 script Presidio_Mansion_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE105_STATE)){
+    switch (var(VAR_KOGA_RAISON_DETRE_STATE)){
         case 1: call(KogaRaisonDetre_HideObjectKids_Script)
         case 2: call(KogaRaisonDetre_HideObjectKids_Script)
         case 3: call(KogaRaisonDetre_HideObjectKids_Script)

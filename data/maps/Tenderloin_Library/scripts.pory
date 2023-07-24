@@ -4,7 +4,7 @@ mapscripts Tenderloin_Library_MapScripts {
 }
 script Tenderloin_Library_InteractCraig_Event_Script {
     lock
-        switch(var(VAR_LILYCOVE_CITY_STATE)){
+        switch(var(VAR_MASK_OFF_STATE)){
             case 0: return
             case 1: return
             case 2: return

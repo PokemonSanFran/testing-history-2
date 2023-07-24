@@ -1,0 +1,31 @@
+data/maps/Sunset_Apartment/scripts.pory:7:        switch(var(VAR_LILYCOVE_CITY_STATE)){
+data/maps/Sunset_Sabrina_House/scripts.pory:14:    switch (var(VAR_MAUVILLE_CITY_STATE)){
+data/maps/Sunset_Sabrina_House/scripts.pory:23:    if (var(VAR_MAUVILLE_CITY_STATE) > 3){
+data/maps/Sunset_Sabrina_House/scripts.pory:29:    switch (var(VAR_MAUVILLE_CITY_STATE)){
+data/maps/Sunset_Sabrina_House/scripts.pory:6:        VAR_MAUVILLE_CITY_STATE,1:Imin_BeginHouseSearch_Script 
+data/maps/Tenderloin_Library/scripts.pory:7:        switch(var(VAR_LILYCOVE_CITY_STATE)){
+
+
+
+data/scripts/debug.pory:19:    setvar(VAR_BIRCH_LAB_STATE,2)
+data/scripts/debug.pory:20:    setvar(VAR_ROUTE101_STATE,3)
+data/scripts/debug.pory:27:    setvar(VAR_CABLE_CLUB_TUTORIAL_STATE,2)
+data/scripts/debug.pory:32:    setvar(VAR_LITTLEROOT_TOWN_STATE,4) // 4: Received Running Shoes
+data/scripts/debug.pory:33:    setvar(VAR_LITTLEROOT_INTRO_STATE,7) // 7: Told to go meet rival
+data/scripts/debug.pory:34:    setvar(VAR_LITTLEROOT_HOUSES_STATE_BRENDAN,2) // 2: Met Rival's Mom (and is corresponding gender)
+data/scripts/debug.pory:35:    setvar(VAR_LITTLEROOT_HOUSES_STATE_MAY,2) // 2: Met Rival's Mom (and is corresponding gender)
+data/scripts/debug.pory:36:    setvar(VAR_LITTLEROOT_RIVAL_STATE,4) // 4: Received Pokedex
+data/scripts/debug.pory:39:    setvar(VAR_BRINEY_HOUSE_STATE,1)
+data/scripts/debug.pory:40:    setvar(VAR_ROUTE116_STATE,2)
+data/scripts/restored_battle_frontier/tower_lobby.pory:190:    setvar(VAR_FRONTIER_FACILITY,FRONTIER_FACILITY_TOWER)
+data/scripts/restored_battle_frontier/tower_lobby.pory:236:        case ATTENDANT_SINGLES: setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES)
+data/scripts/restored_battle_frontier/tower_lobby.pory:237:        case ATTENDANT_DOUBLES: setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES)
+data/scripts/restored_battle_frontier/tower_lobby.pory:238:        case ATTENDANT_MULTIS: setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS)
+data/scripts/restored_battle_frontier/tower_lobby.pory:239:        case ATTENDANT_LINK_MULTIS: setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_LINK_MULTIS)
+data/scripts/restored_battle_frontier/tower_lobby.pory:519:    switch(var(VAR_FRONTIER_BATTLE_MODE)){
+data/scripts/restored_battle_frontier/tower_lobby.pory:567:        if (var(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_LINK_MULTIS){
+data/scripts/restored_battle_frontier/tower_lobby.pory:622:    switch(var(VAR_FRONTIER_BATTLE_MODE)){
+data/scripts/restored_battle_frontier/tower_lobby.pory:632:    switch(var(VAR_FRONTIER_BATTLE_MODE)){
+data/scripts/restored_battle_frontier/tower_lobby.pory:642:    switch(var(VAR_FRONTIER_BATTLE_MODE)){
+data/scripts/restored_battle_frontier/tower_lobby.pory:652:    switch(var(VAR_FRONTIER_BATTLE_MODE)){
+data/scripts/restored_battle_frontier/tower_lobby.pory:93:    if (var(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_MULTIS ||

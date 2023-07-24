@@ -4,7 +4,7 @@ mapscripts Sunset_Apartment_MapScripts {
 }
 script Sunset_Apartment_InteractAntone_Event_Script {
     lock
-        switch(var(VAR_LILYCOVE_CITY_STATE)){
+        switch(var(VAR_MASK_OFF_STATE)){
             case 0: return
             case 1: return
             case 2: return

@@ -7,14 +7,14 @@ mapscripts Castro_BallShop_MapScripts{
 script Castro_BallShop_InteractDudley_Event_Script {
     lock
         if (flag(FLAG_TIMELINE_FALSE)){
-        switch(var(VAR_RUSTURF_TUNNEL_STATE)){
+        switch(var(VAR_MANHUNT_STATE)){
             case 0: return
             case 3: call(Manhunt_Dudley_Battle_Script)
             default: msgbox("...",MSGBOX_AUTOCLOSE)
         }
 
         } else {
-            switch(var(VAR_LILYCOVE_CITY_STATE)){
+            switch(var(VAR_MASK_OFF_STATE)){
                 case 1: return
                 case 8: return
                 default: call(MaskOff_QuestD_Dialogue)
@@ -25,5 +25,5 @@ script Castro_BallShop_InteractDudley_Event_Script {
 }
 
 script Castro_BallShop_MapScripts_OnTransition {
-    setflag(FLAG_TEMP_2) //Hide Bianca 
+    setflag(FLAG_TEMP_2) //Hide Bianca
 }

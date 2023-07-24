@@ -7,8 +7,8 @@ mapscripts Japantown_Ramen_MapScripts {
 
 script Japantown_Ramen_InteractFanny_Event_Script {
     lock
-        switch(var(VAR_LILYCOVE_CITY_STATE)){
-            case NOT_ASSIGNED: 
+        switch(var(VAR_MASK_OFF_STATE)){
+            case NOT_ASSIGNED:
             case ASSIGNED_MASK_OFF:
             case GOT_MASK_OFF_CLUE_1:
             case DEFEATED_MASK_OFF_GIOVANNI: return

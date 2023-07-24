@@ -158,10 +158,10 @@
 #define VAR_QUEST_WILDFIRERISK_FLYING_COUNT                 0x4083
 #define VAR_DEFEATED_GARDEN_POKEMON                         0x4084
 #define VAR_DEFEATED_BACKYARD_COUNT                         0x4085
-#define VAR_QUEST_VOLUNTEER_FIREFIGHTER_COUNT              0x4086
-#define VAR_QUEST_BRUCE_LEE_DAILY_TYPE                     0x4087
-#define VAR_CHOSEN_PSF_STARTER                             0x4088
-#define PSF_VAR_104                                        0x4089
+#define VAR_QUEST_VOLUNTEER_FIREFIGHTER_COUNT               0x4086
+#define VAR_QUEST_BRUCE_LEE_DAILY_TYPE                      0x4087
+#define VAR_CHOSEN_PSF_STARTER                              0x4088
+#define VAR_TOWER_FLOOR                                     0x4089
 #define PSF_VAR_105                                        0x408A
 #define PSF_VAR_106                                        0x408B
 #define PSF_VAR_107                                        0x408C
@@ -230,8 +230,8 @@
 #define PSF_VAR_170                                        0x40CB
 #define PSF_VAR_171                                        0x40CC
 #define PSF_VAR_172                                        0x40CD
-#define PSF_VAR_173                                        0x40CE
-#define PSF_VAR_174                                        0x40CF
+#define VAR_FRONTIER_BATTLE_MODE                           0x40CE
+#define VAR_FRONTIER_FACILITY                              0x40CF
 #define PSF_VAR_175                                        0x40D0
 #define PSF_VAR_176                                        0x40D1
 #define PSF_VAR_177                                        0x40D2
