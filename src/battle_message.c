@@ -350,7 +350,7 @@ static const u8 sText_DontLeaveBirch[] = _("PROF. BIRCH: Don't leave me like thi
 static const u8 sText_ButNothingHappened[] = _("But nothing happened!");
 static const u8 sText_ButItFailed[] = _("But it failed!");
 static const u8 sText_ItHurtConfusion[] = _("It hurt itself in its\nconfusion!");
-static const u8 sText_MirrorMoveFailed[] = _("The MIRROR MOVE failed!");
+static const u8 sText_MirrorMoveFailed[] = _("The Mirror Move failed!");
 static const u8 sText_StartedToRain[] = _("It started to rain!");
 static const u8 sText_DownpourStarted[] = _("A downpour started!"); // corresponds to DownpourText in pokegold and pokecrystal and is used by Rain Dance in GSC
 static const u8 sText_RainContinues[] = _("Rain continues to fall.");
@@ -3943,6 +3943,7 @@ u8 GetCurrentPpToMaxPpState(u8 currentPp, u8 maxPp)
 struct TrainerSlide
 {
     u16 trainerId;
+    bool8 isFrontierTrainer;
     const u8 *msgLastSwitchIn;
     const u8 *msgLastLowHp;
     const u8 *msgFirstDown;
@@ -3958,11 +3959,12 @@ struct TrainerSlide
 
 static const struct TrainerSlide sTrainerSlides[] =
 {
-    {TRAINER_NORMAN_1, sText_TRAINER_NORMAN_1_LastSwitchIn,NULL,sText_TRAINER_NORMAN_1_FirstDown},
+    {TRAINER_NORMAN_1, FALSE,sText_TRAINER_NORMAN_1_LastSwitchIn,NULL,sText_TRAINER_NORMAN_1_FirstDown},
     /* Put any trainer slide-in messages inside this array.
     Example:
     {
         .trainerId = TRAINER_WALLY_VR_2,
+        .isFrontierTrainer = FALSE,
         .msgLastSwitchIn = sText_AarghAlmostHadIt,
         .msgLastLowHp = sText_BoxIsFull,
         .msgFirstDown = sText_123Poof,
@@ -4055,7 +4057,9 @@ u32 ShouldDoTrainerSlide(u32 battlerId, u32 which)
 
     for (i = 0; i < ARRAY_COUNT(sTrainerSlides); i++)
     {
-        if (trainerId == sTrainerSlides[i].trainerId)
+        if (trainerId == sTrainerSlides[i].trainerId
+            && (((gBattleTypeFlags & BATTLE_TYPE_FRONTIER) && sTrainerSlides[i].isFrontierTrainer)
+                || (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER) && !sTrainerSlides[i].isFrontierTrainer)))
         {
             gBattleScripting.battler = battlerId;
             switch (which)
