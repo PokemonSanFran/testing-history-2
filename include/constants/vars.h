@@ -160,7 +160,7 @@
 #define VAR_DEFEATED_BACKYARD_COUNT                         0x4085
 #define VAR_QUEST_VOLUNTEER_FIREFIGHTER_COUNT              0x4086
 #define VAR_QUEST_BRUCE_LEE_DAILY_TYPE                     0x4087
-#define PSF_VAR_103                                        0x4088
+#define VAR_CHOSEN_PSF_STARTER                             0x4088
 #define PSF_VAR_104                                        0x4089
 #define PSF_VAR_105                                        0x408A
 #define PSF_VAR_106                                        0x408B

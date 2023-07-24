@@ -1,19 +1,31 @@
-script ThereCanOnlyBeOne_LoadFromSave_Script {
-  if (flag(FLAG_SYS_POKEMON_GET)) {
-    goto(ThereCanOnlyBeOne_WarpPlayer_Script)
-  }
-  elif(var (VAR_STARTER_MON)) {
-    goto(ThereCanOnlyBeOne_StarterSelectMenu_Script)
-  } else {
-    goto(ThereCanOnlyBeOne_PlayerMonologue)
-  }
+const STARTER_CHOSEN_SCYTHER = 0
+const STARTER_CHOSEN_CHARMANDER = 1
+const STARTER_CHOSEN_PETILIL = 2
+const STARTER_CHOSEN_FLAAFFY = 3
+const STARTER_CHOSEN_MAREANIE = 4
+const STARTER_CHOSEN_ARON = 5
+const STARTER_CHOSEN_SWINUB = 6
+const STARTER_CHOSEN_HATTREM = 7
+const STARTER_CHOSEN_PANCHAM = 8
+const NO_STARTER_CHOSEN = 9
+
+script ThereCanOnlyBeOne_LoadFromSave_Script{
+    if(flag(FLAG_SYS_POKEMON_GET)){
+        goto(ThereCanOnlyBeOne_WarpPlayer_Script)
+    }
+    elif(var(VAR_CHOSEN_PSF_STARTER) == NO_STARTER_CHOSEN){
+        goto(ThereCanOnlyBeOne_StarterSelectMenu_Script)
+    }
+    else{
+        goto(ThereCanOnlyBeOne_Player_Monologue)
+    }
 }
 
-script ThereCanOnlyBeOne_PlayerMonologue {
-  lock
-  msgbox(gText_ThereCanOnlyBe_AlmostPackedAndReady,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_TALK,EMOTE_HAPPY,PHONE_OFF)
-  msgbox(gText_ThereCanOnlyBe_ButTheRulesSay,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_TALK,EMOTE_SAD,PHONE_OFF)
-  goto(ThereCanOnlyBeOne_Narrator_Dialogue)
+script ThereCanOnlyBeOne_Player_Monologue{
+    lock
+    msgbox(gText_ThereCanOnlyBe_AlmostPackedAndReady,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_TALK,EMOTE_HAPPY,PHONE_OFF)
+    msgbox(gText_ThereCanOnlyBe_ButTheRulesSay,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_TALK,EMOTE_SAD,PHONE_OFF)
+    goto(ThereCanOnlyBeOne_Narrator_Dialogue)
 }
 
 script ThereCanOnlyBeOne_Debug_Script{
@@ -24,78 +36,69 @@ script ThereCanOnlyBeOne_Debug_Script{
 }
 
 script ThereCanOnlyBeOne_Narrator_Dialogue {
-call(ThereCanOnlyBeOne_Debug_Script)
-  msgbox(gText_ThereCanOnlyBe_DueToTheDelicateEcosystem)
-  closemessage
-  setvar(VAR_STARTER_MON, 9)
-  startmenu_savescreen
-  goto(ThereCanOnlyBeOne_StarterSelectMenu_Script)
+    call(ThereCanOnlyBeOne_Debug_Script)
+    msgbox(gText_ThereCanOnlyBe_DueToTheDelicateEcosystem)
+    closemessage
+    setvar(VAR_STARTER_MON, NO_STARTER_CHOSEN)
+    startmenu_savescreen
+    goto(ThereCanOnlyBeOne_StarterSelectMenu_Script)
 }
 
 //PSF TODO hook up a fake summary screen to this. I think the correct implemention would be to use givecustommon to generate all nine starters, then fire up the summary screen to look at the first pokemon in the box. when the user makes a decision, delete the other pokemon in the box, and generate that SAME pokemon and put it in the first slot of the party.
 //Also could look at how the Battle Factory generates mons, since I'll need to reuse this for Gabodor
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
 
-text ThereCanOnlyBeOne_StarterList{
-    "Scyther$"
-    "Charcadet$"
-    "Petilil$"
-    "Flaaffy$"
-    "Mareanie$"
-    "Aron$"
-    "Swinub$"
-    "Hattrem$"
-    "Pancham$"
-    "$"
-}
-script ThereCanOnlyBeOne_StarterSelectMenu_Script {
-  msgbox(gText_ThereCanOnlyBe_PleaseChooseAPokemon)
-  closemessage
-    dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Scyther","Charcadet","Petilil","Flaaffy","Mareanie","Aron","Swinub","Hattrem","Pancham")
-  switch (var (VAR_RESULT)) {
-  case 0:
-    setvar(VAR_STARTER_MON, 0)
-    bufferspeciesname(0, SPECIES_SCYTHER)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectScytherDesc)
-  case 1:
-    setvar(VAR_STARTER_MON, 1)
-    bufferspeciesname(0, SPECIES_CHARMANDER)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectCharcadetDesc)
-  case 2:
-    setvar(VAR_STARTER_MON, 2)
-    bufferspeciesname(0, SPECIES_PETILIL)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectCharcadetDesc)
-  case 3:
-    setvar(VAR_STARTER_MON, 3)
-    bufferspeciesname(0, SPECIES_FLAAFFY)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectFlaaffyDesc)
-  case 4:
-    setvar(VAR_STARTER_MON, 4)
-    bufferspeciesname(0, SPECIES_MAREANIE)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectMareanieDesc)
-  case 5:
-    setvar(VAR_STARTER_MON, 5)
-    bufferspeciesname(0, SPECIES_ARON)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectAronDesc)
-  case 6:
-    setvar(VAR_STARTER_MON, 6)
-    bufferspeciesname(0, SPECIES_SWINUB)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectSwinubDesc)
-  case 7:
-    setvar(VAR_STARTER_MON, 7)
-    bufferspeciesname(0, SPECIES_HATTREM)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectHattremDesc)
-  case 8:
-    setvar(VAR_STARTER_MON, 8)
-    bufferspeciesname(0, SPECIES_PANCHAM)
-    msgbox(gText_ThereCanOnlyBe_StarterSelectPanchamDesc)
-  }
+script ThereCanOnlyBeOne_StarterSelectMenu_Script{
+    msgbox(gText_ThereCanOnlyBe_PleaseChooseAPokemon)
+    closemessage
+    dynmultichoice(1,1,FALSE,6,0,DYN_MULTICHOICE_CB_NONE,"Scyther","Charcadet","Petilil","Flaaffy","Mareanie","Aron","Swinub","Hattrem","Pancham")
+    call(ThereCanOnlyBeOne_HandleMenuOutput_Script)
     goto(ThereCanOnlyBeOne_StarterChoiceMenu_Script)
 }
 
-script ThereCanOnlyBeOne_StarterChoiceMenu_Script {
-  //multichoice(50, 6, MULTI_STARTER_SUMMARY, TRUE)
+script ThereCanOnlyBeOne_HandleMenuOutput_Script{
+    switch (var (VAR_RESULT)) {
+        case 0:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_SCYTHER)
+            bufferspeciesname(STR_VAR_1, SPECIES_SCYTHER)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectScytherDesc)
+        case 1:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_CHARMANDER)
+            bufferspeciesname(STR_VAR_1, SPECIES_CHARMANDER)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectCharcadetDesc)
+        case 2:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_PETILIL)
+            bufferspeciesname(STR_VAR_1, SPECIES_PETILIL)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectCharcadetDesc)
+        case 3:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_FLAAFFY)
+            bufferspeciesname(STR_VAR_1, SPECIES_FLAAFFY)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectFlaaffyDesc)
+        case 4:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_MAREANIE)
+            bufferspeciesname(STR_VAR_1, SPECIES_MAREANIE)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectMareanieDesc)
+        case 5:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_ARON)
+            bufferspeciesname(STR_VAR_1, SPECIES_ARON)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectAronDesc)
+        case 6:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_SWINUB)
+            bufferspeciesname(STR_VAR_1, SPECIES_SWINUB)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectSwinubDesc)
+        case 7:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_HATTREM)
+            bufferspeciesname(STR_VAR_1, SPECIES_HATTREM)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectHattremDesc)
+        case 8:
+            setvar(VAR_CHOSEN_PSF_STARTER, STARTER_CHOSEN_PANCHAM)
+            bufferspeciesname(STR_VAR_1, SPECIES_PANCHAM)
+            msgbox(gText_ThereCanOnlyBe_StarterSelectPanchamDesc)
+    }
+}
 
+script ThereCanOnlyBeOne_StarterChoiceMenu_Script {
+    dynmultichoice(1,1,FALSE,6,0,DYN_MULTICHOICE_CB_NONE,"Summary","Confirm","Cancel")
   switch (var (VAR_RESULT)) {
   case 0:
     //TODO when a user selects this option, I want them to go back to the StarterChoiceMenu with the same flavor text displayed. possible?
@@ -114,7 +117,7 @@ script ThereCanOnlyBeOne_StarterSelectConfirm_Script {
   if (var(VAR_RESULT) == NO) {
     goto(ThereCanOnlyBeOne_StarterSelectMenu_Script)
   } else {
-    switch (var (VAR_STARTER_MON)) {
+    switch (var (VAR_CHOSEN_PSF_STARTER)) {
       //TODO need to make sure these guys have 3 perfect IVs
     case 0:
       givecustommon(SPECIES_SCYTHER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2)
@@ -211,22 +214,22 @@ text gText_ThereCanOnlyBe_StarterSelectAronDesc {
   format("{STR_VAR_1} leverages its high Attack and Defense to provide physical support.")
 }
 
-      text gText_ThereCanOnlyBe_StarterSelectSwinubDesc {
-        format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")
-      }
+text gText_ThereCanOnlyBe_StarterSelectSwinubDesc {
+format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")
+}
 
-      text gText_ThereCanOnlyBe_StarterSelectHattremDesc {
-        format("{STR_VAR_1}'s high Special Attack and  Special Defense makes it ideal for special support.")
-      }
+text gText_ThereCanOnlyBe_StarterSelectHattremDesc {
+format("{STR_VAR_1}'s high Special Attack and  Special Defense makes it ideal for special support.")
+}
 
-      text gText_ThereCanOnlyBe_StarterSelectPanchamDesc {
-        format("{STR_VAR_1} makes up for low Speed with high Attack and unique typing.")
-      }
+text gText_ThereCanOnlyBe_StarterSelectPanchamDesc {
+format("{STR_VAR_1} makes up for low Speed with high Attack and unique typing.")
+}
 
-      text gText_ThereCanOnlyBe_StarterAreYouSure {
-        format("Are you sure you want to choose {STR_VAR_1}?")
-      }
+text gText_ThereCanOnlyBe_StarterAreYouSure {
+format("Are you sure you want to choose {STR_VAR_1}?")
+}
 
-      text gText_ThereCanOnlyBe_YouChoseToBring {
-        format("You chose to bring {STR_VAR_1} to SanFran.")
-      }
+text gText_ThereCanOnlyBe_YouChoseToBring {
+format("You chose to bring {STR_VAR_1} to SanFran.")
+}

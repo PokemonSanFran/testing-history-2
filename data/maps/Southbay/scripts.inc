@@ -18,7 +18,7 @@ Southbay_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	return
 
 Southbay_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, ImProbablyBetterThanYou_StandingOutside_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, 0, ImProbablyBetterThanYou_StandingOutside_Dialogue
 	.2byte 0
 
 

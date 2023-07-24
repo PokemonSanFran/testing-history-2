@@ -416,7 +416,8 @@ u8 GetPlayerTextSpeedDelay(void)
 {
     u32 speed;
     if (gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED] > OPTIONS_TEXT_SPEED_FAST)
-        gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED] = OPTIONS_TEXT_SPEED_FAST;
+        gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED] = OPTIONS_TEXT_SPEED_SLOW;
+    //PSF TODO remove when instant and faster are implmented
     speed = GetPlayerTextSpeed();
     return sTextSpeedFrameDelays[speed];
 }

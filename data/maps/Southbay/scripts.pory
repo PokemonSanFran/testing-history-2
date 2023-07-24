@@ -5,7 +5,7 @@ mapscripts Southbay_MapScripts {
         call(Quest_AngelDelivery_Hide_BikerB_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_LITTLEROOT_INTRO_STATE, 0: ImProbablyBetterThanYou_StandingOutside_Dialogue
+        VAR_PLAYER_HOME_STATE, 0: ImProbablyBetterThanYou_StandingOutside_Dialogue
     ]
     MAP_SCRIPT_ON_LOAD {
         if (flag(FLAG_SYS_GAME_CLEAR)){
