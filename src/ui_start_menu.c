@@ -1927,13 +1927,14 @@ static void StartMenu_Task_SaveDialog(u8 taskId)
 
 static void StartMenu_SaveDialog_CheckSave(void)
 {
-    if (gDifferentSaveFile == TRUE){
+    if (gDifferentSaveFile == TRUE && gSaveFileStatus != SAVE_STATUS_EMPTY){
         sMenuDataPtr->saveMode = SAVE_MODE_OVERWRITE;
         StartMenu_PrintOverwriteModal();
     }else{
         StartMenu_SaveDialog_DoSave();
     }
 }
+
 static void StartMenu_SaveDialog_DoSave(void)
 {
     u8 saveStatus;
