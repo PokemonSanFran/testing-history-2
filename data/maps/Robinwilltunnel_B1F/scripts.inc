@@ -8,12 +8,12 @@ Robinwilltunnel_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Robinwilltunnel_B1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE114_STATE, 1, IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue
+	map_script_2 VAR_ROBINWILLIAMSTUNNEL_STATE, 1, IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue
 	.2byte 0
 
 
 Robinwilltunnel_B1F_MapScripts_OnTransition::
-	switch VAR_ROUTE114_STATE
+	switch VAR_ROBINWILLIAMSTUNNEL_STATE
 	case 0, Robinwilltunnel_B1F_MapScripts_OnTransition_2
 	case 1, Robinwilltunnel_B1F_MapScripts_OnTransition_3
 	case 2, Robinwilltunnel_B1F_MapScripts_OnTransition_4

@@ -18,7 +18,7 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         waitmovement(ROSE)
 
         msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds,,SPEAKER_ROSE)
-        
+
         closemessage
 
         playse(SE_M_ENCORE2)
@@ -34,13 +34,13 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         fadescreen(FADE_FROM_BLACK)
 
         msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate,,SPEAKER_ROSE)
-        
+
         closemessage
 
         setvar(VAR_CHASECENTER_TOURNAMENT_STATE,NO_TOURNAMENT)
         clearflag(FLAG_CHASECENTER_TOURNAMENT_HAPPENING)
         setvar(VAR_STORYLINE_STATE,STORY_WON_FINALS)
-        setflag(FLAG_IS_CHAMPION)
+        setflag(FLAG_IS_SANFRAN_CHAMPION)
         fadescreenspeed(FADE_TO_BLACK,24)
 
         special(HealPlayerParty)

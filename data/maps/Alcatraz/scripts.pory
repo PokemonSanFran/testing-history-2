@@ -7,7 +7,7 @@ mapscripts Alcatraz_MapScripts {
         call(YouRealizeTheyreEvilRight_HideObject_Script)
     }
 
-    MAP_SCRIPT_ON_FRAME_TABLE [ 
+    MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ: YouRealizeTheyreEvilRight_PlayerLandedDialogue
     ]
 }
@@ -26,12 +26,12 @@ script AlcatrazAttendant_HealPlayer_Script {
 }
 
 script ResetAlcatrazExhibit_Script {
-        clearflag(TRAINER_FLAGS_START + TRAINER_ALBERTO)
-        clearflag(TRAINER_FLAGS_START + TRAINER_ED)
-        clearflag(TRAINER_FLAGS_START + TRAINER_DECLAN)
-        clearflag(TRAINER_FLAGS_START + TRAINER_FREDRICK)
-        clearflag(TRAINER_FLAGS_START + TRAINER_ZANDER)
-        clearflag(TRAINER_FLAGS_START + TRAINER_LEAH)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_A)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_B)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_C)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_D)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_E)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_TRAINER_F)
 
         if (var(VAR_ALCATRAZ_STATE) == FIRST_ARRIVED_ALCATRAZ){
             setvar(VAR_ALCATRAZ_EXHIBIT_STATE,0)

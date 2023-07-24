@@ -13,12 +13,12 @@ Sunset_Sabrina_House_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Sunset_Sabrina_House_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_MAUVILLE_CITY_STATE, 1, Imin_BeginHouseSearch_Script
+	map_script_2 VAR_TOWER_RAID_STATE, 1, Imin_BeginHouseSearch_Script
 	.2byte 0
 
 
 Sunset_Sabrina_House_MapScripts_OnTransition::
-	switch VAR_MAUVILLE_CITY_STATE
+	switch VAR_TOWER_RAID_STATE
 	case 1, Sunset_Sabrina_House_MapScripts_OnTransition_2
 	case 2, Sunset_Sabrina_House_MapScripts_OnTransition_3
 	case 3, Sunset_Sabrina_House_MapScripts_OnTransition_4
@@ -37,7 +37,7 @@ Sunset_Sabrina_House_MapScripts_OnTransition_4:
 
 
 Sunset_Sabrina_House_MapScripts_OnLoad::
-	compare VAR_MAUVILLE_CITY_STATE, 3
+	compare VAR_TOWER_RAID_STATE, 3
 	goto_if_gt Sunset_Sabrina_House_MapScripts_OnLoad_1
 	return
 
@@ -47,7 +47,7 @@ Sunset_Sabrina_House_MapScripts_OnLoad_1:
 
 
 Sunset_ElectronicDoor_Event_Script::
-	switch VAR_MAUVILLE_CITY_STATE
+	switch VAR_TOWER_RAID_STATE
 	case 2, Sunset_ElectronicDoor_Event_Script_2
 	case 3, Sunset_ElectronicDoor_Event_Script_3
 	case 4, Sunset_ElectronicDoor_Event_Script_4

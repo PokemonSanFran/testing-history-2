@@ -8,7 +8,7 @@ Salesforcetower_5F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Salesforcetower_5F_MapScripts_OnTransition::
-	compare VAR_MAUVILLE_CITY_STATE, 4
+	compare VAR_TOWER_RAID_STATE, 4
 	goto_if_gt Salesforcetower_5F_MapScripts_OnTransition_1
 	return
 

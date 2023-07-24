@@ -10,7 +10,7 @@ Japantown_Ramen_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Japantown_Ramen_InteractFanny_Event_Script::
 	lock
-	switch VAR_LILYCOVE_CITY_STATE
+	switch VAR_MASK_OFF_STATE
 	case NOT_ASSIGNED, Japantown_Ramen_InteractFanny_Event_Script_3
 	case ASSIGNED_MASK_OFF, Japantown_Ramen_InteractFanny_Event_Script_3
 	case GOT_MASK_OFF_CLUE_1, Japantown_Ramen_InteractFanny_Event_Script_3

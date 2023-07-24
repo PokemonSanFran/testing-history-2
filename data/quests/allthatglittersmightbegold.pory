@@ -41,7 +41,7 @@ script Quest_Allthatglittersmightbegold_StartQuest_Dialogue{
 }
 
 script Quest_Allthatglittersmightbegold_BeforeVideo_Script{
-    setflag(FLAG_DEFEATED_SUDOWOODO)
+    setflag(FLAG_QUEST_ALLTHATGLITTERS_DEFEATED_POKEMON)
         setflag(FLAG_SPAWN_INVISIBLE)
         setflag(FLAG_HIDE_MAP_NAME_POPUP)
         setvar(VAR_QUEST_GLITTERS_GOLD_STATE,NOT_SHOWN_PICTURE)
@@ -57,7 +57,7 @@ script Quest_Allthatglittersmightbegold_ShowVideo_Dialogue{
         msgbox(gText_Allthatglittersmightbegold_SeeThatThere,,SPEAKER_ELIOR,,EMOTE_SHOCK)
         closemessage
         call(Quest_Allthatglittersmightbegold_StartSparkle_Script)
-        clearflag(FLAG_DEFEATED_SUDOWOODO)
+        clearflag(FLAG_QUEST_ALLTHATGLITTERS_DEFEATED_POKEMON)
         clearflag(FLAG_SPAWN_INVISIBLE)
         delay(30)
         warpsilent(MAP_PSFROUTE15,40,61)

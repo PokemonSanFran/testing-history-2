@@ -497,7 +497,7 @@ void JumpPlayerTo_swagbag()
 	VarSet(VAR_PLAYER_HOME_STATE, POST_SWAGBAG);
 	FlagSet(FLAG_SYS_POKENAV_GET);
 	FlagSet(FLAG_SYS_QUEST_MENU_GET);
-    FlagSet(FLAG_SYS_CLOCK_SET);
+    FlagSet(FLAG_SET_WALL_CLOCK);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_ACTIVE);
 	SetWarpDestination(2, 0, 0, -1, -1);

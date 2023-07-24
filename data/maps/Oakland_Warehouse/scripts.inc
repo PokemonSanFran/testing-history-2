@@ -18,7 +18,7 @@ Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 
 Oakland_Warehouse_MapScripts_OnTransition::
-	switch VAR_FORTREE_CITY_STATE
+	switch VAR_WAREHOUSE_RAVE_STATE
 	case 1, Oakland_Warehouse_MapScripts_OnTransition_2
 	case 2, Oakland_Warehouse_MapScripts_OnTransition_3
 	call WarehouseRave_HideObject_Script

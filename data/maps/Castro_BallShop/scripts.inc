@@ -10,7 +10,7 @@ Castro_BallShop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Castro_BallShop_InteractDudley_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Castro_BallShop_InteractDudley_Event_Script_2
-	switch VAR_LILYCOVE_CITY_STATE
+	switch VAR_MASK_OFF_STATE
 	case 1, Castro_BallShop_InteractDudley_Event_Script_10
 	case 8, Castro_BallShop_InteractDudley_Event_Script_11
 	call MaskOff_QuestD_Dialogue
@@ -19,7 +19,7 @@ Castro_BallShop_InteractDudley_Event_Script_1:
 	end
 
 Castro_BallShop_InteractDudley_Event_Script_2:
-	switch VAR_RUSTURF_TUNNEL_STATE
+	switch VAR_MANHUNT_STATE
 	case 0, Castro_BallShop_InteractDudley_Event_Script_6
 	case 3, Castro_BallShop_InteractDudley_Event_Script_7
 	msgbox Castro_BallShop_InteractDudley_Event_Script_Text_0, MSGBOX_AUTOCLOSE

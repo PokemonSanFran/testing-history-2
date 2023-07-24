@@ -12,12 +12,12 @@ Psfroute25_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfroute25_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DEWFORD_TOWN_STATE, 2, ThisIsntRandom_UndergroundDoor_Dialogue
+	map_script_2 VAR_UNDERGROUNDLAB_STATE, 2, ThisIsntRandom_UndergroundDoor_Dialogue
 	.2byte 0
 
 
 Psfroute25_MapScripts_OnLoad::
-	switch VAR_DEWFORD_TOWN_STATE
+	switch VAR_UNDERGROUNDLAB_STATE
 	case 1, Psfroute25_MapScripts_OnLoad_2
 	case 2, Psfroute25_MapScripts_OnLoad_3
 	call ThisIsntRandom_UnlockElectronicDoor_Script

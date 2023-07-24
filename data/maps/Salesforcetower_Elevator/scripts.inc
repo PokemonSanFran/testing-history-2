@@ -25,7 +25,7 @@ Salesforcetower_Elevator_MapScripts_OnTransition_1:
 
 Salesforcetower_Elevator_AttendantMissing_Dialogue::
 	setvar VAR_TEMP_0, 1
-	compare VAR_MAUVILLE_CITY_STATE, 4
+	compare VAR_TOWER_RAID_STATE, 4
 	goto_if_gt Salesforcetower_Elevator_AttendantMissing_Dialogue_1
 	goto_if_unset FLAG_BADGE03_GET, Salesforcetower_Elevator_AttendantMissing_Dialogue_1
 	release
@@ -95,7 +95,7 @@ Salesforcetower_ElevatorAttendant_Script::
 	setvar VAR_0x8004, 0
 	goto_if_set FLAG_TEMP_2, Salesforcetower_ElevatorAttendant_Script_2
 Salesforcetower_ElevatorAttendant_Script_1:
-	copyvar VAR_0x8005, VAR_DEPT_STORE_FLOOR
+	copyvar VAR_0x8005, VAR_TOWER_FLOOR
 	special ShowSalesforcetowerElevatorFloorSelect
 	message gText_WhichFloorWouldYouLike
 	waitmessage
@@ -175,11 +175,11 @@ SalesforcetowerElevator_EventScript_ChooseFloor_8:
 SalesforcetowerElevator_EventScript_1stFloor::
 	setvar VAR_0x8006, SALESFORCETOWER_FLOORNUM_1F
 	setdynamicwarp MAP_SALESFORCETOWER_1F, 255, 8, 2
-	compare VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_1F
+	compare VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_1F
 	goto_if_eq SalesforcetowerElevator_EventScript_1stFloor_2
 SalesforcetowerElevator_EventScript_1stFloor_1:
 	call SalesforcetowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_1F
+	setvar VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_1F
 	goto SalesforcetowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -191,11 +191,11 @@ SalesforcetowerElevator_EventScript_1stFloor_2:
 SalesforcetowerElevator_EventScript_2ndFloor::
 	setvar VAR_0x8006, SALESFORCETOWER_FLOORNUM_2F
 	setdynamicwarp MAP_SALESFORCETOWER_2F, 255, 9, 39
-	compare VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_2F
+	compare VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_2F
 	goto_if_eq SalesforcetowerElevator_EventScript_2ndFloor_2
 SalesforcetowerElevator_EventScript_2ndFloor_1:
 	call SalesforcetowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_2F
+	setvar VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_2F
 	goto SalesforcetowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -207,11 +207,11 @@ SalesforcetowerElevator_EventScript_2ndFloor_2:
 SalesforcetowerElevator_EventScript_5thFloor::
 	setvar VAR_0x8006, SALESFORCETOWER_FLOORNUM_5F
 	setdynamicwarp MAP_SALESFORCETOWER_5F, 255, 16, 28
-	compare VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_5F
+	compare VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_5F
 	goto_if_eq SalesforcetowerElevator_EventScript_5thFloor_2
 SalesforcetowerElevator_EventScript_5thFloor_1:
 	call SalesforcetowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_5F
+	setvar VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_5F
 	goto SalesforcetowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -223,11 +223,11 @@ SalesforcetowerElevator_EventScript_5thFloor_2:
 SalesforcetowerElevator_EventScript_10thFloor::
 	setvar VAR_0x8006, SALESFORCETOWER_FLOORNUM_10F
 	setdynamicwarp MAP_SALESFORCETOWER_10F, 255, 8, 2
-	compare VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_10F
+	compare VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_10F
 	goto_if_eq SalesforcetowerElevator_EventScript_10thFloor_2
 SalesforcetowerElevator_EventScript_10thFloor_1:
 	call SalesforcetowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, SALESFORCETOWER_FLOORNUM_10F
+	setvar VAR_TOWER_FLOOR, SALESFORCETOWER_FLOORNUM_10F
 	goto SalesforcetowerElevator_EventScript_ExitFloorSelect
 	end
 

@@ -408,7 +408,7 @@ Haightashbury_Gym_Battle_Room_EventScript_WarpToLobby_6:
 
 
 Haightashbury_Gym_Battle_Room_EventScript_RetireChallenge::
-	setflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
+	setflag FLAG_CANCEL_RESTORED_BATTLE_ROOM
 	goto BattleTower_EventScript_WarpToLobbyLost
 	end
 

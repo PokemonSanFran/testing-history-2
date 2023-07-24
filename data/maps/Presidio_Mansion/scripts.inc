@@ -8,12 +8,12 @@ Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE105_STATE, 0, KogaRaisonDetre_MoveIntoFoyer_Script
+	map_script_2 VAR_KOGA_RAISON_DETRE_STATE, 0, KogaRaisonDetre_MoveIntoFoyer_Script
 	.2byte 0
 
 
 Presidio_Mansion_MapScripts_OnTransition::
-	switch VAR_ROUTE105_STATE
+	switch VAR_KOGA_RAISON_DETRE_STATE
 	case 1, Presidio_Mansion_MapScripts_OnTransition_2
 	case 2, Presidio_Mansion_MapScripts_OnTransition_3
 	case 3, Presidio_Mansion_MapScripts_OnTransition_4

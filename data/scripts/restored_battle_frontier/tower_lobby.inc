@@ -74,7 +74,7 @@ BattleTower_EventScript_LostChallenge::
 	special LoadPlayerPartyBattleFrontier
 	compare VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS
 	goto_if_ne BattleTower_EventScript_LostChallenge_2
-	goto_if_set FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER, BattleTower_EventScript_LostChallenge_2
+	goto_if_set FLAG_CHOSEN_RESTORED_MULTI_BATTLE_NPC_PARTNER, BattleTower_EventScript_LostChallenge_2
 BattleTower_EventScript_LostChallenge_1:
 	tower_get TOWER_DATA_WIN_STREAK
 	compare VAR_RESULT, 0
@@ -191,7 +191,7 @@ BattleTower_EventScript_Attendant_4:
 	return
 
 BattleTower_EventScript_Attendant_2:
-	clearflag FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER
+	clearflag FLAG_CHOSEN_RESTORED_MULTI_BATTLE_NPC_PARTNER
 	goto BattleTower_EventScript_Attendant_1
 
 BattleTower_EventScript_Attendant_6:
@@ -799,7 +799,7 @@ BattleTower_EventScript_WaitForLinkOpponentLoad::
 	goto_if_ne BattleTower_EventScript_WaitForLinkOpponentLoad_2
 BattleTower_EventScript_WaitForLinkOpponentLoad_1:
 	call BattleTower_EventScript_ShowYouToBattleRoom
-	clearflag FLAG_CANCEL_BATTLE_ROOM_CHALLENGE
+	clearflag FLAG_CANCEL_RESTORED_BATTLE_ROOM
 	setflag FLAG_HIDE_FACILITY_OPPONENT
 	setvar VAR_TEMP_0, 0
 	warp MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM, 4, 8

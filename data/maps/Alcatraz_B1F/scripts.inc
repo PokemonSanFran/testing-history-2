@@ -8,7 +8,7 @@ Alcatraz_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Alcatraz_B1F_MapScripts_OnTransition::
-	switch VAR_LILYCOVE_CONTEST_LOBBY_STATE
+	switch VAR_LETS_BURN_THIS_MOTHER_STATE
 	case 2, Alcatraz_B1F_MapScripts_OnTransition_2
 	call LetsBurnThisMotherDown_ObjectHide_Script
 	return

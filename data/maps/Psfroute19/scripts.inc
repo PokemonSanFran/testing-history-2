@@ -9,7 +9,7 @@ Psfroute19_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfroute19_MapScripts_OnTransition::
 	call WaitYouWentWhere_ObjectSetUp_Script
-	switch VAR_ROUTE104_STATE
+	switch VAR_WAIT_YOU_WENT_WHERE
 	case 0, Psfroute19_MapScripts_OnTransition_2
 	case 1, Psfroute19_MapScripts_OnTransition_3
 	return

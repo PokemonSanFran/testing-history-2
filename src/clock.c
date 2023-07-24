@@ -19,7 +19,8 @@ static void UpdatePerMinute(struct Time *localTime);
 
 static void InitTimeBasedEvents(void)
 {
-    FlagSet(FLAG_SYS_CLOCK_SET);
+    //FlagSet(FLAG_SYS_CLOCK_SET); //replaced with PSF flag
+    FlagSet(FLAG_SET_WALL_CLOCK);
     RtcCalcLocalTime();
     gSaveBlock2Ptr->lastBerryTreeUpdate = gLocalTime;
     VarSet(VAR_DAYS, gLocalTime.days);
@@ -27,7 +28,8 @@ static void InitTimeBasedEvents(void)
 
 void DoTimeBasedEvents(void)
 {
-    if (FlagGet(FLAG_SYS_CLOCK_SET) && !InPokemonCenter())
+    //if (FlagGet(FLAG_SYS_CLOCK_SET) && !InPokemonCenter()) //replaced with PSF flag
+    if (FlagGet(FLAG_SET_WALL_CLOCK) && !InPokemonCenter())
     {
         RtcCalcLocalTime();
         UpdatePerDay(&gLocalTime);

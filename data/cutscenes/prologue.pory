@@ -16,7 +16,7 @@ const GUARD = 8
 script Prologue_SetUp_Script{
     setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
         setflag(FLAG_SYS_QUEST_MENU_GET)
-        setflag(FLAG_SYS_CLOCK_SET)
+        setflag(FLAG_SET_WALL_CLOCK)
         call(Prologue_IntroTime_Dialogue)
 //PSF TODO open modal to tell player about teaching their pokemon new moves
         startquest(QUEST_BECOMECHAMPION)

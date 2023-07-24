@@ -8,7 +8,7 @@ Sunset_Apartment_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Sunset_Apartment_InteractAntone_Event_Script::
 	lock
-	switch VAR_LILYCOVE_CITY_STATE
+	switch VAR_MASK_OFF_STATE
 	case 0, Sunset_Apartment_InteractAntone_Event_Script_3
 	case 1, Sunset_Apartment_InteractAntone_Event_Script_4
 	case 2, Sunset_Apartment_InteractAntone_Event_Script_5

@@ -160,7 +160,7 @@ script VSGarbodor_RemoveGrunt {
 }
 
 script VSGarbodor_CheckDefeated_Script {
-    if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
+    if (flag(FLAG_DEFEATED_CONSTRUCTION_ROCKET_B) && flag(FLAG_DEFEATED_CONSTRUCTION_ROCKET_A) && flag(FLAG_DEFEATED_CONSTRUCTION_MON_A) && flag(FLAG_DEFEATED_CONSTRUCTION_MON_B)) {
         goto(VSGarbodor_MoveBianca_Script)
     }
     end

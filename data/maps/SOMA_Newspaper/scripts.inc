@@ -20,7 +20,7 @@ SOMA_Newspaper_InteractCherie_Event_Script_1:
 	end
 
 SOMA_Newspaper_InteractCherie_Event_Script_2:
-	switch VAR_RUSTURF_TUNNEL_STATE
+	switch VAR_MANHUNT_STATE
 	case 0, SOMA_Newspaper_InteractCherie_Event_Script_6
 	case 1, SOMA_Newspaper_InteractCherie_Event_Script_7
 	msgbox SOMA_Newspaper_InteractCherie_Event_Script_Text_0, MSGBOX_AUTOCLOSE

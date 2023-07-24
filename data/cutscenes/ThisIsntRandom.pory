@@ -179,7 +179,7 @@ script ThisIsntRandom_WalkIntoLab_Dialogue {
 }
 
 script ThisIsntRandom_CheckProgressA_Script {
-    if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
+    if (!flag(FLAG_DEFEATED_LAB_MON_A)){
         goto(ThisIsntRandom_StopProgress_Script)
     }else {
         call(ThisIsntRandom_DefeatedFirst_Script)
@@ -187,7 +187,7 @@ script ThisIsntRandom_CheckProgressA_Script {
 }
 
 script ThisIsntRandom_CheckProgressB_Script {
-    if (!flag(FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT)){
+    if (!flag(FLAG_DEFEATED_LAB_MON_B)){
         goto(ThisIsntRandom_StopProgress_Script)
     }else {
         call(ThisIsntRandom_DefeatedSecond_Script)
@@ -216,10 +216,10 @@ script ThisIsntRandom_CoreEncounter_Script {
     startmenu_savescreen
         faceplayer
 
-        if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
+        if (!flag(FLAG_DEFEATED_LAB_MON_A)){
             setwildbattle(SPECIES_DONPHAN, 60, ITEM_NONE)
                 playmoncry(SPECIES_DONPHAN, CRY_MODE_ENCOUNTER)
-        } elif (!flag(FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT)){
+        } elif (!flag(FLAG_DEFEATED_LAB_MON_B)){
             setwildbattle(SPECIES_GOLURK, 60, ITEM_NONE)
                 playmoncry(SPECIES_GOLURK, CRY_MODE_ENCOUNTER)
         }

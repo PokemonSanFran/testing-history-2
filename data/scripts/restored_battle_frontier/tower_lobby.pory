@@ -91,7 +91,7 @@ script BattleTower_EventScript_LookForwardToChallenge{
 script BattleTower_EventScript_LostChallenge {
     special(LoadPlayerPartyBattleFrontier)
     if (var(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_MULTIS ||
-        flag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)) {
+        flag(FLAG_CHOSEN_RESTORED_MULTI_BATTLE_NPC_PARTNER)) {
         goto(BattleTower_EventScript_CancelWinStreak)
     }
 
@@ -190,7 +190,7 @@ script BattleTower_EventScript_Attendant{
     setvar(VAR_FRONTIER_FACILITY,FRONTIER_FACILITY_TOWER)
 
     if (var(VAR_LAST_TALKED) == ATTENDANT_MULTIS){
-        clearflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
+        clearflag(FLAG_CHOSEN_RESTORED_MULTI_BATTLE_NPC_PARTNER)
     }
 
 
@@ -553,7 +553,7 @@ script BattleTower_EventScript_WaitForLinkOpponentLoad{
     }
 
     call(BattleTower_EventScript_ShowYouToBattleRoom)
-    clearflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
+    clearflag(FLAG_CANCEL_RESTORED_BATTLE_ROOM)
     setflag(FLAG_HIDE_FACILITY_OPPONENT)
     setvar(VAR_FACILITY_CHALLENGE_STATUS, 0)
     warp(MAP_HAIGHTASHBURY_GYM_BATTLE_ROOM,4,8)
