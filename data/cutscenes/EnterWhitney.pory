@@ -67,6 +67,7 @@ script EnterWhitney_MuseumArrangement_Dialogue {
     msgbox(gText_EnterWhitney_HasYourVisit,,SPEAKER_WHITNEY)
         msgbox(gText_EnterWhitney_UhYup,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     msgbox(gText_EnterWhitney_ICanHearTheOrre,,SPEAKER_WHITNEY)
+    setvar(VAR_GYM_3_STATE,GYM_SAVE_BEFORE_LEADER)
         startmenu_savescreen
     goto(EnterWhitney_StartBattle_Script)
 }

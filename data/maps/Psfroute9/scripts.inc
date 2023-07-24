@@ -4,16 +4,6 @@ Psfroute9_MapScripts::
 
 Psfroute9_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	special Quest_Bodegaburnout_CheckAndSetRescueFlag
-	goto Psfroute9_MapScripts_OnTransition
-	return
-
-
-Psfroute9_MapScripts_OnTransition::
-	compare VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
-	goto_if_gt Psfroute9_MapScripts_OnTransition_1
-	return
-
-Psfroute9_MapScripts_OnTransition_1:
-	setflag FLAG_TEMP_1
+	call NewAssholeAppears_HideArcher_Script
 	return
 

@@ -61,7 +61,7 @@
       "type": "trigger",
       "x": 12,
       "y": 13,
-      "elevation": 0,
+      "elevation": 7,
       "var": "VAR_LOMBARDSTREET_STATE",
       "var_value": "0",
       "script": "OldAssholeAppears_WalktoBianca_Script"
