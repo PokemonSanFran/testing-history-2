@@ -5,11 +5,13 @@ const FLAG_HIDE_LENORA_MARIN = FLAG_TEMP_1
 //gText_Restoremarin_
 
 script Quest_Restoremarin_Debug_Script{
-        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
 
         if (var(VAR_RESULT)){
-            givemon(SPECIES_KRABBY,20,ITEM_NONE)
-                givemon(SPECIES_COPPERAJAH,20,ITEM_NONE)
+            msgbox("you now have everything lenora wants.")
+            closemessage
+            givecustommon(SPECIES_KRABBY,100,,,,0,,,,,,,,,,,,,MOVE_KNOCK_OFF)
+            givecustommon(SPECIES_COPPERAJAH,100,,,,0,,,,,,,,,,,,,MOVE_POWER_WHIP)
         }
     release
         end
@@ -29,31 +31,6 @@ script Quest_Restoremarin_HideLenora_Script{
         if (var(VAR_RESULT)){
             setflag(FLAG_HIDE_LENORA_MARIN)
         }
-}
-
-script Quest_Restoremarin_CheckProgress_Script{
-    setvar(VAR_TEMP_0,0)
-        setvar(VAR_TEMP_1,0)
-        setvar(VAR_TEMP_2,0)
-
-        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
-
-        if (var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-                addvar(VAR_TEMP_1,1)
-        }
-
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_2)
-
-        if (var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-                addvar(VAR_TEMP_2,1)
-        }
-
-    if(var(VAR_TEMP_0) == 2){
-        questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTOREMARIN)
-    }
-    return
 }
 
 script Quest_Restoremarin_BufferStrings_Part1_Script{
@@ -102,78 +79,134 @@ script Quest_Restoremarin_StartQuest_Dialogue{
         end
 }
 
-script Quest_Restoremarin_Active_Script{
-        call(Quest_Restoremarin_CheckProgress_Script)
-
-        if (var(VAR_TEMP_1) == 1){
-            call(Quest_Restoremarin_BufferStrings_Part2_Script)
-                msgbox(gText_Restoremarin_WeNeed,,SPEAKER_LENORA)
-        }elif (var(VAR_TEMP_2) == 1){
-            call(Quest_Restoremarin_BufferStrings_Part1_Script)
-                msgbox(gText_Restoremarin_WeNeed,,SPEAKER_LENORA)
-        }else {
-            call(Quest_Restoremarin_BufferStrings_Part1_Script)
-                msgbox(gText_Restoremarin_WeNeed_A,,SPEAKER_LENORA)
-                call(Quest_Restoremarin_BufferStrings_Part2_Script)
-                msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA)
+script Quest_Marin_ConstructMenu_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
+        if(!var(VAR_RESULT)){
+            buffermovename(STR_VAR_1,MOVE_KNOCK_OFF)
+            bufferspeciesname(STR_VAR_2,SPECIES_KRABBY)
+            dynmultipush("{STR_VAR_2} that knows {STR_VAR_1}",0)
         }
 
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_2)
+        if(!var(VAR_RESULT)){
+            buffermovename(STR_VAR_1,MOVE_POWER_WHIP)
+            bufferspeciesname(STR_VAR_2,SPECIES_COPPERAJAH)
+            dynmultipush("{STR_VAR_2} that knows {STR_VAR_1}",1)
+        }
 
-
-        goto(Quest_Restoremarin_CheckPokemon_Script)
+    dynmultipush("Nothing yet.",2)
 }
 
-script Quest_Restoremarin_CheckPokemon_Script{
-    //PSF TODO need to write the script to take a pokemon from the player
+script Quest_Restoremarin_Active_Script{
+    msgbox(gText_Restoremarin_WeNeedSomePretty,,SPEAKER_LENORA)
+
+    call(Quest_Marin_ConstructMenu_Script)
+    dynmultistack(24,0,TRUE,2,TRUE,0,DYN_MULTICHOICE_CB_NONE)
+    closemessage
+
+    switch(var(VAR_RESULT)){
+        case 0: goto(Quest_Restoremarin_HandleKrabby_Script)
+        case 1: goto(Quest_Restoremarin_HandleCopperajah_Script)
+        case 2:
+        case MULTI_B_PRESSED:
+            goto(Quest_Restoremarin_Cancel_Dialogue)
+    }
+}
+
+script Quest_Restoremarin_HandleKrabby_Script{
     special(ChoosePartyMon)
         waitstate
-        specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
 
         if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
             goto(Quest_Restoremarin_Cancel_Dialogue)
         }
-        checkspeciesandmove(SPECIES_KRABBY, MOVE_KNOCK_OFF, VAR_RESULT)
-    if (var(VAR_RESULT) == TRUE){
-        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_1)
-            goto(Quest_Restoremarin_TakeMon_Dialogue)
-    }
 
-    if (var(VAR_RESULT) == SPECIES_COPPERAJAH && var(VAR_TEMP_2) != 1){
-        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_2)
-            goto(Quest_Restoremarin_TakeMon_Dialogue)
-    }
-    goto(Quest_Restoremarin_Cancel_Dialogue)
+        checkspeciesandmove(SPECIES_KRABBY, MOVE_KNOCK_OFF, VAR_RESULT)
+        if (!var(VAR_RESULT)){
+            goto(Quest_Restoremarin_Cancel_Dialogue)
+        }
+
+        special(BufferMonNickname)
+        call(Quest_Restoremarin_AskTakeMon_Dialogue)
+
+        special(HasEnoughMonsForDoubleBattle)
+        if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+            goto(Quest_Restoremarin_NotEnoughMons_Dialogue)
+        }
+
+    special(DeleteChosenPartyMon)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_1)
+    goto(Quest_Restoremarin_HandleProgress_Dialogue)
 }
 
-script Quest_Restoremarin_TakeMon_Dialogue{
-        msgbox(gText_Restoremarin_Excellent,MSGBOX_NPC,SPEAKER_LENORA)
-        //PSF TODO special(TakePlayerMon)
+script Quest_Restoremarin_HandleCopperajah_Script{
+    special(ChoosePartyMon)
+        waitstate
 
-
-        call(Quest_Restoremarin_CheckProgress_Script)
-        questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTOREMARIN)
-
-        if (var(VAR_RESULT)){
-            goto(Quest_Restoremarin_Reward_Dialogue)
+        if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+            goto(Quest_Restoremarin_Cancel_Dialogue)
         }
+
+        checkspeciesandmove(SPECIES_COPPERAJAH, MOVE_POWER_WHIP, VAR_RESULT)
+        if (!var(VAR_RESULT)){
+            goto(Quest_Restoremarin_Cancel_Dialogue)
+        }
+
+        special(BufferMonNickname)
+        call(Quest_Restoremarin_AskTakeMon_Dialogue)
+
+        special(HasEnoughMonsForDoubleBattle)
+        if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+            goto(Quest_Restoremarin_NotEnoughMons_Dialogue)
+        }
+
+    special(DeleteChosenPartyMon)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_2)
+    goto(Quest_Restoremarin_HandleProgress_Dialogue)
+}
+
+script Quest_Restoremarin_AskTakeMon_Dialogue{
+    msgbox(gText_Restoremarin_AreYouSure,MSGBOX_YESNO,SPEAKER_LENORA)
+
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Restoremarin_Cancel_Dialogue)
+    }else{
+        return
+    }
+}
+
+script Quest_Restoremarin_NotEnoughMons_Dialogue{
+    msgbox(gText_Restoremarin_IsntThatYour,,SPEAKER_LENORA)
+    closemessage
+    release
     end
 }
 
-script Quest_Restoremarin_Cancel_Dialogue{
-        call(Quest_Restoremarin_BufferStrings_Part1_Script)
-        msgbox(gText_Restoremarin_WeNeed_A,,SPEAKER_LENORA)
-        call(Quest_Restoremarin_BufferStrings_Part2_Script)
-        msgbox(gText_Restoremarin_WeNeed_B,,SPEAKER_LENORA)
-        msgbox(gText_Restoremarin_ComeBack,,SPEAKER_LENORA)
+script Quest_Restoremarin_HandleProgress_Dialogue{
+    msgbox(gText_Restoremarin_Excellent,,SPEAKER_LENORA)
 
+    specialvar(VAR_RESULT,Quest_Restoremarin_CheckRemainingSubquests)
+
+        if (var(VAR_RESULT) == 0){
+            goto(Quest_Restoremarin_Reward_Dialogue)
+        }else{
+            goto(Quest_Restoremarin_Active_Script)
+        }
+}
+
+script Quest_Restoremarin_Cancel_Dialogue{
+        msgbox(gText_Restoremarin_ComeBack,,SPEAKER_LENORA)
         closemessage
-        return
+release
+end
 }
 
 script Quest_Restoremarin_Reward_Dialogue{
     if (var(VAR_QUEST_RESTOREMARIN) == SAVE_BEFORE_LENORA_BATTLE){
         goto(Quest_Restoremarin_StartBattle_Script)
     }
+
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTOREMARIN)
     setvar(VAR_QUEST_RESTOREMARIN,SAVE_BEFORE_LENORA_BATTLE)
 
         msgbox(gText_Quest_Restoremarin_IAskedA,,SPEAKER_LENORA)
@@ -387,4 +420,16 @@ text gText_Quest_Restoremarin_IWasntHere{
 
 text gText_Quest_Restoremarin_YourHeartFeels{
     format("Your heart feels like its in the right place. I gotta get back to work. Let's at least get this test off the ground.")
+}
+
+text gText_Restoremarin_WeNeedSomePretty{
+    format("We need some pretty specific Pokémon if I'm going to get this off the ground. What do you have?")
+}
+
+text gText_Restoremarin_AreYouSure{
+    format("You sure I can have this {STR_VAR_1}? I'm gonna keep it forever.")
+}
+
+text gText_Restoremarin_IsntThatYour{
+    format("Isn't that your last Pokémon...?")
 }

@@ -120,12 +120,6 @@ script Quest_Restoretreasureisland_Cancel_Dialogue{
         end
 }
 
-script Quest_Restoretreasureisland_AlreadyDone_Script{
-        msgbox(gText_Restoretreasureisland_WaitYouAlready,,SPEAKER_CILAN)
-
-        goto(Quest_Restoretreasureisland_Active_Script)
-}
-
 script Quest_Restoretreasureisland_ConfirmTake_Dialogue{
         msgbox(gText_Restoretreasureisland_HeyYouSure,MSGBOX_YESNO,SPEAKER_CILAN)
 
@@ -298,9 +292,6 @@ text gText_Restoretreasureisland_DoYouHave{
 }
 text gText_Restoretreasureisland_NothingWellThen{
     format("nothing well then what are you doing here")
-}
-text gText_Restoretreasureisland_WaitYouAlready{
-    format("wait you  already gave me one of those.")
 }
 text gText_Restoretreasureisland_HeyYouSure{
     format("hey you sure you wanna give me your {STR_VAR_1}? i'm keeping it forever")

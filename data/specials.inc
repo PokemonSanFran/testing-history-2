@@ -631,6 +631,7 @@ gSpecials::
     def_special Quest_Restoretreasureisland_CheckIfKnowsPsychoShift
     def_special Quest_Restoretreasureisland_CheckIfPokemonHasEffectSpore
     def_special Quest_Restoretreasureisland_CheckRemainingSubquests
+    def_special Quest_Restoremarin_CheckRemainingSubquests
 
 @ Restored Frontier
 

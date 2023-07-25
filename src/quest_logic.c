@@ -1475,3 +1475,12 @@ u16 Quest_Restoretreasureisland_CheckRemainingSubquests(void)
 {
     return Quest_Generic_CountRemainingSubquests(QUEST_RESTORETREASUREISLAND);
 }
+
+// ***********************************************************************
+// Quest: Restore Marin
+// ***********************************************************************
+
+u16 Quest_Restoremarin_CheckRemainingSubquests(void)
+{
+    return Quest_Generic_CountRemainingSubquests(QUEST_RESTOREMARIN);
+}
