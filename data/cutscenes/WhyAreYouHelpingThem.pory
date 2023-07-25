@@ -5,122 +5,124 @@ const GIOVANNI = 3
 const ARCHER = 4
 const PKMNA = 5
 const PKMNB = 6
+const FLAG_HIDE_POLICE = FLAG_TEMP_1
+const FLAG_HIDE_GIOVANNI_ARIANA = FLAG_TEMP_2
+const FLAG_HIDE_ARCHER = FLAG_TEMP_3
+const FLAG_HIDE_BIANCA = FLAG_TEMP_4
 
 script WhyAreYouHelpingThem_HideObject_Script {
-    setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_ARCHER)
 }
 
 script WhyAreYouHelpingThem_ObjectCleanUp_Script {
-        setflag(FLAG_TEMP_4)
-    setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_1)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_GIOVANNI_ARIANA)
+    setflag(FLAG_HIDE_POLICE)
 }
 
 script WhyAreYouHelpingThem_MoveObject_Script {
     setobjectxy(BIANCA,2,16)
-        setobjectxyperm(BIANCA,2,16)
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_1)
+    setobjectxyperm(BIANCA,2,16)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_POLICE)
 }
 
 script WhyAreYouHelpingThem_MoveObjectBoss_Script {
     setobjectxy(BIANCA,2,16)
-        setobjectxyperm(BIANCA,2,16)
-        setobjectxy(GIOVANNI,7,3)
-        setobjectxyperm(GIOVANNI,7,3)
+    setobjectxyperm(BIANCA,2,16)
+    setobjectxy(GIOVANNI,7,3)
+    setobjectxyperm(GIOVANNI,7,3)
 }
 
 script WhyAreYouHelpingThem_MoveObjectAriana_Script {
-    setflag(FLAG_TEMP_2)
-        setobjectxy(ARIANA,1,9)
-        setobjectxyperm(ARIANA,1,9)
-        setobjectxy(BIANCA,2,16)
-        setobjectxyperm(BIANCA,2,16)
-        turnobject(ARIANA,DIR_NORTH)
+    setflag(FLAG_HIDE_GIOVANNI_ARIANA)
+    setobjectxy(ARIANA,1,9)
+    setobjectxyperm(ARIANA,1,9)
+    setobjectxy(BIANCA,2,16)
+    setobjectxyperm(BIANCA,2,16)
+    turnobject(ARIANA,DIR_NORTH)
 }
 
 script WhyAreYouHelpingThem_BlowHoleWall {
     setmetatile(12,1,0x3F2,FALSE)
-        special(DrawWholeMapView)
+    special(DrawWholeMapView)
 }
 
 script WhyAreYouHelpingThem_ObjectSetUpPostSave_Script {
-        setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setobjectxy(ARCHER,6,3)
-        setobjectxyperm(ARCHER,6,3)
-        turnobject(ARCHER,DIR_WEST)
-        setobjectxy(BIANCA,2,16)
-        setobjectxyperm(BIANCA,2,16)
-        return
+    setflag(FLAG_HIDE_POLICE)
+    setflag(FLAG_HIDE_GIOVANNI_ARIANA)
+    setobjectxy(ARCHER,6,3)
+    setobjectxyperm(ARCHER,6,3)
+    turnobject(ARCHER,DIR_WEST)
+    setobjectxy(BIANCA,2,16)
+    setobjectxyperm(BIANCA,2,16)
+    return
 }
 
 script WhyAreYouHelpingThem_ObjectDebriefSetUp_Script {
-        setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_4)
-        setobjectxyperm(4,26,4)
-        setobjectxyperm(5,25,6)
-        setobjectxyperm(6,27,6)
-        setobjectxyperm(7,25,7)
-        setobjectxyperm(8,27,7)
-        return
+    setflag(FLAG_HIDE_POLICE)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_BIANCA)
+    setobjectxyperm(4,26,4)
+    setobjectxyperm(5,25,6)
+    setobjectxyperm(6,27,6)
+    setobjectxyperm(7,25,7)
+    setobjectxyperm(8,27,7)
+    return
 }
 
 script WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script {
-        clearflag(FLAG_TEMP_1)
-        clearflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
+    clearflag(FLAG_HIDE_POLICE)
+    clearflag(FLAG_HIDE_GIOVANNI_ARIANA)
+    setflag(FLAG_HIDE_ARCHER)
 
-        setobjectxy(1,6,6)
-        setobjectxy(2,6,5)
-        setobjectxyperm(1,6,6)
-        setobjectxyperm(2,6,5)
-        turnobject(2,DIR_SOUTH)
+    setobjectxy(1,6,6)
+    setobjectxy(2,6,5)
+    setobjectxyperm(1,6,6)
+    setobjectxyperm(2,6,5)
+    turnobject(2,DIR_SOUTH)
 
-        setobjectmovementtype(2,MOVEMENT_TYPE_FACE_DOWN)
-        setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
-        return
+    setobjectmovementtype(2,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
+    return
 }
 
 script WhyAreYouHelpingThem_StartRaid {
-
     lock
-        setvar(VAR_NAVALBASE_STATE,NAVALBASE_RAID_START)
+    setvar(VAR_NAVALBASE_STATE,NAVALBASE_RAID_START)
+    playse(SE_FAILURE)
+    playse(SE_FAILURE)
+    playse(SE_FAILURE)
+    playse(SE_FAILURE)
+    applymovement(BIANCA,Common_Movement_FaceDown)
+    applymovement(7,WhyAreYouHelpingThem_PoliceRunIn)
+    applymovement(8,WhyAreYouHelpingThem_PoliceRunIn)
+    applymovement(9,WhyAreYouHelpingThem_PoliceRunIn)
+    waitmovement(0)
+    msgbox(gText_WhyAreYouHelpingThem_StructuralBreach,MSGBOX_AUTOCLOSE,SPEAKER_SPEAKER)
+    waitmovement(0)
 
-        playse(SE_FAILURE)
-        playse(SE_FAILURE)
-        playse(SE_FAILURE)
-        playse(SE_FAILURE)
-        applymovement(BIANCA,Common_Movement_FaceDown)
-        applymovement(7,WhyAreYouHelpingThem_PoliceRunIn)
-        applymovement(8,WhyAreYouHelpingThem_PoliceRunIn)
-        applymovement(9,WhyAreYouHelpingThem_PoliceRunIn)
-        waitmovement(0)
-        msgbox(gText_WhyAreYouHelpingThem_StructuralBreach,MSGBOX_AUTOCLOSE,SPEAKER_SPEAKER)
-        waitmovement(0)
+    msgbox(gText_WhyAreYouHelpingThem_DefenseMode,,SPEAKER_BIANCA)
 
-        msgbox(gText_WhyAreYouHelpingThem_DefenseMode,,SPEAKER_BIANCA)
+    msgbox(gText_WhyAreYouHelpingThem_WeShouldRedefine,,SPEAKER_ZOEY)
 
-        msgbox(gText_WhyAreYouHelpingThem_WeShouldRedefine,,SPEAKER_ZOEY)
+    msgbox(gText_WhyAreYouHelpingThem_LetsSplitUp,,SPEAKER_BIANCA)
 
-        msgbox(gText_WhyAreYouHelpingThem_LetsSplitUp,,SPEAKER_BIANCA)
+    msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry,,SPEAKER_ZOEY)
 
-        msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry,,SPEAKER_ZOEY)
+    msgbox(gText_WhyAreYouHelpingThem_SeeYa,,SPEAKER_BIANCA)
 
-        msgbox(gText_WhyAreYouHelpingThem_SeeYa,,SPEAKER_BIANCA)
+    closemessage
 
-        closemessage
-
-        applymovement(BIANCA,WhyAreYouHelpingThem_PoliceRunIn)
-        waitmovement(0)
-        removeobject(7)
-        removeobject(8)
-        removeobject(9)
-        call(WhyAreYouHelpingThem_MoveObject_Script)
-        release
-        end
+    applymovement(BIANCA,WhyAreYouHelpingThem_PoliceRunIn)
+    waitmovement(0)
+    removeobject(7)
+    removeobject(8)
+    removeobject(9)
+    call(WhyAreYouHelpingThem_MoveObject_Script)
+    release
+    end
 }
 
 script WhyAreYouHelpingThem_WitnessBattle {
@@ -221,7 +223,7 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         special(ShakeCamera)
         waitstate
         call(WhyAreYouHelpingThem_BlowHoleWall)
-        clearflag(FLAG_TEMP_3)
+        clearflag(FLAG_HIDE_ARCHER)
         playse(SE_EXIT)
         waitse
         addobject(ARCHER)

@@ -628,6 +628,9 @@ gSpecials::
     def_special Quest_Brucelee_BufferTypeName
     def_special Quest_Brucelee_CheckIfPartyTypes
     def_special ShowStartMenuSaveScreen
+    def_special Quest_Restoretreasureisland_CheckIfKnowsPsychoShift
+    def_special Quest_Restoretreasureisland_CheckIfPokemonHasEffectSpore
+    def_special Quest_Restoretreasureisland_CheckRemainingSubquests
 
 @ Restored Frontier
 

@@ -233,13 +233,6 @@ script LetsGrabLunch_Debug_Script{
     return
 }
 
-script LetsGrabLunch_FastForwardFirstRestoration_Quest {
-    lock
-        call(LetsGrabLunch_Debug_Script)
-        call(LetsGrabLunch_CheckRestorationProgress_Script)
-        releaseall
-        end
-}
 text gText_LetsGrabLunch_HuhWhatAreYouDoing {
     format("Huh. What are you doing here? Shouldn't you be busy?")
 }

@@ -39,7 +39,8 @@ script Quest_Volunteerfirefighter_Active_Dialogue{
     if (!var(VAR_RESULT)){
         goto(Quest_Volunteerfirefighter_WrongPokemon_Dialogue)
     }
-    bufferpartymonspecies(STR_VAR_1,VAR_0x8004)
+    //bufferpartymonspecies(STR_VAR_1,VAR_0x8004) //PSF TODO delete this special
+    special(BufferMonNickname)
     msgbox(gText_Volunteerfirefighter_AskForMon,MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         goto(Quest_Volunteerfirefighter_NoRefusePokemon_Dialogue)

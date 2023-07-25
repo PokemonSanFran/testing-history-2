@@ -200,7 +200,7 @@
       "x": 0,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_ROUTE118_STATE",
+      "var": "VAR_NAVALBASE_STATE",
       "var_value": "1",
       "script": "WhyAreYouHelpingThem_WitnessBattle"
     },
@@ -209,7 +209,7 @@
       "x": 1,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_ROUTE118_STATE",
+      "var": "VAR_NAVALBASE_STATE",
       "var_value": "1",
       "script": "WhyAreYouHelpingThem_WitnessBattle"
     },
@@ -218,7 +218,7 @@
       "x": 2,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_ROUTE118_STATE",
+      "var": "VAR_NAVALBASE_STATE",
       "var_value": "1",
       "script": "WhyAreYouHelpingThem_WitnessBattle"
     },
@@ -227,7 +227,7 @@
       "x": 3,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_ROUTE118_STATE",
+      "var": "VAR_NAVALBASE_STATE",
       "var_value": "1",
       "script": "WhyAreYouHelpingThem_WitnessBattle"
     },
@@ -236,7 +236,7 @@
       "x": 1,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_ROUTE118_STATE",
+      "var": "VAR_NAVALBASE_STATE",
       "var_value": "2",
       "script": "WhyAreYouHelpingThem_PreBattleBoss_Script"
     }

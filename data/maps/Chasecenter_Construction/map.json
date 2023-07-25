@@ -336,7 +336,7 @@
       "x": 10,
       "y": 22,
       "elevation": 0,
-      "var": "VAR_ROUTE111_STATE",
+      "var": "VAR_INNER_CONSTRUCTION_SITE_STATE",
       "var_value": "0",
       "script": "VSGarbodor_Scouting_Dialogue"
     },

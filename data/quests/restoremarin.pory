@@ -5,7 +5,6 @@ const FLAG_HIDE_LENORA_MARIN = FLAG_TEMP_1
 //gText_Restoremarin_
 
 script Quest_Restoremarin_Debug_Script{
-    addvar(VAR_TEMP_0,1)
         questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
 
         if (var(VAR_RESULT)){

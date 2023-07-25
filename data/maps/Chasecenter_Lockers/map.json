@@ -140,7 +140,7 @@
       "x": 10,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_ROUTE119_STATE",
+      "var": "VAR_CHASECENTER_TOURNAMENT_STATE",
       "var_value": "4",
       "script": "Finals_StopPlayerLeaveLockers_Script"
     },
@@ -149,7 +149,7 @@
       "x": 9,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_ROUTE119_STATE",
+      "var": "VAR_CHASECENTER_TOURNAMENT_STATE",
       "var_value": "4",
       "script": "Finals_StopPlayerLeaveLockers_Script"
     }

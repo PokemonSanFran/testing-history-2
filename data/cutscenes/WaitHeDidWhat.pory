@@ -70,7 +70,7 @@ script WaitHeDidWhat_CalledToSkybox_Script {
         waitse
         playse(SE_POKENAV_CALL)
         waitmessage
-        msgbox(gText_WaitHeDidWhat_CongratsComeOnUp,,SPEAKER_LANCE,,PHONE_ON)
+        msgbox(gText_WaitHeDidWhat_CongratsComeOnUp,,SPEAKER_OAK,,,PHONE_ON)
 
         playse(SE_POKENAV_HANG_UP)
         waitse

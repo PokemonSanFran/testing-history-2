@@ -94,7 +94,7 @@
 #define VAR_DOGPATCH_STATE                                  0x4044
 #define VAR_FERRYBUILDING_STATE                             0x4045
 #define VAR_FISHERMANSWHARF_STATE                           0x4046
-#define VAR_FORTPOINT_STATE                                 0x4047
+#define VAR_SEEDOT_SIZE_RECORD                              0x4047
 #define VAR_GOLDENGATEBRIDGE_STATE                          0x4048
 #define VAR_HAIGHTASHBURY_STATE                             0x4049
 #define VAR_INNER_CONSTRUCTION_SITE_STATE                   0x404A
@@ -102,7 +102,7 @@
 #define VAR_POKELOT_RND2                                    0x404C //Used by Emerald
 #define VAR_MARIN_STATE                                     0x404D
 #define VAR_MUIRWOODS_STATE                                 0x404E
-#define VAR_NAVALBASE_STATE                                 0x404F
+#define VAR_LOTAD_SIZE_RECORD                            0x404F //Used by Emerald
 #define VAR_PSFROUTE63_STATE                                0x4050
 #define VAR_PSFROUTE9_STATE                                 0x4051
 #define VAR_ROBINWILLIAMSTUNNEL_STATE                       0x4052
@@ -166,9 +166,9 @@
 #define VAR_KOGA_MANSION_STATE                              0x408A
 #define VAR_LOMBARDSTREET_STATE                             0x408B
 #define VAR_FALKNER_STATE                                   0x408C
-#define VAR_PLAYER_HOME_STATE                              0x408D
-#define PSF_VAR_109                                        0x408E
-#define PSF_VAR_110                                        0x408F
+#define VAR_PLAYER_HOME_STATE                               0x408D
+#define VAR_NAVALBASE_STATE                                 0x408E
+#define VAR_FORTPOINT_STATE                                 0x408F
 #define PSF_VAR_111                                        0x4090
 #define PSF_VAR_112                                        0x4091
 #define PSF_VAR_113                                        0x4092

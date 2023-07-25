@@ -63,7 +63,7 @@
       "x": 5,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_ROUTE119_STATE",
+      "var": "VAR_CHASECENTER_TOURNAMENT_STATE",
       "var_value": "5",
       "script": "WaitHeDidWhat_StartBattle_Script"
     }

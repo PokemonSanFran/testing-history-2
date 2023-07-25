@@ -1,8 +1,8 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER 
+const PLAYER = OBJ_EVENT_ID_PLAYER
 const KOGA = 1
 
 script YouLookTired_BlockMansionAccess_Script {
-    if (var(VAR_FORTPOINT_STATE) < 2){
+    if (var(VAR_FORTPOINT_STATE) < MET_KOGA_OUTSIDE_GYM){
         setobjectxy(2,14,11)
             setobjectxyperm(2,14,11)
     }
@@ -52,7 +52,7 @@ script YouLookTired_Intro_Dialogue {
     waitmovement(KOGA)
 
         msgbox(gText_YouLookTired_SorryToInterrupt,,SPEAKER_KOGA)
-        
+
         closemessage
 
     applymovement(PLAYER,Common_Movement_FaceLeft)
@@ -95,14 +95,14 @@ script YouLookTired_AcceptInvite_Dialogue {
         msgbox(gText_YouLookTired_ItHasBeenAWhile,,SPEAKER_ZOEY)
 
         msgbox(gText_YouLookTired_WontBeAnIssue,,SPEAKER_KOGA)
-        
+
         closemessage
 
         applymovement(KOGA,Common_Movement_FaceLeft)
         waitmovement(0)
 
         msgbox(gText_YouLookTired_WestOfHere,,SPEAKER_KOGA)
-        
+
         closemessage
 
         applymovement(KOGA,Common_Movement_FacePlayer)
@@ -113,7 +113,7 @@ script YouLookTired_AcceptInvite_Dialogue {
         msgbox(gText_YouLookTired_IllSeeYouForDinner,,SPEAKER_KOGA)
 
         msgbox(gText_YouLookTired_YesThanksAgain,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         call(YouLookTired_WalkAway_Script)
