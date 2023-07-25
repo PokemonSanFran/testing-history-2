@@ -107,8 +107,8 @@ script Quest_Restoretreasureisland_Active_Script{
         switch(var(VAR_RESULT)){
             case 0: goto(Quest_Restoretreasureisland_Handle_FlameOrb_Script)
             case 1: goto(Quest_Restoretreasureisland_Handle_TR27_Script)
-            case 2: goto(Quest_Restoretreasureisland_Handle_PsychoShift_Script)
-            case 3: goto(Quest_Restoretreasureisland_Handle_EffectSpore_Script)
+            case 2: goto(Quest_Restoretreasureisland_Handle_EffectSpore_Script)
+            case 3: goto(Quest_Restoretreasureisland_Handle_PsychoShift_Script)
             case 4:
             case MULTI_B_PRESSED: goto(Quest_Restoretreasureisland_Cancel_Dialogue)
         }
@@ -129,7 +129,6 @@ script Quest_Restoretreasureisland_AlreadyDone_Script{
 script Quest_Restoretreasureisland_ConfirmTake_Dialogue{
         msgbox(gText_Restoretreasureisland_HeyYouSure,MSGBOX_YESNO,SPEAKER_CILAN)
 
-
         if (var(VAR_RESULT) == NO){
             goto(Quest_Restoretreasureisland_Cancel_Dialogue)
         }else{
@@ -139,39 +138,10 @@ script Quest_Restoretreasureisland_ConfirmTake_Dialogue{
         }
 }
 
-script Quest_Restoretreasureisland_CheckSubquestProgress{
-    setvar(VAR_TEMP_0,0)
-
-        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_1)
-        if(var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-        }
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_2)
-        if(var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-        }
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_3)
-        if(var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-        }
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_4)
-        if(var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-        }
-
-    if(var(VAR_TEMP_0) == 4){
-        questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTORETREASUREISLAND)
-    }
-
-    return
-}
-
 script Quest_Restoretreasureisland_HandleProgress_Dialogue{
-    call(Quest_Restoretreasureisland_CheckSubquestProgress)
+    specialvar(VAR_RESULT,Quest_Restoretreasureisland_CheckRemainingSubquests)
 
-        questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTORETREASUREISLAND)
-
-        if (var(VAR_RESULT)){
+        if (var(VAR_RESULT) == 0){
             goto(Quest_Restoretreasureisland_Reward_Dialogue)
         }else{
             goto(Quest_Restoretreasureisland_Active_Script)
@@ -213,65 +183,73 @@ script Quest_Restoretreasureisland_Handle_TR27_Script{
                 goto(Quest_Restoretreasureisland_Active_Script)
         }
 }
+
 script Quest_Restoretreasureisland_Handle_PsychoShift_Script{
     special(ChoosePartyMon)
         waitstate
-        specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
-
-        bufferstring(STR_VAR_1,gText_PokemonPsychoShift)
-        bufferstring(STR_VAR_2,"That isn't ")
 
         if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
             goto(Quest_Restoretreasureisland_Cancel_Dialogue)
         }
 
-    //PSF TODO
-    //special(CheckIfPokemonKnowsPsychoShift)
-    //if(var(VAR_RESULT)){
+    specialvar(VAR_RESULT,Quest_Restoretreasureisland_CheckIfKnowsPsychoShift)
+        if (!var(VAR_RESULT)){
+            bufferstring(STR_VAR_1,gText_PokemonPsychoShift)
+                bufferstring(STR_VAR_2,"That isn't ")
+                msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+                closemessage
+                end
+        }
 
-    if (var(VAR_RESULT) == SPECIES_BEHEEYEM){
-        //bufferstring(STR_VAR_1,VAR_0x8004)
-        special(BufferMonNickname)
-            call(Quest_Restoretreasureisland_ConfirmTake_Dialogue)
-            subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORETREASUREISLAND,SUB_QUEST_3)
-            //remove mon
-            //PSF TODO
-            goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
-    }
-    else {
-            msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+    special(BufferMonNickname)
+    call(Quest_Restoretreasureisland_ConfirmTake_Dialogue)
 
-            goto(Quest_Restoretreasureisland_Active_Script)
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+        goto(Quest_Restoretreasureisland_NotEnoughMons_Dialogue)
     }
+
+    special(DeleteChosenPartyMon)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORETREASUREISLAND,SUB_QUEST_4)
+    goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
 }
+
 script Quest_Restoretreasureisland_Handle_EffectSpore_Script{
     special(ChoosePartyMon)
         waitstate
-        specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
-        bufferstring(STR_VAR_1,gText_PokemonEffectSpore)
-        bufferstring(STR_VAR_2,"That isn't ")
 
         if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
             goto(Quest_Restoretreasureisland_Cancel_Dialogue)
         }
-    //PSF TODO
-    //special(CheckIfPokemonKnowsPsychoShift)
-    //if(var(VAR_RESULT)){
 
-    if (var(VAR_RESULT) == SPECIES_SHROOMISH){
-        //bufferstring(STR_VAR_1,VAR_0x8004)
-        special(BufferMonNickname)
-            call(Quest_Restoretreasureisland_ConfirmTake_Dialogue)
-            subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORETREASUREISLAND,SUB_QUEST_4)
-            //remove mon
-            //PSF TODO
-            goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
-    }
-    else {
-            msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+    specialvar(VAR_RESULT,Quest_Restoretreasureisland_CheckIfPokemonHasEffectSpore)
+        if (!var(VAR_RESULT)){
+            bufferstring(STR_VAR_1,gText_PokemonEffectSpore)
+                bufferstring(STR_VAR_2,"That isn't ")
+                msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+                closemessage
+                release
+                end
+        }
 
-            goto(Quest_Restoretreasureisland_Active_Script)
+    special(BufferMonNickname)
+    call(Quest_Restoretreasureisland_ConfirmTake_Dialogue)
+
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+        goto(Quest_Restoretreasureisland_NotEnoughMons_Dialogue)
     }
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORETREASUREISLAND,SUB_QUEST_3)
+    special(DeleteChosenPartyMon)
+    goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
+}
+
+script Quest_Restoretreasureisland_NotEnoughMons_Dialogue{
+    msgbox(gText_Restoretreasureisland_ThatsYourLast,,SPEAKER_CILAN)
+    closemessage
+    release
+    end
 }
 
 script Quest_Restoretreasureisland_Reward_Dialogue{
@@ -332,4 +310,7 @@ text gText_Restoretreasureisland_YouDontHave{
 }
 text gText_Restoretreasureisland_Thanks{
     format("thanks!")
+}
+text gText_Restoretreasureisland_ThatsYourLast{
+    format("That's your last Pokémon!")
 }

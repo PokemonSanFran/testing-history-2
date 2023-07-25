@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "constants/moves.h"
+#include "constants/abilities.h"
 #include "pokedex.h"
 #include "event_object_movement.h"
 #include "event_data.h"
@@ -1439,4 +1440,38 @@ bool8 Quest_Brucelee_CheckIfPartyTypes(void)
         }
     }
     return partyMatchesType;
+}
+// ***********************************************************************
+// Quest: Restore Treasure Island
+// ***********************************************************************
+
+bool8 Quest_Restoretreasureisland_CheckIfKnowsPsychoShift(void)
+{
+    bool8 knowsPsychoShift = FALSE;
+    u16 moveChecked = 0, moveSlot = 0;
+
+    for (int moveSlot = MON_DATA_MOVE1; moveSlot < MON_DATA_MOVE4; moveSlot++)
+    {
+        moveChecked = GetMonData(&gPlayerParty[gSpecialVar_0x8004], moveSlot, NULL);
+        if (moveChecked == MOVE_PSYCHO_SHIFT)
+        {
+            return knowsPsychoShift = TRUE;
+        }
+    }
+
+    return knowsPsychoShift;
+}
+
+bool8 Quest_Restoretreasureisland_CheckIfPokemonHasEffectSpore(void)
+{
+    //bool8 hasEffectSpore = FALSE;
+    //u16 abilitySlot = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, NULL);
+    //u32 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+
+    return (ABILITY_EFFECT_SPORE == GetMonAbility(&gPlayerParty[gSpecialVar_0x8004]));
+}
+
+u16 Quest_Restoretreasureisland_CheckRemainingSubquests(void)
+{
+    return Quest_Generic_CountRemainingSubquests(QUEST_RESTORETREASUREISLAND);
 }
