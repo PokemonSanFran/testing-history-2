@@ -31,6 +31,7 @@ script ThereCanOnlyBeOne_Player_Monologue{
 script ThereCanOnlyBeOne_Debug_Script{
     givecustommon(SPECIES_PANGORO,100,ITEM_EXPERT_BELT,ITEM_DREAM_BALL,NATURE_ADAMANT,2,0,252,0,252,0,4,31,31,31,31,31,31,MOVE_DRAIN_PUNCH,MOVE_DIG,MOVE_SUPERPOWER,MOVE_EXPLOSION)
     givecustommon(SPECIES_GRENINJA,100,ITEM_LEFTOVERS,ITEM_LURE_BALL,NATURE_MODEST,2,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_EXPLOSION,MOVE_ICE_BEAM)
+    givecustommon(SPECIES_PORYGON2,100,ITEM_EVIOLITE,ITEM_BEAST_BALL,NATURE_CALM,0,244,0,252,0,12,0,31,0,31,31,31,31,MOVE_ICE_BEAM,MOVE_DISCHARGE,MOVE_TRI_ATTACK,MOVE_EXPLOSION)
         setflag(FLAG_SYS_B_DASH)
         return
 }
@@ -47,7 +48,6 @@ script ThereCanOnlyBeOne_Narrator_Dialogue {
 //PSF TODO hook up a fake summary screen to this. I think the correct implemention would be to use givecustommon to generate all nine starters, then fire up the summary screen to look at the first pokemon in the box. when the user makes a decision, delete the other pokemon in the box, and generate that SAME pokemon and put it in the first slot of the party.
 //Also could look at how the Battle Factory generates mons, since I'll need to reuse this for Gabodor
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
-
 script ThereCanOnlyBeOne_StarterSelectMenu_Script{
     msgbox(gText_ThereCanOnlyBe_PleaseChooseAPokemon)
     closemessage

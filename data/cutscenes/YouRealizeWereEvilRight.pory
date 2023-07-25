@@ -34,13 +34,11 @@ return
 
 script YouRealizeWereEvilRight_PhoneCall_Dialogue {
     lockall
-        playse(SE_POKENAV_CALL)
-        waitse
-        playse(SE_POKENAV_CALL)
-        msgbox(gText_YouRealizeWereEvilRight_SorryToBotherYou,,SPEAKER_OAK,,PHONE_ON)
+        call(Common_EventScript_PhoneRinging)
+        msgbox(gText_YouRealizeWereEvilRight_SorryToBotherYou,,SPEAKER_OAK,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay,,SPEAKER_ZOEY,,PHONE_ON)
-        
+        msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay,,SPEAKER_ZOEY,,,PHONE_ON)
+
         setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,17,29)
 }
@@ -55,7 +53,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         //Oak and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
-        
+
         setflag(FLAG_ARCHER_CALL_ALCATRAZ)
         setvar(VAR_STORYLINE_STATE,STORY_POST_YOU_REALIZE_WERE_EVIL)
 
@@ -66,13 +64,13 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         msgbox(gText_YouRealizeWereEvilRight_HoweverTheNext,,SPEAKER_OAK)
 
         msgbox(gText_YouRealizeWereEvilRight_ItWouldBeBetter,,SPEAKER_SABRINA)
-        
+
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceUp)
 
         msgbox(gText_YouRealizeWereEvilRight_AreYouSayingIHave,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceRight)
@@ -80,7 +78,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         msgbox(gText_YouRealizeWereEvilRight_WereNotHere,,SPEAKER_OAK)
 
         msgbox(gText_YouRealizeWereEvilRight_WaitI,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         applymovement(KOGA,YouRealizeWereEvilRight_WalkToTable)
@@ -91,13 +89,13 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         msgbox(gText_YouRealizeWereEvilRight_ExcellentTiming,,SPEAKER_OAK)
 
         //One of the monitors changes to show TeamRocket members marching. PSF TODO
-        
+
         msgbox(gText_YouRealizeWereEvilRight_IThinkYourKindness,,SPEAKER_KOGA)
 
         msgbox(gText_YouRealizeWereEvilRight_ShitUsedToBe,,SPEAKER_ZOEY)
 
         msgbox(gText_YouRealizeWereEvilRight_UsedToBeASmall,,SPEAKER_KOGA)
-        
+
         closemessage
 
         applymovement(OAK, YouRealizeWereEvilRight_MoveAwayFromTable)
@@ -110,7 +108,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         msgbox(gText_YouRealizeWereEvilRight_TheLocalPolice,,SPEAKER_SABRINA)
 
         msgbox(gText_YouRealizeWereEvilRight_IKnowThis,,SPEAKER_OAK)
-        
+
         closemessage
 }
 
