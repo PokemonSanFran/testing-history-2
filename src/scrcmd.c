@@ -55,6 +55,7 @@
 #include "list_menu.h"
 #include "malloc.h"
 //END DYNAMIC MULTICHOICE
+#include "battle_main.h"
 
 
 typedef u16 (*SpecialFunc)(void);
@@ -2646,5 +2647,14 @@ bool8 ScrCmd_bufferpartymonspecies(struct ScriptContext *ctx)
     u8 *dest = sScriptStringVars[stringVarIndex];
     u32 species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
     StringCopy(dest, gSpeciesNames[species]);
+    return FALSE;
+}
+
+bool8 ScrCmd_bufferabilityname(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 ability = VarGet(ScriptReadHalfword(ctx));
+
+    StringCopy(sScriptStringVars[stringVarIndex], gAbilityNames[ability]);
     return FALSE;
 }

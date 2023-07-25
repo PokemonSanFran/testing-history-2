@@ -236,6 +236,7 @@ gScriptCmdTable::
     .4byte ScrCmd_dynmultipush              @ 0xe9 //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
     .4byte ScrCmd_givefrontierbattlepoints  @ 0xea
 	.4byte ScrCmd_bufferpartymonspecies @ 0xeb
+	.4byte ScrCmd_bufferabilityname @ 0xec
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

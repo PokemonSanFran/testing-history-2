@@ -2486,3 +2486,10 @@
     special ShowStartMenuSaveScreen
     waitstate
     .endm
+
+	@ Writes the name of the specified ability to the specified buffer.
+	.macro bufferabilityname stringVarId:req, ability:req
+	.byte 0xec
+	stringvar \stringVarId
+	.2byte \ability
+	.endm

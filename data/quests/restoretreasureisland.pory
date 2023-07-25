@@ -66,10 +66,42 @@ script Quest_Restoretreasureisland_PostBattle_Dialogue{
         startquest(QUEST_RESTORETREASUREISLAND)
 }
 
+script Quest_Restoretreasureisland_ConstructMenu_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_1)
+    if(!var(VAR_RESULT)){
+        bufferitemname(STR_VAR_1,ITEM_FLAME_ORB)
+        dynmultipush("{STR_VAR_1}",0)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_2)
+    if(!var(VAR_RESULT)){
+        bufferitemname(STR_VAR_1,ITEM_TM27)
+        dynmultipush("{STR_VAR_1}",1)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_3)
+    if(!var(VAR_RESULT)){
+        bufferabilityname(STR_VAR_1,ABILITY_EFFECT_SPORE)
+        dynmultipush("{STR_VAR_1}",2)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_4)
+    if(!var(VAR_RESULT)){
+        buffermovename(STR_VAR_1,MOVE_PSYCHO_SHIFT)
+        dynmultipush("{STR_VAR_1}",3)
+    }
+
+    dynmultipush("Nothing yet.",4)
+
+    return
+}
+
 script Quest_Restoretreasureisland_Active_Script{
         msgbox(gText_Restoretreasureisland_DoYouHave,,SPEAKER_CILAN)
 
-        dynmultichoice(1,1,FALSE,4,0,DYN_MULTICHOICE_CB_NONE, "Flame Orb", "TR27", "Psycho Shift", "Effort Spore", "Nothing yet.")
+        call(Quest_Restoretreasureisland_ConstructMenu_Script)
+        dynmultistack(24,0,TRUE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
+
         closemessage
 
         switch(var(VAR_RESULT)){
@@ -147,12 +179,6 @@ script Quest_Restoretreasureisland_HandleProgress_Dialogue{
 }
 
 script Quest_Restoretreasureisland_Handle_FlameOrb_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_1)
-
-        if(var(VAR_RESULT)){
-            goto(Quest_Restoretreasureisland_AlreadyDone_Script)
-        }
-
     bufferitemname(STR_VAR_1,ITEM_FLAME_ORB)
         bufferstring(STR_VAR_2,"You don't have a ")
         checkitem(ITEM_FLAME_ORB,1)
@@ -171,12 +197,6 @@ script Quest_Restoretreasureisland_Handle_FlameOrb_Script{
 }
 
 script Quest_Restoretreasureisland_Handle_TR27_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_2)
-
-        if(var(VAR_RESULT)){
-            goto(Quest_Restoretreasureisland_AlreadyDone_Script)
-        }
-
     bufferitemname(STR_VAR_1,ITEM_TM27)
         bufferstring(STR_VAR_2,"You don't have a")
         checkitem(ITEM_TM27,1)
@@ -194,12 +214,6 @@ script Quest_Restoretreasureisland_Handle_TR27_Script{
         }
 }
 script Quest_Restoretreasureisland_Handle_PsychoShift_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_3)
-
-        if(var(VAR_RESULT)){
-            goto(Quest_Restoretreasureisland_AlreadyDone_Script)
-        }
-
     special(ChoosePartyMon)
         waitstate
         specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
@@ -231,12 +245,6 @@ script Quest_Restoretreasureisland_Handle_PsychoShift_Script{
     }
 }
 script Quest_Restoretreasureisland_Handle_EffectSpore_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORETREASUREISLAND,SUB_QUEST_4)
-
-        if(var(VAR_RESULT)){
-            goto(Quest_Restoretreasureisland_AlreadyDone_Script)
-        }
-
     special(ChoosePartyMon)
         waitstate
         specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
@@ -288,6 +296,22 @@ script Quest_Restoretreasureisland_Reward_Dialogue{
         completequest(QUEST_RESTORETREASUREISLAND)
         call(LetsGrabLunch_CheckRestorationProgress_Script)
         release
+        end
+}
+
+script Quest_Restoretreasureisland_Debug_Script{
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTORETREASUREISLAND)
+
+        if (var(VAR_RESULT)){
+            msgbox("you now have everything cilan wants.")
+                closemessage
+                givecustommon(SPECIES_AMOONGUSS,100,,,,0,,,,,,,,,,,,,MOVE_PSYCHO_SHIFT)
+                givecustommon(SPECIES_AMOONGUSS,100,,,,0,,,,,,,,,,,,,MOVE_PSYCHO_SHIFT)
+                additem(ITEM_FLAME_ORB)
+                additem(ITEM_TM27)
+                end
+        }
+    release
         end
 }
 
