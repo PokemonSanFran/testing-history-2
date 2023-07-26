@@ -21,8 +21,8 @@ SOMA_Newspaper_InteractCherie_Event_Script_1:
 
 SOMA_Newspaper_InteractCherie_Event_Script_2:
 	switch VAR_MANHUNT_STATE
-	case 0, SOMA_Newspaper_InteractCherie_Event_Script_6
-	case 1, SOMA_Newspaper_InteractCherie_Event_Script_7
+	case NOT_ASSIGNED, SOMA_Newspaper_InteractCherie_Event_Script_6
+	case ASSIGNED_FIND_GIOVANNI, SOMA_Newspaper_InteractCherie_Event_Script_7
 	msgbox SOMA_Newspaper_InteractCherie_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 	goto SOMA_Newspaper_InteractCherie_Event_Script_1
 

@@ -2,15 +2,6 @@
 //text gText_Warehousewarfare_
 const FLAG_HIDE_BARGE_GUARD = FLAG_TEMP_1
 
-script Quest_Warehousewarfare_EliteFour_Dialogue{
-    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_WIKSTROM)
-
-    returnqueststate(QUEST_WAREHOUSEWARFARE)
-    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
-        startquest(QUEST_WAREHOUSEWARFARE)
-    }
-}
-
 script Quest_Warehousewarfare_Interact_Event_Script{
     lock
     faceplayer

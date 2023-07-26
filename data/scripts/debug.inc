@@ -62,6 +62,7 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
+	warp MAP_SOMA, 0
 	return
 
 

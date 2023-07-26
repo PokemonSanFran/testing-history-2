@@ -20,8 +20,8 @@ Castro_BallShop_InteractDudley_Event_Script_1:
 
 Castro_BallShop_InteractDudley_Event_Script_2:
 	switch VAR_MANHUNT_STATE
-	case 0, Castro_BallShop_InteractDudley_Event_Script_6
-	case 3, Castro_BallShop_InteractDudley_Event_Script_7
+	case NOT_ASSIGNED, Castro_BallShop_InteractDudley_Event_Script_6
+	case GOT_MANHUNT_CLUE_2, Castro_BallShop_InteractDudley_Event_Script_7
 	msgbox Castro_BallShop_InteractDudley_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 	goto Castro_BallShop_InteractDudley_Event_Script_1
 

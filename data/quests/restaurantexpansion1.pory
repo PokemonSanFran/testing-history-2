@@ -28,6 +28,7 @@ script Quest_Restaurantexpansion_HideObjects_Script{
 script Quest_Restaurantexpansion_Mission_Leader_Visibilty_Script{
     switch(var(VAR_FALKNER_STATE)){
         case NO_BADGE:
+        case BATTLE_1_COMPLETE:
         case QUEST_2_COMPLETE:
         case BATTLE_2_COMPLETE: setflag(FLAG_HIDE_FALKNER)
         default: return
@@ -47,7 +48,7 @@ script Quest_Restaurantexpansion_Startcutscene_Script{
     specialvar(VAR_RESULT,GetPlayerFacingDirection)
 
     if (var(VAR_RESULT) != DIR_WEST){
-        call(Quest_Restaurantexpansion_MovePlayer_Script)    
+        call(Quest_Restaurantexpansion_MovePlayer_Script)
     }
     return
 }

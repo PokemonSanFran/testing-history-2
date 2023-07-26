@@ -11,9 +11,7 @@ script TwitterPost_RabiesOutbreak_Script {
 
 script Twitter_HideReporter_Script {
         if (
-            (var(VAR_ALCATRAZ_STATE) < POST_SPEECHSPEECH) ||
-            (flag(FLAG_MET_SOCIALMEDIA_REPORTER))
-           )
+            (var(VAR_QUEST_BREAKTHEINTERNET_STATE) != MALVA_MENTIONED_REPORTER))
         {
             setflag(FLAG_TEMP_4)
         }
@@ -21,11 +19,12 @@ script Twitter_HideReporter_Script {
 
 script TwitterPost_CheckProgress_Script {
     lock
-    if (flag(FLAG_MET_SOCIALMEDIA_REPORTER)) {
+    if (var(VAR_QUEST_BREAKTHEINTERNET_STATE)>MALVA_MENTIONED_REPORTER) {
         return
     } else {
         msgbox(gText_Twitter_ThereWasAnError, MSGBOX_DEFAULT)
     }
+    release
     closemessage
     end
 }

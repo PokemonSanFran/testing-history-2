@@ -22,9 +22,10 @@ mapscripts SOMA_MapScripts {
 }
 
 script SOMA_SocialMediaReporter_Dialogue{
-    setflag(FLAG_MET_SOCIALMEDIA_REPORTER)
+    setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,TALKED_TO_REPORTER)
     msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
 
+//PSF TODO this line should not reference the rabies quest unless the player has done it
     msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
 
 

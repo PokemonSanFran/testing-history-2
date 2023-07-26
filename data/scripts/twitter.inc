@@ -14,9 +14,8 @@ TwitterPost_RabiesOutbreak_Script_2:
 
 
 Twitter_HideReporter_Script::
-	compare VAR_ALCATRAZ_STATE, POST_SPEECHSPEECH
-	goto_if_lt Twitter_HideReporter_Script_1
-	goto_if_set FLAG_MET_SOCIALMEDIA_REPORTER, Twitter_HideReporter_Script_1
+	compare VAR_QUEST_BREAKTHEINTERNET_STATE, MALVA_MENTIONED_REPORTER
+	goto_if_ne Twitter_HideReporter_Script_1
 	return
 
 Twitter_HideReporter_Script_1:
@@ -26,8 +25,10 @@ Twitter_HideReporter_Script_1:
 
 TwitterPost_CheckProgress_Script::
 	lock
-	goto_if_set FLAG_MET_SOCIALMEDIA_REPORTER, TwitterPost_CheckProgress_Script_2
+	compare VAR_QUEST_BREAKTHEINTERNET_STATE, MALVA_MENTIONED_REPORTER
+	goto_if_gt TwitterPost_CheckProgress_Script_2
 	msgbox gText_Twitter_ThereWasAnError, MSGBOX_DEFAULT
+	release
 	closemessage
 	end
 

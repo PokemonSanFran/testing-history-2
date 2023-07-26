@@ -69,7 +69,7 @@ script Alcatraz_B2F_Siebold_Event_Script {
 
     switch (var(VAR_STORYLINE_STATE)){
         case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC,SPEAKER_SIEBOLD)
-        case STORY_RAVE_AND_SPEECH_COMPLETE: goto(Quest_Persuasivepassenger_EliteFour_Dialogue)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: goto(Quest_Taxicabturnaround_EliteFour_Dialogue)
     }
 
     closemessage
@@ -83,7 +83,7 @@ script Alcatraz_B2F_Wikstrom_Event_Script {
 
     switch (var(VAR_STORYLINE_STATE)){
         case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC,SPEAKER_WIKSTROM)
-        case STORY_RAVE_AND_SPEECH_COMPLETE: goto(Quest_Warehousewarfare_EliteFour_Dialogue)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: goto(Quest_Bodegaburnout_EliteFour_Dialogue)
     }
 
     closemessage

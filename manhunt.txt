@@ -1,0 +1,40 @@
+data/maps/Castro_BallShop/scripts.pory:10:        switch(var(VAR_MANHUNT_STATE)){
+data/maps/Castro_BallShop/scripts.inc:22:	switch VAR_MANHUNT_STATE
+data/maps/SOMA_Newspaper/scripts.pory:12:            switch(var(VAR_MANHUNT_STATE)){
+data/maps/SOMA_Newspaper/scripts.inc:23:	switch VAR_MANHUNT_STATE
+data/maps/Salesforcetower_2F/scripts.pory:13:            VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI: Manhunt_MissionComplete_Dialogue
+data/maps/Salesforcetower_2F/scripts.pory:34:        switch (var(VAR_MANHUNT_STATE)){
+data/maps/Salesforcetower_2F/scripts.inc:15:	map_script_2 VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI, Manhunt_MissionComplete_Dialogue
+data/maps/Salesforcetower_2F/scripts.inc:56:	switch VAR_MANHUNT_STATE
+data/maps/Salesforcetower_Leagueops/scripts.pory:46:    VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI: Manhunt_MissionComplete_Dialogue
+data/maps/Salesforcetower_Leagueops/scripts.inc:70:	map_script_2 VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI, Manhunt_MissionComplete_Dialogue
+data/maps/Lakemerritt/scripts.pory:15:        } elif (flag(FLAG_TIMELINE_FALSE) && var(VAR_MANHUNT_STATE) < DEFEATED_MANHUNT_GIOVANNI){
+data/maps/Lakemerritt/scripts.pory:30:        } elif (flag(FLAG_TIMELINE_FALSE) && var(VAR_MANHUNT_STATE) > GOT_MANHUNT_CLUE_3){
+data/maps/Lakemerritt/scripts.inc:33:	compare VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
+data/maps/Lakemerritt/scripts.inc:73:	compare VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_3
+data/maps/Mission_Consulting/scripts.pory:9:        switch(var(VAR_MANHUNT_STATE)){
+data/maps/Mission_Consulting/scripts.inc:23:	switch VAR_MANHUNT_STATE
+data/maps/Psfroute62/scripts.pory:20:        switch(var(VAR_MANHUNT_STATE)){
+data/maps/Psfroute62/scripts.inc:36:	switch VAR_MANHUNT_STATE
+data/cutscenes/OkayLetsFixit.pory:131:        setvar(VAR_MANHUNT_STATE,NOT_ASSIGNED)
+data/cutscenes/OkayLetsFixit.inc:104:	setvar VAR_MANHUNT_STATE, NOT_ASSIGNED
+data/cutscenes/Manhunt.pory:57:        setvar(VAR_MANHUNT_STATE,ASSIGNED_FIND_GIOVANNI)
+data/cutscenes/Manhunt.pory:96:        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_1)
+data/cutscenes/Manhunt.pory:140:        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_2)
+data/cutscenes/Manhunt.pory:199:        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_3)
+data/cutscenes/Manhunt.pory:246:        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_4)
+data/cutscenes/Manhunt.pory:259:        if(var(VAR_MANHUNT_STATE) != SAVED_BEFORE_GIOVANNI){
+data/cutscenes/Manhunt.pory:274:        setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
+data/cutscenes/Manhunt.pory:297:        setvar(VAR_MANHUNT_STATE,MANHUNT_COMPLETE)
+data/cutscenes/Manhunt.inc:56:	setvar VAR_MANHUNT_STATE, ASSIGNED_FIND_GIOVANNI
+data/cutscenes/Manhunt.inc:79:	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_1
+data/cutscenes/Manhunt.inc:108:	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_2
+data/cutscenes/Manhunt.inc:142:	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_3
+data/cutscenes/Manhunt.inc:179:	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_4
+data/cutscenes/Manhunt.inc:198:	setvar VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
+data/cutscenes/Manhunt.inc:219:	setvar VAR_MANHUNT_STATE, MANHUNT_COMPLETE
+src/story_jump.c:1083:	VarSet(VAR_MANHUNT_STATE, MANHUNT_COMPLETE);
+src/story_jump.c:1109:	VarSet(VAR_MANHUNT_STATE, NOT_ASSIGNED);
+include/constants/vars_define.h:271://VAR_MANHUNT_STATE
+include/constants/vars.h:120:#define VAR_MANHUNT_STATE                                   0x405D
+grep: input file ‘manhunt.txt’ is also the output

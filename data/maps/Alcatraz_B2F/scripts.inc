@@ -132,7 +132,7 @@ Alcatraz_B2F_Siebold_Event_Script_3:
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 Alcatraz_B2F_Siebold_Event_Script_4:
-	goto Quest_Persuasivepassenger_EliteFour_Dialogue
+	goto Quest_Taxicabturnaround_EliteFour_Dialogue
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 
@@ -151,7 +151,7 @@ Alcatraz_B2F_Wikstrom_Event_Script_3:
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 
 Alcatraz_B2F_Wikstrom_Event_Script_4:
-	goto Quest_Warehousewarfare_EliteFour_Dialogue
+	goto Quest_Bodegaburnout_EliteFour_Dialogue
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 
 

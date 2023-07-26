@@ -1723,7 +1723,7 @@ static void Task_MenuMain(u8 taskId)
                     if(GetCurrentSignal() != 0){
                         PlaySE(SE_PC_OFF);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                        gTasks[taskId].func = Task_MenuTurnOff;
+                        gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
                     }
                     else{
                         PlaySE(SE_BOO);

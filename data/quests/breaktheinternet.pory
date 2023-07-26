@@ -18,6 +18,7 @@ const WAREHOUSE_TWITTER_CEO = 8
 const WAREHOUSE_SLURPUFF = 4
 
 script Quest_Breaktheinternet_EliteFour_Dialogue{
+    setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,MALVA_MENTIONED_REPORTER)
     msgbox(format("you should talk to my reporter friend in SOMA."),MSGBOX_NPC,SPEAKER_MALVA)
 }
 

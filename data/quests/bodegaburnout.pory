@@ -9,6 +9,15 @@ const CATCH_COLD  = 4
 const CATCH_SMART = 5
 const CATCH_FAIRY = 6
 
+script Quest_Bodegaburnout_EliteFour_Dialogue{
+    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_WIKSTROM)
+
+    returnqueststate(QUEST_BODEGABURNOUT)
+    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
+        startquest(QUEST_BODEGABURNOUT)
+    }
+}
+
 script Quest_Bodegaburnout_Clerk_Discussion_Script{
     msgbox(gText_Bodegaburnout_OhIHeard)
     call(Quest_Bodegaburnout_LoadRequest_Script)

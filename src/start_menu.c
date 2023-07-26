@@ -352,7 +352,7 @@ static void BuildNormalStartMenu(void)
 
 static void BuildNormalSaveStartMenu(void)
 {
-    AddStartMenuAction(MENU_ACTION_SAVE);
+    AddStartMenuAction(MENU_ACTION_TWITTER);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 

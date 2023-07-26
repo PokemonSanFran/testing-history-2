@@ -1,5 +1,8 @@
 #include "global.h"
 #include "battle.h"
+#include "constants/trainers.h"
+#include "battle_anim.h"
+#include "battle_setup.h"
 #include "constants/moves.h"
 #include "constants/abilities.h"
 #include "pokedex.h"
@@ -1483,4 +1486,37 @@ u16 Quest_Restoretreasureisland_CheckRemainingSubquests(void)
 u16 Quest_Restoremarin_CheckRemainingSubquests(void)
 {
     return Quest_Generic_CountRemainingSubquests(QUEST_RESTOREMARIN);
+}
+
+// ***********************************************************************
+// Quest: Artisan Balls 3
+// ***********************************************************************
+void Quest_ArtisanBalls3_MarkRewardIfApricornBall(void)
+{
+    bool8 isArtisanBall3Active = QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS3,FLAG_GET_ACTIVE);
+
+    if (isArtisanBall3Active)
+    {
+
+        for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
+        {
+            if (GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT
+                    && !(gBattleTypeFlags & (BATTLE_TYPE_EREADER_TRAINER
+                            | BATTLE_TYPE_FRONTIER
+                            | BATTLE_TYPE_LINK
+                            | BATTLE_TYPE_RECORDED_LINK
+                            | BATTLE_TYPE_TRAINER_HILL)))
+            {
+                HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
+            }
+
+            // If the Player sends out a Pokémon caught with an apricorn ball, and their opponent is a Gym Leader or alternatively, if they're fighting in
+            // the Chase Center Arena, set the QUEST_ARTISANBALLS3 as ready to hand out the Player a reward.
+            if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER
+                    && IS_ITEM_APRICORN_BALL(GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_POKEBALL))
+                    && ((gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER || gTrainers[gTrainerBattleOpponent_B].trainerClass == TRAINER_CLASS_LEADER)
+                        || GetCurrentMap() == MAP_CHASECENTER_ARENA))
+                QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS3, FLAG_SET_REWARD);
+        }
+    }
 }

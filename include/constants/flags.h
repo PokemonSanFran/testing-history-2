@@ -49,7 +49,7 @@
 #define FLAG_SAVED_DAVID                                     0x25
 #define FLAG_LOCKEDOUT_PLAYED                                0x26
 #define FLAG_HIDE_MADISON                                    0x27
-#define FLAG_MET_SOCIALMEDIA_REPORTER                        0x28
+#define PSF_FLAG_161                                         0x28
 #define FLAG_START_MENU_MOVE_MODE                            0x29 // For the Start Menu
 #define FLAG_DEFEATED_GARDEN_BOSS                            0x2A
 #define FLAG_START_MENU_SETUP                                0x2B // Is used the first time you open the start menu to set up the app orders

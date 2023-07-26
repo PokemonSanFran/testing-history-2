@@ -255,7 +255,11 @@ script Manhunt_Matthew_Battle_Script {
 
 script Manhunt_Encounter_Giovanni_Dialogue {
     lock
-        startmenu_savescreen
+
+        if(var(VAR_MANHUNT_STATE) != SAVED_BEFORE_GIOVANNI){
+            setvar(VAR_MANHUNT_STATE,SAVED_BEFORE_GIOVANNI)
+            startmenu_savescreen
+        }
 
         clearflag(FLAG_HIDE_BIANCA)
         addobject(BIANCA)
@@ -283,7 +287,7 @@ script Manhunt_Encounter_Giovanni_Dialogue {
 
         msgbox(gText_Manhunt_IllBeAtTheEntrance,,SPEAKER_ZOEY,,PHONE_ON)
 
-        msgbox(gText_Manhunt_WhatWaitUhOkay,,SPEAKER_ROSE,EMOTE_SHOCK,PHONE_ON)
+        msgbox(gText_Manhunt_WhatWaitUhOkay,,SPEAKER_ROSE,,EMOTE_SHOCK,PHONE_ON)
 
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,5,5)
 }

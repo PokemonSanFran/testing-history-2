@@ -3781,26 +3781,7 @@ static void DoBattleIntro(void)
     case 20: // set dex and battle vars
         if (!gBattleControllerExecFlags)
         {
-            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
-            {
-                if (GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT
-                 && !(gBattleTypeFlags & (BATTLE_TYPE_EREADER_TRAINER
-                                          | BATTLE_TYPE_FRONTIER
-                                          | BATTLE_TYPE_LINK
-                                          | BATTLE_TYPE_RECORDED_LINK
-                                          | BATTLE_TYPE_TRAINER_HILL)))
-                {
-                    HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
-                }
-
-                // If the Player sends out a Pokémon caught with an apricorn ball, and their opponent is a Gym Leader or alternatively, if they're fighting in
-                // the Chase Center Arena, set the QUEST_ARTISANBALLS3 as ready to hand out the Player a reward.
-                if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER
-                && IS_ITEM_APRICORN_BALL(GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_POKEBALL))
-                && ((gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER || gTrainers[gTrainerBattleOpponent_B].trainerClass == TRAINER_CLASS_LEADER)
-                || GetCurrentMap() == MAP_CHASECENTER_ARENA))
-                    QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS3, FLAG_SET_REWARD);
-            }
+            Quest_ArtisanBalls3_MarkRewardIfApricornBall();
 
             gBattleStruct->switchInAbilitiesCounter = 0;
             gBattleStruct->switchInItemsCounter = 0;
@@ -5363,7 +5344,7 @@ static void HandleEndTurn_BattleLost(void)
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
-static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind 
+static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind
         if (GetCurrentMap() == MAP_PSFROUTE1 || GetCurrentMap() == MAP_PSFROUTE14)
         {
             if (VarGet(VAR_FAINTED_FOG_STATE) < 1){
@@ -5465,7 +5446,7 @@ void Quest_BiomeResearch_MarkSubquestComplete(u8 firstQuest,u8 secondQuest){
         QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,firstQuest);
         Quest_BiomeResearch_CountCompletedSubquest();
     }
-} 
+}
 
 void Quest_BiomeResearch_CountCompletedSubquest(void){
     u8 i = 0, questCompetionRate = 0;

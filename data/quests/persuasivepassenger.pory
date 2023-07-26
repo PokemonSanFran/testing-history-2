@@ -4,15 +4,6 @@
 const GRUNT2 = 2
 const FLAG_HIDE_UBER_CEO = FLAG_TEMP_1
 
-script Quest_Persuasivepassenger_EliteFour_Dialogue{
-    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_SIEBOLD)
-
-    returnqueststate(QUEST_PERSUASIVEPASSENGER)
-    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
-        startquest(QUEST_PERSUASIVEPASSENGER)
-    }
-}
-
 script Quest_Persuasivepassenger_CEO_Visbility_Script{
     if(defeated(TRAINER_UBER_CEO)){
         setflag(FLAG_HIDE_UBER_CEO)
