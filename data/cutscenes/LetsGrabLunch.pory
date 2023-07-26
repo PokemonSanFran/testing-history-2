@@ -2,6 +2,10 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARCHER = 1
 const FLAG_HIDE_ARCHER = FLAG_TEMP_2
 
+//PSF TODO if the player starts these quests and then goes to the false timeline, it needs to be impossible to finish them until you're back in the true timeline
+
+//the quest log should also reflect this
+
 script LetsGrabLunch_HideArcher_Outside_Script{
     if (var(VAR_STORYLINE_STATE) != STORY_SAVE_ARCHER_TREASUREISLAND){
         setflag(FLAG_HIDE_ARCHER)

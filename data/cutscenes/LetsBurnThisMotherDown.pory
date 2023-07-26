@@ -98,21 +98,21 @@ script LetsBurnThisMotherDown_ConfrontPlayer {
         applymovement(ARCHER,LetsBurnThisMotherDown_WalkTowardsPlayer)
         waitmovement(0)
 
-        msgbox(gText_LetsBurnThisMotherDown_YouChoseTheWrong,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_YouChoseTheWrong,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
         msgbox(gText_LetsBurnThisMotherDown_IKnowYouWant,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        msgbox(gText_LetsBurnThisMotherDown_YouDontThinkWeve,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_YouDontThinkWeve,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
 
         applymovement(ARCHER,Common_Movement_WalkDown)
         waitmovement(0)
 
-        msgbox(gText_LetsBurnThisMotherDown_TheyIgnoreUs,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_TheyIgnoreUs,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        msgbox(gText_LetsBurnThisMotherDown_DotDotDot,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_DotDotDot,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        msgbox(gText_LetsBurnThisMotherDown_IAlwaysHeld,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_IAlwaysHeld,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
         startmenu_savescreen
         goto(LetsBurnThisMotherDown_StartBattle_Script)
@@ -129,7 +129,7 @@ script LetsBurnThisMotherDown_StartBattle_Script {
         }
     waitmovement(0)
 
-        msgbox(gText_LetsBurnThisMotherDown_ImGoingForRevolution,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_ImGoingForRevolution,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
         trainerbattle_no_intro(TRAINER_WALLY_VR_5,gText_LetsBurnThisMotherDown_DamnIt)
         goto(LetsBurnThisMotherDown_PostBattle_Dialogue)
@@ -145,7 +145,7 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         applymovement(ARCHER,LetsBurnThisMotherDown_WalkBackwards)
         waitmovement(0)
 
-        msgbox(gText_LetsBurnThisMotherDown_ItsNotFair,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_LetsBurnThisMotherDown_ItsNotFair,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
         msgbox(gText_LetsBurnThisMotherDown_HyperBeam,,SPEAKER_BIANCA)
         closemessage

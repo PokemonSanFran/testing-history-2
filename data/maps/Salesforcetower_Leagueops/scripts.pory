@@ -4,7 +4,8 @@ const OLIVER = 2
 const OAK = 3
 const BIANCA = 4
 const ROSE = 5
-const CHIEF = 7
+const CHIEF = 6
+const SABRINA = 7
 
 //PSF TODO Add awards on Rose's wall about the different awards he's won for sending great emails, having inbox zero, most organized email
 
@@ -24,9 +25,9 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case PRE_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Setup_Script)
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
-            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: 
+            case POST_YOU_REALIZE_WERE_EVIL_RIGHT:
                 call(YouRealizeWereEvilRight_Object_Cleanup_Script)
-            case START_FALSE_TIMELINE: 
+            case START_FALSE_TIMELINE:
                 call(CongratsYoureanAsshole_ObjectCleanUp_Script)
                 call(YouHaveYourOrders_ObjectSetUp_Script)
                 call(LetsBurnThisMother_ShowRose_Script)
@@ -54,7 +55,7 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
 script Salesforcetower_Leagueops_TrueTimeline_Objects_Script{
         switch(var(VAR_TOWER_RAID_STATE)){
             case TEAM_ENTERED_SALESFORCETOWER: call(ImIn_PreBianca_Object_Script)
-            case SAVE_BIANCA_SALESFORCETOWER: 
+            case SAVE_BIANCA_SALESFORCETOWER:
             default: call(ImIn_SaveBianca_Object_Script)
     }
     return
@@ -131,7 +132,7 @@ script Salesforcetower_Leagueops_Bianca_Event_Script{
     call(ImIn_InteractBiancaBattle_Script)
     call(ImIn_PostBiancaBattle_Interact_Dialogue)
     closemessage
-    
+
 }
 
 script Salesforcetower_Leagueops_CheckRewardStatus_Script{

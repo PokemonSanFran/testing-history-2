@@ -235,7 +235,7 @@ Salesforcetower_Leagueops_ClearSecondaryCharacters_Script::
 	removeobject 1
 	removeobject 2
 	removeobject 4
-	removeobject 7
+	removeobject 6
 	removeobject 5
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_3

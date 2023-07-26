@@ -34,13 +34,16 @@ return
 
 script YouRealizeWereEvilRight_PhoneCall_Dialogue {
     lockall
+        setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
         call(Common_EventScript_PhoneRinging)
         msgbox(gText_YouRealizeWereEvilRight_SorryToBotherYou,,SPEAKER_OAK,,,PHONE_ON)
 
         msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay,,SPEAKER_ZOEY,,,PHONE_ON)
 
-        setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
+        closemessage
+        fadescreen(FADE_TO_BLACK)
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,17,29)
+waitstate
 }
 
 
