@@ -854,9 +854,9 @@ static u8 GetCurrentSignal()
 static void StartMenu_DisplayPhoneSignal(void)
 {
     u8 signal = GetCurrentSignal();
-
-    FillWindowPixelBuffer(WINDOW_PHONE_SIGNAL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     u8 x = 0, y = 0, signalIconHeight = 16, signalIconWidth = 16, windowId = WINDOW_PHONE_SIGNAL;
+
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     switch(signal){
         case 0:
@@ -1158,10 +1158,9 @@ static void StartMenu_PrintQuestInfo(void)
     bool8 hasCommunicationError = sMenuDataPtr->shouldShowErrorMessage;
     bool8 isSaveModeEngaged = (sMenuDataPtr->saveMode != SAVE_MODE_NOT_ENGAGED);
     bool8 storyNotClear = (VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR);
+    u8 selectedQuest = StartMenu_GetQuestForStartMenu();
 
     FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
-    u8 selectedQuest = StartMenu_GetQuestForStartMenu();
 
     if (hasCommunicationError)
     {

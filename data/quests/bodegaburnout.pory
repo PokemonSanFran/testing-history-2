@@ -173,9 +173,6 @@ script Quest_Bodegaburnout_Warehousewarfare_Dialogue{
 text gText_Bodegaburnout_OhIHeard{
     format("Oh, I heard you'd be coming. You're {PLAYER}, right?")
 }
-text gText_Bodegaburnout_DoYouHave{
-    format("We need a {STR_VAR_1} to help us {STR_VAR_2}. Do you have one?")
-}
 text gText_Bodegaburnout_ComeBackWhen{
     format("Come back when you do! Or when you need anything, of course.")
 }
@@ -197,11 +194,14 @@ text gText_Bodegaburnout_HeyWeAllNoticed{
 text gText_Bodegaburnout_YoureARealOne{
     format("You're a real one!")
 }
+text gText_Bodegaburnout_DoYouHave{
+    format("We need a {STR_VAR_1} {STR_VAR_3} to help us {STR_VAR_2}.\nDo you have one?")
+}
 text gText_Bodegaburnout_CanYouDeliever{
     format("Can you deliever this to {STR_VAR_1}? They're on {STR_VAR_2}.")
 }
 text gText_Bodegaburnout_WentMissing{
-    format("Can you help us find our {STR_VAR_1}? We sent them over to {STR_VAR_2} but they haven't returned...")
+    format("Can you help us find {STR_VAR_1}?\nWe sent them over to {STR_VAR_2} but they haven't returned...")
 }
 
 text gText_Bodegaburnout_OhRightIGave{

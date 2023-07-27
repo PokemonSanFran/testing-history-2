@@ -1923,6 +1923,29 @@ const u8 gText_Amazon[] =_("Amazon");
 const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows \nthe move Psycho Shift");
 const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has \nthe ability Effect Spore");
 
+//Quest_Bodegaburnout
+const u8 gText_Bodegaburnout_PersonA[] = _("person A");
+const u8 gText_Bodegaburnout_PersonB[] = _("person B");
+const u8 gText_Bodegaburnout_PersonC[] = _("person C");
+const u8 gText_Bodegaburnout_PersonD[] = _("person D");
+const u8 gText_Bodegaburnout_PersonE[] = _("person E");
+const u8 gText_Bodegaburnout_PersonF[] = _("person F");
+const u8 gText_Bodegaburnout_PersonG[] = _("person G");
+const u8 gText_Bodegaburnout_PersonH[] = _("person H");
+const u8 gText_Bodegaburnout_PersonI[] = _("person I");
+const u8 gText_Bodegaburnout_PersonJ[] = _("person J");
+const u8 gText_Bodegaburnout_PersonK[] = _("person K");
+const u8 gText_Bodegaburnout_PersonL[] = _("person L");
+const u8 gText_Bodegaburnout_StrongMon[] =_("strong");
+const u8 gText_Bodegaburnout_ColdMon[] =_("cold");
+const u8 gText_Bodegaburnout_SmartMon[] = _("smart");
+const u8 gText_Bodegaburnout_FairyMon[] =_("fairy");
+
+const u8 gText_Bodegaburnout_AssistWithStocking[] = _("assist with stocking the shelves");
+const u8 gText_Bodegaburnout_HelpKeepFood[] = _("help keep food cold");
+const u8 gText_Bodegaburnout_BalanceOurBooks[] = _("balance our books");
+const u8 gText_Bodegaburnout_RaiseTheMood[] = _("raise the mood and ambiance");
+
 //Debug Start
 const u8 gText_WhereWeDropping[] = _("Where do you want to go?");
 const u8 gText_Prolouge[] = _("Prologue");
