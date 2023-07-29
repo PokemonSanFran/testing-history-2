@@ -1,18 +1,52 @@
 //Quest_Taxicabturnaround_
 //gText_Taxicabturnaround_
 
+script Quest_Taxicabturnaround_Debug_Script{
+    msgbox(format("here are some pokemon to clear the quests with. there might be some in your boxes too."))
+        givemon(SPECIES_GYARADOS,100,0)
+        givemon(SPECIES_WAILORD,100,0)
+        givemon(SPECIES_PERSIAN,100,0)
+        givemon(SPECIES_ARCANINE,100,0)
+        givemon(SPECIES_DRAGONITE,100,0)
+        givemon(SPECIES_AERODACTYL,100,0)
+    return
+}
+
 script Quest_Taxicabturnaround_EliteFour_Dialogue{
     msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_SIEBOLD)
 
     returnqueststate(QUEST_TAXICABTURNAROUND)
     if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
+        call(Quest_Taxicabturnaround_Debug_Script)
         startquest(QUEST_TAXICABTURNAROUND)
     }
+}
+
+const SEA = 0
+const SKY = 1
+const LAND = 2
+
+script Quest_Taxicabturnaround_CheckQuestTypeAndAsk_Script{
+    specialvar(VAR_RESULT,Quest_Taxicabturnaround_LookUpQuestType)
+
+        switch(var(VAR_RESULT)){
+            case SEA:
+                buffermovename(STR_VAR_1,MOVE_SURF)
+                msgbox(gText_Taxicabturnaround_HaveSea)
+            case SKY:
+                buffermovename(STR_VAR_1,MOVE_FLY)
+                bufferstring(STR_VAR_2,gText_Speed)
+                msgbox(gText_Taxicabturnaround_HaveSky)
+            case LAND:
+                msgbox(gText_Taxicabturnaround_HaveLand)
+        }
 }
 
 script Quest_Taxicabturnaround_AskPokemon_Dialogue{
     msgbox(gText_Taxicabturnaround_OhTheyMentioned)
     msgbox(gText_Taxicabturnaround_WeWantTo)
+
+    call(Quest_Taxicabturnaround_CheckQuestTypeAndAsk_Script)
     msgbox(gText_Taxicabturnaround_DoYouHave,MSGBOX_YESNO)
 
     if (var(VAR_RESULT) == NO){
@@ -41,6 +75,7 @@ script Quest_Taxicabturnaround_EvaluatePokemon_Script{
         goto(Quest_Taxicabturnaround_WrongPokemon_Dialogue)
     }
 
+    special(BufferMonNickname)
     msgbox(gText_Taxicabturnaround_AskForMon,MSGBOX_YESNO)
     if (var(VAR_RESULT) == NO){
         goto(Quest_Taxicabturnaround_NoRefusePokemon_Dialogue)
@@ -113,32 +148,43 @@ script Quest_Taxicabturnaround_Reward_Dialogue{
 }
 
 text gText_Taxicabturnaround_OhTheyMentioned{
-    format("")
+    format("Oh, you're {PLAYER}! They mentioned you'd be coming.")
 }
 text gText_Taxicabturnaround_WeWantTo{
-    format("")
+    format("We're part of the taxicab union and we're trying to expand our fleet by using Pokémon. We've got people to train them, but not enough people to help catch them...")
 }
+text gText_Taxicabturnaround_HaveSea{
+    format("I'm looking for a Pokémon that can learn {STR_VAR_1}. It should be probably be tall too.. like 1.1m.")
+}
+text gText_Taxicabturnaround_HaveSky{
+    format("I need a Pokémon that can learn {STR_VAR_1}. It's gotta be fast! The species should have at least 80 base {STR_VAR_2}.")
+}
+text gText_Taxicabturnaround_HaveLand{
+    format("I'm trying to get a hold of a Pokémon in the Field egg group, something from the land, you know? And its gonna need some bulk, like 32kg.")
+}
+//PSF TODO need to change units based on the player's setting
+//PSF TODO once pokedex is done, should use the egg group strings
 text gText_Taxicabturnaround_DoYouHave{
-    format("")
+    format("Do you have one you can give us??")
 }
 text gText_Taxicabturnaround_ComeBackWhen{
-    format("")
+    format("Come back when you can give us one. Thanks!")
 }
 text gText_Taxicabturnaround_AskForMon{
-    format("")
+    format("This is perfect. Are you sure I can have this {STR_VAR_1} forever?")
 }
 text gText_Taxicabturnaround_YouKnowIDont{
-    format("")
+    format("You know, I don't think this Pokémon will work...")
 }
 text gText_Taxicabturnaround_ThatsYourLast{
-    format("")
+    format("That's the last Pokémon in your party! I can't take it.")
 }
 text gText_Taxicabturnaround_WordHasBeenGetting{
-    format("")
+    format("Word has been getting around about you helping us out. You should talk to the head of the Taxicab union in Bernalheights.")
 }
 text gText_Taxicabturnaround_HeyWeAllNoticed{
-    format("")
+    format("Hey we all noticed how great you've been, and wanted to give you a little something.")
 }
 text gText_Taxicabturnaround_YoureARealOne{
-    format("")
+    format("You're a real one!")
 }

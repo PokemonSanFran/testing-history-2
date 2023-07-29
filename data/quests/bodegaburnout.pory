@@ -9,12 +9,8 @@ const CATCH_COLD  = 4
 const CATCH_SMART = 5
 const CATCH_FAIRY = 6
 
-script Quest_Bodegaburnout_EliteFour_Dialogue{
-    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_WIKSTROM)
-
-    returnqueststate(QUEST_BODEGABURNOUT)
-    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
-        msgbox(format("here are some pokemon to clear the quests with. there might be some in your boxes too."))
+script Quest_Bodegaburnout_Debug_Script{
+    msgbox(format("here are some pokemon to clear the quests with. there might be some in your boxes too."))
         givemon(SPECIES_ARTICUNO,100,100)
         givemon(SPECIES_BEARTIC,100,100)
         givecustommon(SPECIES_METAGROSS,100,100,,NATURE_CALM)
@@ -22,9 +18,17 @@ script Quest_Bodegaburnout_EliteFour_Dialogue{
         givecustommon(SPECIES_MACHAMP,100,100)
         givecustommon(SPECIES_MACHAMP,100,100)
         givecustommon(SPECIES_CLEFAIRY,100,100)
+return
+}
+
+script Quest_Bodegaburnout_EliteFour_Dialogue{
+    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_WIKSTROM)
+
+    returnqueststate(QUEST_BODEGABURNOUT)
+    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
+        call(Quest_Bodegaburnout_Debug_Script)
         startquest(QUEST_BODEGABURNOUT)
     }
-
 }
 
 script Quest_Bodegaburnout_Clerk_Discussion_Script{

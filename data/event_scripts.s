@@ -1660,3 +1660,5 @@ Script_RemoveTint::
 	.include "data/maps/Treasureisland_Skilllibrary/scripts.inc"
 
 	.include "data/maps/Fishermanswharf_Arcade/scripts.inc"
+
+	.include "data/maps/Bernalheights_Taxiunion/scripts.inc"

@@ -28,6 +28,7 @@ script TwitterPost_CheckProgress_Script {
     closemessage
     end
 }
+
 script TwitterPost_BlueRobbery_Script {
     call(TwitterPost_CheckProgress_Script)
     showmonpic(SPECIES_QUAGSIRE, 10, 3)

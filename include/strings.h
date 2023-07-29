@@ -3154,6 +3154,8 @@ extern const u8 gText_Bodegaburnout_HelpKeepFood[];
 extern const u8 gText_Bodegaburnout_BalanceOurBooks[];
 extern const u8 gText_Bodegaburnout_RaiseTheMood[];
 
+//Quest_Taxicabturnaround_
+
 //Debug Start
 extern const u8 gText_WhereWeDropping[];
 extern const u8 gText_Prolouge[];

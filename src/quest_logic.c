@@ -631,6 +631,12 @@ u8 Quest_Taxicabturnaround_LookUpCorrespondingSubquest(void){
     return 99;
 }
 
+u8 Quest_Taxicabturnaround_LookUpQuestType(void)
+{
+    u8 index = Quest_Taxicabturnaround_LookUpCorrespondingSubquest();
+    return TAXICAB_LOCATION_MAP[index][2];
+}
+
 bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
     u8 index = Quest_Taxicabturnaround_LookUpCorrespondingSubquest();
     u8 subquest = TAXICAB_LOCATION_MAP[index][1];
@@ -643,9 +649,9 @@ bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
 }
 
 bool8 Quest_Taxicabturnaround_CheckSeaPokemon(void){
-    //11m and can learn surf
+    //1.1m and can learn surf
     u32 species = 0, height = 0;
-    u32 requiredHeight = 110;
+    u32 requiredHeight = 11;
     bool8 doesPokemonMatch = TRUE;
 
     species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
