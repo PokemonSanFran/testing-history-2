@@ -14,8 +14,17 @@ script Quest_Bodegaburnout_EliteFour_Dialogue{
 
     returnqueststate(QUEST_BODEGABURNOUT)
     if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
+        msgbox(format("here are some pokemon to clear the quests with. there might be some in your boxes too."))
+        givemon(SPECIES_ARTICUNO,100,100)
+        givemon(SPECIES_BEARTIC,100,100)
+        givecustommon(SPECIES_METAGROSS,100,100,,NATURE_CALM)
+        givecustommon(SPECIES_ALAKAZAM,100,100,,NATURE_CALM)
+        givecustommon(SPECIES_MACHAMP,100,100)
+        givecustommon(SPECIES_MACHAMP,100,100)
+        givecustommon(SPECIES_CLEFAIRY,100,100)
         startquest(QUEST_BODEGABURNOUT)
     }
+
 }
 
 script Quest_Bodegaburnout_Clerk_Discussion_Script{
@@ -32,6 +41,7 @@ script Quest_Bodegaburnout_CheckSubquestState_Script{
     if ((var(VAR_RESULT) > QUEST_MENU_UNLOCK_QUEST) && (!var(VAR_0x8008))) {
         goto(Quest_Bodegaburnout_Clerk_Discussion_Script)
     }
+    return
 }
 
 script Quest_Bodegaburnout_LoadRequest_Script{
@@ -130,6 +140,7 @@ script Quest_Bodegaburnout_NotEnough_Dialogue{
 script Quest_Bodegaburnout_TakeMonMarkSubquest_Script{
     special(DeleteChosenPartyMon)
     special(Quest_Bodegaburnout_Catch_MarkSubquestComplete)
+    call(Quest_Bodegaburnout_CheckNextStage_Script)
     call(Quest_Bodegaburnout_CheckReward_Script)
     closemessage
     release

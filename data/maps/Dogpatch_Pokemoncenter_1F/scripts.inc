@@ -18,11 +18,13 @@ Dogpatch_Pokemoncenter_1F_EventScript_Nurse::
 Dogpatch_Pokemoncenter_1F_EventScript_Clerk::
 	lock
 	faceplayer
+	call_if_quest_reward QUEST_BODEGABURNOUT, Quest_Bodegaburnout_Reward_Dialogue
 	message gText_HowMayIServeYou
 	waitmessage
 	pokemart OldaleTown_Mart_Pokemart_Basic
-	call Quest_Bodegaburnout_CheckSubquestState_Script
 	msgbox gText_PleaseComeAgain
+	call Quest_Bodegaburnout_CheckSubquestState_Script
+	call Quest_Bodegaburnout_CheckNextStage_Script
 	release
 	end
 

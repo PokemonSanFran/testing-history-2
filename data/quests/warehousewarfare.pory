@@ -38,8 +38,12 @@ script Quest_Warehousewarfare_Active_Dialogue{
 
     if (!flag(FLAG_QUEST_WAREHOUSE_WARFARE_EXPLAINED)){
         setflag(FLAG_QUEST_WAREHOUSE_WARFARE_EXPLAINED)
-        goto(Quest_Warehousewarfare_ExplainBarges_Dialogue)
+        goto(Quest_Warehousewarfare_IntroBarges_Dialogue)
     }
+    goto(Quest_Warehousewarfare_ExplainBarge_Dialogue)
+}
+
+script Quest_Warehousewarfare_ExplainBarge_Dialogue{
 
     specialvar(VAR_RESULT,Quest_Warehousewarfare_CountRemainingSubquests)
 
@@ -51,7 +55,7 @@ script Quest_Warehousewarfare_Active_Dialogue{
         }
 }
 
-script Quest_Warehousewarfare_ExplainBarges_Dialogue{
+script Quest_Warehousewarfare_IntroBarges_Dialogue{
     msgbox(gText_Warehousewarfare_WeveBeenStudying)
     msgbox(gText_Warehousewarfare_ThereAreAFewThings)
     msgbox(gText_Warehousewarfare_TheBargesAreAlways)
@@ -59,7 +63,7 @@ script Quest_Warehousewarfare_ExplainBarges_Dialogue{
     msgbox(gText_Warehousewarfare_WeWantToFree)
     closemessage
 
-    goto(Quest_Warehousewarfare_Active_Dialogue)
+    goto(Quest_Warehousewarfare_ExplainBarge_Dialogue)
 }
 
 //PSF TODO get GetAbnormalWeatherMapNameAndType working to move the barges on the water routes
@@ -239,7 +243,6 @@ script Quest_Warehousewarfare_PostRaid_CEO_Dialogue{
 text gText_Warehousewarfare_WelcomeTo{
     format("Welcome to the Shopkeepers Union!")
 }
-
 text gText_Warehousewarfare_HeyIsThisPlayer{
     format("Hey, is this {PLAYER}?")
 }
@@ -256,43 +259,43 @@ text gText_Warehousewarfare_ThanksAgain{
     format("Thanks again!")
 }
 text gText_Warehousewarfare_GoodToSee{
-    format("")
+    format("Good to see you, {PLAYER}.")
 }
 text gText_Warehousewarfare_WeveBeenStudying{
-    format("")
+    format("We've been studying Amazon and how they are able deliever prodcuts to Trainers.")
 }
 text gText_Warehousewarfare_ThereAreAFewThings{
-    format("")
+    format("There are a few things we've learned from watching them.")
 }
 text gText_Warehousewarfare_TheBargesAreAlways{
-    format("")
+    format("First, all of their supplies are located offshore, on floating barges on the oceans of SanFran. Those barges are heavily guarded, and only allow works in and out of the buildings.")
 }
 text gText_Warehousewarfare_TheWorkersArePoorlyPaid{
-    format("")
+    format("The workers, unsurprisingly, are terribly paid and working in awful conditions")
 }
 text gText_Warehousewarfare_WeWantToFree{
-    format("")
+    format("The government doesn't seem to be particularly interested helping us fix this problem, so we want to take things into our own hands.")
 }
 text gText_Warehousewarfare_WeGotSomebody{
-    format("")
+    format("We got somebody on the inside, who is able to let you in, and we're hoping from there, you're able to help slow down the operations inside.")
 }
 text gText_Warehousewarfare_HeadToOver{
-    format("")
+    format("Head on over to Psfroute51, the guard shouldn't be at the door.")
 }
 text gText_Warehousewarfare_NewsHasPickedUp{
-    format("")
+    format("News has reported that Amazon orders are slowing down and getting more expensive. I think shutting down that barge actually did something!")
 }
 text gText_Warehousewarfare_GoDownTo{
-    format("")
+    format("Go down to Psfroute76 and get in there! Your path should be open.")
 }
 text gText_Warehousewarfare_TheyveMovedAll{
-    format("")
+    format("They've moved all operations to that third barge. You're doing an awesome job!")
 }
 text gText_Warehousewarfare_OddlyEnough{
-    format("")
+    format("I think even the guards are woring inside overtime, because the guard at the Psfroute20 barge isn't there...")
 }
 text gText_Warehousewarfare_YouAreNotAuthorized{
-    format("")
+    format("You are not authorized to enter.")
 }
 text gText_Warehousewarfare_GoodLuckGetting{
 	format("Good luck getting out this pickle, even if you beat me.")

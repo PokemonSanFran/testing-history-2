@@ -72,17 +72,21 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_SOMA,0)
+    warp(MAP_PACIFICA_POKEMONCENTER_1F,0)
 }
 
 script Debug_Script_2{
+    warp(MAP_PSFROUTE51,0)
+    end
 }
 
 script Debug_Script_3{
+    warp(MAP_PSFROUTE76,0)
     end
 }
 
 script Debug_Script_4{
+    warp(MAP_PSFROUTE20,0)
     end
 }
 

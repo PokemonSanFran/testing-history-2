@@ -62,19 +62,22 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	warp MAP_SOMA, 0
+	warp MAP_PACIFICA_POKEMONCENTER_1F, 0
 	return
 
 
 Debug_Script_2::
-	return
+	warp MAP_PSFROUTE51, 0
+	end
 
 
 Debug_Script_3::
+	warp MAP_PSFROUTE76, 0
 	end
 
 
 Debug_Script_4::
+	warp MAP_PSFROUTE20, 0
 	end
 
 

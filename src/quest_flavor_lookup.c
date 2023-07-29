@@ -38,6 +38,8 @@
 
 #include "random.h"
 
+//PSF TODO we should rewrite this whole function to be cleaner
+//PSF TODO need to make sure we can reflect the quest states of the takedown quests and the false timeline quests
 const u8 *GetQuestDesc_PlayersAdventure()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
@@ -74,12 +76,17 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor37;
 	}
 
+    else if (storyline == STORY_1ST_TAKEDOWN)
+    {
+		return gText_PlayersAdventure_Flavor36A;
+    }
+
 	else if (storyline == STORY_RAVE_AND_SPEECH_COMPLETE)
 	{
 		return gText_PlayersAdventure_Flavor36;
 	}
 
-	else if (storyline == STORY_RAVE_OR_SPEECH_COMPLETE 
+	else if (storyline == STORY_RAVE_OR_SPEECH_COMPLETE
 	            && (VarGet(VAR_WAREHOUSE_RAVE_STATE) >= TOLD_ARCHER_ABOUT_KOGA))
     {
         return gText_PlayersAdventure_Flavor35A;

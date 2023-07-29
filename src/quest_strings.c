@@ -1421,6 +1421,7 @@ const u8 gText_PlayersAdventure_Flavor35[] =_("Head to Oakland for the warehouse
 const u8 gText_PlayersAdventure_Flavor35A[] =_("Head to Oakland for the warehouse rave.");
 const u8 gText_PlayersAdventure_Flavor35B[] =_("Head to Alcatraz for the all hands meeting.");
 const u8 gText_PlayersAdventure_Flavor36[] =_("Which corporation should Teamrocket\ntackle first? Head to Alcatraz to\nstart working on it!");
+const u8 gText_PlayersAdventure_Flavor36A[] =_("Report your success to the Elite Four at Alcatraz!");
 const u8 gText_PlayersAdventure_Flavor37[] =_("Head back to Archer's house in Alameda\nand get a good night's sleep.");
 const u8 gText_PlayersAdventure_Flavor37A[] =_("Help rescue some of\nthe citizens of Alameda!");
 const u8 gText_PlayersAdventure_Flavor38[] =_("Is the message a clue? Meet the team at\nPsfroute8.");
