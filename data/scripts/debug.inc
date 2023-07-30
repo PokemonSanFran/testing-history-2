@@ -62,37 +62,34 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	goto Quest_Taxicabturnaround_Debug_Script
+	warp MAP_PACIFICA_POKEMONCENTER_1F, 0
 	return
 
 
 Debug_Script_2::
-	warp MAP_GLDNGTEPARK
+	warp MAP_PSFROUTE51, 0
 	end
 
 
 Debug_Script_3::
-	warp MAP_CASTRO
+	warp MAP_PSFROUTE76, 0
 	end
 
 
 Debug_Script_4::
-	warp MAP_MISSION
+	warp MAP_PSFROUTE20, 0
 	end
 
 
 Debug_Script_5::
-	warp MAP_MARIN
 	end
 
 
 Debug_Script_6::
-	warp MAP_BERKELEY
 	end
 
 
 Debug_Script_7::
-	warp MAP_TREASUREISLAND
 	end
 
 

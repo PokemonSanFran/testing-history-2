@@ -1,1 +1,6 @@
-mapscripts Bernalheights_Taxiunion_MapScripts {}
+mapscripts Bernalheights_Taxiunion_MapScripts {
+}
+
+script testyyyy{
+    return
+}

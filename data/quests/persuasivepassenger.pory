@@ -32,10 +32,10 @@ script Quest_Persuasivepassenger_Event_Script{
 
 script Quest_Persuasivepassenger_StartQuest_Script{
     msgbox(gText_Persuasivepassenger_OhTheFamous)
-    msgbox(gText_IllGetRightTo)
-    msgbox(gText_JustLikeYouWorked)
-    msgbox(gText_WeveDoneSomeResearch)
-    msgbox(gText_CanYouSeeIfYou)
+    msgbox(gText_Persuasivepassenger_IllGetRightTo)
+    msgbox(gText_Persuasivepassenger_JustLikeYouWorked)
+    msgbox(gText_Persuasivepassenger_WeveDoneSomeResearch)
+    msgbox(gText_Persuasivepassenger_CanYouSeeIfYou)
     startquest(QUEST_PERSUASIVEPASSENGER)
     goto(Quest_Persuasivepassenger_Active_Dialogue)
     release
@@ -45,9 +45,9 @@ script Quest_Persuasivepassenger_StartQuest_Script{
 script Quest_Persuasivepassenger_Active_Dialogue{
     specialvar(VAR_TEMP_1,Quest_Persuasivepassenger_CountRemainingSubquests)
     switch(var(VAR_TEMP_1)){
-        case 3: msgbox(gText_TheFirstDriver)
-        case 2: msgbox(gText_TheNextDriver)
-        default: msgbox(gText_TheresAnother)
+        case 3: msgbox(gText_Persuasivepassenger_TheFirstDriver)
+        case 2: msgbox(gText_Persuasivepassenger_TheNextDriver)
+        default: msgbox(gText_Persuasivepassenger_TheresAnother)
     }
     closemessage
     release
@@ -329,7 +329,30 @@ movement Quest_Persuasivepassenger_RunUpstairs_Movement{
 text gText_Persuasivepassenger_WelcomeTo{
     format("Welcome to the union of taxi drivers!")
 }
-
+text gText_Persuasivepassenger_OhTheFamous{
+    format("Oh! The famous {PLAYER}.")
+}
+text gText_Persuasivepassenger_IllGetRightTo{
+    format("I'll get right to it. We think the best way to fight Uber is to thin out their numbers and get their drivers to join us.")
+}
+text gText_Persuasivepassenger_JustLikeYouWorked{
+    format("Just like you worked with our driers to expand the fleet, we want you to work with uber drivers to help them too.")
+}
+text gText_Persuasivepassenger_WeveDoneSomeResearch{
+    format("We've done some research, and we've identfied some influential Uber drivers, who are also going through some rough times. We're thinking if we can convince them that the taxi union is a better fit for them, they'll come over and bring others with them.")
+}
+text gText_Persuasivepassenger_CanYouSeeIfYou{
+    format("Can you see if you can help them out?")
+}
+text gText_Persuasivepassenger_TheFirstDriver{
+    format("The first driver tends to drive out of Alameda. Try grabbing an User from there!")
+}
+text gText_Persuasivepassenger_TheNextDriver{
+    format("We've found a driver we can turn that drives out of Haightashbury. Head over there!")
+}
+text gText_Persuasivepassenger_TheresAnother{
+    format("There's another driver that came out of nowhere, but we're not certain we know where they drive out of... I guess we'll have to try a few different places!")
+}
 text gText_Persuasivepassenger_HeyKid{
     format("Hey kid, how are you?")
 }
