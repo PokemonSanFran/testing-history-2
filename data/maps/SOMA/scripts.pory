@@ -3,7 +3,6 @@ const ROSE = 1
 const VICTIM = 2
 const MUGGERA = 3
 const MUGGERB = 4
-const ISMAIL = 5
 
 mapscripts SOMA_MapScripts {
     MAP_SCRIPT_ON_RESUME {
@@ -21,40 +20,6 @@ mapscripts SOMA_MapScripts {
     ]
 }
 
-script SOMA_SocialMediaReporter_Dialogue{
-    setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,TALKED_TO_REPORTER)
-    msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
-
-//PSF TODO this line should not reference the rabies quest unless the player has done it
-    msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
-
-
-    msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
-    closemessage
-    applymovement(ISMAIL,SOMA_WalkInside)
-    playse(SE_EXIT)
-    waitmovement(ISMAIL)
-    removeobject(ISMAIL)
-    call(Quest_Breaktheinternet_CountQuestsAndProgress_Script)
-    release
-    end
-}
-
-text gText_SOMA_SocialMediaIs{
-    format("Social media is getting out of control! I spend more of my day trying to verify wild claims than actually reporting on real news.")
-}
-text gText_SOMA_TotallyIHunted{
-    format("Totally! I hunted a bunch of Glameow in Bernalheights only for the whole story to be totally bogus.")
-}
-text gText_SOMA_OhRight{
-    format("Oh right, the rabies outbreak! So ridiculous. I want to try to investigate where all these claims are coming from, because I think its only going to get worse. You're a Trainer, right? Let's exchange contact info. Keep your eyes peeled on social media for any more bogus stories, and I'll hit you up once I find a good lead.")
-}
-
-movement SOMA_WalkInside{
-    walk_left
-    walk_up
-    step_end
-}
 script SOMA_Stan_Interact_Script{
     lock
         call(Quest_WallaceArmy_LoadStanSpeech_Script)

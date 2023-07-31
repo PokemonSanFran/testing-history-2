@@ -62,22 +62,20 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	warp MAP_PACIFICA_POKEMONCENTER_1F, 0
-	return
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BREAKTHEINTERNET, SUB_QUEST_1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BREAKTHEINTERNET, SUB_QUEST_2
+	end
 
 
 Debug_Script_2::
-	warp MAP_PSFROUTE51, 0
 	end
 
 
 Debug_Script_3::
-	warp MAP_PSFROUTE76, 0
 	end
 
 
 Debug_Script_4::
-	warp MAP_PSFROUTE20, 0
 	end
 
 

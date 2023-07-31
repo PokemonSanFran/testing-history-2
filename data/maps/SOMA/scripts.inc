@@ -19,26 +19,6 @@ SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-SOMA_SocialMediaReporter_Dialogue::
-	setvar VAR_QUEST_BREAKTHEINTERNET_STATE, TALKED_TO_REPORTER
-	msgbox gText_SOMA_SocialMediaIs, MSGBOX_NPC, SPEAKER_ISMAIL
-	msgbox gText_SOMA_TotallyIHunted, MSGBOX_DEFAULT, , SPEAKER_ZOEY
-	msgbox gText_SOMA_OhRight, MSGBOX_DEFAULT, SPEAKER_ISMAIL
-	closemessage
-	applymovement 5, SOMA_WalkInside
-	playse SE_EXIT
-	waitmovement 5
-	removeobject 5
-	call Quest_Breaktheinternet_CountQuestsAndProgress_Script
-	release
-	end
-
-
-SOMA_WalkInside:
-	walk_left
-	walk_up
-	step_end
-
 SOMA_Stan_Interact_Script::
 	lock
 	call Quest_WallaceArmy_LoadStanSpeech_Script
@@ -77,25 +57,3 @@ SOMA_EventScript_DeliveryF_2:
 	goto Quest_Bodegaburnout_DeliveryF_Dialogue
 	goto SOMA_EventScript_DeliveryF_1
 
-
-gText_SOMA_SocialMediaIs::
-	.string "Social media is getting out of control!\n"
-	.string "I spend more of my day trying to verify\l"
-	.string "wild claims than actually reporting on\l"
-	.string "real news.$"
-
-gText_SOMA_TotallyIHunted::
-	.string "Totally! I hunted a bunch of Glameow in\n"
-	.string "Bernalheights only for the whole story\l"
-	.string "to be totally bogus.$"
-
-gText_SOMA_OhRight::
-	.string "Oh right, the rabies outbreak! So\n"
-	.string "ridiculous. I want to try to\l"
-	.string "investigate where all these claims are\l"
-	.string "coming from, because I think its only\l"
-	.string "going to get worse. You're a Trainer,\l"
-	.string "right? Let's exchange contact info.\l"
-	.string "Keep your eyes peeled on social media\l"
-	.string "for any more bogus stories, and I'll hit\l"
-	.string "you up once I find a good lead.$"

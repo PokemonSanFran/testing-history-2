@@ -17,7 +17,8 @@
 const ARTIST = 1
 
 script Quest_Gemartist_Active_Dialogue{
-    msgbox(gText_Gemartist_AhYouSaw,MSGBOX_NPC)    
+    msgbox(gText_Gemartist_AhYouSaw,MSGBOX_NPC)
+    call(Quest_Gemartist_Debug_Script)
     goto(Quest_Gemartist_CheckBagAndCraftGem_Script)
 }
 
@@ -31,8 +32,13 @@ script Quest_Gemartist_NotEnoughGlass_Dialogue{
     end
 }
 
+script Quest_Gemartist_Debug_Script{
+    additem(ITEM_BEACH_GLASS,10)
+    return
+}
+
 script Quest_Gemartist_CheckBagAndCraftGem_Script{
-    checkitem(ITEM_RARE_CANDY,10)
+    checkitem(ITEM_BEACH_GLASS,10)
 
         if (var(VAR_RESULT)){
             goto_if_quest_not_complete(QUEST_GEMARTIST,Quest_Gemartist_CraftFirstGem_Script)
@@ -43,7 +49,7 @@ script Quest_Gemartist_CheckBagAndCraftGem_Script{
 }
 
 script Quest_Gemartist_CraftGem_Script{
-    special(Quest_Gemartist_SetGemFlag) 
+    special(Quest_Gemartist_SetGemFlag)
     switch (var(VAR_RESULT)){
         case TYPE_NORMAL: giveitem(ITEM_NORMAL_GEM,1)
         case TYPE_FIGHTING: giveitem(ITEM_FIGHTING_GEM,1)
@@ -64,7 +70,7 @@ script Quest_Gemartist_CraftGem_Script{
         case TYPE_DARK: giveitem(ITEM_DARK_GEM,1)
         case TYPE_FAIRY: giveitem(ITEM_FAIRY_GEM,1)
     }
-        removeitem(ITEM_RARE_CANDY,10)
+        removeitem(ITEM_BEACH_GLASS,10)
         return
 }
 
@@ -110,7 +116,7 @@ script Quest_Gemartist_CraftNextGem_Script{
 
     msgbox(gText_Gemartist_IllUseYour,MSGBOX_YESNO)
 
-    if (var(VAR_RESULT) == NO){  
+    if (var(VAR_RESULT) == NO){
         goto(Quest_Gemartist_CancelGem_Dialogue)
     }
 

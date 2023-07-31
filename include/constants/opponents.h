@@ -942,6 +942,7 @@
 #define TRAINER_ALCATRAZ_TRAINER_D         193
 #define TRAINER_ALCATRAZ_TRAINER_E         194
 #define TRAINER_ALCATRAZ_TRAINER_F         195
+#define TRAINER_HAIGHTASHBURY_GYM_1        196
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

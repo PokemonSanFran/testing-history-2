@@ -17,9 +17,53 @@ const WAREHOUSE_GRUNT5 = 6
 const WAREHOUSE_TWITTER_CEO = 8
 const WAREHOUSE_SLURPUFF = 4
 
+const SOMA_ISMAIL = 5
+
 script Quest_Breaktheinternet_EliteFour_Dialogue{
     setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,MALVA_MENTIONED_REPORTER)
     msgbox(format("you should talk to my reporter friend in SOMA."),MSGBOX_NPC,SPEAKER_MALVA)
+}
+
+script Quest_Breaktheinternet_SocialMediaReporter_Dialogue{
+    setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,TALKED_TO_REPORTER)
+    msgbox(gText_Breaktheinternet_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
+
+    call_if_quest_complete(QUEST_RABIESOUTBREAK,Quest_Breaktheinternet_Rabies_Dialogue)
+
+    msgbox(gText_Breaktheinternet_IWantTo,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
+    applymovement(SOMA_ISMAIL,Quest_Breaktheinternet_WalkInside)
+    playse(SE_EXIT)
+    waitmovement(SOMA_ISMAIL)
+    removeobject(SOMA_ISMAIL)
+    call(Quest_Breaktheinternet_CountQuestsAndProgress_Script)
+    release
+    end
+}
+
+script Quest_Breaktheinternet_Rabies_Dialogue{
+    msgbox(gText_Breaktheinternet_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
+    msgbox(gText_Breaktheinternet_OhRight,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
+    return
+}
+
+text gText_Breaktheinternet_SocialMediaIs{
+    format("Social media is getting out of control! I spend more of my day trying to verify wild claims than actually reporting on real news.")
+}
+text gText_Breaktheinternet_TotallyIHunted{
+    format("Totally! I hunted a bunch of Glameow in Bernalheights only for the whole story to be totally bogus.")
+}
+text gText_Breaktheinternet_OhRight{
+    format("Oh right, the rabies outbreak! So ridiculous.")
+}
+
+text gText_Breaktheinternet_IWantTo{
+    format("I want to try to investigate where all these claims are coming from, because I think its only going to get worse. You're a Trainer, right? Let's exchange contact info. Keep your eyes peeled on social media for any more bogus stories, and I'll hit you up once I find a good lead.")
+}
+
+movement Quest_Breaktheinternet_WalkInside{
+    walk_left
+    walk_up
+    step_end
 }
 
 script Quest_Breaktheinternet_CountQuestsAndProgress_Script{
@@ -292,8 +336,8 @@ script Quest_Breaktheinternet_CompleteWave2_Script{
     lock
     msgbox(gText_Breaktheinternet_OurBossIsMore)
     fadescreen(FADE_TO_BLACK)
-    removeobject(7)
-    removeobject(2)
+    removeobject(WAREHOUSE_GRUNT4)
+    removeobject(WAREHOUSE_GRUNT5)
     fadescreen(FADE_FROM_BLACK)
     release
     end

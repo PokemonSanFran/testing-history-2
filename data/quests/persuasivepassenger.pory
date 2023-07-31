@@ -45,10 +45,20 @@ script Quest_Persuasivepassenger_StartQuest_Script{
 script Quest_Persuasivepassenger_Active_Dialogue{
     specialvar(VAR_TEMP_1,Quest_Persuasivepassenger_CountRemainingSubquests)
     switch(var(VAR_TEMP_1)){
-        case 3: msgbox(gText_Persuasivepassenger_TheFirstDriver)
-        case 2: msgbox(gText_Persuasivepassenger_TheNextDriver)
-        default: msgbox(gText_Persuasivepassenger_TheresAnother)
+        case 3:
+            msgbox(gText_Persuasivepassenger_TheFirstDriver)
+            msgbox(gText_Debug_WarpUber)
+            warp(MAP_UBER_INTERIOR,1,3)
+        case 2:
+            msgbox(gText_Persuasivepassenger_TheNextDriver)
+            msgbox(gText_Debug_WarpUber)
+            warp(MAP_UBER_INTERIOR,10,3)
+        default:
+            msgbox(gText_Persuasivepassenger_TheresAnother)
+            msgbox(gText_Debug_WarpUber)
+            warp(MAP_UBER_INTERIOR,20,15)
     }
+    //PSF TODO remove debug
     closemessage
     release
     end
@@ -86,13 +96,23 @@ script Quest_Persuasivepassenger_Driver1_Event_Script{
         bufferitemnameplural(STR_VAR_1,ITEM_WATMEL_BERRY,1)
         bufferitemnameplural(STR_VAR_2,ITEM_LEMONADE,2)
         msgbox(gText_Persuasivepassenger_IngredentsTwo,,SPEAKER_UBER_DRIVER1)
+        call(Quest_Persuasivepassenger_DebugDriver1)
     }
-
     msgbox(gText_Persuasivepassenger_WereHere,,SPEAKER_UBER_DRIVER1)
     closemessage
     //special(CompleteUberDrive)
-    warp(MAP_SOMA,0)
+    warp(MAP_BERNALHEIGHTS,0)
 }
+
+script Quest_Persuasivepassenger_DebugDriver1{
+            additem(ITEM_SITRUS_BERRY,3)
+            additem(ITEM_HONEY,5)
+            additem(ITEM_WATMEL_BERRY,1)
+            additem(ITEM_LEMONADE,2)
+            msgbox(gText_Debug_GiveItems)
+return
+}
+
 
 script Quest_Persuasivepassenger_HasItems_Dialogue{
     msgbox(gText_Persuasivepassenger_ForYourSickKid,,SPEAKER_ZOEY)
@@ -140,7 +160,7 @@ script Quest_Persuasivepassenger_Driver2_Event_Script{
 script Quest_Persuasivepassenger_Driver2_End_Dialogue{
     msgbox(gText_Persuasivepassenger_WereAtTheSpot,,SPEAKER_UBER_DRIVER2)
         //special(CompleteUberDrive)
-        warp(MAP_SUNSET,0)
+        warp(MAP_ALAMEDA,0)
 }
 
 script Quest_Persuasivepassenger_Driver2_DefeatedLandlord_Dialogue{
@@ -569,4 +589,10 @@ text gText_Persuasivepassenger_ThanksAgain{
 }
 text gText_Persuasivepassenger_WatchYourBack{
     format("Watch your back...")
+}
+text gText_Debug_WarpUber{
+    format("but we haven't built the uber menu yet, so we'll warp you now.")
+}
+text gText_Debug_GiveItems{
+    format("your bag now has what he needs.")
 }

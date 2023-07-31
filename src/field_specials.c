@@ -4538,33 +4538,6 @@ bool8 AlohaFromAlolaCheck(void)
     return (count == 3) ? TRUE : FALSE;
 }
 
-// Scans the Player's party.
-// If the Player has 6 Shiny Octillery, the function returns TRUE. If they don't, it returns FALSE.
-// The function stores the nickname of the last Octillery scanned inside of gStringVar1/STR_VAR_1.
-bool8 IsPartyFullOfShinyOctillery(void)
-{
-    u8 count = 0, partyCount = CalculatePlayerPartyCount();
-
-    for (gSpecialVar_0x8004 = 0; gSpecialVar_0x8004 <= partyCount; gSpecialVar_0x8004++)
-    {
-        u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
-        if (species == SPECIES_OCTILLERY)
-        {
-            if (IsMonShiny(&gPlayerParty[gSpecialVar_0x8004]))
-            {
-                count++;
-            }
-            else
-            {
-                GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
-                break;
-            }
-        }
-    }
-
-    return (count == partyCount) ? TRUE : FALSE;
-}
-
 bool8 Script_CheckForMonAndMove(void)
 {
     u8 i;

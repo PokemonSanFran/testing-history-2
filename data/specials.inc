@@ -633,6 +633,7 @@ gSpecials::
     def_special Quest_Restoretreasureisland_CheckRemainingSubquests
     def_special Quest_Restoremarin_CheckRemainingSubquests
     def_special Quest_Taxicabturnaround_LookUpQuestType
+    def_special Quest_IceCreamCrafting_CheckNeededItems
 
 @ Restored Frontier
 

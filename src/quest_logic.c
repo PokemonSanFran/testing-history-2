@@ -1541,3 +1541,49 @@ void Quest_ArtisanBalls3_MarkRewardIfApricornBall(void)
         }
     }
 }
+// ***********************************************************************
+// Quest: Ice Cream Crafting
+// ***********************************************************************
+bool8 Quest_IceCreamCrafting_CheckNeededItems(void){
+    bool8 hasPecha = CheckBagHasItem(ITEM_PECHA_BERRY,3);
+    bool8 hasNanab = CheckBagHasItem(ITEM_NANAB_BERRY,2);
+    bool8 hasRabuta = CheckBagHasItem(ITEM_RABUTA_BERRY,1);
+
+    bool8 hasNeededItems = FALSE;
+
+    if (hasPecha && hasNanab && hasRabuta){
+        hasNeededItems = TRUE;
+    }
+    return hasNeededItems;
+}
+
+// ***********************************************************************
+// Quest: Freshwater Evolution
+// ***********************************************************************
+// Scans the Player's party.
+// If the Player has 6 Shiny Octillery, the function returns TRUE. If they don't, it returns FALSE.
+// The function stores the nickname of the last Octillery scanned inside of gStringVar1/STR_VAR_1.
+bool8 IsPartyFullOfShinyOctillery(void)
+{
+    u8 count = 0, partyCount = CalculatePlayerPartyCount();
+
+    for (gSpecialVar_0x8004 = 0; gSpecialVar_0x8004 <= partyCount; gSpecialVar_0x8004++)
+    {
+        u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+        if (species == SPECIES_OCTILLERY)
+        {
+            if (IsMonShiny(&gPlayerParty[gSpecialVar_0x8004]))
+            {
+                count++;
+            }
+            else
+            {
+                GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
+                break;
+            }
+        }
+    }
+
+    return (count == partyCount) ? TRUE : FALSE;
+}
+
