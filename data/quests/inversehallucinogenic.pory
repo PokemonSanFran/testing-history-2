@@ -65,7 +65,7 @@ script Quest_Inversehallucinogenic_StartQuest_Script{
 
 script Quest_Inversehallucinogenic_EventScript_Merril{
     setflag(FLAG_INVERSE_BATTLE)
-    trainerbattle_single(TRAINER_DRUG_MERRIL,gText_Inversehallucinogenic_IKnewYcombinator,gText_Inversehallucinogenic_TheyreNot,Quest_Inversehallucinogenic_PostBattleStory1_Script)
+    trainerbattle_single(TRAINER_INVERSEHALLUCINOGENIC_TRAINER_A,gText_Inversehallucinogenic_IKnewYcombinator,gText_Inversehallucinogenic_TheyreNot,Quest_Inversehallucinogenic_PostBattleStory1_Script)
     msgbox(gText_Inversehallucinogenic_TheyWantIt,MSGBOX_NPC,SPEAKER_PRYCE)
     closemessage
     end
@@ -73,21 +73,21 @@ script Quest_Inversehallucinogenic_EventScript_Merril{
 
 script Quest_Inversehallucinogenic_EventScript_Kinsey{
     setflag(FLAG_INVERSE_BATTLE)
-    trainerbattle_single(TRAINER_DRUG_KINSEY,gText_Inversehallucinogenic_IAuthorizedThe,gText_Inversehallucinogenic_TheBoardWasn,Quest_Inversehallucinogenic_PostBattleStory2_Script)
+    trainerbattle_single(TRAINER_INVERSEHALLUCINOGENIC_TRAINER_B,gText_Inversehallucinogenic_IAuthorizedThe,gText_Inversehallucinogenic_TheBoardWasn,Quest_Inversehallucinogenic_PostBattleStory2_Script)
     msgbox(gText_Inversehallucinogenic_LyingToLenora,MSGBOX_NPC,SPEAKER_PRYCE)
     end
 }
 
 script Quest_Inversehallucinogenic_EventScript_Kaley{
     setflag(FLAG_INVERSE_BATTLE)
-    trainerbattle_single(TRAINER_DRUG_KALEY,gText_Inversehallucinogenic_IBelievedThat,gText_Inversehallucinogenic_IKnewIf,Quest_Inversehallucinogenic_PostBattleStory3_Script)
+    trainerbattle_single(TRAINER_INVERSEHALLUCINOGENIC_TRAINER_C,gText_Inversehallucinogenic_IBelievedThat,gText_Inversehallucinogenic_IKnewIf,Quest_Inversehallucinogenic_PostBattleStory3_Script)
     msgbox(gText_Inversehallucinogenic_IWantedTo,MSGBOX_NPC,SPEAKER_PRYCE)
     end
 }
 
 script Quest_Inversehallucinogenic_EventScript_Torey{
     setflag(FLAG_INVERSE_BATTLE)
-    trainerbattle_single(TRAINER_DRUG_TOREY,gText_Inversehallucinogenic_IThoughtWe,gText_Inversehallucinogenic_IDidnt,Quest_Inversehallucinogenic_PostBattleStory4_Script)
+    trainerbattle_single(TRAINER_INVERSEHALLUCINOGENIC_TRAINER_D,gText_Inversehallucinogenic_IThoughtWe,gText_Inversehallucinogenic_IDidnt,Quest_Inversehallucinogenic_PostBattleStory4_Script)
     msgbox(gText_Inversehallucinogenic_AfterTheFirst,MSGBOX_NPC,SPEAKER_PRYCE)
     end
 }
@@ -138,7 +138,7 @@ script Quest_Inversehallucinogenic_Pryce_PreBattle_Dialogue{
 
 script Quest_Inversehallucinogenic_Pryce_Battle_Script{
     setflag(FLAG_INVERSE_BATTLE)
-    trainerbattle_no_intro(TRAINER_DRUG_PRYCE,gText_Inversehallucinogenic_PeopleCalledMe)
+    trainerbattle_no_intro(TRAINER_INVERSEHALLUCINOGENIC_PRYCE,gText_Inversehallucinogenic_PeopleCalledMe)
     goto(Quest_Inversehallucinogenic_PostBattle_Script)
 }
 

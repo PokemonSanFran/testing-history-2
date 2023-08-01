@@ -378,7 +378,7 @@ script Quest_ArtisanBalls2_Start_Dialogue {
 	msgbox(gText_Quest_ArtisanBalls2_ImReadyToExpand, MSGBOX_NPC,SPEAKER_SERGEY)
 
 	msgbox(gText_Quest_ArtisanBalls2_ThatsAmazing, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_INeedHelp, MSGBOX_NPC,SPEAKER_SERGEY)
 	startquest(QUEST_ARTISANBALLS2)
@@ -399,7 +399,7 @@ script Quest_ArtisanBalls2_Active_Dialogue {
 }
 
 script Quest_ArtisanBalls2_TrainerA_Event_Script{
-	trainerbattle_single(TRAINER_FELIX, gText_Quest_ArtisanBalls2_YoudThink, gText_Quest_ArtisanBalls2_NotEvenClose, Quest_ArtisanBalls2_TrainerA_PostBattle_Script)
+	trainerbattle_single(TRAINER_ARTISANBALLS2_A, gText_Quest_ArtisanBalls2_YoudThink, gText_Quest_ArtisanBalls2_NotEvenClose, Quest_ArtisanBalls2_TrainerA_PostBattle_Script)
 }
 
 script Quest_ArtisanBalls2_TrainerA_PostBattle_Script{
@@ -408,12 +408,12 @@ script Quest_ArtisanBalls2_TrainerA_PostBattle_Script{
     call(Quest_ArtisanBalls2_CheckReward_Script)
 
 	msgbox(gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_MyGirlfriend, MSGBOX_NPC,SPEAKER_SERGEY)
 
 	msgbox(gText_Quest_ArtisanBalls2_OfficeManagerRight, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_WaitReally, MSGBOX_NPC,SPEAKER_SERGEY)
 
@@ -425,7 +425,7 @@ script Quest_ArtisanBalls2_TrainerA_PostBattle_Script{
 	end
 }
 script Quest_ArtisanBalls2_TrainerB_Event_Script{
-	trainerbattle_single(TRAINER_VIOLET, gText_Quest_ArtisanBalls2_MyPersonalBrand, gText_Quest_ArtisanBalls2_IHopeGettingDefeated, Quest_ArtisanBalls2_TrainerB_PostBattle_Script)
+	trainerbattle_single(TRAINER_ARTISANBALLS2_B, gText_Quest_ArtisanBalls2_MyPersonalBrand, gText_Quest_ArtisanBalls2_IHopeGettingDefeated, Quest_ArtisanBalls2_TrainerB_PostBattle_Script)
 }
 
 script Quest_ArtisanBalls2_TrainerB_PostBattle_Script{
@@ -438,7 +438,7 @@ script Quest_ArtisanBalls2_TrainerB_PostBattle_Script{
 	msgbox(gText_Quest_ArtisanBalls2_ISawThe, MSGBOX_NPC,SPEAKER_SERGEY)
 
 	msgbox(gText_Quest_ArtisanBalls2_YouSaidYouWereInto, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_OhManWhat, MSGBOX_NPC,SPEAKER_SERGEY)
 
@@ -451,7 +451,7 @@ script Quest_ArtisanBalls2_TrainerB_PostBattle_Script{
 }
 
 script Quest_ArtisanBalls2_TrainerC_Event_Script{
-	trainerbattle_single(TRAINER_ROSE_2, gText_Quest_ArtisanBalls2_IMissHelpingPeople, gText_Quest_ArtisanBalls2_DidIHelpYou, Quest_ArtisanBalls2_TrainerC_PostBattle_Script)
+	trainerbattle_single(TRAINER_ARTISANBALLS2_C, gText_Quest_ArtisanBalls2_IMissHelpingPeople, gText_Quest_ArtisanBalls2_DidIHelpYou, Quest_ArtisanBalls2_TrainerC_PostBattle_Script)
 }
 
 script Quest_ArtisanBalls2_TrainerC_PostBattle_Script{
@@ -460,12 +460,12 @@ script Quest_ArtisanBalls2_TrainerC_PostBattle_Script{
     call(Quest_ArtisanBalls2_CheckReward_Script)
 
 	msgbox(gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_IMetTheVendor, MSGBOX_NPC,SPEAKER_SERGEY)
 
 	msgbox(gText_Quest_ArtisanBalls2_IfYouLikeHelping, MSGBOX_NPC,SPEAKER_ZOEY)
-	
+
 
 	msgbox(gText_Quest_ArtisanBalls2_ThatWouldBe, MSGBOX_NPC,SPEAKER_SERGEY)
 
@@ -588,7 +588,7 @@ script Quest_ArtisanBalls3_Reward_Dialogue {
 
 script Quest_ArtisanBalls3_Reward_Cutscene{
     addvar(VAR_TEMP_3,99)
-   questmenu(QUEST_MENU_CHECK_REWARD,QUEST_ARTISANBALLS3) 
+   questmenu(QUEST_MENU_CHECK_REWARD,QUEST_ARTISANBALLS3)
 
     if (!var(VAR_RESULT)){
         release
@@ -607,9 +607,9 @@ script Quest_ArtisanBalls3_Reward_Cutscene{
 
     msgbox(gText_Quest_ArtisanBalls3_DidYouHearThat,MSGBOX_DEFAULT)
     msgbox(gText_Quest_ArtisanBalls3_NoButItSounds,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-    
 
-    msgbox(gText_Quest_ArtisanBalls3_TheyWantToAcquire,MSGBOX_DEFAULT) 
+
+    msgbox(gText_Quest_ArtisanBalls3_TheyWantToAcquire,MSGBOX_DEFAULT)
     call(Quest_ArtisanBalls3_GiveReward_Script)
     completequest(QUEST_ARTISANBALLS3)
     end
@@ -627,7 +627,7 @@ script Quest_ArtisanBalls3_Post_Dialogue{
 
     lock
     msgbox(gText_Quest_ArtisanBalls1_TheDoorIsLockedBut,MSGBOX_YESNO)
-    
+
     if(var(VAR_RESULT) == YES){
     msgbox(gText_Quest_ArtisanBalls1_ToMyCustomers,MSGBOX_SIGN)
     }
@@ -673,7 +673,7 @@ script Quest_ArtisanBalls_ReadBook_Dialogue{
         case ITEM_FRIEND_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainFriend)
         case ITEM_MOON_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainMoon)
         //PSF TODO Why doesn't pressing B work here?
-        case MULTI_B_PRESSED: 
+        case MULTI_B_PRESSED:
         case ITEMS_COUNT: end
     }
     goto(Quest_ArtisanBalls_ReadBook_Dialogue)

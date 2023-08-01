@@ -16,9 +16,9 @@ script Quest_Dancebattle_RunDance_Script{
     //PSF TODO create dance sequences
     lock
     setvar(VAR_TEMP_0,0)
-    
+
     call(Quest_Dancebattle_SetUpDanceObjects_Script)
-    
+
     switch(var(VAR_DANCEBATTLE_STATE)){
         case NEVER_TIPPED: call(Quest_Dancebattle_Dance1_Script)
         case TIPPED_ONCE: call(Quest_Dancebattle_Dance2_Script)
@@ -38,7 +38,7 @@ script Quest_Dancebattle_SetUpDanceObjects_Script{
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(PLAYER)
     call(Quest_Dancebattle_CreateCrowd_Script)
-    fadescreen(FADE_FROM_BLACK) 
+    fadescreen(FADE_FROM_BLACK)
     return
 }
 
@@ -70,37 +70,37 @@ script Quest_Dancebattle_CreateCrowd_Script{
 script Quest_Dancebattle_Dance1_Script{
     applymovement(DANCER_A,Common_Movement_WalkInPlaceUp)
     applymovement(DANCER_B,Common_Movement_WalkInPlaceUp)
-    applymovement(DANCER_C,Common_Movement_WalkInPlaceUp)  
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceUp)
     applymovement(DANCER_A,Common_Movement_FaceDown)
     applymovement(DANCER_B,Common_Movement_FaceDown)
-    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    applymovement(DANCER_C,Common_Movement_FaceDown)
     return
 }
 script Quest_Dancebattle_Dance2_Script{
     applymovement(DANCER_A,Common_Movement_WalkInPlaceLeft)
     applymovement(DANCER_B,Common_Movement_WalkInPlaceLeft)
-    applymovement(DANCER_C,Common_Movement_WalkInPlaceLeft)  
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceLeft)
     applymovement(DANCER_A,Common_Movement_FaceDown)
     applymovement(DANCER_B,Common_Movement_FaceDown)
-    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    applymovement(DANCER_C,Common_Movement_FaceDown)
     return
 }
 script Quest_Dancebattle_Dance3_Script{
     applymovement(DANCER_A,Common_Movement_WalkInPlaceRight)
     applymovement(DANCER_B,Common_Movement_WalkInPlaceRight)
-    applymovement(DANCER_C,Common_Movement_WalkInPlaceRight)  
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceRight)
     applymovement(DANCER_A,Common_Movement_FaceDown)
     applymovement(DANCER_B,Common_Movement_FaceDown)
-    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    applymovement(DANCER_C,Common_Movement_FaceDown)
     return
 }
 script Quest_Dancebattle_Dance4_Script{
     applymovement(DANCER_A,Common_Movement_WalkInPlaceDown)
     applymovement(DANCER_B,Common_Movement_WalkInPlaceDown)
-    applymovement(DANCER_C,Common_Movement_WalkInPlaceDown)  
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceDown)
     applymovement(DANCER_A,Common_Movement_FaceDown)
     applymovement(DANCER_B,Common_Movement_FaceDown)
-    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    applymovement(DANCER_C,Common_Movement_FaceDown)
     return
 }
 
@@ -108,22 +108,22 @@ script Quest_Dancebattle_ConstructMenu_Script{
     checkmoney(500)
     if(var(VAR_RESULT)){
         dynmultipush("¥500",0)
-    }   
+    }
 
     checkmoney(1000)
     if(var(VAR_RESULT)){
         dynmultipush("¥1000",1)
-    }   
+    }
 
     checkmoney(1500)
     if(var(VAR_RESULT)){
         dynmultipush("¥1500",2)
-    }   
+    }
 
     checkmoney(2000)
     if(var(VAR_RESULT)){
         dynmultipush("¥2000",3)
-    }   
+    }
 
     dynmultipush("Never mind.",4)
     return
@@ -135,11 +135,11 @@ script Quest_Dancebattle_AskTip_Script{
     call(Quest_Dancebattle_ConstructMenu_Script)
     dynmultistack(24,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
     closemessage
-    
+
     switch(var(VAR_RESULT)){
         case 0: call(Quest_Dancebattle_Tip500_Script)
         case 1: call(Quest_Dancebattle_Tip1000_Script)
-        case 2: call(Quest_Dancebattle_Tip1500_Script) 
+        case 2: call(Quest_Dancebattle_Tip1500_Script)
         case 3: call(Quest_Dancebattle_Tip2000_Script)
         default:
     }
@@ -156,7 +156,7 @@ script Quest_Dancebattle_Tip500_Script{
     hidemoneybox
     msgbox(gText_Dancebattle_HeyThanksForThe,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
-    return 
+    return
 }
 
 script Quest_Dancebattle_Tip1000_Script{
@@ -166,7 +166,7 @@ script Quest_Dancebattle_Tip1000_Script{
     hidemoneybox
     msgbox(gText_Dancebattle_WowThankYouFor,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
-    return 
+    return
 }
 
 script Quest_Dancebattle_Tip1500_Script{
@@ -176,7 +176,7 @@ script Quest_Dancebattle_Tip1500_Script{
     hidemoneybox
     msgbox(gText_Dancebattle_ThankYouForYourGenerous,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
-    return 
+    return
 }
 
 script Quest_Dancebattle_Tip2000_Script{
@@ -186,7 +186,7 @@ script Quest_Dancebattle_Tip2000_Script{
     hidemoneybox
     msgbox(gText_Dancebattle_WhoaThankYouFor,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
-    return 
+    return
 }
 
 script Quest_Dancebattle_CapState_Script{
@@ -243,7 +243,7 @@ script Quest_Dancebattle_BattleA_Script{
     waitmovement(DANCER_A)
     closemessage
     msgbox(gText_Dancebattle_WeveBeenPracticingHard,,SPEAKER_EJ)
-    trainerbattle_no_intro(TRAINER_DUSTY_2,gText_Dancebattle_YouGotMeThisTime)
+    trainerbattle_no_intro(TRAINER_DANCEBATTLE_A,gText_Dancebattle_YouGotMeThisTime)
     goto(Quest_Dancebattle_BattleB_Script)
 }
 
@@ -256,7 +256,7 @@ script Quest_Dancebattle_BattleB_Script{
     waitmovement(DANCER_B)
     closemessage
     msgbox(gText_Dancebattle_YourePrettyGood,,SPEAKER_KIKI)
-    trainerbattle_no_intro(TRAINER_DUSTY_3,gText_Dancebattle_WowYoureReally)
+    trainerbattle_no_intro(TRAINER_DANCEBATTLE_B,gText_Dancebattle_WowYoureReally)
     goto(Quest_Dancebattle_BattleC_Script)
 }
 script Quest_Dancebattle_BattleC_Script{
@@ -268,7 +268,7 @@ script Quest_Dancebattle_BattleC_Script{
     waitmovement(DANCER_C)
     closemessage
     msgbox(gText_Dancebattle_YouveMadeItThis,,SPEAKER_BLAZE)
-    trainerbattle_no_intro(TRAINER_DUSTY_4,gText_Dancebattle_ICantBelieveI)
+    trainerbattle_no_intro(TRAINER_DANCEBATTLE_C,gText_Dancebattle_ICantBelieveI)
     goto(Quest_Dancebattle_Reward_Dialogue)
 }
 script Quest_Dancebattle_Reward_Dialogue{
@@ -284,7 +284,7 @@ script Quest_Dancebattle_Reward_Dialogue{
 
 script Quest_Dancebattle_BattleOrShow_Dialogue{
     msgbox(gText_Dancebattle_HeyThereWhatBrings,,SPEAKER_BLAZE)
-    dynmultichoice(1,1,TRUE,3,0,DYN_MULTICHOICE_CB_NONE, 
+    dynmultichoice(1,1,TRUE,3,0,DYN_MULTICHOICE_CB_NONE,
     "Let's battle!",
     "I'm here for a show.",
     "Just saying hi!"

@@ -224,7 +224,7 @@ script Quest_Restoremarin_Reward_Dialogue{
 script Quest_Restoremarin_StartBattle_Script{
     lock
         msgbox(gText_Quest_Restoremarin_OkayChampion,,SPEAKER_LENORA)
-        trainerbattle_no_intro(TRAINER_GRETA,gText_Quest_Restoremarin_YoureTougherThan)
+        trainerbattle_no_intro(TRAINER_LENORA,gText_Quest_Restoremarin_YoureTougherThan)
         closemessage
 
         goto(Quest_Restoremarin_PostBattle_Dialogue)

@@ -204,9 +204,9 @@ script Quest_CutePokemon_Sub2_Event_Script{
 }
 
 script Quest_CutePokemon_Sub2_Battle_Script{
-    if (!defeated(TRAINER_RICKY_1)){
+    if (!defeated(TRAINER_CUTEPOKEMON_A)){
         msgbox(gText_CutePokemon_HeyItsYou)
-        trainerbattle_no_intro(TRAINER_RICKY_1,gText_CutePokemon_ButTheyreStillCute)
+        trainerbattle_no_intro(TRAINER_CUTEPOKEMON_A,gText_CutePokemon_ButTheyreStillCute)
     }
     return
 }
@@ -253,9 +253,9 @@ script Quest_CutePokemon_Sub2_ReturnToWork_Cutscene{
 }
 
 script Quest_CutePokemon_Sub3_Battle_Script{
-    if (!defeated(TRAINER_RICKY_2)){
+    if (!defeated(TRAINER_CUTEPOKEMON_B)){
         msgbox(gText_CutePokemon_HeyItsYou)
-        trainerbattle_no_intro(TRAINER_RICKY_2,gText_CutePokemon_ButTheyreStillCute)
+        trainerbattle_no_intro(TRAINER_CUTEPOKEMON_B,gText_CutePokemon_ButTheyreStillCute)
     }
     return
 }
@@ -313,9 +313,9 @@ script Quest_CutePokemon_Sub3_ReturnToWork_Cutscene{
 }
 
 script Quest_CutePokemon_Sub4_Battle_Script{
-    if (!defeated(TRAINER_RICKY_3)){
+    if (!defeated(TRAINER_CUTEPOKEMON_C)){
         msgbox(gText_CutePokemon_HeyItsYou)
-        trainerbattle_no_intro(TRAINER_RICKY_3,gText_CutePokemon_ButTheyreStillCute)
+        trainerbattle_no_intro(TRAINER_CUTEPOKEMON_C,gText_CutePokemon_ButTheyreStillCute)
     }
     return
 }
@@ -378,10 +378,10 @@ script Quest_CutePokemon_GiveItem_Script{
 
     call(Quest_CutePokemon_CountCompletedQuests_Script)
     switch(var(VAR_TEMP_0)){
-        case 1: giveitem(ITEM_RED_SCARF,1) 
-        case 2: giveitem(ITEM_GREEN_SCARF,1) 
-        case 3: giveitem(ITEM_BLUE_SCARF,1) 
-        case 4: giveitem(ITEM_PINK_SCARF,1) 
+        case 1: giveitem(ITEM_RED_SCARF,1)
+        case 2: giveitem(ITEM_GREEN_SCARF,1)
+        case 3: giveitem(ITEM_BLUE_SCARF,1)
+        case 4: giveitem(ITEM_PINK_SCARF,1)
     }
     closemessage
     return

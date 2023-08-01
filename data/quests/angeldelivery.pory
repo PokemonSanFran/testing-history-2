@@ -28,7 +28,7 @@ script Quest_AngelDelivery_Hide_BikerB_Script{
 script Quest_AngelDelivery_StartQuest_Dialogue{
     lock
     faceplayer
-    
+
     call(Quest_AngelDelivery_BikerA_Active_Dialogue)
 
     msgbox(gText_AngelDelivery_ShitMyBike)
@@ -88,10 +88,10 @@ script Quest_AngelDelivery_BikerB_Reward_Dialogue{
 }
 
 script Quest_AngelDelivery_StartBattle_Cutscene{
-   call(Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene) 
+   call(Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene)
 
     msgbox(gText_AngelDelivery_WaitThePassword,,SPEAKER_ZOEY)
-    
+
     closemessage
 
     playse(SE_PIN)
@@ -126,7 +126,7 @@ script Quest_AngelDelivery_StartBattle_Cutscene{
 
 script Quest_AngelDelivery_StartBattle_Script{
     msgbox(gText_AngelDelivery_ButLetsSeeIfYoureToughEnough)
-    trainerbattle_no_intro(TRAINER_FOSTER,gText_AngelDelivery_YeahYoureTough) 
+    trainerbattle_no_intro(TRAINER_ANGELDELIVERY_BIKERA,gText_AngelDelivery_YeahYoureTough)
     closemessage
     goto(Quest_AngelDelivery_PostBattle_Script)
 }

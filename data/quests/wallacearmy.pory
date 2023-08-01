@@ -149,7 +149,7 @@ script Quest_WallaceArmy_Reward_Cutscene{
 
 script Quest_WallaceArmy_StartBattle_Script{
     msgbox(gText_WallaceArmy_ACrimePunishableByDeath,,SPEAKER_LEAH)
-    trainerbattle_no_intro(TRAINER_CHIP,gText_WallaceArmy_MyLord)
+    trainerbattle_no_intro(TRAINER_WALLACEARMY_LEAH,gText_WallaceArmy_MyLord)
     closemessage
     goto(Quest_WallaceArmy_PostBattle_Script)
 }

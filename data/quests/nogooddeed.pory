@@ -59,20 +59,20 @@ script Quest_NoGoodDeed_StartQuest_Dialogue{
     msgbox(gText_NoGoodDeed_HeyYou,,SPEAKER_RAINER)
     msgbox(gText_NoGoodDeed_YoureTheOne,,SPEAKER_RAINER)
     msgbox(gText_NoGoodDeed_TheyJustKickedUs,,SPEAKER_RAINER)
-    trainerbattle_no_intro(TRAINER_LOLA_4,gText_NoGoodDeed_Heartless)
+    trainerbattle_no_intro(TRAINER_NOGOODDEED,gText_NoGoodDeed_Heartless)
     goto(Quest_NoGoodDeed_PostBattle_Script)
 }
 
 script Quest_NoGoodDeed_PostBattle_Script{
     msgbox(gText_NoGoodDeed_OkaySlowDown,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_YouSaid,,SPEAKER_RAINER)
     msgbox(gText_NoGoodDeed_SoTheyCame,,SPEAKER_RAINER)
     msgbox(gText_NoGoodDeed_WithNoContact,,SPEAKER_RAINER)
 
     msgbox(gText_NoGoodDeed_ThatCantBeRight,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_IToldYouBefore,,SPEAKER_RAINER)
     startquest(QUEST_NOGOODDEED)
@@ -81,9 +81,9 @@ script Quest_NoGoodDeed_PostBattle_Script{
 }
 
 script Quest_NoGoodDeed_Rainer_Active_Dialogue{
-    
+
     msgbox(gText_NoGoodDeed_LetMeTalk,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_UhHuhIllBe,,SPEAKER_RAINER)
     closemessage
@@ -96,7 +96,7 @@ script Quest_NoGoodDeed_Rainer_Reward_Dialogue{
     msgbox(gText_NoGoodDeed_IWishIHad,,SPEAKER_RAINER)
 
     msgbox(gText_NoGoodDeed_NoDontWorry,,SPEAKER_ZOEY)
-    
+
 
     applymovement(RAINER,Common_Movement_WalkUp)
     waitmovement(RAINER)
@@ -120,28 +120,28 @@ script Quest_NoGoodDeed_YCEmployee_Interact_Script{
 }
 script Quest_NoGoodDeed_Employee_Active_Dialogue{
     msgbox(gText_NoGoodDeed_HeyYou,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_PlayerRight,SPEAKER_YCOMBINATOR_STAFF)
 
     msgbox(gText_NoGoodDeed_DoYouRemember,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_YeahIThinkSo,,SPEAKER_YCOMBINATOR_STAFF)
 
     msgbox(gText_NoGoodDeed_ITalkedTo,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_WeSaid,,SPEAKER_YCOMBINATOR_STAFF)
 
     msgbox(gText_NoGoodDeed_YouToldMe,,SPEAKER_ZOEY,,EMOTE_ANGRY)
-    
+
 
     msgbox(gText_NoGoodDeed_OkayOkay,,SPEAKER_YCOMBINATOR_STAFF)
 
     applymovement(EMPLOYEE,Common_Movement_FaceAwayPlayer)
     waitmovement(EMPLOYEE)
-    
+
     msgbox(gText_NoGoodDeed_HeyCanYou,SPEAKER_YCOMBINATOR_STAFF,,,PHONE_ON)
 
     applymovement(EMPLOYEE,Common_Movement_FacePlayer)
@@ -151,7 +151,7 @@ script Quest_NoGoodDeed_Employee_Active_Dialogue{
     msgbox(gText_NoGoodDeed_YouCanGo,,SPEAKER_YCOMBINATOR_STAFF)
 
     msgbox(gText_NoGoodDeed_WaitSeriously,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_NoGoodDeed_AsAMatter,,SPEAKER_YCOMBINATOR_STAFF)
     closemessage

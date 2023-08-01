@@ -500,7 +500,7 @@ void JumpPlayerTo_swagbag()
     FlagSet(FLAG_SET_WALL_CLOCK);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE, FLAG_SET_ACTIVE);
-	SetWarpDestination(2, 0, 0, -1, -1);
+	SetWarpDestination(MAP_GROUP(SOUTHBAY_COMPOUND_1F), MAP_NUM(SOUTHBAY_COMPOUND_1F), 0, -1, -1);
 }
 
 void JumpPlayerTo_ReadySetI()
@@ -509,16 +509,14 @@ void JumpPlayerTo_ReadySetI()
 	VarSet(VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE);
 	FlagSet(FLAG_RECIEVED_LEFTOVERS);
 	AddBagItem(ITEM_LEFTOVERS, 1);
-
-	SetWarpDestination(2, 0, 0, -1, -1);
-
+	SetWarpDestination(MAP_GROUP(SOUTHBAY_COMPOUND_1F), MAP_NUM(SOUTHBAY_COMPOUND_1F), 0, -1, -1);
 }
 void JumpPlayerTo_EnterFalkner()
 {
 	JumpPlayerTo_ReadySetI();
 	AddBagItem(ITEM_TM01, 1);
 	FlagSet(FLAG_BADGE01_GET);
-	FlagSet(TRAINER_FLAGS_START + TRAINER_ROXANNE_1);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_FALKNER);
 	VarSet(VAR_FALKNER_STATE, BATTLE_1_COMPLETE);
 	VarSet(VAR_GYM_1_STATE, GYM_DEFEATED_LEADER);
 	IncrementStorylineVariable();

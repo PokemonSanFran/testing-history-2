@@ -26,7 +26,7 @@ script Quest_DrumCircle_ExplainQuest_Dialogue{
     msgbox(gText_DrumCircle_IfYouWin,,SPEAKER_DRUMMER_C)
     msgbox(gText_DrumCircle_IfYouLose,,SPEAKER_DRUMMER_D)
     msgbox(gText_DrumCircle_WhatDoYouSay,MSGBOX_YESNO,SPEAKER_TONALLI)
-    
+
     if (var(VAR_RESULT) == YES){
         goto(Quest_DrumCircle_StartQuest_Dialogue)
     }else{
@@ -63,7 +63,7 @@ script Quest_DrumCircle_BattleA_Script{
     waitmovement(DRUMMER_A)
     closemessage
     msgbox(gText_DrumCircle_MyTurn,,SPEAKER_DRUMMER_D)
-    trainerbattle_no_intro(TRAINER_DUSTY_2,gText_DrumCircle_OhNo)
+    trainerbattle_no_intro(TRAINER_DRUMCIRCLE_A,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleB_Script)
 }
 
@@ -74,7 +74,7 @@ script Quest_DrumCircle_BattleB_Script{
     waitmovement(DRUMMER_B)
     closemessage
     msgbox(gText_DrumCircle_MyTurn,,SPEAKER_DRUMMER_C)
-    trainerbattle_no_intro(TRAINER_DUSTY_3,gText_DrumCircle_OhNo)
+    trainerbattle_no_intro(TRAINER_DRUMCIRCLE_B,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleC_Script)
 }
 script Quest_DrumCircle_BattleC_Script{
@@ -84,7 +84,7 @@ script Quest_DrumCircle_BattleC_Script{
     waitmovement(DRUMMER_C)
     closemessage
     msgbox(gText_DrumCircle_MyTurn,,SPEAKER_DRUMMER_B)
-    trainerbattle_no_intro(TRAINER_DUSTY_4,gText_DrumCircle_OhNo)
+    trainerbattle_no_intro(TRAINER_DRUMCIRCLE_C,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleD_Script)
 }
 script Quest_DrumCircle_BattleD_Script{
@@ -94,7 +94,7 @@ script Quest_DrumCircle_BattleD_Script{
     waitmovement(DRUMMER_D)
     closemessage
     msgbox(gText_DrumCircle_MyTurn,,SPEAKER_TONALLI)
-    trainerbattle_no_intro(TRAINER_DUSTY_5,gText_DrumCircle_OhNo)
+    trainerbattle_no_intro(TRAINER_DRUMCIRCLE_D,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_RewardCutscene)
 }
 
@@ -125,7 +125,7 @@ script Quest_DrumCircle_CheckVenueCompletion_Script{
 
 script Quest_DrumCircle_Completed_NoVenue_Dialogue{
     msgbox(gText_DrumCircle_YouGuysAreDrummers,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_DrumCircle_WeLostOurVenue,,SPEAKER_TONALLI)
     msgbox(gText_DrumCircle_MakingEnds,,SPEAKER_TONALLI)

@@ -21,7 +21,7 @@ mapscripts Marin_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED: IGuessWeShouldBeNiceNow_ExitCave_Script 
+        VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED: IGuessWeShouldBeNiceNow_ExitCave_Script
             VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 
@@ -62,7 +62,7 @@ script Marin_Stan_Interact_Script{
         msgbox(gText_WallaceArmy_OhWallaceSama,MSGBOX_NPC)
         call(Quest_WallaceArmy_PreBattleStan_Script)
 
-        trainerbattle_single(TRAINER_LOLA_5,gText_WallaceArmy_MarinSolarTheySpoke,gText_WallaceArmy_MyLord,Marin_Stan_PostBattle_Script)
+        trainerbattle_single(TRAINER_MARIN_STAN,gText_WallaceArmy_MarinSolarTheySpoke,gText_WallaceArmy_MyLord,Marin_Stan_PostBattle_Script)
         goto(Marin_Stan_PostBattle_Script)
 }
 

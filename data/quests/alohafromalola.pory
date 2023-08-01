@@ -160,7 +160,7 @@ script Quest_Alohafromalola_StartBattle_Dialogue{
         waitmovement(WHITNEY)
         //PSF TODO make sure they use a Z-Move here
         setvar(VAR_WHITNEY_STATE,EXHIBITION_COMPLETE)
-        trainerbattle_continue_after_lose(TRAINER_ASHLEY,gText_Alohafromalola_AndZMoves)
+        trainerbattle_continue_after_lose(TRAINER_ALOHAFROMALOLA_WHITNEY,gText_Alohafromalola_AndZMoves)
         delay(60)
         warpsilent(MAP_SOMA_MUSEUM_ENTRANCE,255,9,13)
 }

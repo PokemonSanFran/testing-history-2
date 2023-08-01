@@ -10,7 +10,7 @@ mapscripts Psfroute63_MapScripts {
 }
 
 script Psfroute63_MapScripts_OnResume {
-        if (defeated(TRAINER_GRUNT_AQUA_HIDEOUT_1)) {
+        if (defeated(TRAINER_HOUSINGPROTEST_ROCKET)){
             goto(HousingProtest_CleanUp_Script)
         }
 }
