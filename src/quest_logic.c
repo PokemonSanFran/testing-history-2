@@ -14,6 +14,7 @@
 #include "mazegen.h"
 #include "quests.h"
 #include "money.h"
+#include "party_menu.h"
 #include "../gflib/string_util.h"
 #include "quest_logic.h"
 #include "hidden_grotto.h"
@@ -1553,10 +1554,11 @@ bool8 Quest_IceCreamCrafting_CheckNeededItems(void){
 bool8 IsPartyFullOfShinyOctillery(void)
 {
     u8 count = 0, partyCount = CalculatePlayerPartyCount();
+    u16 species = 0;
 
     for (gSpecialVar_0x8004 = 0; gSpecialVar_0x8004 <= partyCount; gSpecialVar_0x8004++)
     {
-        u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+        species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
         if (species == SPECIES_OCTILLERY)
         {
             if (IsMonShiny(&gPlayerParty[gSpecialVar_0x8004]))

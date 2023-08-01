@@ -22,6 +22,7 @@
 #include "field_tasks.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "region_map.h"
 #include "item.h"
 #include "lilycove_lady.h"
 #include "main.h"
