@@ -1425,9 +1425,11 @@ const u8 gText_PlayersAdventure_Flavor36A[] =_("Report your success to the Elite
 const u8 gText_PlayersAdventure_Flavor37[] =_("Head back to Archer's house in Alameda\nand get a good night's sleep.");
 const u8 gText_PlayersAdventure_Flavor37A[] =_("Help rescue some of\nthe citizens of Alameda!");
 const u8 gText_PlayersAdventure_Flavor38[] =_("Is the message a clue? Meet the team at\nPsfroute8.");
+const u8 gText_PlayersAdventure_Flavor38A[] =_("Discover the secrets of the Underground Lab!");
 const u8 gText_PlayersAdventure_Flavor39[] =_("Head back to Alcatraz to regroup.");
 const u8 gText_PlayersAdventure_Flavor40[] =_("Head into the belly of the beast. Meet\nat Sabrina's house in Sunset.");
-const u8 gText_PlayersAdventure_Flavor41[] =_("Sabrina's home in the sunset has a warp\ntile directly into the Salesforce. It's\ntime to finish this!");
+const u8 gText_PlayersAdventure_Flavor41[] =_("Sabrina's home in the sunset has a warp\ntile directly into the Salesforcetower. It's\ntime to confront Rose on the top floor!");
+const u8 gText_PlayersAdventure_Flavor41A[] =_("Confront Rose in their office!");
 const u8 gText_PlayersAdventure_Flavor42[] =_("You became Champion, made some\nmistakes, but the region is just a\nlittle better because of your efforts.");
 const u8 gText_PlayersAdventure_Flavor43[] =_("You became Champion, stamped out\nYcombinator, and the region is a just a\nlittle better because of your efforts.");
 

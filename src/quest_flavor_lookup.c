@@ -44,7 +44,11 @@ const u8 *GetQuestDesc_PlayersAdventure()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
 
-	if (storyline == STORY_WARP_TILE_ACCESSIBLE)
+    if (storyline == STORY_CLEAR)
+    {
+        return gText_PlayersAdventure_Flavor42;
+    }
+    else if (storyline == STORY_WARP_TILE_ACCESSIBLE)
 	{
 		return gText_PlayersAdventure_Flavor41;
 	}
@@ -57,6 +61,12 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	else if (storyline == STORY_POST_DYNAMAX_BOSS)
 	{
 		return gText_PlayersAdventure_Flavor39;
+	}
+
+	else if (storyline == STORY_POST_EARTHQUAKE
+	            && (VarGet(VAR_UNDERGROUNDLAB_STATE) <= SAVE_BEFORE_DYNAMAX))
+	{
+		return gText_PlayersAdventure_Flavor38A;
 	}
 
 	else if (storyline == STORY_POST_EARTHQUAKE)

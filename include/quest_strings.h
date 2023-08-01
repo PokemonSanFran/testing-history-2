@@ -1458,9 +1458,12 @@ extern const u8 gText_PlayersAdventure_Flavor36A[];
 extern const u8 gText_PlayersAdventure_Flavor37[];
 extern const u8 gText_PlayersAdventure_Flavor37A[];
 extern const u8 gText_PlayersAdventure_Flavor38[];
+extern const u8 gText_PlayersAdventure_Flavor38A[];
 extern const u8 gText_PlayersAdventure_Flavor39[];
 extern const u8 gText_PlayersAdventure_Flavor40[];
 extern const u8 gText_PlayersAdventure_Flavor41[];
+extern const u8 gText_PlayersAdventure_Flavor41A[];
+extern const u8 gText_PlayersAdventure_Flavor41B[];
 extern const u8 gText_PlayersAdventure_Flavor42[];
 extern const u8 gText_PlayersAdventure_Flavor43[];
 
