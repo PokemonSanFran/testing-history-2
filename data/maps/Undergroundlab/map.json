@@ -108,8 +108,8 @@
       "x": 15,
       "y": 25,
       "elevation": 0,
-      "var": "VAR_DEWFORD_TOWN_STATE",
-      "var_value": "4",
+      "var": "VAR_UNDERGROUNDLAB_STATE",
+      "var_value": "TEAM_INSIDE_LAB",
       "script": "ThisIsntRandom_CheckProgressA_Script"
     },
     {
@@ -117,8 +117,8 @@
       "x": 4,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_DEWFORD_TOWN_STATE",
-      "var_value": "5",
+      "var": "VAR_UNDERGROUNDLAB_STATE",
+      "var_value": "FREED_LAB_POKEMON_1",
       "script": "ThisIsntRandom_CheckProgressB_Script"
     },
     {
@@ -126,8 +126,8 @@
       "x": 25,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_DEWFORD_TOWN_STATE",
-      "var_value": "6",
+      "var": "VAR_UNDERGROUNDLAB_STATE",
+      "var_value": "FREED_LAB_POKEMON_2",
       "script": "WaitEvenThen_PrepareBossEncounter_Dialogue"
     },
     {
@@ -135,8 +135,8 @@
       "x": 25,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_DEWFORD_TOWN_STATE",
-      "var_value": "6",
+      "var": "VAR_UNDERGROUNDLAB_STATE",
+      "var_value": "FREED_LAB_POKEMON_2",
       "script": "WaitEvenThen_PrepareBossEncounter_Dialogue"
     }
   ],

@@ -2663,8 +2663,8 @@ bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     u16 mapId = VarGet(ScriptReadHalfword(ctx));
-    u16 mapGroup = (mapData >> 8) & 0xFF;
-    u16 mapNum= (mapData & 0xFF);
+    u16 mapGroup = (mapId>> 8) & 0xFF;
+    u16 mapNum = (mapId & 0xFF);
     u16 mapSecId = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 
     GetMapName(sScriptStringVars[stringVarIndex], mapSecId, 0);
