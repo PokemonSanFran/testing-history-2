@@ -4555,9 +4555,11 @@ bool8 Script_CheckForMonAndMove(void)
     return FALSE;
 }
 
-u8 Script_GetMapName(void)
+u8 Script_GetCurrentMapName(void)
 {
-    GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
+    u8 mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
+
+    GetMapNameGeneric(gStringVar1, mapHeader);
 }
 
 void CopyMonToStolenTradeStorage(void)
