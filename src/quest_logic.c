@@ -812,33 +812,20 @@ static const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
     {MAP_BERKELEY_POKEMONCENTER_1F,SUB_QUEST_19,CATCH_FAIRY,},
 };
 
-extern const u8 sMapName_Psfroute17[];
-extern const u8 sMapName_Twinpeaks[];
-extern const u8 sMapName_Psfroute18[];
-extern const u8 sMapName_Alcatraz[];
-extern const u8 sMapName_Tenderloin[];
-extern const u8 sMapName_Soma[];
-extern const u8 sMapName_Psfroute13[];
-extern const u8 sMapName_Psfroute8[];
-extern const u8 sMapName_Chinatown[];
-extern const u8 sMapName_Psfroute9[];
-extern const u8 sMapName_Psfroute1[];
-extern const u8 sMapName_Psfroute30[];
-
 static const u8* const bodegaParametersTextArray[19][2]=
 {
-    {gText_Bodegaburnout_PersonA,sMapName_Psfroute17},
-    {gText_Bodegaburnout_PersonB,sMapName_Twinpeaks},
-    {gText_Bodegaburnout_PersonC,sMapName_Psfroute18},
-    {gText_Bodegaburnout_PersonD,sMapName_Alcatraz},
-    {gText_Bodegaburnout_PersonE,sMapName_Tenderloin},
-    {gText_Bodegaburnout_PersonF,sMapName_Soma},
-    {gText_Bodegaburnout_PersonG,sMapName_Psfroute13},
-    {gText_Bodegaburnout_PersonH,sMapName_Psfroute8},
-    {gText_Bodegaburnout_PersonI,sMapName_Chinatown},
-    {gText_Bodegaburnout_PersonJ,sMapName_Psfroute9},
-    {gText_Bodegaburnout_PersonK,sMapName_Psfroute1},
-    {gText_Bodegaburnout_PersonL,sMapName_Psfroute30},
+    {gText_Bodegaburnout_PersonA,gText_Psfroute17},
+    {gText_Bodegaburnout_PersonB,gText_Twinpeaks},
+    {gText_Bodegaburnout_PersonC,gText_Psfroute18},
+    {gText_Bodegaburnout_PersonD,gText_Alcatraz},
+    {gText_Bodegaburnout_PersonE,gText_Tenderloin},
+    {gText_Bodegaburnout_PersonF,gText_Soma},
+    {gText_Bodegaburnout_PersonG,gText_Psfroute13},
+    {gText_Bodegaburnout_PersonH,gText_Psfroute8},
+    {gText_Bodegaburnout_PersonI,gText_Chinatown},
+    {gText_Bodegaburnout_PersonJ,gText_Psfroute9},
+    {gText_Bodegaburnout_PersonK,gText_Psfroute1},
+    {gText_Bodegaburnout_PersonL,gText_Psfroute30},
     {gText_Bodegaburnout_StrongMon,gText_Bodegaburnout_AssistWithStocking},
     {gText_Bodegaburnout_StrongMon,gText_Bodegaburnout_AssistWithStocking},
     {gText_Bodegaburnout_ColdMon,gText_Bodegaburnout_HelpKeepFood},
