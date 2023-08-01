@@ -62,8 +62,10 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BREAKTHEINTERNET, SUB_QUEST_1
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BREAKTHEINTERNET, SUB_QUEST_2
+	buffermapname STR_VAR_1, MAP_SOMA
+	msgbox Debug_Script_1_Text_0
+	msgbox Debug_Script_1_Text_1
+	closemessage
 	end
 
 
@@ -113,6 +115,12 @@ Debug_CheckSaveBlock::
 	release
 	end
 
+
+Debug_Script_1_Text_0:
+	.string "hi {STR_VAR_1}$"
+
+Debug_Script_1_Text_1:
+	.string "hi$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

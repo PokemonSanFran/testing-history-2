@@ -2659,25 +2659,14 @@ bool8 ScrCmd_bufferabilityname(struct ScriptContext *ctx)
     return FALSE;
 }
 
-/*
-bool8 ScrCmd_GetCurrentMapName(struct ScriptContext *ctx)
+bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
-    u8 mapGroup = ScriptReadByte(ctx);
-    u8 mapNum = ScriptReadByte(ctx);
-    u8 mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
-    const u8 *text = (u8 *)GetMapNameGeneric(gStringVar1, mapHeader);
-    StringCopy(sScriptStringVars[stringVarIndex], text);
+    u16 mapId = VarGet(ScriptReadHalfword(ctx));
+    u16 mapGroup = (mapData >> 8) & 0xFF;
+    u16 mapNum= (mapData & 0xFF);
+    u16 mapSecId = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 
-    return TRUE;
-}
-*/
-
-bool8 ScrCmd_bufferstring(struct ScriptContext *ctx)
-{
-    u8 stringVarIndex = ScriptReadByte(ctx);
-    const u8 *text = (u8 *)ScriptReadWord(ctx);
-
-    StringCopy(sScriptStringVars[stringVarIndex], text);
+    GetMapName(sScriptStringVars[stringVarIndex], mapSecId, 0);
     return FALSE;
 }

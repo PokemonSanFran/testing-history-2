@@ -2493,3 +2493,10 @@
 	stringvar \stringVarId
 	.2byte \ability
 	.endm
+
+    @ Writes the name of the specified map to the specified buffer.
+    .macro buffermapname stringVarId:req, map:req
+    .byte 0xed
+	stringvar \stringVarId
+    .2byte \map
+    .endm

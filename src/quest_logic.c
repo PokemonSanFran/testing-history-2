@@ -1573,4 +1573,3 @@ bool8 IsPartyFullOfShinyOctillery(void)
 
     return (count == partyCount) ? TRUE : FALSE;
 }
-

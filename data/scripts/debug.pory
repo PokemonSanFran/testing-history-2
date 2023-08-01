@@ -72,8 +72,6 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_1)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_2)
     end
 }
 

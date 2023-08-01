@@ -237,6 +237,7 @@ gScriptCmdTable::
     .4byte ScrCmd_givefrontierbattlepoints  @ 0xea
 	.4byte ScrCmd_bufferpartymonspecies @ 0xeb
 	.4byte ScrCmd_bufferabilityname @ 0xec
+    .4byte ScrCmd_buffermapname @ 0xed
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop
