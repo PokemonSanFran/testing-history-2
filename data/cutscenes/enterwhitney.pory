@@ -73,7 +73,7 @@ script EnterWhitney_MuseumArrangement_Dialogue {
 }
 
 script EnterWhitney_StartBattle_Script {
-    trainerbattle_single(TRAINER_WATTSON_1, gText_EnterWhitney_LetsSeeHow, gText_EnterWhitney_IfThisBattle, EnterWhitney_Defeated_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_WHITNEY, gText_EnterWhitney_LetsSeeHow, gText_EnterWhitney_IfThisBattle, EnterWhitney_Defeated_Script, NO_MUSIC)
 }
 
 script EnterWhitney_Defeated_Script {

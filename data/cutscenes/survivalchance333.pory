@@ -85,7 +85,7 @@ goto(SurvivalChance333_Battle_Script)
 script SurvivalChance333_Battle_Script {
 msgbox(gText_SurvivalChance333_WontEvenBeAFair,,SPEAKER_CHIEF)
 closemessage
-multi_fixed_2_vs_1(TRAINER_TIFFANY,gText_SurvivalChance333_Hmph,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+multi_fixed_2_vs_1(TRAINER_POLICECHIEF,gText_SurvivalChance333_Hmph,TRAINER_BIANCA_IGUESSWESHOULDBENICE,TRAINER_BACK_PIC_MAY)
 goto(SurvivalChance333_PostBattle_Script)
 }
 

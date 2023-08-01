@@ -26,7 +26,7 @@ script YoungPadawan_Intro_Dialogue {
         msgbox(gText_YoungPadawan_ThankYou,,SPEAKER_ZOEY)
 
         msgbox(gText_YoungPadawan_DontMentionIt,,SPEAKER_MALVA)
-        
+
         closemessage
 
         applymovement(MALVA,YoungPadawan_LookAtOcean_Movement)
@@ -40,7 +40,7 @@ script YoungPadawan_Intro_Dialogue {
         msgbox(gText_YoungPadawan_ThatQuakeWasOne,,SPEAKER_MALVA)
 
         msgbox(gText_YoungPadawan_HistoryBooksAreCrazy,,SPEAKER_MALVA)
-        
+
         closemessage
 
         applymovement(MALVA,YoungPadawan_WalkBackToPlayer_Movement)
@@ -58,9 +58,9 @@ script YoungPadawan_Intro_Dialogue {
 script YoungPadawan_StartBattle_Script{
 
         msgbox(gText_YoungPadawan_YouveGotAGoodSpirit,,SPEAKER_MALVA)
-        
+
         closemessage
-        trainerbattle_continue_after_lose(TRAINER_SIDNEY,gText_YoungPadawan_DontBeatYourselfUp)
+        trainerbattle_continue_after_lose(TRAINER_MALVA,gText_YoungPadawan_DontBeatYourselfUp)
         goto(YoungPadawan_PostBattle_Dialogue)
 }
 
@@ -70,7 +70,7 @@ script YoungPadawan_Secret_Dialogue{
         msgbox(gText_YoungPadawan_GotItYouWon,,SPEAKER_ZOEY)
 
         msgbox(gText_YoungPadawan_KeepItSecretToo,,SPEAKER_MALVA)
-        
+
         closemessage
 
         additem(ITEM_POWER_ANKLET,1)
@@ -87,7 +87,7 @@ script YoungPadawan_Secret_Dialogue{
 }
 
 script YoungPadawan_PostBattle_Dialogue{
-        if (defeated(TRAINER_SIDNEY)){
+        if (defeated(TRAINER_MALVA)){
             call(YoungPadawan_Secret_Dialogue)
         }else {
             special(HealPlayerParty)
@@ -99,13 +99,13 @@ script YoungPadawan_PostBattle_Dialogue{
 
                 msgbox(gText_YoungPadawan_UntilThenHeres,,SPEAKER_MALVA)
                 closemessage
-                
+
         }
         giveitem(ITEM_GO_GOGGLES,1)
         setvar(VAR_STORYLINE_STATE,STORY_COMPLETE_ALCATRAZ)
 
         msgbox(gText_YoungPadawan_ThoseCanBeTough,,SPEAKER_MALVA)
-        
+
         closemessage
 
         applymovement(MALVA,YoungPadawan_WalkUpStairs_Movement)

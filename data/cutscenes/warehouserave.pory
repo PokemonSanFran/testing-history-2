@@ -34,7 +34,7 @@ script WarehouseRave_PostSaveUnlock {
         setmetatile(9,8,0x218,FALSE)
         special(DrawWholeMapView)
 
-        if(defeated(TRAINER_TABITHA_MT_CHIMNEY)){
+        if(defeated(TRAINER_KOGA_WAREHOUSE_RAVE)){
             call(WarehouseRave_MakeExplosionHole_Script)
         }
 }
@@ -103,7 +103,7 @@ script Warehourse_Interact_Script {
 script WarehouseRave_Battle_Script {
     lock
         msgbox(gText_WarehouseRave_PrepareToFight,,SPEAKER_KOGA)
-        trainerbattle_no_intro(TRAINER_TABITHA_MT_CHIMNEY,gText_WarehouseRave_YesTheyllBelieve)
+        trainerbattle_no_intro(TRAINER_KOGA_WAREHOUSE_RAVE,gText_WarehouseRave_YesTheyllBelieve)
         closemessage
 
         goto(WarehouseRave_PostBattle_Script)

@@ -46,7 +46,7 @@ script AssholesHome_StartBattle_Script{
         msgbox(gText_AssholesHome_JustCurious,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         msgbox(gText_AssholesHome_IDoubtYoureGoing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         closemessage
-        trainerbattle_no_intro(TRAINER_WALLY_VR_1,gText_AssholesHome_ThrowsTheirMoney)
+        trainerbattle_no_intro(TRAINER_ARCHER_ASSHOLEHOME,gText_AssholesHome_ThrowsTheirMoney)
         goto(AssholesHome_PostBattle_Dialogue)
 }
 

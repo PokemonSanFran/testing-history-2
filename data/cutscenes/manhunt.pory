@@ -92,7 +92,7 @@ script Manhunt_Cherie_Battle_Script {
 
 
         msgbox(gText_Manhunt_AsAMatterOfFact,,SPEAKER_CHERIE)
-        multi_fixed_2_vs_1(TRAINER_RICK,gText_Manhunt_PleaseDontHurtUs,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        multi_fixed_2_vs_1(TRAINER_CHERIE,gText_Manhunt_PleaseDontHurtUs,TRAINER_BIANCA_IMIN,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_1)
         msgbox(gText_Manhunt_StartTalking,,SPEAKER_BIANCA)
 

@@ -131,7 +131,7 @@ script LetsBurnThisMotherDown_StartBattle_Script {
 
         msgbox(gText_LetsBurnThisMotherDown_ImGoingForRevolution,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
-        trainerbattle_no_intro(TRAINER_WALLY_VR_5,gText_LetsBurnThisMotherDown_DamnIt)
+        trainerbattle_no_intro(TRAINER_ARCHER_LETSBURNTHISMOTHERDOWN,gText_LetsBurnThisMotherDown_DamnIt)
         goto(LetsBurnThisMotherDown_PostBattle_Dialogue)
 }
 

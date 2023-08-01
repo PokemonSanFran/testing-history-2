@@ -38,7 +38,7 @@ msgbox(gText_EnterMorty_SoundsExciting,MSGBOX_NPC,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 }
 
 script EnterMorty_StartGymBattle_Script {
-    trainerbattle_single(TRAINER_FLANNERY_1, gText_EnterMorty_HaHaNoYeah, gText_EnterMorty_ImNotTrippin, EnterMorty_MortyDefeated_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_MORTY, gText_EnterMorty_HaHaNoYeah, gText_EnterMorty_ImNotTrippin, EnterMorty_MortyDefeated_Script, NO_MUSIC)
 }
 
 script EnterMorty_MortyDefeated_Script {

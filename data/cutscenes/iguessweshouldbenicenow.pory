@@ -187,7 +187,7 @@ script IGuessWeShouldBeNiceNow_CoreEncounter_Script {
         delay(40)
         waitmoncry
         setflag(FLAG_SYS_CTRL_OBJ_DELETE)
-        multi_fixed_wild(TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY)
+        multi_fixed_wild(TRAINER_BIANCA_IGUESSWESHOULDBENICE, TRAINER_BACK_PIC_MAY)
         //PSF TODO make sure you can't catch Siebold's ace
         clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
         specialvar(VAR_RESULT, GetBattleOutcome)

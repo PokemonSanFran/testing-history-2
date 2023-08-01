@@ -11,7 +11,8 @@ script EnterPryce_Event_Script {
     goto_if_quest_complete(QUEST_INVERSEHALLUCINOGENIC,Haightashbury_Gym_PryceRematch_Script)
     switch (var (VAR_GYM_7_STATE)) {
     case GYM_SAVE_BEFORE_LEADER:
-        goto(EnterPryce_FacePlayerBeforeBattle_Script)
+        faceplayer
+        goto(EnterPryce_StartBattle_Script)
     case GYM_DEFEATED_LEADER:
         goto(EnterPryce_PostDefeat1_Dialogue)
     case GYM_EXPLAINED_BADGE_AND_TM:
@@ -132,17 +133,10 @@ script EnterPsf7leader_ExplainLab_Dialogue {
     goto(EnterPryce_StartBattle_Script)
 }
 
-script EnterPryce_FacePlayerBeforeBattle_Script {
-    msgbox(gText_EnterPryce_IDontKnow, MSGBOX_NPC,SPEAKER_PRYCE)
-    closemessage
-        trainerbattle_no_intro(TRAINER_TATE_AND_LIZA_1, gText_EnterPryce_UghIThinkThisBatch)
-    goto(EnterPryce_PostBattle_Script)
-}
-
 script EnterPryce_StartBattle_Script {
     msgbox(gText_EnterPryce_IDontKnow,,SPEAKER_PRYCE)
     closemessage
-        trainerbattle_no_intro(TRAINER_TATE_AND_LIZA_1, gText_EnterPryce_UghIThinkThisBatch)
+        trainerbattle_no_intro(TRAINER_PRYCE, gText_EnterPryce_UghIThinkThisBatch)
     goto(EnterPryce_PostBattle_Script)
 }
 

@@ -20,7 +20,7 @@ script EnterBugsy_BugsyIntro_Dialogue {
 }
 
 script EnterBugsy_StartGymBattle_Script {
-        trainerbattle_single(TRAINER_BRAWLY_1, gText_EnterBugsy_EnGarde, gText_EnterBugsy_ItsAnHonorToLose, EnterBugsy_BugsyDefeated_Script, NO_MUSIC)
+        trainerbattle_single(TRAINER_BUGSY, gText_EnterBugsy_EnGarde, gText_EnterBugsy_ItsAnHonorToLose, EnterBugsy_BugsyDefeated_Script, NO_MUSIC)
 }
 
 script EnterBugsy_BugsyDefeated_Script {

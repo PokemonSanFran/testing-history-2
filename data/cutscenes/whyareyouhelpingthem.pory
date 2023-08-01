@@ -156,7 +156,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
 
         closemessage
 
-        trainerbattle_continue_after_lose(TRAINER_ARCHIE,gText_WhyAreYouHelpingThem_WaitAMinute)
+        trainerbattle_continue_after_lose(TRAINER_GIOVANNI,gText_WhyAreYouHelpingThem_WaitAMinute)
         goto(WhyAreYouHelpingThem_PostBattleBoss_Dialogue)
 }
 
@@ -165,7 +165,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         addobject(ARIANA)
         call(WhyAreYouHelpingThem_MoveObjectAriana_Script)
 
-        if (defeated(TRAINER_ARCHIE)){
+        if (defeated(TRAINER_GIOVANNI)){
 
                 msgbox(gText_WhyAreYouHelpingThem_YoureIncredible,,SPEAKER_GIOVANNI)
                 closemessage
@@ -266,7 +266,7 @@ script WhyAreYouHelpingThem_InteractBattle_Script {
 script WhyAreYouHelpingThem_StartBattle_Script{
     lock
         msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen,,SPEAKER_ARCHER)
-        trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
+        trainerbattle_no_intro(TRAINER_ARCHER_WHYAREYOUHELPINGTHEM,gText_WhyAreYouHelpingThem_AnotherVictory)
         closemessage
 
         goto(WhyAreYouHelpingThem_PostBattle_Dialogue)

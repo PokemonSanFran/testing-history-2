@@ -428,7 +428,7 @@ script ImIn_StartBiancaBattle_Script {
         msgbox(gText_ImIn_AreDeadDoYou,,SPEAKER_BIANCA)
         closemessage
 
-        trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
+        trainerbattle_no_intro(TRAINER_BIANCA_IMIN,gText_ImIn_HowDoesThisKeep)
         goto(ImIn_BiancaDefeated_Dialogue)
 }
 

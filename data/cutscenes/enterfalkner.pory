@@ -52,7 +52,7 @@ script EnterFalkner_Intro_Dialogue {
 
 script EnterFalkner_StartGymBattle_Script {
   lock
-  trainerbattle_single(TRAINER_ROXANNE_1, gText_EnterFalkner_IThinkYouTalk, gText_EnterFalkner_WoahSuperSour, EnterFalkner_FalknerDefeated_Script, NO_MUSIC)
+  trainerbattle_single(TRAINER_FALKNER, gText_EnterFalkner_IThinkYouTalk, gText_EnterFalkner_WoahSuperSour, EnterFalkner_FalknerDefeated_Script, NO_MUSIC)
 }
 
 script EnterFalkner_FalknerDefeated_Script {

@@ -100,28 +100,28 @@ script VSGarbodor_ChooseRight_Script {
 }
 
 script VSGarbodor_TeamRocketGrunt1_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_TeamRocketGrunt1_Battle_Script)
+    trainerbattle_single(TRAINER_FAKEROCKET_A, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_TeamRocketGrunt1_Battle_Script)
         msgbox(gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_A)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_TeamRocketGrunt3_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script)
+    trainerbattle_single(TRAINER_FAKEROCKET_B, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script)
         msgbox(gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_B)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_TeamRocketGrunt2_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script)
+    trainerbattle_single(TRAINER_FAKEROCKET_A, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script)
         msgbox(gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_A)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_TeamRocketGrunt4_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_TeamRocketGrunt4_Battle_Script)
+    trainerbattle_single(TRAINER_FAKEROCKET_B, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_TeamRocketGrunt4_Battle_Script)
         msgbox(gText_VSGarbodor_HaveFunCleaning, MSGBOX_AUTOCLOSE)
         goto(VSGarbodor_RemoveGrunt)
         end

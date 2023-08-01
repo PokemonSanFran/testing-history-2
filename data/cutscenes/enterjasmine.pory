@@ -29,7 +29,7 @@ script EnterJasmine_Intro_Dialogue {
 
 script EnterJasmine_StartGymBattle_Script {
 
-        trainerbattle_single(TRAINER_WINONA_1,gText_EnterJasmine_LetsSeeHowCareful,gText_EnterJasmine_WrongSoil,EnterJasmine_PostGymBattle_Script, NO_MUSIC)
+        trainerbattle_single(TRAINER_JASMINE,gText_EnterJasmine_LetsSeeHowCareful,gText_EnterJasmine_WrongSoil,EnterJasmine_PostGymBattle_Script, NO_MUSIC)
 }
 
 script EnterJasmine_PostGymBattle_Script {

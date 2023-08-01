@@ -55,7 +55,7 @@ script LetsGrabLunch_StartBattle_Script {
         closemessage
 
 
-        trainerbattle_no_intro(TRAINER_WALLY_VR_4,gText_LetsGrabLunch_NahNotRobbed)
+        trainerbattle_no_intro(TRAINER_ARCHER_LETSGRABLUNCH,gText_LetsGrabLunch_NahNotRobbed)
         goto(LetsGrabLunch_PostBattle_Dialogue)
 }
 

@@ -90,7 +90,7 @@ script BeachBattle_StartBattle_Script {
     lock
         msgbox(gText_BeachBattle_MyBrainIsScrambled,MSGBOX_DEFAULT,SPEAKER_BIANCA)
         closemessage
-        trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
+        trainerbattle_no_intro(TRAINER_BIANCA_BEACHBATTLE,gText_BeachBattle_ImLegitShook)
         closemessage
 
         goto(BeachBattle_PostBattle_Dialogue)

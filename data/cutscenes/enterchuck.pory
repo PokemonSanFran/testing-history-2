@@ -38,7 +38,7 @@ script EnterChuck_Intro_Dialogue {
 }
 
 script EnterChuck_StartBattle_Script {
-    trainerbattle_single(TRAINER_NORMAN_1, gText_EnterChuck_NowImGonnaShow, gText_EnterChuck_ManDown, EnterChuck_ChuckDefeated_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_CHUCK, gText_EnterChuck_NowImGonnaShow, gText_EnterChuck_ManDown, EnterChuck_ChuckDefeated_Script, NO_MUSIC)
 }
 
 script EnterChuck_ChuckDefeated_Script {

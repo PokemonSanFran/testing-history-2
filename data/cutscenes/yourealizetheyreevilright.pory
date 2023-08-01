@@ -130,28 +130,28 @@ script YouRealizeTheyreEvilRight_InteractArcher {
 }
 
 script YouRealizeTheyreEvil_Ghost1_Battle_Script{
-    trainerbattle_single(TRAINER_VALERIE_1, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost1_Battle_Script)
+    trainerbattle_single(TRAINER_ALCATRAZ_GHOST_A, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost1_Battle_Script)
         msgbox(gText_YouRealizeTheyreEvilRight_WhileAlcatraz,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
         goto(YouRealizeTheyreEvilRight_RemoveGhost)
         end
 }
 
 script YouRealizeTheyreEvil_Ghost2_Battle_Script{
-    trainerbattle_single(TRAINER_ATSUSHI, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost2_Battle_Script)
+    trainerbattle_single(TRAINER_ALCATRAZ_GHOST_B, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost2_Battle_Script)
         msgbox(gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
         goto(YouRealizeTheyreEvilRight_RemoveGhost)
         end
 }
 
 script YouRealizeTheyreEvil_Ghost3_Battle_Script{
-    trainerbattle_single(TRAINER_TASHA, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost3_Battle_Script)
+    trainerbattle_single(TRAINER_ALCATRAZ_GHOST_C, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost3_Battle_Script)
         msgbox(gText_YouRealizeTheyreEvilRight_TheInmateWasAlso,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
         goto(YouRealizeTheyreEvilRight_RemoveGhost)
         end
 }
 
 script YouRealizeTheyreEvil_Ghost4_Battle_Script{
-    trainerbattle_single(TRAINER_CEDRIC, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost4_Battle_Script)
+    trainerbattle_single(TRAINER_ALCATRAZ_GHOST_D, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost4_Battle_Script)
         msgbox(gText_YouRealizeTheyreEvilRight_TheProtests,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
         goto(YouRealizeTheyreEvilRight_RemoveGhost)
         end

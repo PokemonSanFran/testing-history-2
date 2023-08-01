@@ -74,7 +74,7 @@ script Battle8_StartBattle_Script {
         closemessage
 
 
-        trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
+        trainerbattle_no_intro(TRAINER_ARCHER_BATTLE8,gText_Battle8_MaybeINeed)
         goto(Battle8_ArcherDefeated_Dialogue)
 }
 

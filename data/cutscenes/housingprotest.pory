@@ -72,7 +72,7 @@ script HousingProtest_MovePlayerIntoPosition {
     }
     waitmovement(0)
 
-    if (defeated(TRAINER_GRUNT_AQUA_HIDEOUT_1)) {
+    if (defeated(TRAINER_HOUSINGPROTEST_ROCKET)) {
         applymovement(PLAYER, HousingProtest_WalkSouthFromLandlord)
         waitmovement(0)
     }
@@ -177,7 +177,7 @@ script HousingProtest_StartBattle_Script {
     lockall
     msgbox(gText_HousingProtest_FineWithMe,,SPEAKER_VITOMIR)
     closemessage
-    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
+    trainerbattle_no_intro(TRAINER_HOUSINGPROTEST_ROCKET, gText_HousingProtest_ThisIsNotHowThis)
     goto(HousingProtest_PostBattle_Dialogue)
 }
 
@@ -187,7 +187,7 @@ script HousingProtest_StartBattle_PostSave_Script {
     setobjectnewmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
     msgbox(gText_HousingProtest_FineWithMe, MSGBOX_NPC,SPEAKER_RABIA)
     closemessage
-    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
+    trainerbattle_no_intro(TRAINER_HOUSINGPROTEST_ROCKET, gText_HousingProtest_ThisIsNotHowThis)
     goto(HousingProtest_PostBattle_Dialogue)
 }
 

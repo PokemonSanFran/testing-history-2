@@ -37,7 +37,7 @@ script EnterClair_AskAboutGym_Dialogue {
 script EnterClair_FacePlayerBeforeBattle_Script {
         msgbox(gText_EnterClair_ButTheyNeverWill,MSGBOX_NPC,,SPEAKER_CLAIR)
         closemessage
-        trainerbattle_no_intro(TRAINER_JUAN_1,gText_EnterClair_AhIGotTooGreedy)
+        trainerbattle_no_intro(TRAINER_CLAIR,gText_EnterClair_AhIGotTooGreedy)
         goto(EnterClair_ClairDeafeated_Script)
 }
 

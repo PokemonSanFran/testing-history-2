@@ -27,14 +27,14 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         call(WeCanStopYouActually_FixPlayerPosition_Script)
 
         msgbox(gText_WeCanStopYouActually_SoWhatsYourPlan,,SPEAKER_ROSE)
-        
+
 
         msgbox(gText_WeCanStopYouActually_BeepBeep)
 
         msgbox(gText_WeCanStopYouActually_ThatsTheAuthorities,,SPEAKER_ROSE)
 
         msgbox(gText_WeCanStopYouActually_OhNo,,SPEAKER_ROSE)
-        
+
         closemessage
 
         applymovement(ROSE,WeCanStopYouActually_RunToDesk)
@@ -45,13 +45,13 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         fadescreen(FADE_TO_BLACK)
 
         msgbox(gText_WeCanStopYouActually_IAmChiefOperatingOfficer,,SPEAKER_KOGA)
-        
+
         closemessage
 
         fadescreen(FADE_FROM_BLACK)
 
         msgbox(gText_WeCanStopYouActually_WaitTheHell,,SPEAKER_ROSE)
-        
+
 
         playse(SE_POKENAV_CALL)
         waitse
@@ -60,7 +60,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         msgbox(gText_WeCanStopYouActually_FindThem,,SPEAKER_ROSE)
 
         msgbox(gText_WeCanStopYouActually_IDontCare,,SPEAKER_ROSE)
-        
+
         closemessage
 
         applymovement(ROSE,WeCanStopYouActually_RageRun)
@@ -69,7 +69,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         msgbox(gText_WeCanStopYouActually_TheyToldYou,,SPEAKER_ROSE)
 
         msgbox(gText_WeCanStopYouActually_I,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         applymovement(ROSE,Common_Movement_FaceLeft)
@@ -77,14 +77,14 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         msgbox(gText_WeCanStopYouActually_Security,,SPEAKER_ROSE)
 
         msgbox(gText_WeCanStopYouActually_WeAlreadyBeatThem,,SPEAKER_ZOEY)
-        
+
         closemessage
 
         applymovement(ROSE,Common_Movement_FaceDown)
         waitmovement(ROSE)
 
         msgbox(gText_WeCanStopYouActually_ImNotGoingToPrison,,SPEAKER_ROSE)
-        
+
         closemessage
 
         applymovement(ROSE,Common_Movement_WalkDown)
@@ -95,10 +95,10 @@ script WeCanStopYouActually_PostBattle_Dialogue {
 
 script WeCanStopYouActually_StartBossBattle_Script {
         msgbox(gText_WeCanStopYouActually_AndIllFrigginKill,,SPEAKER_ROSE)
-        
+
         closemessage
 
-        trainerbattle_no_intro(TRAINER_STEVEN,gText_WeCanStopYouActually_Nonono)
+        trainerbattle_no_intro(TRAINER_ROSE_B,gText_WeCanStopYouActually_Nonono)
         goto(WeCanStopYouActually_Arrest_Dialogue)
 }
 
@@ -122,7 +122,7 @@ script WeCanStopYouActually_Arrest_Dialogue {
         waitmovement(POLICE_B)
 
         msgbox(gText_WeCanStopYouActually_ForWhat,,SPEAKER_ROSE)
-        
+
         closemessage
         warpsilent(MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE,0)
         end
@@ -343,7 +343,7 @@ movement WeCanStopYouActually_RageRun {
         walk_faster_left * 2
         walk_faster_right * 2
         walk_faster_left * 2
-        walk_faster_right 
+        walk_faster_right
         face_down
         step_end
 }

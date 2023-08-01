@@ -131,7 +131,7 @@ script WaitEvenThen_BossEncounter_Script {
         delay(40)
         waitmoncry
         setflag(FLAG_SYS_CTRL_OBJ_DELETE)
-        multi_fixed_wild(TRAINER_WALLY_VR_2,TRAINER_BACK_PIC_WALLY)
+        multi_fixed_wild(TRAINER_ARCHER_LETSGRABLUNCH,TRAINER_BACK_PIC_WALLY)
         clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
         specialvar(VAR_RESULT, GetBattleOutcome)
         switch (var (VAR_RESULT)) {

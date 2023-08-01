@@ -186,7 +186,7 @@ script WaitHeDidWhat_StartBattle_Script{
         applymovement(1,Common_Movement_WalkLeft)
         waitmovement(0)
         msgbox(gText_WaitHeDidWhat_ForPsfregion,,SPEAKER_ARCHER)
-        trainerbattle_no_intro(TRAINER_STEVEN,gText_WaitHeDidWhat_SoClose)
+        trainerbattle_no_intro(TRAINER_ARCHER_FINALS,gText_WaitHeDidWhat_SoClose)
         closemessage
 
         goto(WelcomeToTheHallOfFame_PostBattle_Dialogue)

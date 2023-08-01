@@ -71,7 +71,7 @@ script NewAssholeAppears_BadgeJudge_Dialogue {
 
 script NewAssholeAppears_StartBattle_Script{
     lockall
-    trainerbattle_single(TRAINER_WALLY_MAUVILLE,gText_NewAssholeAppears_GoMindYourBusiness,gText_NewAssholeAppears_YoureTough,NewAssholeAppears_PostBattle_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_ARCHER_NEWASSHOLEAPPEARS,gText_NewAssholeAppears_GoMindYourBusiness,gText_NewAssholeAppears_YoureTough,NewAssholeAppears_PostBattle_Script, NO_MUSIC)
     closemessage
 
 }

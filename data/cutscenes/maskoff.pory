@@ -111,7 +111,7 @@ script MaskOff_Encounter_Giovanni_Dialogue {
 
         lock
 
-        trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Placeholder)
+        trainerbattle_no_intro(TRAINER_GIOVANNI,gText_GroupStages_Placeholder)
 
         setvar(VAR_MASK_OFF_STATE,DEFEATED_MASK_OFF_GIOVANNI)
         setvar(VAR_STORYLINE_STATE,STORY_DEFEATED_GIOVANNI)

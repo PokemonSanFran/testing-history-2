@@ -62,7 +62,7 @@ script OldAssholeAppears_StartBattle_Script {
     closemessage
 
     playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
-    trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, gText_OldAssholeAppers_ImStartingToQuestion)
+    trainerbattle_no_intro(TRAINER_BIANCA_OLDASSHOLEAPPEARS, gText_OldAssholeAppers_ImStartingToQuestion)
     goto(OldAssholeAppears_GiveCorviknightCard_Script)
 }
 
