@@ -24,7 +24,7 @@ SOMA_Stan_Interact_Script::
 	call Quest_WallaceArmy_LoadStanSpeech_Script
 	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
 	call Quest_WallaceArmy_PreBattleStan_Script
-	trainerbattle_single TRAINER_LOLA_3, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, SOMA_Stan_PostBattle_Script
+	trainerbattle_single TRAINER_SOMA_STAN, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, SOMA_Stan_PostBattle_Script
 	goto SOMA_Stan_PostBattle_Script
 	return
 

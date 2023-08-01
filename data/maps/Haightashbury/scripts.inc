@@ -22,7 +22,7 @@ Haightashbury_Stan_Interact_Script::
 	call Quest_WallaceArmy_LoadStanSpeech_Script
 	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
 	call Quest_WallaceArmy_PreBattleStan_Script
-	trainerbattle_single TRAINER_LOLA_2, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Haightashbury_Stan_PostBattle_Script
+	trainerbattle_single TRAINER_HAIGHTASHBURY_STAN, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Haightashbury_Stan_PostBattle_Script
 	goto Haightashbury_Stan_PostBattle_Script
 	return
 

@@ -27,7 +27,7 @@ Berkeley_Stan_Interact_Script::
 	call Quest_WallaceArmy_LoadStanSpeech_Script
 	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
 	call Quest_WallaceArmy_PreBattleStan_Script
-	trainerbattle_single TRAINER_LOLA_4, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Berkeley_Stan_PostBattle_Script
+	trainerbattle_single TRAINER_BERKELEY_STAN, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Berkeley_Stan_PostBattle_Script
 	goto Berkeley_Stan_PostBattle_Script
 	return
 

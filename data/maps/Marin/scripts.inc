@@ -66,7 +66,7 @@ Marin_Stan_Interact_Script::
 	call Quest_WallaceArmy_LoadStanSpeech_Script
 	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
 	call Quest_WallaceArmy_PreBattleStan_Script
-	trainerbattle_single TRAINER_LOLA_5, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Marin_Stan_PostBattle_Script
+	trainerbattle_single TRAINER_MARIN_STAN, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Marin_Stan_PostBattle_Script
 	goto Marin_Stan_PostBattle_Script
 	return
 

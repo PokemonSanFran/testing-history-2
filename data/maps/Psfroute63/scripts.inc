@@ -14,7 +14,7 @@ Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME:
 
 
 Psfroute63_MapScripts_OnResume::
-	checktrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
+	checktrainerflag TRAINER_HOUSINGPROTEST_ROCKET
 	goto_if 1, Psfroute63_MapScripts_OnResume_1
 	return
 
