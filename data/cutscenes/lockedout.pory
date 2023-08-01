@@ -1,0 +1,108 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script LockedOut_PreventPlayer_Script {
+    lock
+        if (!flag(FLAG_TIMELINE_TRUE)){
+            release
+                end
+        }
+
+    applymovement(PLAYER,LockedOut_DoorLocked)
+        waitmovement(0)
+        playse(SE_FAILURE)
+        waitse
+        msgbox(gText_LockedOut_AccessDenied,,SPEAKER_DOOR)
+        closemessage
+
+        if (!flag(FLAG_LOCKEDOUT_PLAYED)){
+            call(LockedOut_PhoneCall_Dialogue)
+        }else {
+            call(LockedOut_WarpPlayer_Script)
+        }
+    closemessage
+        release
+        end
+}
+
+script LockedOut_PhoneCall_Dialogue {
+    setflag(FLAG_LOCKEDOUT_PLAYED)
+        msgbox(gText_LockedOut_ShitWait,,SPEAKER_ZOEY)
+        
+        closemessage
+
+        applymovement(PLAYER,LockedOut_TryDoorAgain)
+        waitmovement(0)
+        playse(SE_FAILURE)
+        waitse
+        msgbox(gText_LockedOut_AccessDenied,,SPEAKER_DOOR)
+        closemessage
+
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+        waitse
+        pokenavcall("This phone is ringing.") 
+        waitmessage
+
+        msgbox(gText_LockedOut_HeyIWasThinking,,SPEAKER_ARCHER)
+
+        msgbox(gText_LockedOut_ImLockedOut,,SPEAKER_ZOEY)
+
+        msgbox(gText_LockedOut_ThatsActuallyWhy,,SPEAKER_ARCHER)
+
+        msgbox(gText_LockedOut_IActuallyHadnt,,SPEAKER_ZOEY)
+        closemessage
+        
+
+        playse(SE_POKENAV_HANG_UP)
+        waitse
+        goto(LockedOut_WarpPlayer_Script)
+}
+
+script LockedOut_WarpPlayer_Script {
+
+    msgbox(gText_LockedOut_DoYouWant,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            warpsilent(MAP_ALAMEDA,29,33)
+        }
+}
+
+text gText_LockedOut_AccessDenied {
+    format("Access denied.")
+}
+text gText_LockedOut_ShitWait {
+    format("Shit wait, already?!")
+}
+text gText_LockedOut_HeyIWasThinking {
+    format("Hey {PLAYER}, I was thinking…")
+}
+text gText_LockedOut_ImLockedOut {
+    format("I’m locked out!")
+}
+text gText_LockedOut_ThatsActuallyWhy {
+    format("That’s actually why I called. I know you had a lot to lose with this, and I was right: YCombinator is straight up going to disown you. If you need someplace to go, you can absolutely crash with me in Alameda.")
+}
+text gText_LockedOut_IActuallyHadnt {
+    format("I actually hadn’t thought that far ahead… but thank you, a lot, Archer.")
+}
+text gText_LockedOut_DoYouWant {
+    format("Do you want to go to Archer’s home?")
+}
+
+movement LockedOut_DoorLocked {
+    face_up
+        lock_facing_direction
+        walk_down
+        unlock_facing_direction
+        step_end
+}
+
+movement LockedOut_TryDoorAgain {
+    walk_up
+        delay_8
+        lock_facing_direction
+        walk_down
+        unlock_facing_direction
+        step_end
+}

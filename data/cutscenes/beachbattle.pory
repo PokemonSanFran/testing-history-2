@@ -1,0 +1,198 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const BIANCA = 1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+
+script BeachBattle_ObjectVisibility_Script{
+    switch (var(VAR_BEACH_BATTLE_STATE)){
+        case NOT_SEEN_BIANCA_BEACH: return
+        case SAVE_BIANCA_BEACH: call(BeachBattle_BattleSetUp_Script)
+        default: call(BeachBattle_ObjectSetUp_Script)
+    }
+    return
+}
+
+script BeachBattle_ObjectSetUp_Script {
+    setflag(FLAG_HIDE_BIANCA)
+}
+
+script BeachBattle_BattleSetUp_Script {
+    setobjectxyperm(BIANCA,10,24)
+}
+
+script BeachBattle_BiancaWalkToPlayer {
+    lock
+        msgbox(gText_BeachBattle_HeyPlayer,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+        closemessage
+
+        playse(SE_PIN)
+        clearflag(FLAG_TEMP_1)
+        addobject(BIANCA)
+        applymovement(PLAYER,BeachBattle_ExclaimAndTurn)
+        waitmovement(0)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        applymovement(BIANCA,BeachBattle_ApproachFromSouth)
+        waitmovement(0)
+        goto(BeachBattle_Bianca_Event_Script)
+}
+
+script BeachBattle_Interact_Script {
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+    faceplayer
+        goto(BeachBattle_Bianca_Event_Script)
+}
+
+script BeachBattle_Bianca_Event_Script {
+    switch (var(VAR_BEACH_BATTLE_STATE)) {
+        case NOT_SEEN_BIANCA_BEACH: goto(BeachBattle_Approach_Dialogue)
+        case SAVE_BIANCA_BEACH: goto(BeachBattle_StartBattle_Script)
+    }
+}
+
+script BeachBattle_Approach_Dialogue {
+        setvar(VAR_BEACH_BATTLE_STATE,SAVE_BIANCA_BEACH)
+        setobjectxyperm(BIANCA,10,24)
+        msgbox(gText_BeachBattle_ImHeadingNorth,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+
+        special(GetNumberOfBadges)
+
+        switch (var(VAR_RESULT)) {
+            case 8: msgbox(gText_BeachBattle_OhShit,MSGBOX_DEFAULT,SPEAKER_BIANCA,TAIL_TALK,EMOTE_SHOCK)
+            case 7: goto(BeachBattle_SevenBadges_Dialogue)
+            case 6: msgbox(gText_BeachBattle_TwoLeft,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+            case 5: msgbox(gText_BeachBattle_HmmOnlyFive,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+            case 4: goto(BeachBattle_FourBadges_Dialogue)
+        }
+        goto(BeachBattle_SaveProgress)
+}
+
+
+script BeachBattle_SevenBadges_Dialogue {
+    msgbox(gText_BeachBattle_OhNiceLastOne,MSGBOX_DEFAULT,SPEAKER_BIANCA,TAIL_TALK,EMOTE_HAPPY)
+
+        msgbox(gText_BeachBattle_JustTheOneIn,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        goto(BeachBattle_SaveProgress)
+}
+
+script BeachBattle_FourBadges_Dialogue {
+        msgbox(gText_BeachBattle_ImNotSureThatSlow,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+
+        msgbox(gText_BeachBattle_IveBeenALittleDistracted,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        goto(BeachBattle_SaveProgress)
+}
+
+script BeachBattle_SaveProgress {
+    closemessage
+    startmenu_savescreen
+    goto(BeachBattle_StartBattle_Script)
+}
+
+script BeachBattle_StartBattle_Script {
+    lock
+        msgbox(gText_BeachBattle_MyBrainIsScrambled,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+        closemessage
+        trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
+        closemessage
+
+        goto(BeachBattle_PostBattle_Dialogue)
+}
+
+script BeachBattle_PostBattle_Dialogue {
+    lock
+        addvar(VAR_STORYLINE_STATE,1)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        setvar(VAR_BEACH_BATTLE_STATE,POST_BEACH_BATTLE)
+
+        msgbox(gText_BeachBattle_WellImNotSurprised,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+
+        msgbox(gText_BeachBattle_UghIShouldBe,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+
+        if (flag(FLAG_BADGE05_GET)){
+            msgbox(gText_BeachBattle_IfItTakesATeam,TAIL_WHISPER,SPEAKER_BIANCA)
+        }
+
+    msgbox(gText_BeachBattle_NextTimeIllHave,TAIL_TALK,SPEAKER_BIANCA)
+
+        closemessage
+
+        applymovement(BIANCA,BeachBattle_WalkAway)
+        waitmovement(0)
+        fadedefaultbgm
+        removeobject(BIANCA)
+        release
+        end
+}
+
+text gText_BeachBattle_HeyPlayer {
+    format("Hey, {PLAYER}!!")
+}
+
+text gText_BeachBattle_ImHeadingNorth {
+    format("I'm heading north for my last Badge. How's your challenge holding up?")
+}
+
+text gText_BeachBattle_OhShit {
+    format("Oh shit! You beat me to eight badges - guess I underestimated you!")
+}
+
+text gText_BeachBattle_OhNiceLastOne {
+    format("Oh nice, last one too! Which one?")
+}
+
+text gText_BeachBattle_JustTheOneIn {
+    format("Just the one in {STR_VAR_1} City. Headed there now.")
+}
+
+text gText_BeachBattle_TwoLeft {
+    format("Two left, that's what I figured.")
+}
+
+text gText_BeachBattle_HmmOnlyFive {
+    format("Hmm, only five? Guessed you'd be further along by now!")
+}
+
+text gText_BeachBattle_ImNotSureThatSlow {
+    format("{PLAYER}, I'm not sure that slow and steady always win the race… you gotta pick it up!")
+}
+
+text gText_BeachBattle_IveBeenALittleDistracted {
+    format("I've been a little… distracted! But I'll make it up for sure, don't worry.")
+}
+
+text gText_BeachBattle_MyBrainIsScrambled {
+    format("My brain is scrambled from running around all day. Let's see if I can beat you without breaking a sweat!")
+}
+
+text gText_BeachBattle_ImLegitShook {
+    format("I'm legit shook. You're even stronger than I thought!")
+}
+
+text gText_BeachBattle_WellImNotSurprised {
+    format("Well, I'm not surprised you've already got seven Badges, that was tough!")
+}
+
+text gText_BeachBattle_UghIShouldBe {
+    format("Ugh, I should be stronger than that.")
+}
+
+text gText_BeachBattle_IfItTakesATeam {
+    format("If it takes a team as good as yours to beat Chuck, then I might need to rethink things…")
+}
+
+text gText_BeachBattle_NextTimeIllHave {
+    format("Next time, I'll have you figured out!")
+}
+
+movement BeachBattle_ExclaimAndTurn {
+    emote_exclamation_mark
+        face_down
+        step_end
+}
+movement BeachBattle_ApproachFromSouth {
+    walk_right * 6
+        walk_up * 4
+        step_end
+}
+movement BeachBattle_WalkAway {
+    walk_down * 7
+        step_end
+}

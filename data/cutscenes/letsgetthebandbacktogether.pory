@@ -1,0 +1,201 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARCHER = 1
+
+script LetsGettheBandBackTogether_HideObject_Script {
+    if (var(VAR_STORYLINE_STATE) == 43){ //If player has slept after being pitched by Archer, Alcatraz should be empty except for Archer
+        setflag(FLAG_TEMP_2)
+    }
+    setflag(FLAG_TEMP_5)
+        setflag(FLAG_TEMP_6)
+        setflag(FLAG_TEMP_7)
+        setflag(FLAG_TEMP_8)
+        setflag(FLAG_TEMP_9)
+}
+
+script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
+
+    if (flag(FLAG_TIMELINE_TIMETRAVEL)) {
+        lock
+            msgbox(gText_LetsGetTheBandBackTogether_IDontThinkIShould,,SPEAKER_ZOEY,TAIL_THOUGHT)
+
+            closemessage
+            applymovement(PLAYER,Common_Movement_WalkDown)
+            waitmovement(0)
+    }
+    release
+        end
+}
+
+//This cutscene plays after the player has decided to side with TeamRocket.
+script LetsGettheBandBackTogether_MeetInBasement_Script {
+
+    if (var(VAR_ALCATRAZ_STATE) == LAST_CHANCE_TRUE_TIMELINE_START){
+        goto(LetsGettheBandBackTogether_TrueTimelineSplit_Script)
+    }
+
+    lock
+        playse(SE_PIN)
+        waitse
+        applymovement(ARCHER,Common_Movement_ExclamationMark)
+        waitmovement(ARCHER)
+        msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,MSGBOX_NPC,SPEAKER_ARCHER,,EMOTE_SHOCK)
+
+            msgbox(gText_LetsGetTheBandBackTogether_IHadAnInsane,,SPEAKER_ZOEY)
+            msgbox(gText_LetsGetTheBandBackTogether_DamnYouDid,,SPEAKER_ARCHER)
+            msgbox(gText_LetsGetTheBandBackTogether_YouHaveNoIdea,,SPEAKER_ZOEY,,EMOTE_SWEAT)
+
+                msgbox(gText_LetsGetTheBandBackTogether_IReallyThinkWith,,SPEAKER_ARCHER)
+
+                msgbox(gText_LetsGetTheBandBackTogether_WaitTheEliteFour,,SPEAKER_ZOEY)
+
+                msgbox(gText_LetsGetTheBandBackTogether_OkayKindaThatsActually,,SPEAKER_ARCHER)
+
+                msgbox(gText_LetsGetTheBandBackTogether_WhatAmIMissing,,SPEAKER_ZOEY)
+
+                msgbox(gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver,,SPEAKER_ARCHER)
+
+                msgbox(gText_LetsGetTheBandBackTogether_LetsSplitUp,,SPEAKER_ARCHER)
+                msgbox(gText_LetsGetTheBandBackTogether_BeforeWeStart,,SPEAKER_ARCHER)
+
+                msgbox(gText_LetsGetTheBandBackTogether_OhYeahOfCourse,,SPEAKER_ZOEY)
+
+                msgbox(gText_LetsGetTheBandBackTogether_IllWriteUpAPost,,SPEAKER_ARCHER)
+                setvar(VAR_ALCATRAZ_STATE,LAST_CHANCE_TRUE_TIMELINE_START)
+
+                closemessage
+                release
+                end
+}
+
+script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
+    lock
+        faceplayer
+        msgbox(gText_LetsGetTheBandBackTogether_ReadyToGoLive,MSGBOX_YESNO,,SPEAKER_ARCHER)
+
+        if (var(VAR_RESULT) == NO){
+
+            msgbox(gText_LetsGetTheBandBackTogether_YeahIGetIt,,SPEAKER_ARCHER)
+
+                closemessage
+                release
+                end
+        }
+
+    setvar(VAR_ALCATRAZ_STATE,START_TRUE_TIMELINE)
+        setvar(VAR_STORYLINE_STATE,STORY_START_TRUE_TIMELINE)
+        setflag(FLAG_TIMELINE_TRUE)
+        setvar(VAR_MASK_OFF_STATE,ASSIGNED_MASK_OFF)
+
+        msgbox(gText_LetsGetTheBandBackTogether_Yes,,SPEAKER_ARCHER)
+
+        closemessage
+
+        fadescreen(FADE_TO_BLACK)
+        //PSF TODO Replace with Twitter message
+        msgbox(gText_LetsGetTheBandBackTogether_WereSickOf,,SPEAKER_ARCHER,TAIL_SHOUT,PHONE_ON)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+
+        msgbox(gText_LetsGetTheBandBackTogether_LetsSplitUp,,SPEAKER_ARCHER)
+
+        msgbox(gText_LetsGetTheBandBackTogether_AnyLeads,,SPEAKER_ZOEY)
+
+        msgbox(gText_LetsGetTheBandBackTogether_OkayGetGoing,,SPEAKER_ARCHER)
+
+
+        closemessage
+        applymovement(ARCHER,LetsGettheBandBackTogether_WalkOffScreen)
+        waitmovement(ARCHER)
+        playse(SE_EXIT)
+        waitse
+        removeobject(ARCHER)
+        release
+        end
+
+}
+text gText_LetsGetTheBandBackTogether_IDidntThinkYouWere {
+    format("I didn’t think you were coming back.")
+}
+
+text gText_LetsGetTheBandBackTogether_IHadAnInsane {
+    format("I had an insane dream last night, which really helped. I'm sorry about what I said yesterday. I was wrong. You can hack it. And Ycombinator... they're actually monsters.")
+}
+
+text gText_LetsGetTheBandBackTogether_DamnYouDid{
+    format("Damn, you did more thinking than I thought.")
+}
+
+text gText_LetsGetTheBandBackTogether_YouHaveNoIdea{
+    format("You have no idea how insane that dream was... but I'm serious. I'm here to help.")
+}
+
+text gText_LetsGetTheBandBackTogether_IReallyThinkWith {
+    format("I really think with you and the Elite Four here, we’ve got a fighting chance. You serious?")
+}
+
+text gText_LetsGetTheBandBackTogether_WaitTheEliteFour {
+    format("Wait, the entire Elite Four?")
+}
+
+text gText_LetsGetTheBandBackTogether_OkayKindaThatsActually {
+    format("Okay, kinda. That’s actually the next step. Malva and Drasna convinced Siebold to work with us too, but we’ve gotta find Wikstrom if we really want to present a united front.")
+}
+
+text gText_LetsGetTheBandBackTogether_WhatAmIMissing {
+    format("What am I missing? Can’t we just call them or something?")
+}
+
+text gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver {
+    format("Wikstrom hasn’t been heard from ever since Ycombinator took over. Just up and disappeared. I thought the other members would have heard from him, but Drasna said he’s been totally gone. They’re not even sure if they’re in the region anymore.")
+}
+
+
+text gText_LetsGetTheBandBackTogether_BeforeWeStart {
+    format("We should start rallying the people behind our cause. You’re the champ, after all, let’s put that clout to work.")
+}
+
+text gText_LetsGetTheBandBackTogether_OhYeahOfCourse {
+    format("Oh, yeah, of course. What were you thinking?")
+}
+
+text gText_LetsGetTheBandBackTogether_IllWriteUpAPost {
+    format("I’ll write up a post and you can share it. Once you do, though, Ycombinator is probably gonna cut you off, so if there are any perks you wanna use before you lose access you should do it now. Let me know when you’re good to go.")
+}
+
+text gText_LetsGetTheBandBackTogether_ReadyToGoLive {
+    format("Ready to go live?")
+}
+
+text gText_LetsGetTheBandBackTogether_YeahIGetIt {
+    format("Yeah, I get it. Nervous?")
+}
+
+text gText_LetsGetTheBandBackTogether_Yes {
+    format("Yes!")
+}
+
+text gText_LetsGetTheBandBackTogether_WereSickOf {
+    format("We’re sick of Ycombinator’s shit. We’re tired of the lies, the attacks, and the greed. Let’s take back our region, together.")
+}
+
+text gText_LetsGetTheBandBackTogether_LetsSplitUp {
+    format("Let’s split up. I’m going to talk to Ariana and try to convince them of the plan going forward. Can you see if you can get an idea where Wikstrom might be?")
+}
+
+text gText_LetsGetTheBandBackTogether_AnyLeads {
+    format("Where do I even start?")
+}
+
+text gText_LetsGetTheBandBackTogether_OkayGetGoing {
+    format("Try the newspaper in SOMA, they did an interview with Wikstrom right before he disappeared.  I’m gonna make some moves too.")
+}
+
+text gText_LetsGetTheBandBackTogether_IDontThinkIShould {
+    format("…I don’t think I should go in there. I know how this ends.")
+}
+
+movement LetsGettheBandBackTogether_WalkOffScreen {
+    walk_left * 2
+        walk_down * 2
+        step_end
+}

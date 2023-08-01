@@ -1,0 +1,330 @@
+// Player needs to learn hints B, C, and D to trigger Giovanni appearing at Lake Merrit. This means player needs to talk to H, F, and G.
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const GIOVANNI = 1
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_1
+
+script MaskOff_HideObject_Script {
+    if (var(VAR_STORYLINE_STATE) < STORY_START_TRUE_TIMELINE){
+        setflag(FLAG_HIDE_SIEBOLD)
+    }
+}
+
+script MaskOff_TransformObject_Script {
+    removeobject(GIOVANNI)
+    setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_DRAKE)
+    addobject(GIOVANNI)
+}
+
+script MaskOff_QuestH_Dialogue {
+    faceplayer
+
+    if (var(VAR_MASK_OFF_STATE) == ASSIGNED_MASK_OFF){
+            msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+            addvar(VAR_MASK_OFF_STATE,1)
+    }
+    msgbox(gText_MaskOff_IRememberMeeting,,SPEAKER_CHERIE)
+    msgbox(gText_MaskOff_HeSaidEvenThen,,SPEAKER_CHERIE)
+    msgbox(gText_MaskOff_IThinkThatAccident,,SPEAKER_CHERIE)
+    closemessage
+}
+
+script MaskOff_QuestF_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_1){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+                addvar(VAR_MASK_OFF_STATE,1)
+        }
+    msgbox(gText_MaskOff_IMissWorking,,SPEAKER_TEODORO)
+        msgbox(gText_MaskOff_HeWouldLeaveRight,,SPEAKER_TEODORO)
+        closemessage
+}
+script MaskOff_QuestI_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+                addvar(VAR_MASK_OFF_STATE,1)
+        }
+    msgbox(gText_MaskOff_UsedToCome,,SPEAKER_FANNY)
+        msgbox(gText_MaskOff_TheyWouldJust,,SPEAKER_FANNY)
+        msgbox(gText_MaskOff_IThinkSoHe,,SPEAKER_FANNY)
+        closemessage
+}
+script MaskOff_QuestD_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+                addvar(VAR_MASK_OFF_STATE,1)
+        }
+    msgbox(gText_MaskOff_UsedToBeHere,,SPEAKER_DUDLEY)
+        msgbox(gText_MaskOff_BookwormsTendToBe,,SPEAKER_DUDLEY)
+        closemessage
+}
+script MaskOff_QuestK_Dialogue {
+    msgbox(gText_MaskOff_ADigitalPhoto,MSGBOX_AUTOCLOSE)
+        closemessage
+}
+script MaskOff_QuestG_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_3){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+                addvar(VAR_MASK_OFF_STATE,1)
+        }
+    msgbox(gText_MaskOff_GaveATalkHereOnce,,SPEAKER_CRAIG)
+        msgbox(gText_MaskOff_WhateverHeDidWorked,,SPEAKER_CRAIG)
+        msgbox(gText_MaskOff_WhenverHeLeft,,SPEAKER_CRAIG)
+        closemessage
+}
+script MaskOff_QuestA_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_5){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+        }
+    msgbox(gText_MaskOff_IUsedToSee,,SPEAKER_ANTONE)
+        msgbox(gText_MaskOff_HeWorkedInThe,,SPEAKER_ANTONE)
+        msgbox(gText_MaskOff_WatchingHimBattle,,SPEAKER_ANTONE)
+        closemessage
+}
+script MaskOff_QuestE_Dialogue {
+    faceplayer
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_4){
+                msgbox(gText_MaskOff_WhatCanYou,,SPEAKER_ZOEY)
+
+        }
+    msgbox(gText_MaskOff_WasBornAndRaised,,SPEAKER_MATTHEW)
+        msgbox(gText_MaskOff_IKnowHeUsedToLive,,SPEAKER_MATTHEW)
+        msgbox(gText_MaskOff_ItUsedToBeSuper,,SPEAKER_MATTHEW)
+        closemessage
+}
+
+script MaskOff_Encounter_Giovanni_Dialogue {
+    lock
+        setvar(VAR_MASK_OFF_STATE,SAVE_GIOVANNI_LAKEMERRITT_TRUE)
+        startmenu_savescreen
+
+        msgbox(gText_MaskOff_FancyABattle,MSGBOX_NPC,SPEAKER_GIOVANNI)
+
+        lock
+
+        trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Placeholder)
+
+        setvar(VAR_MASK_OFF_STATE,DEFEATED_MASK_OFF_GIOVANNI)
+        setvar(VAR_STORYLINE_STATE,STORY_DEFEATED_GIOVANNI)
+        goto(MaskOff_PostBattle_Dialogue)
+}
+
+script MaskOff_PostBattle_Dialogue {
+msgbox(gText_MaskOff_YouveMadeIncredible,,SPEAKER_GIOVANNI)
+
+msgbox(gText_MaskOff_ItsNiceToNotGet,,SPEAKER_ZOEY)
+
+msgbox(gText_MaskOff_YouWontNeedTo,,SPEAKER_GIOVANNI)
+
+msgbox(gText_MaskOff_WhatDoYouMean,,SPEAKER_ZOEY)
+
+msgbox(gText_MaskOff_AllowMeTo,,SPEAKER_GIOVANNI)
+
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    call(MaskOff_TransformObject_Script)
+    lock
+    fadescreen(FADE_FROM_BLACK)
+
+msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC,SPEAKER_WIKSTROM)
+    lock
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(PLAYER)
+
+msgbox(gText_MaskOff_IFormedTeamRocket,,SPEAKER_WIKSTROM)
+
+msgbox(gText_MaskOff_ButWhyGo,,SPEAKER_ZOEY)
+
+msgbox(gText_MaskOff_IHidMyIdentity,,SPEAKER_WIKSTROM)
+
+msgbox(gText_MaskOff_ThingsAre,,SPEAKER_ZOEY)
+
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    delay(32)
+    fadescreen(FADE_FROM_BLACK)
+
+msgbox(gText_MaskOff_ISee,,SPEAKER_WIKSTROM)
+
+msgbox(gText_MaskOff_WaitWhatDO,,SPEAKER_ZOEY)
+
+msgbox(gText_MaskOff_IHaventExplicitly,,SPEAKER_WIKSTROM)
+
+msgbox(gText_MaskOff_IShouldApologize,,SPEAKER_WIKSTROM)
+
+    closemessage
+    goto(MaskOff_End_Dialogue)
+}
+
+script MaskOff_End_Dialogue {
+    applymovement(GIOVANNI,MaskOff_WalkOffScreen)
+    waitmovement(GIOVANNI)
+    removeobject(GIOVANNI)
+
+    release
+    end
+}
+
+    text gText_MaskOff_YouveMadeIncredible {
+        format("You’ve made incredible progress since we last battled. But of course, you’re the Champion, {PLAYER}. TeamRocket is lucky to have another powerful ally")
+    }
+text gText_MaskOff_ItsNiceToNotGet {
+    format("Thank you! It’s nice to not get crushed as easily anymore… wait! I was following a lead looking for Wikstrom. I think they train around here, and I want to try to convince them to work with us.")
+}
+text gText_MaskOff_YouWontNeedTo {
+    format("You won’t need to do much convincing, actually.")
+}
+text gText_MaskOff_WhatDoYouMean {
+    format("What do you mean?")
+}
+text gText_MaskOff_AllowMeTo {
+    format("Allow me to re-introduce myself. I am the leader of TeamRocket, member of the Elite Four,")
+}
+text gText_MaskOff_TheOneAndOnly {
+    format("the one and only… Wikstrom.")
+}
+text gText_MaskOff_IFormedTeamRocket {
+    format("I formed TeamRocket as a response to Ycombinator’s growing influence over the region a few years ago. ")
+}
+text gText_MaskOff_ButWhyGo {
+    format("But why go into hiding as Giovanni?")
+}
+text gText_MaskOff_IHidMyIdentity {
+    format("I hid my identity because I was worried about my influence diluting the message. If people could unite under a symbol like Giovanni, then in theory, anybody could lead TeamRocket if something happened to me. And if the Elite Four wasn’t directly connected to TeamRocket, then they couldn’t retaliate against the others.")
+}
+text gText_MaskOff_ThingsAre {
+    format("Things are… a little different now. I met with Archer…")
+}
+text gText_MaskOff_ISee {
+    format("I see. If the Elite Four is going to present as a united front, I’ll need to give up leadership to Ariana. You know, I think they’ve purposely kept me in the dark about this.")
+}
+text gText_MaskOff_WaitWhatDO {
+    format("Wait, what do you mean?")
+}
+text gText_MaskOff_IHaventExplicitly {
+    format("I haven’t explicitly told them, but I’ve long suspected they know my secret. They have some reservations about taking a leadership role… but I know they can handle it.")
+}
+text gText_MaskOff_IShouldApologize {
+    format("I should apologize to Siebold for disappearing. But you should get some rest. Our war begins first thing in the morning.")
+}
+
+text gText_MaskOff_WhatCanYou {
+    format("Hi there. What can you tell me about Wikstrom?")
+}
+//SECTION A
+
+text gText_MaskOff_IUsedToSee {
+    format("I used to see Wikstrom all the time, but I'm pretty sure he moved away. He used to come back super late at night, so he must have been pulling really long hours.")
+}
+
+text gText_MaskOff_HeWorkedInThe {
+    format("He worked in the Mission as a business consultant for the little guy. It was awesome to see a member of the community become an Elite Four member!")
+}
+
+text gText_MaskOff_WatchingHimBattle {
+    format("Watching him battle was so awesome! His ace was always changing so it kept his opponents on their toes... right up until he knocked them on their asses.")
+}
+
+//SECTION D
+
+text gText_MaskOff_UsedToBeHere {
+    format("Wikstrom used to be here all the time, but I only ever saw him by himself. He was kind of a loner.")
+}
+
+text gText_MaskOff_BookwormsTendToBe {
+    format("Bookworms tend to be like that though. Once he did an interview and all he talked about was non-fiction that he was into...")
+}
+
+//SECTION E
+
+text gText_MaskOff_WasBornAndRaised {
+    format("The Elite Four's Wikstrom was born and raised here in SanFran.")
+}
+
+text gText_MaskOff_IKnowHeUsedToLive {
+    format("I know he used to live in the Sunset, but ever since he disappeared, people haven't seen him.")
+}
+
+text gText_MaskOff_ItUsedToBeSuper {
+    format("He sometimes trained around here. Afterwards, he and his Pokemon would take a walk and relax by Lakemerritt.")
+}
+
+//SECTION F
+
+text gText_MaskOff_IMissWorking {
+    format("I miss working with Wikstrom. Whenever he made great progress, he would treat the entire team to ramen in Japantown!")
+}
+
+text gText_MaskOff_HeWouldLeaveRight {
+    format("He would leave right after, to stock up on supplies at his favorite shop in the Castro. He liked using Dusk Balls to do his captures, so after dinner was the best time.")
+}
+
+//SECTION G
+
+text gText_MaskOff_GaveATalkHereOnce {
+    format("Wikstrom gave a talk here once where he emphasized the importance of training your Pokémon against versions of themselves. He said that Pokemon need to know themselves in order to know their opponents. Never seen a book to back that up though...")
+}
+
+text gText_MaskOff_WhateverHeDidWorked {
+    format("Whatever he did worked though! His entire battle style revolved around tricking people and then overwhelming them with crazy power... it was awesome to watch, especially when he used his ace, Ditto.")
+}
+
+text gText_MaskOff_WhenverHeLeft {
+    format("Whenever he left here, I never saw him taking the bus - he would just Fly away from the front steps!        ")
+}
+
+//SECTION H
+
+text gText_MaskOff_IRememberMeeting {
+    format("I remember meeting Wikstrom when he was 20. I interviewed him after his parents were killed by loan sharks. Tough break, but a tough kid too.")
+}
+
+text gText_MaskOff_HeSaidEvenThen {
+    format("He said even then that he didn't want anybody else to end up like his parents, so he worked for a long time to help small businesses grow and be sustainable. He did good work in the Mission.")
+}
+
+text gText_MaskOff_IThinkThatAccident {
+    format("I think that accident changed him though... never really saw him with a ton of friends, or out and about... like he hated the limelight.")
+}
+
+//SECTION I
+
+text gText_MaskOff_UsedToCome {
+    format("Siebold and Wikstrom used to come in together a lot.")
+}
+
+text gText_MaskOff_TheyWouldJust {
+    format("They would just talk about books the whole time.. I think Wikstrom really loved history.")
+}
+
+text gText_MaskOff_IThinkSoHe {
+    format("Wikstrom lived close by... in Sunset, I think, so he was here, with or without Siebold.")
+}
+
+//SECTION K
+
+text gText_MaskOff_ADigitalPhoto {
+    format("A digital photo frame. The picture being displayed shows Wikstrom and Siebold together at the ramen restaurantin Japantown.")
+}
+
+text gText_MaskOff_FancyABattle {
+    format("A surprise, seeing you here, {PLAYER}. I hear you've turned over a new leaf. Let's see if your new found convinction gives you power!")
+}
+
+movement MaskOff_WalkOffScreen {
+    walk_up * 7
+    step_end
+}

@@ -1,0 +1,236 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const CHIEF = 6
+const SABRINA = 7
+const KOGA = 8
+
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
+
+script YouHaveYourOrders_ObjectSetUp_Script {
+        setobjectxy(CHIEF,34,53)
+        setobjectxyperm(CHIEF,34,53)
+        setobjectmovementtype(CHIEF,MOVEMENT_TYPE_FACE_DOWN)
+
+        setobjectxy(ROSE,35,56)
+        setobjectxyperm(ROSE,35,56)
+        setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_UP)
+
+        setobjectxy(BIANCA,33,53)
+        setobjectxyperm(BIANCA,33,53)
+        setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_DOWN)
+}
+
+
+script YouHaveYourOrders_Interact_Koga_Script{
+    returnqueststate(QUEST_HOW_DISAPPOINTING)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(YouHaveYourOrders_ActiveQuest_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(YouHaveYourOrders_CompleteQuest_Dialogue)
+        default: goto(YouHaveYourOrders_Assignment_Dialogue)
+}
+}
+
+script YouHaveYourOrders_ActiveQuest_Dialogue{
+    msgbox(gText_YouHaveYourOrders_ICouldGoShut,MSGBOX_NPC)
+    end
+}
+
+script YouHaveYourOrders_CompleteQuest_Dialogue{
+    msgbox(gText_HowDisappointing_IAppreciate,MSGBOX_NPC)
+    end
+}
+
+script YouHaveYourOrders_Assignment_Dialogue {
+    setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_ASSIGNED)
+    
+msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC,,SPEAKER_KOGA)
+
+msgbox(gText_YouHaveYourOrders_ItCantBeTougher,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_HmmGoodPoint,,SPEAKER_KOGA)
+    
+    closemessage
+
+    applymovement(KOGA,YouHaveYourOrders_PaceInOffice)
+    waitmovement(0)
+    
+msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed,,SPEAKER_KOGA)
+
+msgbox(gText_YouHaveYourOrders_WhyAllAtOnce,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut,,SPEAKER_KOGA)
+
+msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_CorrectEachOfUs,,SPEAKER_KOGA)
+
+if (var(VAR_STORYLINE_STATE) == STORY_START_FALSE_TIMELINE){
+msgbox(gText_YouHaveYourOrders_TheyInvolved,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_WeHiredThem,,SPEAKER_KOGA)
+}
+
+    //If the player has converted the Haightashbury Gym: PSF TODO
+
+    if (!var(VAR_TEMP_0)){
+
+msgbox(gText_YouHaveYourOrders_WhatAbout,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_OurIntelligenceTells,,SPEAKER_KOGA)
+    }
+
+    applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
+    waitmovement(0)
+
+msgbox(gText_YouHaveYourOrders_ThankYouAsUsual,,SPEAKER_KOGA)
+
+msgbox(gText_YouHaveYourOrders_IStillFeelLike,,SPEAKER_ZOEY)
+    
+    closemessage
+
+    applymovement(KOGA,Common_Movement_FacePlayer)
+
+msgbox(gText_YouHaveYourOrders_InCaseYouHavent,,SPEAKER_KOGA)
+    
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(0)
+
+msgbox(gText_YouHaveYourOrders_YouWereAGym,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest,,SPEAKER_KOGA)
+
+msgbox(gText_YouHaveYourOrders_WasThatHard,,SPEAKER_ZOEY)
+
+msgbox(gText_YouHaveYourOrders_AtTheTimeNo,,SPEAKER_KOGA)
+
+    applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
+    waitmovement(0)
+
+msgbox(gText_YouHaveYourOrders_ICouldGoShut,,SPEAKER_KOGA)
+    
+
+    startquest(QUEST_HOW_DISAPPOINTING)
+
+msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
+if (var(VAR_RESULT)){
+    warpsilent(MAP_CHINATOWN,33,8)
+}
+
+closemessage
+end
+}
+    text gText_YouHaveYourOrders_AreYouSure {
+        format("{PLAYER}, are you sure you're ready for this mission?")
+    }
+
+text gText_YouHaveYourOrders_ItCantBeTougher {
+    format("It can't be tougher than any of the other ones, right?")
+}
+
+text gText_YouHaveYourOrders_HmmGoodPoint {
+    format("Hmm. Good point.")
+}
+
+text gText_YouHaveYourOrders_LawEnforcementHasConfirmed {
+    format("Law enforcement has confirmed the old Gyms have been repurposed as TeamRocket recruitment and training centers.The city has loaned us enough officers to perform three simultaneous raids. ")
+}
+
+text gText_YouHaveYourOrders_WhyAllAtOnce {
+    format("Why all at once?")
+}
+
+text gText_YouHaveYourOrders_ThatWouldCompletelyCut {
+    format("That would completely cut off their ability to escape or continue to grow.")
+}
+
+text gText_CongratsYoureanAsshole_OhWoWYouGuys {
+	format("Oh wow, you guys aren’t messing around.")
+}
+
+text gText_YouHaveYourOrders_CorrectEachOfUs {
+    format("Each of us will be leading a different raid. Bianca will go to Treasureisland, and I'll deal with Marin. {PLAYER}, you'll take on Chinatown.")
+}
+
+text gText_YouHaveYourOrders_TheyInvolved {
+    format("Bianca? How did they get invovled?")
+}
+
+text gText_YouHaveYourOrders_WeHiredThem {
+	format("We hired them. Their help was invaluable in the past, and when we presented the offer, they didn’t hesitate.")
+}
+
+text gText_YouHaveYourOrders_WhatAbout {
+    format("What about Haightashbury?")
+}
+
+text gText_YouHaveYourOrders_OurIntelligenceTells {
+    format("Our intelligence tells us that we'll be able to take that one with a smaller team.")
+}
+
+text gText_YouHaveYourOrders_AlrightShowingWeaklings {
+    format("Alright! Showing weaklings who's boss! I'm gonna go get ready and meet up with the force.")
+}
+
+text gText_YouHaveYourOrders_ThankYouAsUsual {
+    format("*sigh* Thank you, as usual. I sometimes wonder who is actually benefiting from this relationship.")
+}
+
+text gText_YouHaveYourOrders_IStillFeelLike {
+    format("I still feel like it's me! I'll do anything to help protect what we've built.")
+}
+
+text gText_YouHaveYourOrders_InCaseYouHavent {
+    format("In case you haven't already heard, I used to be the leader of the Chinatown Gym.")
+}
+
+text gText_YouHaveYourOrders_YouWereAGym {
+    format("You were a Gym Leader?")
+}
+
+text gText_YouHaveYourOrders_ItWasOneOfMyGreatest {
+    format("It was one of my greatest accomplishments. But when Ycombinator came along and I saw them beginning to usher in a new age for the region, I knew I wanted to help them. I made sure I was absolutely invaluable to them, and that's how I ended up in this spot now.")
+}
+
+text gText_YouHaveYourOrders_WasThatHard {
+    format("Was that hard?")
+}
+
+text gText_YouHaveYourOrders_AtTheTimeNo {
+    format("At the time? No. I believed - I believe I did the right thing. But it is a piece of my past that I miss. I left it behind to pursue something bigger, and there's a little bit of guilt there, you know?")
+}
+
+text gText_YouHaveYourOrders_ICouldGoShut {
+    format("I could go shut down that Gym, but I'm a coward. I don't have the Nuggets to go and destroy what I helped create.")
+}
+
+text gText_YouHaveYourOrders_DoYouWantTo {
+    format("Do you want to go to Chinatown?")
+}
+
+
+movement YouHaveYourOrders_PaceInOffice {
+    walk_left * 2
+    walk_right * 2
+    walk_left * 2
+    walk_right * 2
+    face_player
+    step_end
+}
+
+movement YouHaveYourOrders_LookOutWindow {
+    face_down
+    step_end
+}

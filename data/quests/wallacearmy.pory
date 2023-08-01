@@ -17,8 +17,8 @@ script Quest_WallaceArmy_HideObject_Script{
 script Quest_WallaceArmy_SetMovementType_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY)
     if (var(VAR_RESULT)){
-   setobjectmovementtype(SOLAR_CEO,MOVEMENT_TYPE_FACE_UP) 
-   setobjectmovementtype(SOLAR_LADY,MOVEMENT_TYPE_FACE_UP) 
+   setobjectmovementtype(SOLAR_CEO,MOVEMENT_TYPE_FACE_UP)
+   setobjectmovementtype(SOLAR_LADY,MOVEMENT_TYPE_FACE_UP)
     }
 }
 
@@ -50,12 +50,12 @@ script Quest_WallaceArmy_QuestStart_Dialogue{
         msgbox(gText_WallaceArmy_OhTheChampionJustWhat,,SPEAKER_SHASHI)
 
         msgbox(gText_WallaceArmy_TheLeagueDidntSend,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_WallaceArmy_SighWereMarinSolar,,SPEAKER_SHASHI)
 
         msgbox(gText_WallaceArmy_YouThinkTheLeague,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_WallaceArmy_LookIHaveNoIdea,,SPEAKER_SHASHI)
         startquest(QUEST_WALLACEARMY)
@@ -140,7 +140,7 @@ script Quest_WallaceArmy_Reward_Cutscene{
     msgbox(gText_WallaceArmy_CanItOldMan,,SPEAKER_LEAH)
 
     msgbox(gText_WallaceArmy_AndYouAttackingTheArmy,,SPEAKER_SHASHI)
-    
+
     applymovement(LEAD_STAN,Common_Movement_WalkDown)
     waitmovement(LEAD_STAN)
 
@@ -155,7 +155,7 @@ script Quest_WallaceArmy_StartBattle_Script{
 }
 
 script Quest_WallaceArmy_PostBattle_Script{
-    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)    
+    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
 
     msgbox(gText_WallaceArmy_WhyAreYouDefending,,SPEAKER_LEAH,TAIL_SHOUT,EMOTE_CONFUSE)
     msgbox(gText_WallaceArmy_WeReallyHadNothing,,SPEAKER_SHASHI,TAIL_SHOUT)
@@ -168,7 +168,7 @@ script Quest_WallaceArmy_PostBattle_Script{
     fadescreen(FADE_FROM_BLACK)
 
     msgbox(gText_WallaceArmy_ThatsTheWholeStorySee,,SPEAKER_SHASHI)
-    
+
     msgbox(gText_WallaceArmy_ThereWasNoWallaceAtAll,,SPEAKER_LEAH)
     msgbox(gText_WallaceArmy_IStillDontKnowWhoThatIs,,SPEAKER_SHASHI)
     closemessage
@@ -237,7 +237,7 @@ script Quest_WallaceArmy_ListRemainingLocations_Script{
     }
 
     if (var(VAR_TEMP_3) == 0){
-        bufferstring(STR_VAR_3,gText_SOMA)
+        bufferstring(STR_VAR_3,gText_Soma)
     }
 
     if (var(VAR_TEMP_4) == 0){

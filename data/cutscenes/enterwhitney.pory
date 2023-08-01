@@ -1,0 +1,161 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const WHITNEY = 1
+const FLAG_HIDE_PUZZLE = FLAG_TEMP_1
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_3
+
+script EnterWhitney_LeaderPosition_Script{
+    switch (var (VAR_GYM_3_STATE)) {
+        case 0: return
+        case 1: setflag(FLAG_TEMP_1)
+        default: goto(EnterWhitney_StartBattle_ObjectSetup_Script)
+
+    }
+}
+
+script EnterWhitney_ObjectSetUp_Script {
+    setobjectmovementtype(WHITNEY, MOVEMENT_TYPE_FACE_LEFT)
+}
+
+script EnterWhitney_StartBattle_ObjectSetup_Script {
+    setflag(FLAG_TEMP_1)
+    setobjectxy(WHITNEY, 10, 6)
+    setobjectxyperm(WHITNEY, 10, 6)
+    setobjectmovementtype(WHITNEY, MOVEMENT_TYPE_LOOK_AROUND)
+}
+
+script AutomaticSolvePuzzle_Script {
+    lock
+    setvar(VAR_GYM_3_STATE,GYM_PUZZLE_COMPLETE)
+    msgbox(format("Puzzle is solved. Leave and come back."), MSGBOX_NPC)
+    closemessage
+    release
+    end
+}
+
+script EnterWhitney_WalkToBattlefield_Script {
+    setvar(VAR_GYM_3_STATE, GYM_LEADER_ON_BATTLEFIELD)
+    lock
+    playse(SE_PIN)
+    applymovement(WHITNEY, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(WHITNEY, EnterWhitney_WalkToBattlefield_Movement)
+    waitmovement(0)
+    releaseall
+    end
+}
+
+script Whitney_Event_Script {
+    lockall
+    switch (var (VAR_GYM_3_STATE)) {
+    case 2:
+        goto(EnterWhitney_MuseumArrangement_Dialogue)
+    case 3:
+        goto(EnterWhitney_StartBattle_Script)
+    case 4:
+        goto(EnterWhitney_PostBattle_Dialogue)
+    case 5:
+        goto(EnterWhitney_PostBattle_Dialogue2)
+    }
+}
+
+script EnterWhitney_MuseumArrangement_Dialogue {
+    setvar(VAR_GYM_3_STATE,GYM_LEADER_ON_BATTLEFIELD)
+    msgbox(gText_EnterWhitney_IWasThinking, MSGBOX_NPC,SPEAKER_WHITNEY)
+        closemessage
+    applymovement(WHITNEY, WhitneyLookAround_Movement)
+    waitmovement(0)
+    msgbox(gText_EnterWhitney_HasYourVisit,,SPEAKER_WHITNEY)
+        msgbox(gText_EnterWhitney_UhYup,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+    msgbox(gText_EnterWhitney_ICanHearTheOrre,,SPEAKER_WHITNEY)
+    setvar(VAR_GYM_3_STATE,GYM_SAVE_BEFORE_LEADER)
+        startmenu_savescreen
+    goto(EnterWhitney_StartBattle_Script)
+}
+
+script EnterWhitney_StartBattle_Script {
+    trainerbattle_single(TRAINER_WATTSON_1, gText_EnterWhitney_LetsSeeHow, gText_EnterWhitney_IfThisBattle, EnterWhitney_Defeated_Script, NO_MUSIC)
+}
+
+script EnterWhitney_Defeated_Script {
+    setflag(FLAG_BADGE03_GET)
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,DEFEATED_WHITNEY)
+    setvar(VAR_GYM_3_STATE,GYM_DEFEATED_LEADER)
+    addvar(VAR_STORYLINE_STATE, 1)
+    setvar(VAR_WHITNEY_STATE,BATTLE_1_COMPLETE)
+    msgbox(gText_EnterWhitney_WowIllReallyNeed,,SPEAKER_WHITNEY)
+    closemessage
+        msgbox(gText_EnterWhitney_YouRecieved)
+    call(Common_EventScript_PlayGymBadgeFanfare)
+    giveitem(ITEM_TM34)
+    call(Act1_1_Check_Script)
+    releaseall
+    end
+}
+
+script EnterWhitney_PostBattle_Dialogue {
+    setvar(VAR_GYM_3_STATE,GYM_EXPLAINED_BADGE_AND_TM)
+    msgbox(gText_EnterWhitney_ThatPositiveSanction, MSGBOX_NPC,SPEAKER_WHITNEY)
+        closemessage
+    releaseall
+    end
+}
+script EnterWhitney_PostBattle_Dialogue2 {
+    msgbox(gText_EnterWhitney_WellNeedToBattle, MSGBOX_NPC,SPEAKER_WHITNEY)
+        closemessage
+    releaseall
+    end
+}
+
+movement EnterWhitney_WalkToBattlefield_Movement {
+    walk_right * 9
+    walk_down
+    face_left
+    step_end
+}
+
+movement WhitneyLookAround_Movement {
+    face_up
+    delay_16
+    face_down
+    delay_16
+    face_right
+    delay_16
+    face_left
+    step_end
+}
+
+text gText_EnterWhitney_IWasThinking {
+    format("I was thinking about the arrangement of the museum. Museums tend to organize through etic categories, but I always wonder... how far off are we from their emic counterparts...? Sorry, I'm Whitney, Chief of the SOMA Gym!")
+}
+text gText_EnterWhitney_HasYourVisit {
+    format("Has your visit been a positive time investment? There was a ton of qualitative research into curating the best possible experience for both patrons and challengers.")
+}
+text gText_EnterWhitney_UhYup {
+    format("Uh... yup. Yeah. It's cool.")
+}
+text gText_EnterWhitney_ICanHearTheOrre {
+    format("I can hear the Orre in you. Enchanting.")
+}
+text gText_EnterWhitney_LetsSeeHow {
+    format("Let's see how your socialization impacted your battling ability!")
+}
+text gText_EnterWhitney_TimeToPay {
+    format("Time to pay your tribute.")
+}
+text gText_EnterWhitney_IfThisBattle {
+    format("If this battle is any indication, your assimilation is going perfectly!")
+}
+text gText_EnterWhitney_YouRecieved {
+    format("You recieved the WhitneyBadge Badge!")
+}
+
+text gText_EnterWhitney_WowIllReallyNeed {
+    format("Wow, I'll really need to re-think my tactical core values. Awesome battle, {PLAYER}!")
+}
+
+text gText_EnterWhitney_ThatPositiveSanction {
+    format("That positive sanction means that traded Pokémon up to Level Psflevel3 will obey you. Psfgymattacknum3 is like a shaman in your pocket and will teach Psfgymattacknum1, allowing your clan to Psfgymattackdesc3.")
+}
+text gText_EnterWhitney_WellNeedToBattle {
+    format("We'll need to battle again in the future. I want to increase our data set - a sample size of one isn't enough for any conclusions about our relative skill levels!")
+}

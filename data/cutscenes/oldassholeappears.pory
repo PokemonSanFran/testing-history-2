@@ -1,0 +1,185 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const BIANCA = 1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+
+script OldAssholeAppears_HideBianca_Script{
+    if (var(VAR_LOMBARDSTREET_STATE) > SAVE_BIANCA_LOMBARD){
+        setflag(FLAG_HIDE_BIANCA)
+    }
+    return
+}
+
+script OldAssholeAppears_WalktoBianca_Script {
+    lockall
+    setvar(VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+
+    if (var (VAR_TEMP_0) == 12) {
+        applymovement(PLAYER, OldAssholeAppears_WalkNorthtoBianca_Movement)
+    } else {
+        applymovement(PLAYER, OldAssholeAppears_WalkWesttoBianca_Movement)
+    }
+    waitmovement(0)
+    goto(OldAssholeAppears_Intro_Dialogue)
+}
+
+script OldAssholeAppears_Intro_Dialogue {
+    playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
+    applymovement(BIANCA, Common_Movement_FaceDown)
+    msgbox(gText_OldAssholeAppears_StandingOnVolcano,,SPEAKER_BIANCA)
+
+    msgbox(gText_OldAssholeAppears_ImSorryWhat,,SPEAKER_ZOEY)
+
+    msgbox(gText_OldAssholeAppears_RegionCloseFaultline,,SPEAKER_BIANCA)
+
+    msgbox(gText_OldAssholeAppears_DontKnowMagical,,SPEAKER_ZOEY)
+
+    goto(OldAssholeAppears_HealPlayer_Dialogue)
+}
+
+script OldAssholeAppears_HealPlayer_Dialogue {
+    setvar(VAR_LOMBARDSTREET_STATE,SAVE_BIANCA_LOMBARD)
+    msgbox(gText_OldAssholeAppears_IllHealYou,,SPEAKER_BIANCA)
+    playse(SE_USE_ITEM)
+
+    msgbox(gText_OldAssholeAppears_OhUhThanks,,SPEAKER_ZOEY)
+    special(HealPlayerParty)
+    msgbox(gText_OldAssholeAppears_DaddyShippedFullRestores,,SPEAKER_BIANCA)
+
+    startmenu_savescreen
+    goto(OldAssholeAppears_StartBattle_Script)
+}
+
+script OldAssholeAppears_Interact_Script {
+    lockall
+    faceplayer
+    goto(OldAssholeAppears_StartBattle_Script)
+}
+
+script OldAssholeAppears_StartBattle_Script {
+    lockall
+    msgbox(gText_OldAssholeAppears_HowFarBehind,,SPEAKER_BIANCA)
+    closemessage
+
+    playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
+    trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, gText_OldAssholeAppers_ImStartingToQuestion)
+    goto(OldAssholeAppears_GiveCorviknightCard_Script)
+}
+
+script OldAssholeAppears_GiveCorviknightCard_Script {
+    lockall
+    applymovement(BIANCA,Common_Movement_FacePlayer)
+    msgbox(gText_OldAssholeAppears_TakingThisAllSeriously,,SPEAKER_BIANCA)
+
+    giveitem(ITEM_SS_TICKET)
+    msgbox(gText_OldAssholeAppears_FamiliarWith, MSGBOX_YESNO,,SPEAKER_BIANCA)
+    if (var (VAR_RESULT) == 1){
+        msgbox(gText_OldAssholeAppears_ThoughtSo,,SPEAKER_BIANCA)
+    } else {
+        msgbox(gText_OldAssholeAppears_LetsYouCallARide,,SPEAKER_BIANCA)
+    }
+    msgbox(gText_OldAssholeAppears_LetsYouUse,,SPEAKER_BIANCA)
+
+    msgbox(gText_OldAssholeAppears_YouveBeenSuperNice,,SPEAKER_ZOEY)
+    msgbox(gText_OldAssholeAppears_NowWereEven,,SPEAKER_BIANCA)
+
+    closemessage
+    goto(OldAssholeAppears_BiancaExit_Script)
+}
+
+script OldAssholeAppears_BiancaExit_Script {
+    setvar(VAR_LOMBARDSTREET_STATE,DEFEATED_BIANCA_LOMBARD)
+    addvar(VAR_STORYLINE_STATE,1)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    applymovement(BIANCA, OldAssholeAppears_BiancaExit_Movement)
+    waitmovement(0)
+    fadedefaultbgm
+    removeobject(BIANCA)
+    call(Act1_1_Check_Script)
+    releaseall
+    end
+}
+
+text gText_OldAssholeAppears_StandingOnVolcano {
+    format("You know, we're probably standing on a volcano, {PLAYER}.")
+}
+
+text gText_OldAssholeAppears_ImSorryWhat {
+    format("I'm sorry, what?")
+}
+
+text gText_OldAssholeAppears_RegionCloseFaultline {
+    format("Or, what used to be one at least. Turns out this region is close to a tectonic faultline, which when they shift, make a bunch of tiny volcanoes, all over the place. It's kind of magical when you think about it, huh?")
+}
+
+text gText_OldAssholeAppears_DontKnowMagical {
+    format("I don't know about magical, but it's pretty neat, yeah!")
+}
+
+text gText_OldAssholeAppears_IllHealYou {
+    format("Tell you what - I do have something magical for you, but you'll have to beat me for it first! Here, I'll heal your Pokémon for you.")
+}
+
+text gText_OldAssholeAppears_OhUhThanks {
+    format("Oh uh, thanks!")
+}
+
+text gText_OldAssholeAppears_DaddyShippedFullRestores {
+    format("Not me, Daddy shipped over those Full Restores.")
+}
+
+text gText_OldAssholeAppears_HowFarBehind {
+    format("Now, let's see how far behind you are!")
+}
+
+text gText_OldAssholeAppers_ImStartingToQuestion {
+    format("I'm starting to question all those years at the private battle academy...")
+}
+
+text gText_OldAssholeAppears_TakingThisAllSeriously {
+    format("Good to see you're taking this all seriously, {PLAYER}! My rival should be strong to keep me sharp! Well, true to my word...")
+}
+
+text gText_OldAssholeAppears_FamiliarWith {
+    format("Are you familiar with Uber?")
+}
+
+text gText_OldAssholeAppears_ThoughtSo {
+    format("Thought so. They're everywhere, right?")
+}
+
+text gText_OldAssholeAppears_LetsYouCallARide {
+    format("Don't have it in Orre? Uber lets you call a ride from anywhere to anywhere else that you've been.")
+}
+
+text gText_OldAssholeAppears_LetsYouUse {
+    format("That card lets you use Uber for free! I went to the Salesforcetower, and the League Commissioner gave me these for being the first Challenger to visit! It also lets you use the Subway System for free, but I think I'll stick to Uber. Less homeless people to deal with, you know?")
+}
+
+text gText_OldAssholeAppears_YouveBeenSuperNice {
+    format("Thanks! You've been super nice today!")
+}
+
+text gText_OldAssholeAppears_NowWereEven {
+    format("Now we're even after I ditched breakfast. All right, time to go challenge the Fortpoint Gym. So glad Daddy sent me these Go-Goggles, because they're impossible to find new. And like hell I'm gonna get one from the locals...")
+}
+
+movement OldAssholeAppears_WalkNorthtoBianca_Movement {
+    walk_right * 3
+    walk_up * 3
+    face_up
+    step_end
+}
+
+movement OldAssholeAppears_WalkWesttoBianca_Movement {
+    walk_left * 6
+    face_up
+    step_end
+}
+
+movement OldAssholeAppears_BiancaExit_Movement {
+    walk_left * 6
+    walk_down * 2
+    walk_left * 3
+    step_end
+}

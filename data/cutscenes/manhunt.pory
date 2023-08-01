@@ -1,0 +1,595 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const SABRINA = 2
+const BIANCA = 2
+const FLAG_HIDE_GIOVANNI = FLAG_TEMP_1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_2
+const MATTHEW = 1
+
+const FLAG_HIDE_NERDS_COPS_SALESFORCETOWER = FLAG_TEMP_1
+const FLAG_HIDE_BIANCA_SALESFORCETOWER = FLAG_TEMP_3
+const FLAG_HIDE_SABRINA_SALESFORCETOWER = FLAG_TEMP_5
+
+script Manhunt_HideBianca_Newspaper_Script{
+    setflag(FLAG_HIDE_BIANCA)
+    return
+}
+
+script Manhunt_ShowSabrina_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_MANHUNT)
+    if(var(VAR_RESULT)){
+        setflag(FLAG_HIDE_SABRINA_SALESFORCETOWER)
+    }
+}
+
+script Manhunt_HideGiovanni_Script {
+    setflag(FLAG_HIDE_GIOVANNI)
+    return
+}
+
+script Manhunt_HideBianca_Script{
+    setflag(FLAG_HIDE_BIANCA)
+    return
+}
+
+script Manhunt_Interact_Sabrina_Script{
+    returnqueststate(QUEST_MANHUNT)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Manhunt_ActiveQuest_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Manhunt_CompleteQuest_Dialogue)
+        default: goto(Manhunt_Assignment_Dialogue)
+    }
+}
+
+script Manhunt_ActiveQuest_Dialogue{
+    msgbox(gText_Manhunt_EverySecond,MSGBOX_NPC,SPEAKER_SABRINA)
+    end
+}
+
+script Manhunt_CompleteQuest_Dialogue{
+    msgbox(gText_Manhunt_IllBeBack,MSGBOX_NPC,SPEAKER_SABRINA)
+    end
+}
+
+script Manhunt_Assignment_Dialogue {
+    lock
+
+        setvar(VAR_MANHUNT_STATE,ASSIGNED_FIND_GIOVANNI)
+
+        msgbox(gText_Manhunt_GoFind,MSGBOX_NPC,SPEAKER_SABRINA)
+
+
+        startquest(QUEST_MANHUNT)
+        release
+        end
+}
+
+//SOMA
+script Manhunt_Cherie_Battle_Script {
+    lock
+        playse(SE_EXIT)
+        waitse
+        clearflag(FLAG_HIDE_BIANCA)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkInNewspaper)
+
+        msgbox(gText_Manhunt_HeyWereTrying,MSGBOX_NPC,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_YeahIWrote,,SPEAKER_CHERIE)
+
+        msgbox(gText_Manhunt_Blessed,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_WaitYoureThatKid,,SPEAKER_CHERIE)
+
+        msgbox(gText_Manhunt_ThatsUs,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_IShouldHaveRecognized,,SPEAKER_CHERIE)
+
+        msgbox(gText_Manhunt_HeyWeJustWant,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_AsAMatterOfFact,,SPEAKER_CHERIE)
+        multi_fixed_2_vs_1(TRAINER_RICK,gText_Manhunt_PleaseDontHurtUs,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_1)
+        msgbox(gText_Manhunt_StartTalking,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_ISwearIDontKnow,,SPEAKER_CHERIE)
+
+        msgbox(gText_Manhunt_IKnowYouKnow,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_TheOnlyLeadIHave,,SPEAKER_BIANCA)
+
+        msgbox(gText_Manhunt_ThatsAStart,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_NowPleaseLeave,MSGBOX_AUTOCLOSE,SPEAKER_BIANCA)
+        applymovement(BIANCA,Manhunt_LeaveNewspaper)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(BIANCA)
+        release
+        end
+}
+
+//Mission
+script Manhunt_Teodoro_Battle_Script {
+    lock
+        playse(SE_EXIT)
+        waitse
+        clearflag(FLAG_HIDE_BIANCA)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkIntoConsulting)
+        msgbox(gText_Manhunt_WhatAreSomeKids,MSGBOX_NPC,SPEAKER_TEODORO)
+
+        msgbox(gText_Manhunt_YouGonnaMakeThisEasy,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_WhatTheHellAreYou,,SPEAKER_TEODORO)
+
+        msgbox(gText_Manhunt_WeKnowYoureWorkingWith,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_YeahIDidSomeWork,,SPEAKER_TEODORO)
+        multi_fixed_2_vs_1(TRAINER_ALLEN,gText_Manhunt_DamnPunks,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_2)
+
+        msgbox(gText_Manhunt_WhatDoYouKnow,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_LookIDontKnowWhat,,SPEAKER_TEODORO)
+
+        msgbox(gText_Manhunt_GoodInTheWorld,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_TheOnlyWeirdThing,,SPEAKER_TEODORO)
+
+        msgbox(gText_Manhunt_ThatsInCastro,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_GodForbidSomeGoodPeople,MSGBOX_AUTOCLOSE,SPEAKER_TEODORO)
+        applymovement(BIANCA,Manhunt_LeaveConsulting)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(BIANCA)
+        release
+        end
+
+}
+
+//Castro_BallShop
+script Manhunt_Dudley_Battle_Script {
+    lock
+
+        playse(SE_EXIT)
+        waitse
+        clearflag(FLAG_HIDE_BIANCA)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkIntoBallShop)
+        applymovement(1,Manhunt_ExclaimAndTurn)
+
+        msgbox(gText_Manhunt_HowCanIHelp,MSGBOX_NPC,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_CutTheShit,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_WoahTheChampion,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_WhatDoYouKnow,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_YeahTheyreOneOf,,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_BecauseWereBusting,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_WhatDidTheyBuy,,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_ImSureWeCanHelp,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_WoahWaitHold,,SPEAKER_DUDLEY)
+        multi_fixed_2_vs_1(TRAINER_TIANA,gText_Manhunt_ShitMan,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_3)
+
+        msgbox(gText_Manhunt_ShitMan,,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_AndWereDoingOurs,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_TheyBoughtABunch,,SPEAKER_DUDLEY)
+
+        msgbox(gText_Manhunt_WhatElse,,SPEAKER_BIANCA)
+
+
+        msgbox(gText_Manhunt_OneTimeTheyHadDelivered,,SPEAKER_DUDLEY)
+        msgbox(gText_Manhunt_Sob,MSGBOX_AUTOCLOSE,SPEAKER_DUDLEY)
+        applymovement(BIANCA,Manhunt_LeaveBallShop)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(BIANCA)
+        release
+        end
+}
+
+script Manhunt_TransformTreestoTallGrass {
+    setmetatile(24,29,0x015,TRUE)
+    setmetatile(24,28,0x015,TRUE)
+    setmetatile(24,27,0x015,TRUE)
+    setmetatile(24,26,0x015,TRUE)
+}
+//Psfroute62
+script Manhunt_Matthew_Battle_Script {
+        lock
+        clearflag(FLAG_HIDE_BIANCA)
+        addobject(BIANCA)
+        call(Manhunt_TransformTreestoTallGrass)
+        applymovement(BIANCA,Manhunt_WalkOntoRoute)
+        waitmovement(0)
+        applymovement(MATTHEW,Common_Movement_FacePlayer)
+        waitmovement(MATTHEW)
+        msgbox(gText_Manhunt_OhDamnLooksLike,,SPEAKER_MATTHEW)
+
+        msgbox(gText_Manhunt_WhosHe,,SPEAKER_ZOEY)
+
+
+        msgbox(gText_Manhunt_YeahToldMeYoud,,SPEAKER_MATTHEW)
+
+        multi_fixed_2_vs_1(TRAINER_SHANNON,gText_Manhunt_OhDamnLooksLike,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_4)
+
+        msgbox(gText_Manhunt_IFeelBadForAll,MSGBOX_AUTOCLOSE,SPEAKER_MATTHEW)
+        applymovement(BIANCA,Manhunt_LeaveRoute)
+        waitmovement(0)
+        removeobject(BIANCA)
+        release
+        end
+}
+
+script Manhunt_Encounter_Giovanni_Dialogue {
+    lock
+
+        if(var(VAR_MANHUNT_STATE) != SAVED_BEFORE_GIOVANNI){
+            setvar(VAR_MANHUNT_STATE,SAVED_BEFORE_GIOVANNI)
+            startmenu_savescreen
+        }
+
+        clearflag(FLAG_HIDE_BIANCA)
+        addobject(BIANCA)
+
+        applymovement(BIANCA,Manhunt_ApproachAtLake)
+        waitmovement(0)
+
+        msgbox(gText_Manhunt_StopHurtingPeople,MSGBOX_NPC,SPEAKER_GIOVANNI)
+
+        lock
+
+        multi_fixed_2_vs_1(TRAINER_MATT,gText_Manhunt_IfIDontHave,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
+        addvar(VAR_STORYLINE_STATE,1)
+
+        msgbox(gText_Manhunt_IWontFightYouAnyFurther,,SPEAKER_GIOVANNI)
+
+        if(var(VAR_STORYLINE_STATE) == STORY_3RD_TEAMROCKET_TAKEDOWN){
+            msgbox(gText_Manhunt_TheRegionIsYours,,SPEAKER_GIOVANNI)
+        }
+
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+
+        msgbox(gText_Manhunt_IllBeAtTheEntrance,,SPEAKER_ZOEY,,PHONE_ON)
+
+        msgbox(gText_Manhunt_WhatWaitUhOkay,,SPEAKER_ROSE,,EMOTE_SHOCK,PHONE_ON)
+
+        warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,5,5)
+}
+
+script Manhunt_MissionComplete_Dialogue {
+    lock
+
+        setvar(VAR_MANHUNT_STATE,MANHUNT_COMPLETE)
+
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        applymovement(SABRINA,Common_Movement_FaceDown)
+        waitmovement(0)
+
+        msgbox(gText_Manhunt_GoodWork,,SPEAKER_SABRINA)
+
+        release
+        completequest(QUEST_MANHUNT)
+        call(ExhibitionBattle_TimeSkip_Script)
+        end
+}
+
+text gText_Manhunt_GoFind {
+    format("Go find Giovanni. Bianca will help. The newspaper in SOMA is a good place to start, they ran a story on TeamRocket last year.")
+}
+
+text gText_Manhunt_HeyWereTrying {
+    format("Hey, we're trying to find Giovanni, and we were told you might have a connection.")
+}
+
+text gText_Manhunt_YeahIWrote {
+    format("Yeah, I wrote the TeamRocket leadership piece a few months back. It was more than time to see such a great group of youngsters really start to get the recognition they deserve. And getting to really sit down with Giovanni... I feel blessed to have been able to do it! ")
+}
+
+text gText_Manhunt_Blessed {
+    format("Blessed? TeamRocket? Ugh, they've infected you too.")
+}
+
+text gText_Manhunt_WaitYoureThatKid {
+    format("...wait. You're that {PLAYER} kid, aren't you? ")
+}
+
+text gText_Manhunt_ThatsUs {
+    format("That's us.")
+}
+
+text gText_Manhunt_IShouldHaveRecognized {
+    format("I should have recognized you two sooner. What're you doing snooping around here? Haven't you two helped enough? ")
+}
+
+text gText_Manhunt_HeyWeJustWant {
+    format("Hey, we just want to talk!")
+}
+
+text gText_Manhunt_AsAMatterOfFact {
+    format("As a matter of fact, get the hell out of here. Everything you two do is just hurting the region and lining the pockets of people who don't even care. Get out!")
+}
+
+text gText_Manhunt_PleaseDontHurtUs {
+    format("...Please don't hurt us any further. What do you want?")
+}
+
+text gText_Manhunt_StartTalking {
+    format("Start talking. Who's Giovanni behind the mask?")
+}
+
+text gText_Manhunt_ISwearIDontKnow {
+    format("Giovanni? I swear, I don't know who he is. Nobody does. I'm a reporter.... I wouldn't keep that a secret.")
+}
+
+text gText_Manhunt_IKnowYouKnow {
+    format("I KNOW you know some shit.")
+}
+
+text gText_Manhunt_TheOnlyLeadIHave {
+    format("The only lead I have is a consulting firm in Mission... there's money flowing between there and TeamRocket, or, at least there was. I never figured out what was going on though.")
+}
+
+text gText_Manhunt_ThatsAStart {
+    format("That's a start…")
+}
+
+text gText_Manhunt_NowPleaseLeave {
+    format("Now please... leave us alone.")
+}
+
+text gText_Manhunt_WhatAreSomeKids {
+    format("What are some kids doing here?")
+}
+
+text gText_Manhunt_YouGonnaMakeThisEasy {
+    format("You gonna make this easy? Or are you gonna keep protecting TeamRocket?")
+}
+
+text gText_Manhunt_WhatTheHellAreYou {
+    format("TeamRocket? What the hell are you talking about? ")
+}
+
+text gText_Manhunt_WeKnowYoureWorkingWith {
+    format("We know you're working with TeamRocket, and we need to find their leader.")
+}
+
+text gText_Manhunt_YeahIDidSomeWork {
+    format("Yeah, I did some work for them a while back. What about it? Gonna rat us out to your bosses?")
+}
+
+text gText_Manhunt_DamnPunks {
+    format("Damn punks.")
+}
+
+text gText_Manhunt_WhatDoYouKnow {
+    format("What do you know about TeamRocket?")
+}
+
+text gText_Manhunt_LookIDontKnowWhat {
+    format("Look, I don't know what you're digging for. TeamRocket is all above ground, nothing to hide, just trying to do some damn good in the world.")
+}
+
+text gText_Manhunt_GoodInTheWorld {
+    format("Good in the world, bullshit. There's gotta be something unusual. Keep thinking!")
+}
+
+text gText_Manhunt_TheOnlyWeirdThing {
+    format("The only weird thing about them was buying Balls in bulk from that Speciality Ball Shop... but seriously, there's nothing interesting there.")
+}
+
+text gText_Manhunt_ThatsInCastro {
+    format("That's in Castro. Let's move.")
+}
+
+text gText_Manhunt_GodForbidSomeGoodPeople {
+    format("God forbid some good people try to make some change without these tech cronies ruining it for everybody.")
+}
+
+text gText_Manhunt_HowCanIHelp {
+    format("How can I help - ")
+}
+
+text gText_Manhunt_CutTheShit {
+    format("Cut the shit.")
+}
+
+text gText_Manhunt_WoahTheChampion {
+    format("woah, the Champion. Are you looking to change -")
+}
+
+text gText_Manhunt_YeahTheyreOneOf {
+    format("TeamRocket? Yeah, they're one of our customers, why?")
+}
+
+text gText_Manhunt_BecauseWereBusting {
+    format("Because we're busting their shit up. They're buying in bulk from you. What are they buying?")
+}
+
+text gText_Manhunt_WhatDidTheyBuy {
+    format("What did they buy? I don't think I'm supposed to divulge that, but I can ask my boss. ")
+}
+
+text gText_Manhunt_ImSureWeCanHelp {
+    format("I'm sure we can help you divulge a little.")
+}
+
+text gText_Manhunt_WoahWaitHold {
+    format("Woah wait hold on!")
+}
+
+text gText_Manhunt_ShitMan {
+    format("Shit man, I'm just doing my job!")
+}
+
+text gText_Manhunt_AndWereDoingOurs {
+    format("And we're doing ours. Start talking.")
+}
+
+text gText_Manhunt_TheyBoughtABunch {
+    format("They bought a bunch of Dusk Balls in bulk. I don't know why, I don't know where they were going or what they were doing. ")
+}
+
+text gText_Manhunt_WhatElse {
+    format("What else! Think hard, or else.")
+}
+
+text gText_Manhunt_OneTimeTheyHadDelivered {
+    format("One time they had them delivered to Psfroute62, but I swear that doesn't mean anything! Please don't hurt me...")
+}
+
+text gText_Manhunt_Sob {
+    format("sob...")
+}
+
+text gText_Manhunt_OhDamnLooksLike {
+    format("Oh damn, looks like he was right.")
+}
+
+text gText_Manhunt_WhosHe {
+    format("Who's he?")
+}
+
+text gText_Manhunt_YeahToldMeYoud {
+    format("Yeah, Giovanni told me you'd be coming. But I wonder how tough you actually are!")
+}
+
+text gText_Manhunt_IFeelBadForAll {
+    format("I feel bad for all the innocent people you've been harassing... you're no joke. Giovanni wants you to meet him at the Lake, after sunset. Just the two of you - no police or Ycombinator cronies, or the trail goes cold again. Up to you.")
+}
+
+text gText_Manhunt_StopHurtingPeople {
+    format("Stop hurting people. I'm here.")
+}
+
+text gText_Manhunt_IfIDontHave {
+    format("If I don't have the strength to beat you, perhaps I don't have the strength to save SanFran after all.")
+}
+
+text gText_Manhunt_IWontFightYouAnyFurther {
+    format("*sniff* I won't fight you any further. Call your backup.")
+}
+
+text gText_Manhunt_TheRegionIsYours {
+    format("TeamRocket is finished. The region is yours now.")
+}
+
+text gText_Manhunt_IllBeAtTheEntrance {
+    format("Oak, I've defeated Giovanni. I'll be at the entrance to Lakemerritt.")
+}
+
+text gText_Manhunt_WhatWaitUhOkay {
+    format("What!? Wait uh - okay um, excellent work! I was expecting an email, but this will do! I'll send the police right over. This is amazing!")
+}
+
+text gText_Manhunt_GoodWork {
+    format("Good work.")
+}
+
+text gText_Manhunt_EverySecond{
+    format("Every second that I'm up here, I'm losing time on the upcoming promo... I hope you're able to track Giovanni down soon.")
+}
+
+text gText_Manhunt_IllBeBack{
+    format("I'll be back in the Production studio if you need me.")
+}
+
+movement Manhunt_WalkInNewspaper {
+    walk_down * 3
+    walk_left * 3
+    walk_down * 2
+    step_end
+}
+
+movement Manhunt_LeaveNewspaper {
+    walk_up * 2
+    walk_right * 3
+    walk_up * 3
+    step_end
+}
+
+movement Manhunt_WalkIntoConsulting {
+    walk_up * 2
+    jump_2_up
+    face_right
+    step_end
+}
+
+movement Manhunt_LeaveConsulting {
+    walk_down
+    jump_down
+    walk_down * 2
+    step_end
+}
+
+movement Manhunt_WalkIntoBallShop {
+    walk_down * 2
+    walk_left * 2
+    walk_down
+    step_end
+}
+
+movement Manhunt_ExclaimAndTurn {
+    emote_exclamation_mark
+    face_up
+    delay_16
+    faceplayer
+    step_end
+}
+
+movement Manhunt_LeaveBallShop {
+    walk_left * 2
+    walk_down * 4
+    step_end
+}
+
+movement Manhunt_WalkOntoRoute {
+    walk_up * 7
+    step_end
+}
+
+movement Manhunt_LeaveRoute {
+    walk_left * 7
+    walk_up * 6
+    step_end
+}
+
+movement Manhunt_ApproachAtLake {
+    walk_up * 6
+    step_end
+}

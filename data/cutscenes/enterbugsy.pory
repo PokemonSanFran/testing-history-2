@@ -1,0 +1,120 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const BUGSY = 1
+
+script EnterBugsy_BugsyIntro_Dialogue {
+        setvar(VAR_GYM_2_STATE, GYM_SAVE_BEFORE_LEADER)
+        msgbox(gText_EnterBugsy_ReachingTheSummit,MSGBOX_NPC,SPEAKER_BUGSY)
+                msgbox(gText_EnterBugsy_TotallyWornOut,,SPEAKER_BUGSY)
+                msgbox(gText_EnterBugsy_YeahFromOrre,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterBugsy_ManyMountainsLikeSinnoh,,SPEAKER_BUGSY)
+        msgbox(gText_EnterBugsy_EverythingIsSoFlat,,SPEAKER_BUGSY)
+                msgbox(gText_EnterBugsy_HikedUpAMountain,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+                closemessage
+                applymovement(BUGSY,Common_Movement_FaceAwayPlayer)
+        msgbox(gText_EnterBugsy_ThisCheapImitation,,SPEAKER_BUGSY,TAIL_SHOUT)
+                applymovement(BUGSY,Common_Movement_FacePlayer)
+                closemessage
+        startmenu_savescreen
+        closemessage
+        goto(EnterBugsy_StartGymBattle_Script)
+}
+
+script EnterBugsy_StartGymBattle_Script {
+        trainerbattle_single(TRAINER_BRAWLY_1, gText_EnterBugsy_EnGarde, gText_EnterBugsy_ItsAnHonorToLose, EnterBugsy_BugsyDefeated_Script, NO_MUSIC)
+}
+
+script EnterBugsy_BugsyDefeated_Script {
+        lockall
+        setflag(FLAG_BADGE02_GET)
+        setvar(VAR_BUGSY_STATE,BATTLE_1_COMPLETE)
+        setvar(VAR_GYM_2_STATE,GYM_DEFEATED_LEADER)
+        msgbox(gText_EnterBugsy_ExploitedMyMistakes,,SPEAKER_BUGSY)
+                msgbox(gText_EnterBugsy_BadgeGet)
+        call(Common_EventScript_PlayGymBadgeFanfare)
+        giveitem(ITEM_TM02)
+        closemessage
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
+        releaseall
+        end
+}
+
+script EnterBugsy_PostDefeat1_Dialogue {
+        setvar(VAR_GYM_2_STATE,GYM_EXPLAINED_BADGE_AND_TM)
+        lockall
+        msgbox(gText_EnterBugsy_TradedPokemonUpTo,MSGBOX_NPC,,SPEAKER_BUGSY)
+                closemessage
+        releaseall
+        end
+}
+
+script EnterBugsy_PostDefeat2_Dialogue {
+        lockall
+        msgbox(gText_EnterBugsy_NextTimeWeBattle,MSGBOX_NPC,,SPEAKER_BUGSY)
+                closemessage
+        releaseall
+        end
+}
+
+text gText_EnterBugsy_ReachingTheSummit {
+	format("Congratulations on reaching the summit, {PLAYER}! I'm Bugsy.")
+}
+
+text gText_EnterBugsy_TotallyWornOut {
+	format("Most Trainers are totally worn out when they reach me. Are you a foreigner?")
+}
+
+text gText_EnterBugsy_YeahFromOrre {
+	format("Yeah, from Orre.")
+}
+
+text gText_EnterBugsy_ManyMountainsLikeSinnoh {
+	format("Ah yes. Many mountains, like Sinnoh. Sinnoh is a physically demanding region. The slopes, mountains, and marshes... Trainers have to train their bodies and minds alongside their Pokémon! ")
+}
+
+text gText_EnterBugsy_EverythingIsSoFlat {
+	format("But in SanFran, everything is so flat and stale and uninspired... and pudgy. ")
+}
+
+text gText_EnterBugsy_HikedUpAMountain {
+	format("Flat? I hiked up a mountain just to get here!")
+}
+
+text gText_EnterBugsy_ThisCheapImitation {
+	format("And Japantown... this cheap imitation. These people have no idea what Sinnoh is! They've bastardized our traditions and cultures. I'll show you how a true trainer from Sinnoh battles!")
+}
+
+text gText_EnterBugsy_EnGarde {
+	format("En garde!")
+}
+
+text gText_EnterBugsy_MyHeartIsRacing {
+	format("My heart is racing!")
+}
+
+text gText_EnterBugsy_ImNotFinishedYet {
+	format("I'm not finished yet. I've got this!")
+}
+
+text gText_EnterBugsy_Sinnoh1Orre0 {
+	format("Sinnoh 1, Orre 0!")
+}
+
+text gText_EnterBugsy_ItsAnHonorToLose {
+	format("It's an honor to lose to you.")
+}
+
+text gText_EnterBugsy_ExploitedMyMistakes {
+	format("Thank you, {PLAYER}. You exploited my mistakes amazingly. I hope you're proud!")
+}
+
+text gText_EnterBugsy_BadgeGet{
+	format("You received the BugsyBadge Badge!")
+}
+text gText_EnterBugsy_TradedPokemonUpTo {
+	format("Traded Pokémon up to Level Psfgymlevel2 will recognize your BugsyBadge Badge and the skill it represents. That TM teaches Psfgymattacknum2, which does exactly what it sounds like!")
+}
+
+text gText_EnterBugsy_NextTimeWeBattle {
+	format("Next time we battle, I'll be better. I won't let you, or the Sinnoh people, down!")
+}

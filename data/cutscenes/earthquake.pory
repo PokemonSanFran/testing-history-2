@@ -1,0 +1,488 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const ARCHER_HOUSE = 1
+const ARCHER = 3 //outside house
+const ARIANA = 13
+const GRUNTA = 15
+const GRUNTB = 16
+const GRUNTC = 17
+
+const FLAG_HIDE_TRANSPORT = FLAG_TEMP_1F
+
+script Earthquake_HideObject_Script {
+        setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_2)
+        setobjectxyperm(ARCHER,28,33)
+        turnobject(ARCHER,DIR_NORTH)
+}
+
+script Earthquake_HideTransport_Script{
+    if (var(VAR_ALAMEDA_STATE) > START_CHAMPIONSHIP_CLEAN_RAID && var(VAR_ALAMEDA_STATE) < MEET_AT_PSFROUTE8){
+        setflag(FLAG_HIDE_TRANSPORT)
+    }
+}
+
+script Earthquake_PostRescue_Objects_Script {
+    clearflag(FLAG_TEMP_1)
+    clearflag(FLAG_TEMP_3)
+    clearflag(FLAG_TEMP_4)
+
+        addobject(ARCHER)
+        addobject(ARIANA)
+
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,15,32,10)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,16,31,12)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,17,31,11)
+
+        turnvobject(16,DIR_EAST)
+        turnvobject(17,DIR_EAST)
+
+        setobjectxy(PLAYER,32,13)
+        setobjectxy(ARCHER,33,12)
+        setobjectxy(ARIANA,33,11)
+        turnobject(PLAYER,DIR_NORTH)
+
+        applymovement(ARIANA,Common_Movement_FaceLeft)
+        turnobject(ARCHER,DIR_WEST)
+
+        TeleportCamera(32,13)
+}
+
+script Earthquake_ThatNight_Dialogue {
+    fadescreen(FADE_TO_BLACK)
+        clearflag(FLAG_TEMP_1)
+        addobject(ARCHER_HOUSE)
+        applymovement(ARCHER_HOUSE,Common_Movement_FaceDown)
+
+        msgbox(gText_Earthquake_ThatNight)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+
+        playse(SE_M_EARTHQUAKE)
+        setvar(VAR_0x8004,8) //vertical pan
+        setvar(VAR_0x8005,8) //horizontal pan
+        setvar(VAR_0x8006,25) //number of shakes
+        setvar(VAR_0x8007,5) //shake delay
+        special(ShakeCamera)
+
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        applymovement(1,Common_Movement_ExclamationMark)
+
+        waitstate
+        playse(SE_M_EARTHQUAKE)
+        special(ShakeCamera)
+
+        delay(100) //wait until after earthquake
+        waitstate
+
+        msgbox(gText_Earthquake_AreYouOkay,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
+
+        msgbox(gText_Earthquake_OhArceus,MSGBOX_DEFAULT,SPEAKER_RESIDENT_A,TAIL_SHOUT)
+        closemessage
+
+        applymovement(PLAYER,Earthquake_WalkOutOfBed)
+
+        msgbox(gText_Earthquake_HelpMe,MSGBOX_DEFAULT,SPEAKER_RESIDENT_B,TAIL_SHOUT,EMOTE_SHOCK)
+
+        msgbox(gText_Earthquake_ImFine,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
+
+        applymovement(ARCHER_HOUSE,Earthquake_WalkToWall)
+        waitmovement(ARCHER_HOUSE)
+
+        msgbox(gText_Earthquake_ThePowersDead,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+        closemessage
+
+        applymovement(ARCHER_HOUSE,Earthquake_RunOutside)
+        waitmovement(ARCHER_HOUSE)
+        playse(SE_EXIT)
+        waitse
+        removeobject(ARCHER_HOUSE)
+
+        applymovement(PLAYER,Earthquake_RunFromBedOutside)
+        waitmovement(PLAYER)
+
+        setvar(VAR_ALAMEDA_STATE,POST_EARTHQUAKE)
+        warp(MAP_ALAMEDA,2)
+}
+
+script Earthquake_ShowDestroyedCity_Script {
+    lock
+        msgbox(gText_Earthquake_HolyShit,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        closemessage
+        
+        fadescreen(FADE_TO_BLACK)
+        TeleportCamera(11,7)
+        special(SpawnCameraObject)
+        fadescreen(FADE_FROM_BLACK)
+
+        applymovement(CAMERA,Earthquake_PanCameraDown)
+        waitmovement(CAMERA)
+
+        fadescreen(FADE_TO_BLACK)
+        TeleportCamera(33,26)
+        special(SpawnCameraObject)
+        fadescreen(FADE_FROM_BLACK)
+
+        applymovement(CAMERA,Earthquake_PanCameraUp)
+        waitmovement(CAMERA)
+
+        fadescreen(FADE_TO_BLACK)
+        TeleportCamera(29,33)
+
+        fadescreen(FADE_FROM_BLACK)
+        goto(Earthquake_StartRescue_Dialogue)
+}
+
+script Earthquake_StartRescue_Dialogue {
+    //PSF TODO Prevent player leaving the city during this mission
+
+    special(RemoveCameraObject)
+
+        addobject(ARIANA)
+
+        applymovement(ARIANA,Earthquake_WalkToPair)
+        waitmovement(ARIANA)
+
+        msgbox(gText_Earthquake_OhYoureOkay,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+
+        msgbox(gText_Earthquake_YeahWhyDidnt,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+
+        msgbox(gText_Earthquake_CellTowersWere,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+
+        msgbox(gText_Earthquake_SoundsLikeWere,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+
+        msgbox(gText_Earthquake_ImGoingToMakeAnother,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+
+        msgbox(gText_Earthquake_OfCourse,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+        closemessage
+        
+        applymovement(ARCHER,Earthquake_WalkAwayA)
+        applymovement(ARIANA,Earthquake_WalkAwayB)
+        waitmovement(ARCHER)
+        waitmovement(ARIANA)
+        removeobject(ARCHER)
+        removeobject(ARIANA)
+
+        setvar(VAR_ALAMEDA_STATE,START_EARTHQUAKE_RESCUE)
+
+        release
+        end
+}
+
+
+script Earthquake_PostRescue_Dialogue {
+    lock
+
+        msgbox(gText_Earthquake_OkayThingsSeemToBe,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
+
+        fadescreen(FADE_TO_BLACK)
+        call(Earthquake_PostRescue_Objects_Script)
+        fadescreen(FADE_FROM_BLACK)
+
+        msgbox(gText_Earthquake_WeveManagedToReestablish,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
+
+        applymovement(ARIANA,Earthquake_Pace)
+        waitmovement(ARIANA)
+
+        msgbox(gText_Earthquake_IReally,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+
+        playse(SE_POKENAV_CALL)
+        waitse
+
+        msgbox(gText_Earthquake_AMessageFromThe,MSGBOX_DEFAULT,SPEAKER_ARIANA,TAIL_TALK,EMOTE_CONFUSE)
+                closemessage
+
+        playse(SE_PIN)
+        waitse
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(PLAYER)
+
+        msgbox(gText_Earthquake_ThatsATrap,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_SHOUT,EMOTE_SHOCK)
+
+        msgbox(gText_Earthquake_WhatDoYouMean,MSGBOX_DEFAULT,SPEAKER_ARIANA,,EMOTE_CONFUSE)
+
+        msgbox(gText_Earthquake_ShitWeNever,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
+
+        applymovement(ARCHER,Common_Movement_FaceUp)
+        waitmovement(ARCHER)
+
+        msgbox(gText_Earthquake_IGotAMessage,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+
+        applymovement(ARIANA,Earthquake_TurnToPlayer)
+        waitmovement(ARIANA)
+
+        msgbox(gText_Earthquake_WaitWhat,MSGBOX_DEFAULT,SPEAKER_ARIANA,,EMOTE_SHOCK)
+
+        msgbox(gText_Earthquake_ItGetsCrazier,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+
+        msgbox(gText_Earthquake_WeBattledBut,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+
+        msgbox(gText_Earthquake_ThatDoesntMake,MSGBOX_DEFAULT,SPEAKER_ARIANA,EMOTE_CONFUSE)
+
+        msgbox(gText_Earthquake_ItsJustABunch,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+
+        msgbox(gText_Earthquake_IDontThinkSo,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
+
+        applymovement(ARCHER,Common_Movement_FaceDown)
+        waitmovement(ARCHER)
+
+        msgbox(gText_Earthquake_HowCanYouTrust,MSGBOX_DEFAULT,SPEAKER_ARCHER,,EMOTE_SHOCK)
+
+        msgbox(gText_Earthquake_TheSecondHalf,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+
+        msgbox(gText_Earthquake_SoSomebodyWantsUs,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+
+        msgbox(gText_Earthquake_IThinkItsOn,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
+
+        applymovement(ARCHER,Common_Movement_FaceUp)
+        waitmovement(ARCHER)
+
+        msgbox(gText_Earthquake_FineTheThreeOfUs,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
+        setvar(VAR_STORYLINE_STATE,STORY_POST_EARTHQUAKE)
+        setvar(VAR_ALAMEDA_STATE,MEET_AT_PSFROUTE8)
+        goto(Earthquake_AskPlayerWarp_Script)
+}
+
+script Earthquake_AskPlayerWarp_Script {
+    applymovement(ARCHER,Earthquake_TurnToPlayer)
+        waitmovement(ARCHER)
+
+        msgbox(gText_Earthquake_ImGonnaHead,MSGBOX_YESNO,SPEAKER_ARCHER)
+        closemessage
+        
+        if (var(VAR_RESULT) == YES){
+            warpsilent(MAP_PSFROUTE8,255,10,24)
+                end
+        }else {
+                msgbox(gText_Earthquake_OkayWeve,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
+                        }
+
+    fadescreen(FADE_TO_BLACK)
+        removeobject(GRUNTA)
+        removeobject(GRUNTB)
+        removeobject(GRUNTC)
+        removeobject(ARCHER)
+        removeobject(ARIANA)
+        fadescreen(FADE_FROM_BLACK)
+
+        release
+        end
+}
+
+text gText_Earthquake_ThatNight {
+    format("That night…")
+}
+
+text gText_Earthquake_AreYouOkay {
+    format("{PLAYER}, are you okay?")
+}
+
+text gText_Earthquake_OhArceus {
+    format("Oh Arceus, no!")
+}
+
+text gText_Earthquake_HelpMe {
+    format("Help me!")
+}
+
+text gText_Earthquake_ImFine {
+    format("I'm fine. Do you hear people screaming?")
+}
+
+text gText_Earthquake_ThePowersDead {
+    format("The power's dead. This… isn't good.")
+}
+
+text gText_Earthquake_HolyShit {
+    format("Holy shit.")
+}
+
+text gText_Earthquake_OhYoureOkay {
+    format("Oh Arceus, you're okay!")
+}
+
+text gText_Earthquake_YeahWhyDidnt {
+    format("Yeah, why didn't you just call?")
+}
+
+text gText_Earthquake_CellTowersWere {
+    format("Cell towers were destroyed… like everything else. Emily just told me that the docks are destroyed too.")
+}
+
+text gText_Earthquake_SoundsLikeWere {
+    format("Sounds like we're on our own.")
+}
+
+text gText_Earthquake_ImGoingToMakeAnother {
+    format("*sigh* I'm going to make another lap around Alameda and see who else I can help, and I've asked other TeamRocket members to do the same. Could you two -")
+}
+
+text gText_Earthquake_OfCourse {
+    format("Of course. Let's meet back in the town center in a bit.")
+}
+
+text gText_Earthquake_OkayThingsSeemToBe {
+    format("Okay… things seem to be stabilizing. I should go meet Ariana in the center of town.")
+}
+
+text gText_Earthquake_WeveManagedToReestablish {
+    format("We've managed to re-establish cell communications. The authorities claim they're on their way… Arceus knows how useful they'll actually be. Ina reports that our ranks suffered heavy casualties in the quake. Mark says our supply caches were also hit hard.")
+}
+
+text gText_Earthquake_IReally {
+    format("I really don't know how TeamRocket is going to hold up under this stress.")
+}
+
+text gText_Earthquake_AMessageFromThe {
+    format("My phone got a message from the Events account? Now?")
+}
+
+text gText_Earthquake_ThatsATrap {
+    format("That's a trap.")
+}
+
+text gText_Earthquake_WhatDoYouMean {
+    format("What do you mean? That doesn't make any sense.")
+}
+
+text gText_Earthquake_ShitWeNever {
+    format("Shit, we never got a chance to tell you.")
+}
+
+text gText_Earthquake_IGotAMessage {
+    format("Archer and I got a message from that account a few days ago. I went to a warehouse in Oakland, and Koga trapped me there and attacked me.")
+}
+
+text gText_Earthquake_WaitWhat {
+    format("Wait what?")
+}
+
+text gText_Earthquake_ItGetsCrazier {
+    format("It gets crazier.")
+}
+
+text gText_Earthquake_WeBattledBut {
+    format("We battled but… he threw the battle. And then told me to run. It was like he wasn't even trying.")
+}
+
+text gText_Earthquake_ThatDoesntMake {
+    format("Let's check this message out.")
+}
+
+text gText_Earthquake_ItsJustABunch {
+    format("“TM15@18030122@37.75030467013338, -122.3798002138461” It's just a bunch of nonsense. Maybe a glitch?")
+}
+
+text gText_Earthquake_IDontThinkSo {
+    format("…I don't think so. Koga was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Ycombinator.")
+}
+
+text gText_Earthquake_HowCanYouTrust {
+    format("How can you trust them after ALL of this?")
+}
+
+text gText_Earthquake_TheSecondHalf {
+    format("The second half of that message are GPS coordinates, if that counts for anything.")
+}
+
+text gText_Earthquake_SoSomebodyWantsUs {
+    format("So somebody wants us to go somewhere. Where is that?")
+}
+
+text gText_Earthquake_IThinkItsOn {
+    format("I think it's on the mainland, by Psfroute8. Let's take a small team to go investigate.")
+}
+
+text gText_Earthquake_FineTheThreeOfUs {
+    format("Fine. The three of us and maybe a few more… nobody can take all of us at once.")
+}
+
+text gText_Earthquake_ImGonnaHead {
+    format("I'm gonna head over to Psfroute8 right now. Want to come with me?")
+}
+
+text gText_Earthquake_OkayWeve {
+    format("Okay, we've all got our orders. Let's stay in touch.")
+}
+
+movement Earthquake_WalkToWall {
+    walk_up * 2
+        step_end
+}
+
+movement Earthquake_RunOutside {
+    player_run_right
+        player_run_up
+        step_end
+}
+
+movement Earthquake_RunFromBedOutside {
+    player_run_right * 5
+        player_run_up * 3
+        step_end
+}
+
+movement Earthquake_WalkOutOfBed {
+    walk_right
+        step_end
+}
+
+movement Earthquake_PanCameraDown {
+    walk_down * 10
+        step_end
+}
+
+movement Earthquake_PanCameraUp {
+    walk_up * 10
+        step_end
+}
+
+movement Earthquake_PanCameraLeft {
+    walk_left * 10
+        step_end
+}
+
+movement Earthquake_WalkToPair {
+    walk_right * 5
+        walk_down * 2
+        walk_right * 3
+        face_up
+        step_end
+}
+
+movement Earthquake_WalkAwayA {
+    walk_left
+        walk_up * 6
+        step_end
+}
+
+movement Earthquake_WalkAwayB {
+    walk_left * 2
+        walk_up * 7
+        step_end
+}
+
+movement Earthquake_Pace {
+    walk_right
+        walk_up * 2
+        walk_down * 2
+        walk_up * 2
+        walk_down * 2
+        step_end
+}
+
+movement Earthquake_TurnToPlayer {
+    walk_left
+        face_down
+        step_end
+}

@@ -1,0 +1,252 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const OAK = 1
+const POLICE_A = 2
+const POLICE_B = 3
+const ROSE = 4
+
+const FLAG_HIDE_OAK= FLAG_TEMP_1
+const FLAG_HIDE_POLICE = FLAG_TEMP_2
+const FLAG_HIDE_ROSE = FLAG_TEMP_3
+
+script YouCantStopMe_HideObject_Script {
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_POLICE)
+    return
+}
+
+script YouCantStopMe_MoveObject_Script {
+    call(YouCantStopMe_HideObject_Script)
+        setobjectxy(ROSE,15,5)
+        setobjectxyperm(ROSE,15,5)
+        setobjectnewmovementtype(ROSE,MOVEMENT_TYPE_FACE_DOWN)
+}
+
+script YouCantStopMe_ObjectCleanUp_Script {
+    call(YouCantStopMe_HideObject_Script)
+    setflag(FLAG_HIDE_ROSE)
+    return
+}
+
+script YouCantStopMe_MoveOakPlayer_Script{
+        clearflag(FLAG_HIDE_OAK)
+
+        playse(SE_EXIT)
+        waitse
+
+        addobject(OAK)
+
+        applymovement(OAK,Common_Movement_WalkDown)
+        fadescreen(FADE_TO_BLACK)
+        applymovement(OAK,Common_Movement_FaceRight)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        delay(30)
+        setobjectxy(OAK,5,7)
+        setobjectxy(PLAYER,6,7)
+        TeleportCamera(6,7)
+        fadescreen(FADE_FROM_BLACK)
+}
+
+script YouCantStopMe_LastChance_Dialogue {
+    lock
+        msgbox(gText_YouCantStopMe_Wait,,SPEAKER_OAK)
+
+        closemessage
+
+        call(YouCantStopMe_MoveOakPlayer_Script)
+
+        msgbox(gText_YouCantStopMe_PleaseItIsntToo,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_PeopleOnDied,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_YesItsUnforuntate,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_DoYouReally,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_IKnowYouWant,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_LookAtTheJobs,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_WeveWorkedVeryHard,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_EverybodyDeservesAGoodLife,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_DotDotDot,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_TheyreNotMurderers,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_DotDotDot,,SPEAKER_OAK)
+
+        msgbox(gText_YouCantStopMe_IThoughtSo,,SPEAKER_ZOEY)
+        closemessage
+
+
+        applymovement(OAK,YouCantStopMe_LeaveFloor_Movement)
+        waitmovement(OAK)
+        playse(SE_EXIT)
+        waitse
+        removeobject(OAK)
+
+        setvar(VAR_TOWER_RAID_STATE,STOPPED_BY_OAK)
+        release
+        end
+}
+
+script YouCantStopMe_Confront_Dialogue {
+        lock
+        playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE)
+
+        msgbox(gText_YouCantStopMe_WhatDoYouWant,MSGBOX_NPC,SPEAKER_ROSE)
+
+        msgbox(gText_YouCantStopMe_OneMassCasualty,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_HahIThinkMass,,SPEAKER_ROSE)
+
+        closemessage
+
+        applymovement(ROSE,Common_Movement_FaceUp)
+
+        msgbox(gText_YouCantStopMe_DidYouEverCare,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_ImNotJustifying,,SPEAKER_ROSE)
+
+        msgbox(gText_YouCantStopMe_YouReallyDontGive,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouCantStopMe_NopeIDoWish,,SPEAKER_ROSE)
+
+        msgbox(gText_YouCantStopMe_JustAGlorified,,SPEAKER_ZOEY)
+
+        closemessage
+
+        setvar(VAR_TOWER_RAID_STATE,SAVE_ROSE_SALESFORCETOWER)
+
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 15 || (var(VAR_TEMP_1) != 5)){
+            fadescreen(FADE_TO_BLACK)
+                delay(30)
+                applymovement(ROSE,Common_Movement_FaceDown)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                setobjectxy(ROSE,15,4)
+                setobjectxy(PLAYER,15,5)
+                TeleportCamera(15,5)
+                fadescreen(FADE_FROM_BLACK)
+        }
+
+        applymovement(ROSE,Common_Movement_WalkDown)
+        applymovement(PLAYER,YouCantStopMe_WalkBackwards_Movement)
+        waitmovement(ROSE)
+        waitmovement(PLAYER)
+
+        startmenu_savescreen
+        goto(YouCantStopMe_StartBossBattle_Script)
+}
+
+script YouCantStopMe_StartBossBattle_Script {
+        msgbox(gText_YouCantStopMe_YouWere,MSGBOX_NPC,SPEAKER_ROSE)
+        closemessage
+
+
+        trainerbattle_no_intro(TRAINER_MAXIE_MAGMA_HIDEOUT,gText_YouCantStopMe_WowGuessWeShould)
+        goto(WeCanStopYouActually_PostBattle_Dialogue)
+}
+
+text gText_YouCantStopMe_Wait {
+    format("{PLAYER}! Wait!")
+}
+
+text gText_YouCantStopMe_PleaseItIsntToo {
+    format("Please! It isn’t too late to fix things.")
+}
+
+text gText_YouCantStopMe_PeopleOnDied {
+    format("People on Alameda died, Oak! We can’t fix that.")
+}
+
+text gText_YouCantStopMe_YesItsUnforuntate {
+    format("*sigh* Yes, it's unfortunate that there was some collateral damage, but it’s for the better! The region will be better! We’re going to usher in a new age!")
+}
+
+text gText_YouCantStopMe_DoYouReally {
+    format("Do you all really think you did the right thing? Don’t you get that this is insane?!")
+}
+
+text gText_YouCantStopMe_IKnowYouWant {
+    format("I know you want to help people. But we are too! Look at the jobs we create - ")
+}
+
+text gText_YouCantStopMe_LookAtTheJobs {
+    format("Look at the jobs you’ve destroyed! The families! Careers! While you watch from your towers and skyboxes, I was out there with people. You have no idea how they live.")
+}
+
+text gText_YouCantStopMe_WeveWorkedVeryHard {
+    format("We’ve worked very hard to get where we are. We’ve earned every penny and we deserve to have a good life!")
+}
+
+text gText_YouCantStopMe_EverybodyDeservesAGoodLife {
+    format("Everybody deserves a good life. But since you weren’t aware - the people I’ve met in SanFran are hard-working. And suffering. Because of things you did. You’re all hurting people! All to pump some stats and make more money that you don’t even need! What makes you more deserving than them?")
+}
+
+text gText_YouCantStopMe_TheyreNotMurderers {
+    format("They’re not murderers. You are. I just beat everybody on the way up here, including Bianca. I don’t want to hurt you too.")
+}
+
+text gText_YouCantStopMe_DotDotDot {
+    format("…")
+}
+
+text gText_YouCantStopMe_IThoughtSo {
+    format("I thought so.")
+}
+
+text gText_YouCantStopMe_WhatDoYouWant {
+    format("*sigh* What do you want? I'm working on an important email.")
+}
+
+text gText_YouCantStopMe_OneMassCasualty {
+    format("One mass casualty event wasn’t enough?! Ruining a region!? Becoming a multi-billionaire? What else do you want?")
+}
+
+text gText_YouCantStopMe_HahIThinkMass {
+    format("Hah! I think mass casualty is a little dramatic, don’t you think? A few people died. They shouldn’t have aligned themselves with terrorists. They were getting in the way of shareholder profits, which is why I have work to do, actually…")
+}
+
+text gText_YouCantStopMe_DidYouEverCare {
+    format("Did you ever care about any of this?")
+}
+
+text gText_YouCantStopMe_ImNotJustifying {
+    format("I’m not justifying myself to some kid, and I don’t need to either.")
+}
+
+text gText_YouCantStopMe_YouReallyDontGive {
+    format("You really don’t give a shit.")
+}
+
+text gText_YouCantStopMe_NopeIDoWish {
+    format("Nope! I do wish you had just played your role though. Bianca isn’t as… charming as you, so we’ve gotta keep them behind the scenes, you know? Gotta find a new kid, I guess.")
+}
+
+text gText_YouCantStopMe_JustAGlorified {
+    format("I was just a glorified PR puppet for you?!")
+}
+
+text gText_YouCantStopMe_YouWere {
+    format("You were. Now you’re annoying. Soon to be dead.")
+}
+
+text gText_YouCantStopMe_WowGuessWeShould {
+    format("Wow! Guess we should have taken you out sooner, huh?")
+}
+
+movement YouCantStopMe_LeaveFloor_Movement{
+    walk_left
+        walk_up * 6
+        step_end
+}
+
+movement YouCantStopMe_WalkBackwards_Movement{
+    lock_facing_direction
+        walk_down
+        unlock_facing_direction
+        step_end
+}

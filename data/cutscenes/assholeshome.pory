@@ -1,0 +1,139 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARCHER = 3
+
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ARIANA = FLAG_TEMP_3
+const FLAG_HIDE_ELITE4 = FLAG_TEMP_4
+
+script AssholesHome_HideObject_Script {
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_ARIANA)
+    setflag(FLAG_HIDE_ELITE4)
+}
+
+script AssholesHome_WalkToPlayer_Script {
+        lock
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+        applymovement(ARCHER,AssholesHomes_WalkToPlayer_Movement)
+        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        goto(AssholesHome_Archer_Dialogue)
+}
+
+script AssholesHome_BattleEvent_Script {
+        lock
+        faceplayer
+    switch(var(VAR_ALAMEDA_STATE)) {
+        case HAS_NOT_ENCOUNTERED_ARCHER: goto(AssholesHome_Archer_Dialogue)
+        case SAVE_ARCHER_ALAMEDA: goto(AssholesHome_StartBattle_Script)
+    }
+}
+
+script AssholesHome_Archer_Dialogue {
+        setvar(VAR_ALAMEDA_STATE,SAVE_ARCHER_ALAMEDA)
+        msgbox(gText_AssholesHome_JudgingFromSwarm,,SPEAKER_ARCHER)
+        msgbox(gText_AssholesHome_ReallyHopingLastTime,,SPEAKER_ZOEY)
+        closemessage
+        startmenu_savescreen
+        closemessage
+        goto(AssholesHome_StartBattle_Script)
+}
+
+script AssholesHome_StartBattle_Script{
+    lockall
+        msgbox(gText_AssholesHome_JustCurious,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+        msgbox(gText_AssholesHome_IDoubtYoureGoing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        closemessage
+        trainerbattle_no_intro(TRAINER_WALLY_VR_1,gText_AssholesHome_ThrowsTheirMoney)
+        goto(AssholesHome_PostBattle_Dialogue)
+}
+
+script AssholesHome_PostBattle_Dialogue {
+    lockall
+        setvar(VAR_STORYLINE_STATE,STORY_DEFEAT_ARCHER_ALAMEDA)
+        setvar(VAR_ALAMEDA_STATE,DEFEATED_ARCHER_ALAMEDA)
+        msgbox(gText_AssholesHome_SoMuchForThe,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+        msgbox(gText_AssholesHome_NameInsteadOf,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_AssholesHome_ILikeBeingPushed,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+
+        if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
+                msgbox(gText_AssholesHome_ISawThatYoure,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                msgbox(gText_AssholesHome_YoureRightItsHypocritical,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                msgbox(gText_AssholesHome_WhatAWeirdKid,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        }
+        closemessage
+        applymovement(ARCHER,AssholesHome_WalkAway_Movement)
+        waitmovement(0)
+        fadedefaultbgm
+        removeobject(ARCHER)
+        release
+        end
+}
+
+movement AssholesHomes_WalkToPlayer_Movement {
+    walk_down * 4
+        step_end
+}
+
+movement AssholesHome_WalkAway_Movement {
+    walk_up * 4
+        step_end
+}
+
+text gText_AssholesHome_JudgingFromSwarm {
+    format("Judging from the swarm of transplants on the island this morning, I'm guessing the ferry is fixed.")
+}
+
+text gText_AssholesHome_ReallyHopingLastTime {
+    format("*sigh* I was really hoping last time was the last time. What do you want?")
+}
+
+text gText_AssholesHome_JustCurious {
+    format("Just curious if you're ready for the next Gym Leader.")
+}
+
+text gText_AssholesHome_IDoubtYoureGoing {
+    format("I doubt you're going to be able to accurately judge that.")
+}
+
+text gText_AssholesHome_NotAgain {
+    format("Not again!")
+}
+
+text gText_AssholesHome_GuessYouReally {
+    format("Guess you really worked for those Badges!")
+}
+
+text gText_AssholesHome_GuessICanJudge {
+    format("Guess I can judge. You're not ready for Morty.")
+}
+
+text gText_AssholesHome_ThrowsTheirMoney {
+    format("YCombinator throws their money around, and the strong get stronger...")
+}
+
+text gText_AssholesHome_SoMuchForThe {
+    format("So much for the home-court advantage. gg... {PLAYER}, right?")
+}
+
+text gText_AssholesHome_NameInsteadOf {
+    format("Oh wow, a name instead of an insult.")
+}
+
+text gText_AssholesHome_ILikeBeingPushed {
+    format("I like being pushed to my limits like that. You're stronger than the rest of them, that's for sure. See you around.")
+}
+
+text gText_AssholesHome_ISawThatYoure {
+    format("Wait! I saw that you're participating in the League Challenge like the rest of us. After all the insults and endless complaints about it, what am I missing?")
+}
+
+text gText_AssholesHome_YoureRightItsHypocritical {
+    format("You're right, it's hypocritical. But I'm tired of fighting a system from the outside. I'm going to try and change it from the inside out. I'm excited to be able to beat you along the way.")
+}
+
+text gText_AssholesHome_WhatAWeirdKid {
+    format("(What a weird kid...)")
+}

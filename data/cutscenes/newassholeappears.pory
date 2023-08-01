@@ -1,0 +1,206 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARCHER = 1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+
+script NewAssholeAppears_HideArcher_Script{
+    if (var(VAR_PSFROUTE9_STATE) > SAVED_BEFORE_ARCHER_PSFROUTE9){
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    return
+}
+
+script NewAssholeAppears_WalkToPlayer_Script {
+    lockall
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    applymovement(ARCHER,Common_Movement_ExclamationMark)
+    playse(SE_PIN)
+    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+    waitmovement(0)
+
+    switch(var(VAR_TEMP_0)){
+        case 0: applymovement(ARCHER,NewAssholeAppears_X0_WalkToPlayer_Movement)
+        case 1: applymovement(ARCHER,NewAssholeAppears_X1_WalkToPlayer_Movement)
+        case 2: applymovement(ARCHER,NewAssholeAppears_X2_WalkToPlayer_Movement)
+        case 3: applymovement(ARCHER,NewAssholeAppears_X3_WalkToPlayer_Movement)
+        case 4: applymovement(ARCHER,NewAssholeAppears_X4_WalkToPlayer_Movement)
+    }
+    waitmovement(0)
+
+    switch(var(VAR_TEMP_1)){
+        case 2: applymovement(ARCHER,NewAssholeAppears_Y2_WalkToPlayer_Movement)
+        case 6: applymovement(ARCHER,NewAssholeAppears_Y6_WalkToPlayer_Movement)
+    }
+    waitmovement(0)
+    goto(ArcherAlpha_Event_Script)
+}
+
+script ArcherAlpha_Event_Script{
+    switch(var(VAR_PSFROUTE9_STATE)) {
+        case HAS_NOT_MET_ARCHER: goto(NewAssholeAppears_Intro_Dialogue)
+        case SAVED_BEFORE_ARCHER_PSFROUTE9: goto(NewAssholeAppears_StartBattle_Script)
+    }
+}
+
+script NewAssholeAppears_Intro_Dialogue {
+    setvar(VAR_PSFROUTE9_STATE,SAVED_BEFORE_ARCHER_PSFROUTE9)
+    msgbox(gText_NewAssholeAppears_YouLookFamiliar,,SPEAKER_ARCHER)
+    if (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) > DEFEATED_WHITNEY){
+        msgbox(gText_NewAssholeAppears_YeahYouHadSome,,SPEAKER_ZOEY)
+    }else{
+        msgbox(gText_NewAssholeAppears_JustStarted,,SPEAKER_ZOEY)
+    }
+    goto(NewAssholeAppears_BadgeJudge_Dialogue)
+}
+
+script NewAssholeAppears_BadgeJudge_Dialogue {
+
+    special(GetNumberOfBadges)
+
+    switch (var(VAR_RESULT)){
+        case 0: msgbox(gText_NewAssholeAppears_NotDoingMuchGood,,SPEAKER_ARCHER)
+        case 1: msgbox(gText_NewAssholeAppears_ThoughtIRecognized,,SPEAKER_ARCHER)
+        default: msgbox(gText_NewAssholeAppears_ColonizersAreReallyGetting,,SPEAKER_ARCHER)
+    }
+
+    msgbox(gText_NewAssholeAppears_WhatIsYourProblem,,SPEAKER_ZOEY)
+
+    lockall
+    startmenu_savescreen
+    goto(NewAssholeAppears_StartBattle_Script)
+}
+
+script NewAssholeAppears_StartBattle_Script{
+    lockall
+    trainerbattle_single(TRAINER_WALLY_MAUVILLE,gText_NewAssholeAppears_GoMindYourBusiness,gText_NewAssholeAppears_YoureTough,NewAssholeAppears_PostBattle_Script, NO_MUSIC)
+    closemessage
+
+}
+
+script NewAssholeAppears_PostBattle_Script {
+    lockall
+    setvar(VAR_PSFROUTE9_STATE,DEFEATED_ARCHER_PSFROUTE9)
+    msgbox(gText_NewAssholeAppears_Whateveryournameis,,SPEAKER_ZOEY)
+    msgbox(gText_NewAssholeAppears_GentrificationOfMyHome,,SPEAKER_ARCHER)
+    msgbox(gText_NewAssholeAppears_YouSoundCrazyPerson,,SPEAKER_ZOEY)
+    msgbox(gText_NewAssholeAppears_NotStupidJustIgnorant,,SPEAKER_ARCHER)
+    msgbox(gText_NewAssholeAppears_SeeYouAround,,SPEAKER_ARCHER)
+    msgbox(gText_NewAssholeAppears_IHopeNot,,SPEAKER_ZOEY)
+
+    closemessage
+    goto(NewAssholeAppears_ArcherExit_Script)
+}
+
+script NewAssholeAppears_ArcherExit_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    switch(var(VAR_TEMP_1)){
+        case 2: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwaySouth_Movement)
+        case 6: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwayNorth_Movement)
+    }
+    waitmovement(0)
+    fadedefaultbgm
+    removeobject(ARCHER)
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
+
+    releaseall
+    end
+}
+
+text gText_NewAssholeAppears_YouLookFamiliar {
+    format("You look familiar. You flew here to do the YCombinator League Challenge, right?")
+}
+
+text gText_NewAssholeAppears_YeahYouHadSome{
+    format("Yeah, you had some weird rant in SOMA the other day. I'm {PLAYER}, and yes, I'm doing the challenge.")
+}
+
+text gText_NewAssholeAppears_JustStarted {
+    format("Yeah! Just started not too long ago. Name's {PLAYER}.")
+}
+
+text gText_NewAssholeAppears_NotDoingMuchGood {
+    format("Judging from your Badge count, the program isn't doing you much good.")
+}
+
+text gText_NewAssholeAppears_ThoughtIRecognized {
+    format("...yeah I thought I recognized you. Guess you transplants aren't all a total joke!")
+}
+
+text gText_NewAssholeAppears_ColonizersAreReallyGetting {
+    format("Yeah, I heard about your wins from the guys. The colonizers are really getting a head start, huh?")
+}
+
+text gText_NewAssholeAppears_WhatIsYourProblem {
+    format("Woah, what the hell is your problem?")
+}
+
+text gText_NewAssholeAppears_GoMindYourBusiness {
+    format("Go mind your business in your own region.")
+}
+
+text gText_NewAssholeAppears_YoureTough {
+    format("...you're tough.")
+}
+
+text gText_NewAssholeAppears_Whateveryournameis {
+    format("Are you done being an ass, whateveryournameis?")
+}
+
+text gText_NewAssholeAppears_GentrificationOfMyHome {
+    format("Archer, and only if you're done contributing to the gentrification of my home... but I doubt it. You're stupid, just like the rest of them.")
+}
+
+text gText_NewAssholeAppears_YouSoundCrazyPerson {
+    format("Excuse me!? You sound like a crazy person, but I'm the stupid one?")
+}
+
+text gText_NewAssholeAppears_NotStupidJustIgnorant {
+    format("I take that back - not stupid, just ignorant. I shouldn't be mad at you. The ignorance isn't entirely your fault. ")
+}
+
+text gText_NewAssholeAppears_SeeYouAround {
+    format("See you around.")
+}
+
+text gText_NewAssholeAppears_IHopeNot {
+    format("I hope not.")
+}
+
+movement NewAssholeAppears_X0_WalkToPlayer_Movement {
+    walk_left * 4
+    step_end
+}
+movement NewAssholeAppears_X1_WalkToPlayer_Movement {
+    walk_left * 3
+    step_end
+}
+movement NewAssholeAppears_X2_WalkToPlayer_Movement {
+    walk_left * 2
+    step_end
+}
+movement NewAssholeAppears_X3_WalkToPlayer_Movement {
+    walk_left * 1
+    step_end
+}
+movement NewAssholeAppears_X4_WalkToPlayer_Movement {
+    step_end
+}
+movement NewAssholeAppears_Y2_WalkToPlayer_Movement {
+    walk_up
+    step_end
+}
+movement NewAssholeAppears_Y6_WalkToPlayer_Movement {
+    walk_down
+    step_end
+}
+
+movement NewAssholeAppears_ArcherWalkAwayNorth_Movement {
+    walk_up * 8
+    step_end
+}
+
+movement NewAssholeAppears_ArcherWalkAwaySouth_Movement {
+    walk_down * 8
+    step_end
+}

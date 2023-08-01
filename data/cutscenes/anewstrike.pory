@@ -1,0 +1,26 @@
+script ANewStrike_BreakingNews_Dialogue {
+    clearflag(FLAG_CONSTRUCTION_BREAKING_NEWS)
+    lockall
+    playse(SE_POKENAV_CALL)
+    waitse
+    playse(SE_POKENAV_CALL)
+    msgbox(gText_ANewStrike_ConstructionCrew,MSGBOX_DEFAULT,SPEAKER_NEWS,TAIL_DEFAULT,EMOTE_DEFAULT,PHONE_ON)
+    closemessage
+    goto(ANewStrike_PlayerSelf_Dialogue)
+}
+
+script ANewStrike_PlayerSelf_Dialogue {
+        msgbox(gText_ANewStrike_OhDamn,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE,PHONE_OFF)
+        closemessage
+        releaseall
+        end
+}
+    
+text gText_ANewStrike_ConstructionCrew {
+    format("BREAKING NEWS: Chasecenter construction crew has declared a strike.\n"
+    "Their demands at this time are unclear, but this puts the upcoming dates of the YCombinator League Championship in danger. Anonymous sources claim that TeamRocket is responsible for instigating this protest, but we'll have more information as the situation develops.")
+}
+
+text gText_ANewStrike_OhDamn {
+    format("Oh damn. I wonder what they'll do if the Championship has to be delayed…")
+}

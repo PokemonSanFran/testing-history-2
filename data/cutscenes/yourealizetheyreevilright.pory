@@ -1,0 +1,783 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARCHER = 1
+const DRASNA = 2
+const MALVA = 3
+const GARBODOR = 4
+
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ELITES_1 = FLAG_TEMP_2
+const FLAG_HIDE_GARBODOR = FLAG_TEMP_4
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_5
+const FLAG_HIDE_GIOVANNI = FLAG_TEMP_6
+const FLAG_HIDE_GRUNTS = FLAG_TEMP_7
+const FLAG_HIDE_WIKSTROM = FLAG_TEMP_8
+const FLAG_HIDE_ARIANNA = FLAG_TEMP_9
+
+//gText_YouRealizeTheyreEvilRight_
+//YouRealizeTheyreEvilRight_
+
+script YouRealizeTheyreEvilRight_HideObject_Script {
+    if (var(VAR_ALCATRAZ_STATE) != ARCHER_SUMMONED_ALCATRAZ && var(VAR_ALCATRAZ_STATE) != POST_ARRIVE_ALCATRAZ){
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    return
+}
+
+script YouRealizeTheyreEvilRight_HideGarbodor_Script {
+    setflag(FLAG_HIDE_GARBODOR)
+    return
+}
+
+script YouRealizeTheyreEvilRight_HideBasement_Script {
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_ELITES_1)
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_SIEBOLD)
+    setflag(FLAG_HIDE_GIOVANNI)
+    setflag(FLAG_HIDE_GRUNTS)
+    setflag(FLAG_HIDE_WIKSTROM)
+    setflag(FLAG_HIDE_ARIANNA)
+    return
+}
+
+script YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script {
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_SIEBOLD)
+    setflag(FLAG_HIDE_GIOVANNI)
+    setflag(FLAG_HIDE_GRUNTS)
+    setflag(FLAG_HIDE_WIKSTROM)
+    setflag(FLAG_HIDE_ARIANNA)
+    return
+}
+
+script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
+    lock
+        setvar(VAR_ALCATRAZ_STATE,ARCHER_SUMMONED_ALCATRAZ)
+        clearflag(FLAG_ARCHER_CALL_ALCATRAZ)
+        msgbox(gText_YouRealizeTheyreEvilRight_HolyShit,,SPEAKER_ZOEY)
+
+        call(Common_EventScript_PhoneRinging)
+
+        special(Script_GetCurrentMapName)
+        //PSF TODO replace with a switch statement that actually just looks at a randomly completed takedown quest
+        msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn,,SPEAKER_ARCHER,,,PHONE_ON)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove,,SPEAKER_ZOEY,,,PHONE_ON)
+
+        closemessage
+
+        fadescreen(FADE_TO_BLACK)
+        delay(30)
+        fadescreen(FADE_FROM_BLACK)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised,,SPEAKER_ARCHER,,,PHONE_ON)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YoureNot,,SPEAKER_ZOEY,,,PHONE_ON)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying,,SPEAKER_ARCHER,,,PHONE_ON)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean,,SPEAKER_ZOEY,,,PHONE_ON)
+
+        checkitem(ITEM_HM03)
+        if (var(VAR_RESULT)){
+            msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou,,SPEAKER_ARCHER,,,PHONE_ON)
+        } else {
+            msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross,,SPEAKER_ARCHER,,,PHONE_ON)
+        }
+    playse(SE_POKENAV_HANG_UP)
+        waitse
+
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf,,SPEAKER_ZOEY,TAIL_THOUGHT)
+
+        closemessage
+        release
+        end
+}
+
+script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
+    lock
+        setvar(VAR_ALCATRAZ_STATE,POST_ARRIVE_ALCATRAZ)
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere,,SPEAKER_ZOEY,,,PHONE_ON)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe,,SPEAKER_ARCHER,,,PHONE_ON)
+
+        closemessage
+
+        playse(SE_POKENAV_HANG_UP)
+        waitse
+        release
+        end
+}
+
+script YouRealizeTheyreEvilRight_InteractArcher {
+    lock
+        setvar(VAR_ALCATRAZ_STATE,PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT)
+        msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal,MSGBOX_NPC,SPEAKER_ARCHER)
+
+        closemessage
+
+        applymovement(11,Common_Movement_WalkUp)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(11)
+        release
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost1_Battle_Script{
+    trainerbattle_single(TRAINER_VALERIE_1, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost1_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhileAlcatraz,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost2_Battle_Script{
+    trainerbattle_single(TRAINER_ATSUSHI, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost2_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost3_Battle_Script{
+    trainerbattle_single(TRAINER_TASHA, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost3_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheInmateWasAlso,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost4_Battle_Script{
+    trainerbattle_single(TRAINER_CEDRIC, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost4_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheProtests,MSGBOX_AUTOCLOSE,SPEAKER_GHOST)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvilRight_RemoveGhost {
+    lock
+        closemessage
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        release
+        end
+}
+
+script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
+    applymovement(ARCHER,YouRealizeTheyreEvilRight_StepBackward)
+        waitmovement(0)
+
+        playse(SE_BALL_OPEN)
+        waitse
+        clearflag(FLAG_HIDE_GARBODOR)
+        addobject(GARBODOR)
+        playmoncry(SPECIES_GARBODOR, CRY_MODE_ENCOUNTER)
+        waitmoncry
+        playse(SE_SHINY)
+        waitse
+}
+
+script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
+    lock
+        applymovement(PLAYER,YouRealizeTheyreEvilRight_WalkToGroup)
+        waitmovement(0)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_TheChampionHasArrived,,SPEAKER_DRASNA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_NiceToMeetYou,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_HasBeenUsing,,SPEAKER_ARCHER)
+
+        closemessage
+
+        playse(SE_PIN)
+        applymovement(MALVA,Common_Movement_ExclamationMark)
+        applymovement(DRASNA,Common_Movement_ExclamationMark)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_WowSuperResourceful,,SPEAKER_DRASNA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_WhyAreWeHere,,SPEAKER_MALVA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ICanFinallyProve,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_DidYouDragMe,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YesWaitNo,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ICanProve,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_How,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_Look,,SPEAKER_ARCHER)
+
+        closemessage
+
+        call(YouRealizeTheyreEvil_ReleaseGarbodor_Script)
+        applymovement(DRASNA,Common_Movement_FaceLeft)
+        applymovement(MALVA,Common_Movement_FaceUp)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisIsOne,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_IHadToGo,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisOneIsLevel,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_SoUsedATM,,SPEAKER_ZOEY)
+
+        fadescreen(FADE_TO_BLACK)
+
+        //The screen fades to black. As it fades back in, it plays the memory of the police chief explaining that Self-Destruct TMs were taken out of circulation. The screen fades back in. //PSF TODO
+        msgbox(format("This will show a flashback to the police chief explaining that TMs were taken out of circulation"))
+
+        fadescreen(FADE_FROM_BLACK)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_TakeACloserLook,,SPEAKER_DRASNA)
+
+        //PSF TODO Use CallBattleFactoryFunction to generate a Garbodor. Call the Summary screen from factory_rentmons directly to view said Garbodor.
+        goto(YouRealizeTheyreEvilRight_StartQuestions_Script)
+}
+
+script YouRealizeTheyreEvilRight_StartQuestions_Script {
+        msgbox(gText_YouRealizeTheyreEvilRight_DoYouSeeNow,MSGBOX_YESNO,,SPEAKER_DRASNA)
+
+        if (var(VAR_RESULT) == YES){
+            call(YouRealizeTheyreEvilRight_AskProperties_Script)
+        }else {
+            call(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+    goto(YouRealizeTheyreEvilRight_Framing_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_AskProperties_Script {
+    msgbox(gText_YouRealizeTheyreEvilRight_AhVeryAstute)
+        multichoicedefault(18,6,MULTI_GARBADOR_PROPERTIES,1,FALSE)
+
+        switch(var(VAR_RESULT)){
+            case 0: goto(YouRealizeTheyreEvilRight_AskMoves_Script)
+            default: goto(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+}
+
+script YouRealizeTheyreEvilRight_AskMoves_Script {
+
+        msgbox(gText_YouRealizeTheyreEvilRight_WaitWhichMove,,SPEAKER_MALVA)
+
+        multichoicedefault(18,6,MULTI_GARBADOR_MOVES,0,TRUE)
+
+        switch (var(VAR_RESULT)){
+            case 2: goto(YouRealizeTheyreEvilRight_CorrectAnswer_Script)
+            default: goto(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+}
+
+script YouRealizeTheyreEvilRight_CorrectAnswer_Script {
+
+        msgbox(gText_YouRealizeTheyreEvilRight_VeryClever,,SPEAKER_DRASNA)
+        setflag(FLAG_TEMP_1F)
+        goto(YouRealizeTheyreEvilRight_Framing_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_EndQuestions_Script {
+
+        msgbox(gText_YouRealizeTheyreEvilRight_TheTipOff,,SPEAKER_DRASNA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_So,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_HazeCanOnly,,SPEAKER_DRASNA)
+}
+
+script YouRealizeTheyreEvilRight_Framing_Dialogue {
+        setvar(VAR_ALCATRAZ_STATE,POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontGetIt,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_HasBeenFramingYou,,SPEAKER_MALVA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YouAlsoMetUp,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ButArianaSaid,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YeahNobodyKnows,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_WhyWhyDoAll,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_CantArgueWithThat,,SPEAKER_MALVA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_IJoinedThe,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_AndThatsWhyWere,,SPEAKER_MALVA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally,,SPEAKER_ARCHER)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour,,SPEAKER_DRASNA)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow,,SPEAKER_MALVA)
+
+        closemessage
+        if (flag(FLAG_TEMP_1F)){
+            call(YouRealizeTheyreEvilRight_AskPlayerGift_Script)
+        }
+        goto(YouRealizeTheyreEvilRight_InnerMonologue_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
+
+    playse(SE_CONTEST_HEART)
+        applymovement(GARBODOR,YouRealizeTheyreEvilRight_ShowAffection)
+        waitmovement(0)
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor,MSGBOX_YESNO,,SPEAKER_ARCHER)
+
+        if (var(VAR_RESULT) == NO){
+            call(YouRealizeTheyreEvilRight_LeaveGift_Script)
+        }else {
+            call(YouRealizeTheyreEvilRight_GiveGift_Script)
+        }
+
+        closemessage
+        return
+}
+
+script YouRealizeTheyreEvilRight_LeaveGift_Script {
+        msgbox(gText_YouRealizeTheyreEvilRight_ThatsFineIll,,SPEAKER_ARCHER)
+        return
+}
+
+script YouRealizeTheyreEvilRight_GiveGift_Script {
+
+    givecustommon(SPECIES_GARBODOR,40,ITEM_BLACK_SLUDGE,ITEM_CHERISH_BALL,NATURE_JOLLY,2,0,0,0,0,0,0,31,31,31,31,31,31,MOVE_HAZE,MOVE_SELF_DESTRUCT,MOVE_STOMPING_TANTRUM,MOVE_SLUDGE_BOMB,TRUE) //PSF TODO give a custom ball that only YC use
+	setvar(VAR_TEMP_1, SPECIES_GARBODOR)
+        if (var(VAR_RESULT) == 0){
+            call(YouRealizeTheyreEvilRight_SendGiftToParty_Script)
+        } else {
+            call(YouRealizeTheyreEvilRight_SendGiftToPC_Script)
+        }
+
+        msgbox(gText_YouRealizeTheyreEvilRight_TakeGoodCare,,SPEAKER_ARCHER)
+        return
+
+}
+script YouRealizeTheyreEvilRight_SendGiftToParty_Script {
+    call(YouRealizeTheyreEvilRight_RecievedGiftFanfare)
+        msgbox(gText_NicknameThisPokemon,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            call(Common_EventScript_GetGiftMonPartySlot)
+                call(Common_EventScript_NameReceivedPartyMon)
+        }
+    return
+}
+
+script YouRealizeTheyreEvilRight_SendGiftToPC_Script {
+    call(YouRealizeTheyreEvilRight_RecievedGiftFanfare)
+        msgbox(gText_NicknameThisPokemon,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            call(Common_EventScript_NameReceivedBoxMon)
+        }
+    call(Common_EventScript_TransferredToPC)
+    return
+}
+
+script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
+    bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
+        removeobject(GARBODOR)
+        playfanfare(MUS_OBTAIN_ITEM)
+        msgbox(gText_YouRealizeTheyreEvilRight_ObtainedGift)
+        waitmessage
+        waitfanfare
+        bufferspeciesname(STR_VAR_1, SPECIES_GARBODOR)
+        return
+}
+
+script YouRealizeTheyreEvilRight_InnerMonologue_Dialogue{
+    applymovement(ARCHER,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(0)
+
+    msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis,,SPEAKER_ARCHER)
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    msgbox(gText_YouRealizeTheyreEvilRight_ShouldIJoin,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    msgbox(gText_YouRealizeTheyreEvilRight_JoiningThemMeansGoingDeeper,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_YouRealizeTheyreEvilRight_ButTheirCauseIsJust,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_YouRealizeTheyreEvilRight_ButAtWhatCost,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_YouRealizeTheyreEvilRight_CantDoIt,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_YouRealizeTheyreEvilRight_MakingTheRightChoice,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+    goto(YouRealizeTheyreEvilRight_Confront_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_Confront_Dialogue{
+    msgbox(gText_YouRealizeTheyreEvilRight_SorryIfThisDisappointsYouAll,,SPEAKER_ZOEY)
+    closemessage
+    playse(SE_PIN)
+    applymovement(DRASNA,Common_Movement_ExclamationMark)
+    applymovement(MALVA,Common_Movement_ExclamationMark)
+    applymovement(ARCHER,Common_Movement_ExclamationMark)
+    waitmovement(ARCHER)
+    applymovement(MALVA,Common_Movement_FacePlayer)
+    waitmovement(MALVA)
+    msgbox(gText_YouRealizeTheyreEvilRight_WaitWhat,,SPEAKER_ARCHER,,EMOTE_SHOCK)
+    msgbox(gText_YouRealizeTheyreEvilRight_WowWasWrong,,SPEAKER_MALVA,TAIL_WHISPER,EMOTE_SAD)
+    msgbox(gText_YouRealizeTheyreEvilRight_DontYouUnderstand,,SPEAKER_ARCHER,,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_JustBecause,,SPEAKER_ZOEY,,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_CouldntHackIt,,SPEAKER_ARCHER,TAIL_SHOUT,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_TheyreNot,,SPEAKER_DRASNA)
+    closemessage
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(PLAYER)
+    msgbox(gText_YouRealizeTheyreEvilRight_TheresNothingToGet,,SPEAKER_ZOEY)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    warp(MAP_ALCATRAZ,39,14)
+    waitstate
+    release
+    end
+}
+
+script YouRealizeTheyreEvilRight_PreventPlayer_Script{
+    if (!flag(FLAG_TIMELINE_TIMETRAVEL)){
+        lock
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisIsntWhere,,SPEAKER_ZOEY,TAIL_THOUGHT)
+        closemessage
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        waitmovement(PLAYER)
+    }
+    release
+        end
+}
+
+script YouRealizeTheyreEvilRight_CantSleep_Script{
+    if (var(VAR_ALCATRAZ_STATE) > BATTLED_MALVA && (var(VAR_ALCATRAZ_STATE) < POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)){
+        call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
+    }
+    return
+}
+
+script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
+        msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting,,SPEAKER_ZOEY)
+
+        closemessage
+        release
+        end
+}
+
+script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
+    fadescreen(FADE_FROM_BLACK)
+    setvar(VAR_STORYLINE_STATE,STORY_MORNING_OF_TIMELINE_SPLIT)
+
+    applymovement(PLAYER,OkayLetsFixIt_PaceNightmare)
+    waitmovement(0)
+
+    if (flag(FLAG_TIMELINE_TIMETRAVEL)){
+        lock
+            msgbox(gText_OkayLetsFixIt_WhatTheHell,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+            msgbox(gText_OkayLetsFixIt_WasThatReal,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+            msgbox(gText_OkayLetsFixIt_WhatIfIt,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SAD)
+            msgbox(gText_OkayLetsFixIt_IRememberI,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    }else{
+
+        msgbox(gText_YouRealizeTheyreEvilRight_ICantBelieveIAlmost,,SPEAKER_ZOEY,TAIL_THOUGHT)
+            msgbox(gText_YouRealizeTheyreEvilRight_AndTheyWantToHelp,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_ANGRY)
+            msgbox(gText_YouRealizeTheyreEvilRight_ImGoingToBeOn,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    }
+closemessage
+    release
+    end
+}
+
+text gText_YouRealizeTheyreEvilRight_HolyShit {
+format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
+}
+text gText_YouRealizeTheyreEvilRight_AwesomeJobIn {
+format("Awesome job in {STR_VAR_1}. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?") //PSF TODO Buffer in the name of the last resotration quest city that was completed
+}
+text gText_YouRealizeTheyreEvilRight_TheyDontLove {
+format("Ycombinator called me. They don't love our project.")
+}
+text gText_YouRealizeTheyreEvilRight_YouSeemSurprised {
+format("You seem surprised.")
+}
+text gText_YouRealizeTheyreEvilRight_YoureNot {
+format("You're not?")
+}
+text gText_YouRealizeTheyreEvilRight_IveBeenTrying {
+format("I've been trying to tell you the whole time, these guys are ruthless. Cruel, even. Good timing though, I think I can finally explain everything to you.")
+}
+text gText_YouRealizeTheyreEvilRight_WhatDoYouMean {
+format("What do you mean?")
+}
+text gText_YouRealizeTheyreEvilRight_IWannaShowYou {
+format("I wanna show you instead. Come to Alcatraz.")
+}
+text gText_YouRealizeTheyreEvilRight_YoullNeedToCross {
+format("I wanna show you but you'll need to cross some water to get here. You know how to Surf, right? No? Go learn from the Surfers in Pacifica, and then meet me on Alcatraz.")
+}
+text gText_YouRealizeTheyreEvilRight_IDontKnowIf {
+format("(I don't know if I can afford to get pulled any deeper into this…)")
+}
+text gText_YouRealizeTheyreEvilRight_ImHereWhere {
+format("I'm here! Where are you?")
+}
+text gText_YouRealizeTheyreEvilRight_SwimAroundThe {
+format("Come swim around the northeast side of the island! You'll see me.")
+}
+text gText_YouRealizeTheyreEvilRight_WelcomeToTheReal {
+format("Welcome to the real Alcatraz. I'm going down to the second level, but you should explore here first before coming straight down.")
+}
+text gText_YouRealizeTheyreEvilRight_DotDotDot {
+format("…")
+}
+text gText_YouRealizeTheyreEvilRight_WhileAlcatraz {
+format("While Alcatraz was a prison, it was absolutely not a state of the art facility - rather, criminals deemed “dangerous” were thrown into Alcatraz with little regard for health, rehabilitation, or even due process of law, with a preponderance of marginalized communities being locked away. ")
+}
+text gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation {
+format("As the prison population grew, pressure mounted both internally and externally in order to demand a better quality of life for the prisoners.  The prison riot that started the occupation of the island came from an out of control guard killing an inmate for a minor violation. ")
+}
+text gText_YouRealizeTheyreEvilRight_TheInmateWasAlso {
+format("The inmate was also a member of SanFran's indigenous population, killed on the land that was stolen from their ancestors. The occupation called for the dissolution of the prison, transfer of prisoners to locations with humane conditions, and the return of the land back to its original owners.")
+}
+text gText_YouRealizeTheyreEvilRight_TheProtests {
+format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Drasna's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
+}
+text gText_YouRealizeTheyreEvilRight_TheChampionHasArrived {
+format("The Champion has arrived! Great to meet you, I'm Drasna, and I'm the leader of the SanFran Elite Four. Or, I was. Now I'm not really sure what I do.")
+}
+text gText_YouRealizeTheyreEvilRight_NiceToMeetYou {
+format("Nice to meet you! …Archer, where are we?")
+}
+text gText_YouRealizeTheyreEvilRight_HasBeenUsing {
+format("TeamRocket has been using Psfcave's abandoned prison as a training ground.")
+}
+text gText_YouRealizeTheyreEvilRight_WowSuperResourceful {
+format("Wow! Super resourceful. Genius, even.")
+}
+text gText_YouRealizeTheyreEvilRight_WhyAreWeHere {
+format("Why are we here?")
+}
+text gText_YouRealizeTheyreEvilRight_ICanFinallyProve {
+format("I can finally prove that Ycombinator is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect SanFran from their bullshit.")
+}
+text gText_YouRealizeTheyreEvilRight_DidYouDragMe {
+format("Did you drag me out here to join a terrorist organization? Did you hear ANYTHING I said on the phone?")
+}
+text gText_YouRealizeTheyreEvilRight_YesWaitNo {
+format("Yes! Wait, no… No, Yes!")
+}
+text gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis {
+format("TeamRocket doesn't do anything for this region. You're attacking innocent people, trying to destroy buildings - fuck, I absolutely should have turned you in!")
+}
+text gText_YouRealizeTheyreEvilRight_ICanProve {
+format("{PLAYER}, listen! I can prove that none of that is true.")
+}
+text gText_YouRealizeTheyreEvilRight_How {
+format("How?!?")
+}
+text gText_YouRealizeTheyreEvilRight_Look {
+format("Look.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisIsOne {
+format("This is one of the Garbodor from the Chasecenter strike. {PLAYER}, you were told that TeamRocket planted these to blow up the construction site, right?")
+}
+text gText_YouRealizeTheyreEvilRight_IHadToGo {
+format("Yeah. Bianca and I had to go down there and defeat them and your goons.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisOneIsLevel {
+format("This one is Level 40. Garbodor learns Explosion at Level 48.")
+}
+text gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan {
+format("But they definitely can explode… so they're using Self-Destruct instead, right?")
+}
+text gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally {
+format("Right. But Garbodor doesn't learn that naturally. It can only be inherited from its parents, or taught via a Technical Machine.")
+}
+text gText_YouRealizeTheyreEvilRight_SoUsedATM {
+format("Okay, so TeamRocket used a TM… wait.")
+}
+text gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred {
+format("No, it must have been bred then.")
+}
+text gText_YouRealizeTheyreEvilRight_TakeACloserLook {
+format("Take a closer look.")
+}
+text gText_YouRealizeTheyreEvilRight_DoYouSeeNow {
+format("Do you see now?")
+}
+text gText_YouRealizeTheyreEvilRight_AhVeryAstute {
+format("Ah, very astute. What seemed off to you?")
+}
+text gText_YouRealizeTheyreEvilRight_WaitWhichMove {
+format("Wait, which move tipped you off?")
+}
+text gText_YouRealizeTheyreEvilRight_VeryClever {
+format("Very clever, {PLAYER}! You realized that Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbodor had to learn the move via TM.")
+}
+text gText_YouRealizeTheyreEvilRight_TheTipOff {
+format("The tip-off is that this Garbodor knows Haze.")
+}
+text gText_YouRealizeTheyreEvilRight_So {
+format("…so?")
+}
+text gText_YouRealizeTheyreEvilRight_HazeCanOnly {
+format("Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
+}
+text gText_YouRealizeTheyreEvilRight_IDontGetIt {
+format("I don't get it then. So this Garbodor was taught Self-Destruct. What does that mean?")
+}
+text gText_YouRealizeTheyreEvilRight_HasBeenFramingYou {
+format("Archer… Ycombinator has been framing you? ")
+}
+text gText_YouRealizeTheyreEvilRight_YouAlsoMetUp {
+format("{PLAYER}, you also met up with TeamRocket in Oakland too, right?")
+}
+text gText_YouRealizeTheyreEvilRight_ButArianaSaid {
+format("…yeah. But Ariana said that situation was super weird and was trying to track them down.")
+}
+text gText_YouRealizeTheyreEvilRight_YeahNobodyKnows {
+format("Yeah, nobody knows who they are or where they came from. I'm pretty sure Ycombinator has been sending in agents to make us look shitty. Between that and whatever else Ycombinator is feeding you, I'm not surprised you feel the way you do.")
+}
+text gText_YouRealizeTheyreEvilRight_WhyWhyDoAll {
+format("Why? Why do all this to just to screw with you guys?")
+}
+text gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney {
+format("Ycombinator exists to make money. They don't care about you. Or us. Or the region. You weren't here when they first bought the League. They were ruthless. Fired thousands of people, dismantled and reshaped communities - all for their agenda.")
+}
+text gText_YouRealizeTheyreEvilRight_CantArgueWithThat {
+format("Can't argue with that.")
+}
+text gText_YouRealizeTheyreEvilRight_IJoinedThe {
+format("I joined the League Challenge to try to change things from the inside. But now I'm certain that we need external pressure in order to improve things for all of us.")
+}
+text gText_YouRealizeTheyreEvilRight_AndThatsWhyWere {
+format("And that's why we're all here?")
+}
+text gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally {
+format("Yep. I think it's finally time we all come together to expose Ycombinator for the assholes that they are, and start to take power back for the people.")
+}
+text gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour {
+format("Kid, if the Elite Four couldn't stop them in their prime, I don't know what you think TeamRocket will be able to do. Matter of fact, going solo might actually be better! Hell, I was able to start the Alcatraz campaigns without any help.")
+}
+text gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow {
+format("Look Drasna… things are different now. We've been fighting the good fight without any help so far… and look where that's gotten us. Perhaps they're onto something, and it's time for some real collective action.")
+}
+text gText_YouRealizeTheyreEvilRight_LookIKnowThis {
+format("Look, I know this is a lot of information to take in. I know you're going to make the right decision...")
+}
+text gText_YouRealizeTheyreEvilRight_ShouldIJoin{
+	format("Should I join Kai and the Elite Four? Is that the right path? Fighting against Ycombinator and the government...")
+}
+text gText_YouRealizeTheyreEvilRight_JoiningThemMeansGoingDeeper{
+	format("Joining them means going deeper into trouble, embracing their methods. The protests, the hacking, the riots... is that really what I want? Adaora says they don't condone violence, but can I even believe her?")
+}
+text gText_YouRealizeTheyreEvilRight_ButTheirCauseIsJust{
+	format("But their cause is just. They want to protect Sanfran. It's a chance to make a real difference, to fight for what's right.")
+}
+text gText_YouRealizeTheyreEvilRight_ButAtWhatCost{
+	format("But at what cost? Joining them means betraying the trust Ycombinator has placed in me. I've worked so hard to get this far. To become the Champion. I can make a difference! Do I really want to throw it all away?")
+}
+text gText_YouRealizeTheyreEvilRight_CantDoIt{
+	format("...No, I can't do it. I can't risk everything I've built. There must be another way. Is Kai even telling the truth? Ycombinator wouldn't lie to me. That would get exposed! Are they just manipulating me, like they tried with the social media stunt?")
+}
+text gText_YouRealizeTheyreEvilRight_MakingTheRightChoice{
+	format("I'm making the right choice. I'm staying true to my principles, and that's the the way forward. I can find a better way to fight for justice.")
+}
+text gText_YouRealizeTheyreEvilRight_SorryIfThisDisappointsYouAll{
+	format("I'm sorry if this disappoints you all, but I won't compromise mysel - my values. I'm not going to join you.")
+}
+text gText_YouRealizeTheyreEvilRight_WaitWhat{
+    format("Wait what? {PLAYER}, you're making a mistake!")
+}
+text gText_YouRealizeTheyreEvilRight_WowWasWrong{
+    format("Wow... Siebold was wrong about you after all.")
+}
+text gText_YouRealizeTheyreEvilRight_DontYouUnderstand{
+    format("Don't you understand? You're being used, and they're not going to stop.")
+}
+text gText_YouRealizeTheyreEvilRight_JustBecause{
+    format("Just because you couldn't hack it doesn't mean the world is against you, Kai!")
+}
+text gText_YouRealizeTheyreEvilRight_CouldntHackIt{
+    format("Couldn't hack it? I got second to you, and you had a HUGE head start!")
+}
+text gText_YouRealizeTheyreEvilRight_TheyreNot{
+    format("Kai, {PLAYER} will not get it. Its too late.")
+}
+//PSF TODO Replace PLAYER with OBJECT pronoun
+text gText_YouRealizeTheyreEvilRight_TheresNothingToGet{
+    format("I'm not giving up what I have because you guys think Ycombinator is some big bad. Teamrocket is a bunch of thugs, and if you want to throw away your legacies to work with them, fine. I won't be a part of it.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisGarbodor {
+format("Hey, this Garbodor seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
+}
+text gText_YouRealizeTheyreEvilRight_TakeGoodCare {
+format("Take good care of it.")
+}
+text gText_YouRealizeTheyreEvilRight_ThatsFineIll {
+format("That's fine, I'll find a good home for it.")
+}
+text gText_YouRealizeTheyreEvilRight_IsStillWaiting {
+format("Archer is still waiting for me at Alcatraz…")
+}
+text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
+format("Do you want to go to bed?")
+}
+text gText_YouRealizeTheyreEvilRight_ICantBelieveIAlmost {
+format("I can't believe I almost fell for that stunt. Me? Siding with Teamrocket? After everything I've been through? And all that stuff, just because the battling is a little different?")
+}
+text gText_YouRealizeTheyreEvilRight_AndTheyWantToHelp{
+format("And they claim they want to do better for region? Ycombinator is making jobs! And bringing people like me! And stopping terrorists.")
+}
+text gText_YouRealizeTheyreEvilRight_ImGoingToBeOn{
+format("I'm going to be on the right side of history.")
+}
+text gText_YouRealizeTheyreEvilRight_ObtainedGift {
+format("{PLAYER} was given the {STR_VAR_2}.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisIsntWhere{
+    format("...This isn't where I'm supposed to be.")
+}
+
+movement YouRealizeTheyreEvilRight_StepBackward {
+lock_facing_direction
+    walk_up
+    walk_in_place_down
+    unlock_facing_direction
+    step_end
+}
+
+movement YouRealizeTheyreEvilRight_WalkToGroup {
+walk_right * 2
+    walk_up
+    step_end
+}
+
+movement YouRealizeTheyreEvilRight_WalkAroundToPlayer {
+walk_left
+    walk_down * 2
+    face_right
+    step_end
+}
+
+movement YouRealizeTheyreEvilRight_ShowAffection {
+emote_heart
+    jump_in_place_down
+    jump_in_place_down
+    step_end
+}
