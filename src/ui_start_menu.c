@@ -162,6 +162,7 @@ static void StartMenuIndextoTempIndex(void);
 static void StartMenu_Task_SaveDialog(u8 taskId);
 static void StartMenu_Task_OverworldSave(u8 taskId);
 static void StartMenu_SaveDialog_CheckSave(void);
+static void StartMenu_PlaySaveSoundEffect(void);
 static void StartMenu_SaveDialog_DoSave(void);
 static void StartMenu_SaveDialog_ReturnToField(void);
 static void StartMenu_SaveDialog_ReturnToMenu(u8 taskId);
@@ -1261,33 +1262,7 @@ static void StartMenu_DestroyOverwriteModal(void)
     CopyWindowToVram(WINDOW_OVERWRITE_MODAL, COPYWIN_GFX);
 
     Menu_BufferToVram_Windows();
-
-    /*
-    FillWindowPixelBuffer(WINDOW_PARTY, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_PHONE_APPS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NAME_MAP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_POINTER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NAME_APP, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_QUEST_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_HELP_BAR, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
-    PutWindowTilemap(WINDOW_PARTY);
-    PutWindowTilemap(WINDOW_PHONE_APPS);
-    PutWindowTilemap(WINDOW_NAME_MAP);
-    PutWindowTilemap(WINDOW_POINTER);
-    PutWindowTilemap(WINDOW_NAME_APP);
-    PutWindowTilemap(WINDOW_QUEST_INFO);
-    PutWindowTilemap(WINDOW_HELP_BAR);
-
-    CopyWindowToVram(WINDOW_PARTY, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_PHONE_APPS, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_NAME_MAP, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_POINTER, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_NAME_APP, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_QUEST_INFO, COPYWIN_FULL);
-    CopyWindowToVram(WINDOW_HELP_BAR, COPYWIN_FULL);
-    */
-
+    PlaySE(SE_POKENAV_OFF);
     PrintToAllWindows();
 }
 
@@ -1937,6 +1912,7 @@ static void StartMenu_SaveDialog_CheckSave(void)
 {
     if (gDifferentSaveFile == TRUE && gSaveFileStatus != SAVE_STATUS_EMPTY){
         sMenuDataPtr->saveMode = SAVE_MODE_OVERWRITE;
+        StartMenu_PlaySaveSoundEffect();
         StartMenu_PrintOverwriteModal();
     }else{
         StartMenu_SaveDialog_DoSave();
@@ -1966,14 +1942,34 @@ static void StartMenu_SaveDialog_DoSave(void)
         saveStatus = TrySavingData(SAVE_NORMAL);
     }
 
-    if (saveStatus == SAVE_STATUS_OK)
+    if (saveStatus == SAVE_STATUS_OK){
         sMenuDataPtr->saveMode = SAVE_MODE_SUCCESS;
+        StartMenu_PlaySaveSoundEffect();
+    }
     else
+    {
         sMenuDataPtr->saveMode = SAVE_MODE_ERROR;
+        StartMenu_PlaySaveSoundEffect();
+    }
 
     SaveStartTimer();
     StartMenu_PrintQuestInfo(); //Print Quest Info
     StartMenu_PrintHelpBar(); //Print Help Bar
+}
+
+static void StartMenu_PlaySaveSoundEffect(void)
+{
+    switch (sMenuDataPtr->saveMode){
+        case SAVE_MODE_SUCCESS:
+            PlaySE(SE_SAVE);
+            break;
+        case SAVE_MODE_ERROR:
+            PlaySE(SE_BOO);
+            break;
+        case SAVE_MODE_OVERWRITE:
+            PlaySE(SE_POKENAV_ON);
+            break;
+    }
 }
 
 void StartMenu_SetSaveSuccessState(void){
