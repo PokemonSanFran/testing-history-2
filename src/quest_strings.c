@@ -1378,7 +1378,7 @@ const u8 gText_Quest_Skilllibrary_Sub7_Map[] = _("N/A");
 //quest flavor
 const u8 gText_ChampionsAdventure_Flavor2[] =_("Enjoy your celebration party!");
 const u8 gText_ChampionsAdventure_Flavor3[] =_("Begin your true adventure in Sanfran!");
-const u8 gText_PlayersAdventure_Flavor0[] =_("");
+const u8 gText_PlayersAdventure_Flavor0[] =_("Explore Southbay, and then get some rest.");
 const u8 gText_PlayersAdventure_Flavor1[] =_("Explore everything eastern SanFran has\nto offer on your way to the\nChampionship.");
 const u8 gText_PlayersAdventure_Flavor2[] =_("Head back to the Compound in Southbay\nand get a good night's sleep.");
 const u8 gText_PlayersAdventure_Flavor3[] =_("Go to the Ferrybuilding and take the\nferry to Alameda. Head to Berkeley for\nyour next badge!");

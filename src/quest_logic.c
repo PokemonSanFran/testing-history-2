@@ -59,6 +59,17 @@ u16 Quest_Generic_CountRemainingSubquests(u16 relevantQuest)
     return numRemainingQuests;
 }
 
+void Quest_Generic_CompleteSubquests(u16 relevantQuest)
+{
+    u16 totalNumSubquests = sSideQuests[relevantQuest].numSubquests;
+    u8 currentSubQuest;
+
+    for (currentSubQuest = 0; currentSubQuest < totalNumSubquests; currentSubQuest++)
+    {
+        QuestMenu_GetSetSubquestState(relevantQuest, FLAG_SET_COMPLETED, currentSubQuest);
+    }
+}
+
 // ***********************************************************************
 // Quest: Kitchen Volunteering
 // ***********************************************************************

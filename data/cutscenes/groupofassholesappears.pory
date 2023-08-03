@@ -129,7 +129,7 @@ script GroupOfAssholes_StartBattle_Script {
 
 script GroupOfAssholesAppears_GroupLeaves_Dialogue {
         lockall
-        setvar(VAR_GROUP_OF_ASSHOLES_STATE,PLAYER_HAS_DEFEATED_TEAM_ROCKET)
+        setvar(VAR_GROUP_OF_ASSHOLES_STATE,PLAYER_HAS_DEFEATED_TEAMROCKET)
         msgbox(gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent,SPEAKER_ROCKET_MEMBER_B)
         msgbox(gText_GroupOfAssholesAppears_YouBothMakeMeSick,SPEAKER_ISHAN)
         closemessage

@@ -7,5 +7,6 @@ void Quest_Rockcollector_RespawnStones(void);
 u32 GetCurrentMap(void);
 bool8 Quest_Brucelee_UpdateType(u16 days);
 void Quest_ArtisanBalls3_MarkRewardIfApricornBall(void);
+void Quest_Generic_CompleteSubquests(u16 relevantQuest);
 
 #endif //GUARD_QUESTLOGIC_H

@@ -34,7 +34,7 @@ Psfroute22_ConstructionVisibility_Script::
 	case STRIKE_HAS_BEGUN, Psfroute22_ConstructionVisibility_Script_4
 	case START_VS_GARBODOR, Psfroute22_ConstructionVisibility_Script_5
 	case DEFEATED_GARBODOR, Psfroute22_ConstructionVisibility_Script_6
-	case TEAM_ROCKET_ARRESTED, Psfroute22_ConstructionVisibility_Script_7
+	case TEAMROCKET_ARRESTED, Psfroute22_ConstructionVisibility_Script_7
 Psfroute22_ConstructionVisibility_Script_1:
 	return
 

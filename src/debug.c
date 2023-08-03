@@ -169,7 +169,7 @@ enum { //Jump Cutscenes
     DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN,
     DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND,
     DEBUG_JUMP_MENU_ITEM_RESTOREMARIN,
-    DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY,
+    //DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY,
     DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT,
     DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT,
     DEBUG_JUMP_MENU_ITEM_CONGRATSYOUREANASSHOLE,
@@ -186,6 +186,9 @@ enum { //Jump Cutscenes
     DEBUG_JUMP_MENU_ITEM_LOCKEDOUT,
     DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE,
     DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH,
+    DEBUG_JUMP_MENU_ITEM_PERSUASIVEPASSENGER,
+    DEBUG_JUMP_MENU_ITEM_BREAKTHEINTERNET,
+    DEBUG_JUMP_MENU_ITEM_WAREHOUSEWARFARE,
     DEBUG_JUMP_MENU_ITEM_ONEDOWN,
     DEBUG_JUMP_MENU_ITEM_EARTHQUAKE,
     DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM,
@@ -494,7 +497,6 @@ static const u8 gDebugText_Jump_Battle8[] = _("Battle 8");
 static const u8 gDebugText_Jump_EnterClair[] = _("Enter Clair");
 static const u8 gDebugText_Jump_TheStrikeStrikesBack[] = _("The Strike Strikes Back");
 static const u8 gDebugText_Jump_VSGarbodor[] = _("VS Garbodor");
-static const u8 gDebugText_Jump_UnknownAlcatrazCutscene[] = _("Unknown Alcatraz Cutscene");
 static const u8 gDebugText_Jump_OffYouGo[] = _("Off You Go!");
 static const u8 gDebugText_Jump_IGuessWeShouldBeNiceNow[] = _("I Guess We Should Be Nice Now");
 static const u8 gDebugText_Jump_EntertheMaster[] = _("Enter the Master");
@@ -531,6 +533,9 @@ static const u8 gDebugText_Jump_LetsFixThis[] = _("Let's Fix This!");
 static const u8 gDebugText_Jump_LockedOut[] = _("Locked Out");
 static const u8 gDebugText_Jump_WarehouseRave[] = _("Warehouse Rave!");
 static const u8 gDebugText_Jump_SpeechSpeechSpeech[] = _("Speech! Speech! Speech!");
+static const u8 gDebugText_Jump_PersuasivePassenger[] = _("Persuasive Passenger");
+static const u8 gDebugText_Jump_WarehouseWarfare[] = _("Warehouse Warfare");
+static const u8 gDebugText_Jump_BreakTheInternet[] = _("Break the Internet");
 static const u8 gDebugText_Jump_OneDown[] = _("One Down...");
 static const u8 gDebugText_Jump_Earthquake[] = _("Earthquake!");
 static const u8 gDebugText_Jump_ThisIsntRandom[] = _("This Isn't Random...");
@@ -708,7 +713,7 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct1[] =
     [12] = {gDebugText_Jump_AaandWereBack,DEBUG_JUMP_MENU_ITEM_AAANDWEREBACK},
     [13] = {gDebugText_Jump_AssholesHome,DEBUG_JUMP_MENU_ITEM_ASSHOLESHOME},
     [14] = {gDebugText_Jump_HousingProtest,DEBUG_JUMP_MENU_ITEM_HOUSINGPROTEST},
-    [15] = {gDebugText_Jump_swagbag2,DEBUG_JUMP_MENU_ITEM_SWAGBAG},
+    [15] = {gDebugText_Jump_swagbag2,DEBUG_JUMP_MENU_ITEM_SWAGBAG2},
     [16] = {gDebugText_Jump_EnterMorty,DEBUG_JUMP_MENU_ITEM_ENTERMORTY},
     [17] = {gDebugText_Jump_SorryAboutMyFriends,DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS},
     [18] = {gDebugText_Jump_TheStorySoFar,DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR},
@@ -729,7 +734,6 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct2[] =
     [10] = {gDebugText_Jump_EnterClair,DEBUG_JUMP_MENU_ITEM_ENTERCLAIR},
     [11] = {gDebugText_Jump_TheStrikeStrikesBack,DEBUG_JUMP_MENU_ITEM_THESTRIKESTRIKESBACK},
     [12] = {gDebugText_Jump_VSGarbodor,DEBUG_JUMP_MENU_ITEM_VSGARBODOR},
-    [13] = {gDebugText_Jump_UnknownAlcatrazCutscene,DEBUG_JUMP_MENU_ITEM_UNKNOWNALCATRAZCUTSCENE},
 };
 static const struct ListMenuItem sDebugMenu_Items_JumpAct3[] =
 {
@@ -755,9 +759,9 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct4[] =
     [2] = {gDebugText_Jump_RestoreChinatown,DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN},
     [3] = {gDebugText_Jump_RestoreTreasureIsland,DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND},
     [4] = {gDebugText_Jump_RestoreMarin,DEBUG_JUMP_MENU_ITEM_RESTOREMARIN},
-    [5] = {gDebugText_Jump_RestoreHaightAshbury,DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY},
-    [6] = {gDebugText_Jump_YouRealizeWereEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT},
-    [7] = {gDebugText_Jump_YouRealizeTheyreEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT},
+    //[5] = {gDebugText_Jump_RestoreHaightAshbury,DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY},
+    [5] = {gDebugText_Jump_YouRealizeWereEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT},
+    [6] = {gDebugText_Jump_YouRealizeTheyreEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT},
 };
 static const struct ListMenuItem sDebugMenu_Items_JumpAct5F[] =
 {
@@ -777,14 +781,17 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct5F[] =
     [3] = {gDebugText_Jump_LockedOut,DEBUG_JUMP_MENU_ITEM_LOCKEDOUT},
     [4] = {gDebugText_Jump_WarehouseRave,DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE},
     [5] = {gDebugText_Jump_SpeechSpeechSpeech,DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH},
-    [6] = {gDebugText_Jump_OneDown,DEBUG_JUMP_MENU_ITEM_ONEDOWN},
-    [7] = {gDebugText_Jump_Earthquake,DEBUG_JUMP_MENU_ITEM_EARTHQUAKE},
-    [8] = {gDebugText_Jump_ThisIsntRandom,DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM},
-    [9] = {gDebugText_Jump_WaitEvenThen,DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN},
-    [10] = {gDebugText_Jump_LetsFinishThis,DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS},
-    [11] = {gDebugText_Jump_ImIn,DEBUG_JUMP_MENU_ITEM_IMIN},
-    [12] = {gDebugText_Jump_YouCantStopMe,DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME},
-    [13] = {gDebugText_Jump_WeCanStopYouActually,DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY},
+    [6] = {gDebugText_Jump_PersuasivePassenger,DEBUG_JUMP_MENU_ITEM_PERSUASIVEPASSENGER},
+    [7] = {gDebugText_Jump_BreakTheInternet,DEBUG_JUMP_MENU_ITEM_BREAKTHEINTERNET},
+    [8] = {gDebugText_Jump_WarehouseWarfare,DEBUG_JUMP_MENU_ITEM_WAREHOUSEWARFARE},
+    [9] = {gDebugText_Jump_OneDown,DEBUG_JUMP_MENU_ITEM_ONEDOWN},
+    [9] = {gDebugText_Jump_Earthquake,DEBUG_JUMP_MENU_ITEM_EARTHQUAKE},
+    [10] = {gDebugText_Jump_ThisIsntRandom,DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM},
+    [11] = {gDebugText_Jump_WaitEvenThen,DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN},
+    [12] = {gDebugText_Jump_LetsFinishThis,DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS},
+    [13] = {gDebugText_Jump_ImIn,DEBUG_JUMP_MENU_ITEM_IMIN},
+    [14] = {gDebugText_Jump_YouCantStopMe,DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME},
+    [15] = {gDebugText_Jump_WeCanStopYouActually,DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY},
 };
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {
@@ -949,7 +956,7 @@ static void (*const sDebugMenu_Action_JumpAct4[])(u8) =
     [DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_RESTOREMARIN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
-    [DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    //[DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
 };
@@ -972,6 +979,9 @@ static void (*const sDebugMenu_Action_JumpAct5T[])(u8) =
     [DEBUG_JUMP_MENU_ITEM_LOCKEDOUT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_PERSUASIVEPASSENGER] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_BREAKTHEINTERNET] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WAREHOUSEWARFARE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_ONEDOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_EARTHQUAKE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM] =     DebugAction_Jump_JumpPlayerToStoryPoint,
@@ -2091,7 +2101,6 @@ static void DebugAction_Jump_JumpPlayerToStoryPoint(u8 taskId)
     JumpPlayerToStoryPoint(chosenStoryPoint, taskId);
     WarpPlayerAfterVarSet();
     PlaySE(SE_WARP_IN);
-    //ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);
 }
 

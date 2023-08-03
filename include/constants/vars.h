@@ -267,7 +267,7 @@
 #define PSF_VAR_206                                        0x40EF
 #define PSF_VAR_207                                        0x40F0
 #define PSF_VAR_208                                        0x40F1
-#define PSF_VAR_209                                        0x40F2
+#define VAR_ANEWSTRIKE_STEP_COUNTER                        0x40F2
 #define PSF_VAR_210                                        0x40F3
 #define PSF_VAR_211                                        0x40F4
 #define PSF_VAR_212                                        0x40F5

@@ -40,313 +40,144 @@
 
 //PSF TODO we should rewrite this whole function to be cleaner
 //PSF TODO need to make sure we can reflect the quest states of the takedown quests and the false timeline quests
+
 const u8 *GetQuestDesc_PlayersAdventure()
 {
-	u8 storyline = VarGet(VAR_STORYLINE_STATE);
+    u8 storyline = VarGet(VAR_STORYLINE_STATE);
 
-    if (storyline == STORY_CLEAR)
+    switch (storyline)
     {
-        return gText_PlayersAdventure_Flavor42;
+        case STORY_CLEAR:
+            return gText_PlayersAdventure_Flavor42;
+        case STORY_WARP_TILE_ACCESSIBLE:
+            return gText_PlayersAdventure_Flavor41;
+        case STORY_BEFORE_SABRINA_BREAKIN:
+            return gText_PlayersAdventure_Flavor40;
+        case STORY_POST_DYNAMAX_BOSS:
+            return gText_PlayersAdventure_Flavor39;
+        case STORY_POST_EARTHQUAKE:
+            if (VarGet(VAR_UNDERGROUNDLAB_STATE) <= SAVE_BEFORE_DYNAMAX)
+                return gText_PlayersAdventure_Flavor38A;
+            else
+                return gText_PlayersAdventure_Flavor38;
+        case STORY_PRE_EARTHQUAKE:
+            if (VarGet(VAR_ALAMEDA_STATE) >= POST_EARTHQUAKE)
+                return gText_PlayersAdventure_Flavor37A;
+            else
+                return gText_PlayersAdventure_Flavor37;
+        case STORY_1ST_TAKEDOWN:
+            return gText_PlayersAdventure_Flavor36A;
+        case STORY_RAVE_AND_SPEECH_COMPLETE:
+            return gText_PlayersAdventure_Flavor36;
+        case STORY_RAVE_OR_SPEECH_COMPLETE:
+            if (VarGet(VAR_WAREHOUSE_RAVE_STATE) >= TOLD_ARCHER_ABOUT_KOGA)
+                return gText_PlayersAdventure_Flavor35A;
+            else if (VarGet(VAR_ALCATRAZ_STATE) >= POST_SPEECHSPEECH)
+                return gText_PlayersAdventure_Flavor35B;
+            else
+                return gText_PlayersAdventure_Flavor35;
+        case STORY_RECIVED_RAVE_INVITE:
+            return gText_PlayersAdventure_Flavor35;
+        case STORY_START_TRUE_TIMELINE:
+            return gText_PlayersAdventure_Flavor34;
+        case STORY_POST_DIANTHA:
+            return gText_PlayersAdventure_Flavor32;
+        case STORY_SAVE_DIANTHA:
+            return gText_PlayersAdventure_Flavor31;
+        case STORY_TEAMROCKET_FINISHED:
+            return gText_PlayersAdventure_Flavor30;
+        case STORY_MORNING_OF_TIMELINE_SPLIT:
+            if (FlagGet(FLAG_TIMELINE_TIMETRAVEL))
+                return gText_PlayersAdventure_Flavor28;
+            else
+                return gText_PlayersAdventure_Flavor27;
+        case STORY_POST_YOU_REALIZE_WERE_EVIL:
+            if (VarGet(VAR_ALCATRAZ_STATE) >= POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)
+                return gText_PlayersAdventure_Flavor26;
+            else if (VarGet(VAR_ALCATRAZ_STATE) < ARCHER_SUMMONED_ALCATRAZ)
+                return gText_PlayersAdventure_Flavor26;
+            else
+                return gText_PlayersAdventure_Flavor25;
+        case STORY_ARCHER_EXPLAIN_RESTORATION:
+            return gText_PlayersAdventure_Flavor23;
+        case STORY_POST_BATTLE_ARCHER_TREASUREISLAND:
+            return gText_PlayersAdventure_Flavor22;
+        case STORY_SAVE_ARCHER_TREASUREISLAND:
+            return gText_PlayersAdventure_Flavor21;
+        case STORY_EXPLORE_TREASUREISLAND:
+            return gText_PlayersAdventure_Flavor20;
+        case STORY_WON_FINALS:
+            return gText_PlayersAdventure_Flavor19;
+        case STORY_READY_FINALS:
+            return gText_PlayersAdventure_Flavor18;
+        case STORY_WATCH_SEMIFINAL:
+            return gText_PlayersAdventure_Flavor17;
+        case STORY_GROUP_STATE_COMPLETE:
+            return gText_PlayersAdventure_Flavor16;
+        case STORY_CHAMPIONSHIP_EXPLAINED:
+            return gText_PlayersAdventure_Flavor14;
+        case STORY_START_CHAMPIONSHIP:
+            return gText_PlayersAdventure_Flavor13;
+        case STORY_COMPLETED_NAVAL_BASE:
+            return gText_PlayersAdventure_Flavor12;
+        case STORY_ASSIGNED_SIEBOLD_QUESTS:
+            if (VarGet(VAR_SALESFORCETOWER_CONFERENCE_STATE) > PRE_WELCOME_TO_THE_WAR_ROOM)
+                return gText_PlayersAdventure_Flavor11;
+            else if (VarGet(VAR_MUIRWOODS_STATE) == POST_HAVE_YOU_SEEN_THE_NEWS)
+                return gText_PlayersAdventure_HeadToSalesforce;
+            else if (VarGet(VAR_MUIRWOODS_STATE) > MUIRWOODS_MAZE_COMPLETE)
+                return gText_PlayersAdventure_Flavor10;
+            else if (VarGet(VAR_GOLDENGATEBRIDGE_STATE) > CALLED_BY_BIANCA)
+                return gText_PlayersAdventure_Flavor9_B;
+            else if (VarGet(VAR_GOLDENGATEBRIDGE_STATE) == CALLED_BY_BIANCA)
+                return gText_PlayersAdventure_Flavor9_A;
+            else
+                return gText_PlayersAdventure_Flavor9;
+        case STORY_NEED_SLEEP_BEFORE_SIEBOLD:
+            return gText_PlayersAdventure_Flavor9;
+        case STORY_CALLED_TO_CONSTRUCTION:
+            if (VarGet(VAR_CONSTRUCTION_STRIKE_STATE) == START_VS_GARBODOR)
+                return gText_PlayersAdventure_Flavor8;
+            else
+                return gText_PlayersAdventure_Flavor7;
+        case STORY_DEFEAT_MORTY:
+            if (CheckBagHasItem(ITEM_MYSTIC_TICKET, 1))
+                return gText_PlayersAdventure_Flavor5;
+            else
+                return gText_PlayersAdventure_Flavor4;
+        case STORY_FERRY_FIXED:
+            return gText_PlayersAdventure_Flavor3;
+        case STORY_WEST_SANFRAN_COMPLETE:
+            return gText_PlayersAdventure_Flavor2;
+        case STORY_WEST_SANFRAN_ONLY:
+            if (VarGet(VAR_PLAYER_HOME_STATE) > POST_SWAGBAG)
+            {
+                return gText_PlayersAdventure_Flavor1;
+            }
+            else if (VarGet(VAR_PROLOGUE_STATE) == START_ADVENTURE)
+            {
+                return gText_PlayersAdventure_Flavor0;
+            }
+            else if (VarGet(VAR_PROLOGUE_STATE) == WIKSTROM_ANNOUNCE)
+            {
+                return gText_ChampionsAdventure_Flavor3;
+            }
+            else if (VarGet(VAR_PROLOGUE_STATE) > LOST_TO_DRASNA)
+            {
+                return gText_ChampionsAdventure_Flavor2;
+            }
+            else if (VarGet(VAR_PROLOGUE_STATE) > NOT_STARTED)
+            {
+                return gText_Quest_BecomeChampion_Desc;
+            }
+            else
+                return gText_Quest_PlayersAdventure_Desc;
+        default:
+            if (storyline > 0)
+            {
+                return gText_PlayersAdventure_Flavor1;
+            }
     }
-    else if (storyline == STORY_WARP_TILE_ACCESSIBLE)
-	{
-		return gText_PlayersAdventure_Flavor41;
-	}
-
-	else if (storyline == STORY_BEFORE_SABRINA_BREAKIN)
-	{
-		return gText_PlayersAdventure_Flavor40;
-	}
-
-	else if (storyline == STORY_POST_DYNAMAX_BOSS)
-	{
-		return gText_PlayersAdventure_Flavor39;
-	}
-
-	else if (storyline == STORY_POST_EARTHQUAKE
-	            && (VarGet(VAR_UNDERGROUNDLAB_STATE) <= SAVE_BEFORE_DYNAMAX))
-	{
-		return gText_PlayersAdventure_Flavor38A;
-	}
-
-	else if (storyline == STORY_POST_EARTHQUAKE)
-	{
-		return gText_PlayersAdventure_Flavor38;
-	}
-
-	else if (storyline == STORY_PRE_EARTHQUAKE
-	            && (VarGet(VAR_ALAMEDA_STATE) >= POST_EARTHQUAKE))
-	{
-		return gText_PlayersAdventure_Flavor37A;
-	}
-
-
-	else if (storyline == STORY_PRE_EARTHQUAKE)
-	{
-		return gText_PlayersAdventure_Flavor37;
-	}
-
-    else if (storyline == STORY_1ST_TAKEDOWN)
-    {
-		return gText_PlayersAdventure_Flavor36A;
-    }
-
-	else if (storyline == STORY_RAVE_AND_SPEECH_COMPLETE)
-	{
-		return gText_PlayersAdventure_Flavor36;
-	}
-
-	else if (storyline == STORY_RAVE_OR_SPEECH_COMPLETE
-	            && (VarGet(VAR_WAREHOUSE_RAVE_STATE) >= TOLD_ARCHER_ABOUT_KOGA))
-    {
-        return gText_PlayersAdventure_Flavor35A;
-    }
-
-	else if (storyline == STORY_RAVE_OR_SPEECH_COMPLETE
-	            && (VarGet(VAR_ALCATRAZ_STATE) >= POST_SPEECHSPEECH))
-    {
-        return gText_PlayersAdventure_Flavor35B;
-    }
-
-    else if (storyline == STORY_RECIVED_RAVE_INVITE)
-    {
-        return gText_PlayersAdventure_Flavor35;
-    }
-
-	else if (storyline > STORY_START_TRUE_TIMELINE)
-	{
-		return gText_PlayersAdventure_Flavor34A;
-	}
-
-	else if (storyline == STORY_START_TRUE_TIMELINE)
-	{
-		return gText_PlayersAdventure_Flavor34;
-	}
-
-	else if (storyline > STORY_CONGRATULATED_BY_ROSE)
-	{
-		return gText_PlayersAdventure_Flavor33;
-	}
-
-	else if (storyline > STORY_POST_DIANTHA)
-	{
-		return gText_PlayersAdventure_Flavor32;
-	}
-
-	else if (storyline == STORY_SAVE_DIANTHA)
-	{
-		return gText_PlayersAdventure_Flavor31;
-	}
-
-	else if (storyline == STORY_TEAMROCKET_FINISHED)
-	{
-		return gText_PlayersAdventure_Flavor30;
-	}
-
-	else if (storyline > STORY_MORNING_OF_TIMELINE_SPLIT)
-	{
-		return gText_PlayersAdventure_Flavor29;
-	}
-
-	else if (storyline == STORY_MORNING_OF_TIMELINE_SPLIT
-	            && FlagGet(FLAG_TIMELINE_TIMETRAVEL))
-	{
-		return gText_PlayersAdventure_Flavor28;
-	}
-
-	else if (storyline == STORY_MORNING_OF_TIMELINE_SPLIT)
-	{
-		return gText_PlayersAdventure_Flavor27;
-	}
-
-	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
-	            && (VarGet(VAR_ALCATRAZ_STATE) >= POST_YOU_REALIZE_THEYRE_EVIL_RIGHT))
-	{
-		return gText_PlayersAdventure_Flavor26;
-	}
-    else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
-                && (VarGet(VAR_ALCATRAZ_STATE) < ARCHER_SUMMONED_ALCATRAZ))
-    {
-        return gText_PlayersAdventure_Flavor26;
-    }
-	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
-	            && (VarGet(VAR_ALCATRAZ_STATE) < POST_YOU_REALIZE_THEYRE_EVIL_RIGHT))
-	{
-		return gText_PlayersAdventure_Flavor25;
-	}
-
-	else if (storyline > STORY_ARCHER_EXPLAIN_RESTORATION)
-	{
-		return gText_PlayersAdventure_Flavor24;
-	}
-
-	else if (storyline == STORY_ARCHER_EXPLAIN_RESTORATION)
-	{
-		return gText_PlayersAdventure_Flavor23;
-	}
-
-	else if (storyline == STORY_POST_BATTLE_ARCHER_TREASUREISLAND)
-	{
-		return gText_PlayersAdventure_Flavor22;
-	}
-
-	else if (storyline == STORY_SAVE_ARCHER_TREASUREISLAND)
-	{
-		return gText_PlayersAdventure_Flavor21;
-	}
-
-	else if (storyline == STORY_EXPLORE_TREASUREISLAND)
-	{
-		return gText_PlayersAdventure_Flavor20;
-	}
-
-	else if (storyline == STORY_WON_FINALS)
-	{
-		return gText_PlayersAdventure_Flavor19;
-	}
-
-	else if (storyline > STORY_READY_FINALS)
-	{
-		return gText_PlayersAdventure_Flavor18;
-	}
-
-	else if (storyline == STORY_WATCH_SEMIFINAL)
-	{
-		return gText_PlayersAdventure_Flavor17;
-	}
-
-	else if (storyline == STORY_GROUP_STATE_COMPLETE)
-	{
-		return gText_PlayersAdventure_Flavor16;
-	}
-
-	else if (storyline > STORY_CHAMPIONSHIP_EXPLAINED)
-	{
-		return gText_PlayersAdventure_Flavor15;
-	}
-
-	else if (storyline == STORY_CHAMPIONSHIP_EXPLAINED)
-	{
-		return gText_PlayersAdventure_Flavor14;
-	}
-
-	else if (storyline == STORY_START_CHAMPIONSHIP)
-	{
-		return gText_PlayersAdventure_Flavor13;
-	}
-
-	else if (storyline == STORY_COMPLETED_NAVAL_BASE)
-	{
-		return gText_PlayersAdventure_Flavor12;
-	}
-
-	else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
-	            && (VarGet(VAR_SALESFORCETOWER_CONFERENCE_STATE) > PRE_WELCOME_TO_THE_WAR_ROOM))
-	{
-		return gText_PlayersAdventure_Flavor11;
-	}
-
-    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
-            && (VarGet(VAR_MUIRWOODS_STATE) == POST_HAVE_YOU_SEEN_THE_NEWS))
-    {
-        return gText_PlayersAdventure_HeadToSalesforce;
-    }
-
-    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
-                && (VarGet(VAR_MUIRWOODS_STATE) > MUIRWOODS_MAZE_COMPLETE))
-	{
-		return gText_PlayersAdventure_Flavor10;
-	}
-
-	else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
-                && (VarGet(VAR_GOLDENGATEBRIDGE_STATE) > CALLED_BY_BIANCA))
-	{
-		return gText_PlayersAdventure_Flavor9_B;
-	}
-
-    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS && (VarGet(VAR_GOLDENGATEBRIDGE_STATE) == CALLED_BY_BIANCA))
-	{
-		return gText_PlayersAdventure_Flavor9_A;
-	}
-
-	else if (storyline == STORY_NEED_SLEEP_BEFORE_SIEBOLD)
-	{
-		return gText_PlayersAdventure_Flavor9;
-	}
-
-	else if (storyline == STORY_CALLED_TO_CONSTRUCTION
-	            && (VarGet(VAR_CONSTRUCTION_STRIKE_STATE) == START_VS_GARBODOR))
-	{
-		return gText_PlayersAdventure_Flavor8;
-	}
-
-	else if (storyline == STORY_CALLED_TO_CONSTRUCTION)
-	{
-		return gText_PlayersAdventure_Flavor7;
-	}
-
-	else if (storyline > STORY_DEFEAT_MORTY)
-	{
-		return gText_PlayersAdventure_Flavor6;
-	}
-
-	else if (storyline == STORY_DEFEAT_MORTY
-	            && (CheckBagHasItem(ITEM_MYSTIC_TICKET, 1)))
-	{
-		return gText_PlayersAdventure_Flavor5;
-	}
-
-	else if (storyline == STORY_DEFEAT_MORTY)
-	{
-		return gText_PlayersAdventure_Flavor4;
-	}
-
-	else if (storyline == STORY_FERRY_FIXED)
-	{
-		return gText_PlayersAdventure_Flavor3;
-	}
-
-	else if (storyline == STORY_WEST_SANFRAN_COMPLETE)
-	{
-		return gText_PlayersAdventure_Flavor2;
-	}
-
-	else if (storyline > 0)
-	{
-		return gText_PlayersAdventure_Flavor1;
-	}
-
-	else if ((storyline == 0)
-	            && ((VarGet(VAR_PLAYER_HOME_STATE) > POST_SWAGBAG)))
-	{
-		return gText_PlayersAdventure_Flavor1;
-	}
-
-    //else if ((storyline == 0) && !FlagGet(FLAG_SYS_QUEST_MENU_GET))
-    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) == START_ADVENTURE)
-    {
-        return gText_PlayersAdventure_Flavor0;
-    }
-
-    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) == WIKSTROM_ANNOUNCE)
-    {
-        return gText_ChampionsAdventure_Flavor3;
-    }
-
-    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) > LOST_TO_DRASNA)
-    {
-        return gText_ChampionsAdventure_Flavor2;
-    }
-
-    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) > NOT_STARTED)
-    {
-        return gText_Quest_BecomeChampion_Desc;
-    }
-
-	else
-	{
-		return gText_Quest_PlayersAdventure_Desc;
-	}
 }
 
 const u8 *GetQuestDoneDesc_PlayersAdventure()
