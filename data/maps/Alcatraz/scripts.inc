@@ -14,10 +14,6 @@ Alcatraz_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Alcatraz_MapScripts_OnTransition::
-	return
-
-
 AlcatrazAttendant_HealPlayer_Script::
 	lock
 	call Common_EventScript_OutOfCenterPartyHeal

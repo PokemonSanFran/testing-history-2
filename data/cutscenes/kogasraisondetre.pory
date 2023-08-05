@@ -198,7 +198,7 @@ script KogaRaisonDetre_DinnerConversation_Dialogue {
         closemessage
         msgbox(gText_KogaRaisonDetre_HowManyBadges,,SPEAKER_ALEKSANDER)
         closemessage
-        bufferitemnameplural(STR_VAR_1,ITEM_LAVA_COOKIE)
+        bufferitemnameplural(STR_VAR_1,ITEM_LAVA_COOKIE,2)
         msgbox(gText_KogaRaisonDetre_DoIHaveToEat,,SPEAKER_SUMMER)
         closemessage
         fadescreen(FADE_TO_BLACK)

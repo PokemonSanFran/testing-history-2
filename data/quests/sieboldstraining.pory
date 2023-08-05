@@ -29,7 +29,7 @@ script Quest_Sieboldstraining_GiveMons_Script{
 }
 
 script Quest_Sieboldstraining_ChooseMons_Script{
-    //choose_mons 
+    //choose_mons
     //special(ReducePlayerPartyToSelectedMons)
     return
 }
@@ -82,7 +82,7 @@ script Quest_Sieboldstraining_Battle_Robot1_Script{
 
     setvar(VAR_TEMP_0,1)
     call(Quest_Sieboldstraining_Battle_Setup_Script)
-    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_1,gText_Sieboldstraining_ThisRobotIsFor)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_1,gText_Sieboldstraining_BeepBoop)
     msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_1)
     call(Quest_Quest_Sieboldstraining_CheckReward_Script)
@@ -96,7 +96,7 @@ script Quest_Sieboldstraining_Battle_Robot2_Script{
 
     setvar(VAR_TEMP_0,2)
     call(Quest_Sieboldstraining_Battle_Setup_Script)
-    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_2,gText_Sieboldstraining_ThisRobotIsFor)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_2,gText_Sieboldstraining_BeepBoop)
     msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_2)
     call(Quest_Quest_Sieboldstraining_CheckReward_Script)
@@ -110,7 +110,7 @@ script Quest_Sieboldstraining_Battle_Robot3_Script{
 
     setvar(VAR_TEMP_0,3)
     call(Quest_Sieboldstraining_Battle_Setup_Script)
-    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_3,gText_Sieboldstraining_ThisRobotIsFor)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_3,gText_Sieboldstraining_BeepBoop)
     msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_3)
     call(Quest_Quest_Sieboldstraining_CheckReward_Script)
@@ -124,7 +124,7 @@ script Quest_Sieboldstraining_Battle_Robot4_Script{
 
     setvar(VAR_TEMP_0,4)
     call(Quest_Sieboldstraining_Battle_Setup_Script)
-    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_4,gText_Sieboldstraining_ThisRobotIsFor)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_4,gText_Sieboldstraining_BeepBoop)
     msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_4)
     call(Quest_Quest_Sieboldstraining_CheckReward_Script)
@@ -153,7 +153,7 @@ script Quest_Quest_Sieboldstraining_CheckReward_Script{
     }
 
     if (var(VAR_TEMP_0) == QUEST_SIEBOLDSTRAINING_SUB_COUNT){
-        questmenu(QUEST_MENU_SET_REWARD,QUEST_SIEBOLDSTRAINING)     
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_SIEBOLDSTRAINING)
         goto(Quest_SieboldTraining_CompleteQuest_Script)
     }
     return
@@ -205,6 +205,9 @@ text gText_Sieboldstraining_ExcellentWorkPlayer{
 }
 text gText_Sieboldstraining_ThisRobotIsFor{
     format("This robot is for Bianca.")
+}
+text gText_Sieboldstraining_BeepBoop{
+    format("Beep boop.")
 }
 text gText_Sieboldstraining_WellItsBeenQuite_Script{
     format("Well, it's been quite a week. Impressed you were both able to clear those puzzles so quickly.")
