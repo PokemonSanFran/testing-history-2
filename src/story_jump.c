@@ -75,7 +75,7 @@ enum
 	JUMPPLAYER_SWAGBAG2,
 	JUMPPLAYER_ENTERMORTY,
 	JUMPPLAYER_SORRYABOUTMYFRIENDS,
-	JUMPPLAYER_THESTORYSOFAR,
+	//JUMPPLAYER_THESTORYSOFAR,
 	JUMPPLAYER_YOUNGPADAWAN,
 	JUMPPLAYER_WAITYOUWENTWHERE,
 	JUMPPLAYER_ENTERCHUCK,
@@ -162,7 +162,7 @@ static void JumpPlayerTo_HousingProtest();
 static void JumpPlayerTo_swagbag2();
 static void JumpPlayerTo_EnterMorty();
 static void JumpPlayerTo_SorryAboutMyFriends();
-static void JumpPlayerTo_TheStorySoFar();
+//static void JumpPlayerTo_TheStorySoFar();
 static void JumpPlayerTo_YoungPadawan();
 static void JumpPlayerTo_WaitYouWentWhere();
 static void JumpPlayerTo_EnterChuck();
@@ -289,8 +289,9 @@ void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
 		case JUMPPLAYER_SORRYABOUTMYFRIENDS:
 			JumpPlayerTo_SorryAboutMyFriends();
 			break;
+            /*
 		case JUMPPLAYER_THESTORYSOFAR:
-		/*JumpPlayerTo_TheStorySoFar();
+		JumpPlayerTo_TheStorySoFar();
 		break;
 		*/
 		case JUMPPLAYER_YOUNGPADAWAN:

@@ -89,7 +89,7 @@
 
 #define VAR_DAYS                                         0x4040
 //landmark vars
-#define VAR_ALCATRAZ_EXHIBIT_STATE                          0x4041
+#define VAR_FANCLUB_FAN_COUNTER                          0x4041
 #define VAR_ALCATRAZ_STATE                                  0x4042
 #define VAR_BERKELEY_STATE                                  0x4043
 #define VAR_DOGPATCH_STATE                                  0x4044
@@ -172,7 +172,7 @@
 #define VAR_FORTPOINT_STATE                                 0x408F
 #define VAR_FAINTED_FOG_STATE                               0x4090
 #define VAR_ALAMEDA_STATE                                   0x4091
-#define PSF_VAR_113                                        0x4092
+#define VAR_ALCATRAZ_EXHIBIT_STATE                          0x4092
 #define PSF_VAR_114                                        0x4093
 #define PSF_VAR_115                                        0x4094
 #define PSF_VAR_116                                        0x4095

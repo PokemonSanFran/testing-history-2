@@ -134,7 +134,7 @@ enum { //Jump Cutscenes
     DEBUG_JUMP_MENU_ITEM_SWAGBAG2,
     DEBUG_JUMP_MENU_ITEM_ENTERMORTY,
     DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS,
-    DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR,
+    //DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR,
     DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN,
     DEBUG_JUMP_MENU_ITEM_WAITYOUWENTWHERE,
     DEBUG_JUMP_MENU_ITEM_ENTERCHUCK,
@@ -482,7 +482,7 @@ static const u8 gDebugText_Jump_HousingProtest[] = _("Housing Protest");
 static const u8 gDebugText_Jump_swagbag2[] = _("swagbag2");
 static const u8 gDebugText_Jump_EnterMorty[] = _("Enter Morty");
 static const u8 gDebugText_Jump_SorryAboutMyFriends[] = _("Sorry About My Friends");
-static const u8 gDebugText_Jump_TheStorySoFar[] = _("The Story So Far");
+//static const u8 gDebugText_Jump_TheStorySoFar[] = _("The Story So Far");
 static const u8 gDebugText_Jump_YoungPadawan[] = _("Young Padawan");
 static const u8 gDebugText_Jump_WaitYouWentWhere[] = _("Wait, You Went Where?");
 static const u8 gDebugText_Jump_EnterChuck[] = _("Enter Chuck");
@@ -716,8 +716,8 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct1[] =
     [15] = {gDebugText_Jump_swagbag2,DEBUG_JUMP_MENU_ITEM_SWAGBAG2},
     [16] = {gDebugText_Jump_EnterMorty,DEBUG_JUMP_MENU_ITEM_ENTERMORTY},
     [17] = {gDebugText_Jump_SorryAboutMyFriends,DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS},
-    [18] = {gDebugText_Jump_TheStorySoFar,DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR},
-    [19] = {gDebugText_Jump_YoungPadawan,DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN},
+    //[18] = {gDebugText_Jump_TheStorySoFar,DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR},
+    [18] = {gDebugText_Jump_YoungPadawan,DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN},
 };
 static const struct ListMenuItem sDebugMenu_Items_JumpAct2[] =
 {
@@ -912,7 +912,7 @@ static void (*const sDebugMenu_Action_JumpAct1[])(u8) =
     [DEBUG_JUMP_MENU_ITEM_SWAGBAG2] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_ENTERMORTY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
-    [DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    //[DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
 };
 static void (*const sDebugMenu_Action_JumpAct2[])(u8) =
