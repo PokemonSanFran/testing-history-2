@@ -94,7 +94,7 @@ script ExhibitionBattle_PostBattle_Dialogue {
 
         msgbox(gText_ExhibitionBattle_ThatWasPositively,,SPEAKER_ROSE)
 
-        if(!defeated(TRAINER_WALLACE)){
+        if(!defeated(TRAINER_DIANTHA)){
 
         msgbox(gText_ExhibitionBattle_IveNeverSeen,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         }

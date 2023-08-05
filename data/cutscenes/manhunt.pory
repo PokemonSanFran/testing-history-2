@@ -291,9 +291,9 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         waitse
         playse(SE_POKENAV_CALL)
 
-        msgbox(gText_Manhunt_IllBeAtTheEntrance,,SPEAKER_ZOEY,,PHONE_ON)
-
+        msgbox(gText_Manhunt_IllBeAtTheEntrance,,SPEAKER_ZOEY,,,PHONE_ON)
         msgbox(gText_Manhunt_WhatWaitUhOkay,,SPEAKER_ROSE,,EMOTE_SHOCK,PHONE_ON)
+        closemessage
 
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,5,5)
 }
