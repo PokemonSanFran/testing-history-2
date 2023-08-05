@@ -4453,27 +4453,22 @@ u8 CheckNumAlcatrazExhibitDefeated(void)
     u16 trainerFlag;
     u8 count = 0;
 
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALBERTO)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_A)){
         count++;
     }
-
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ED)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_B)){
         count++;
     }
-
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_DECLAN)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_C)){
         count++;
     }
-
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_FREDRICK)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_D)){
         count++;
     }
-
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ZANDER)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_E)){
         count++;
     }
-
-    if (FlagGet(TRAINER_FLAGS_START + TRAINER_LEAH)){
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALCATRAZ_EXHIBIT_F)){
         count++;
     }
 
