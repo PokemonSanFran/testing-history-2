@@ -86,8 +86,9 @@
 #define VAR_GYM_6_STATE                                     0x403D
 #define VAR_GYM_7_STATE                                     0x403E
 #define VAR_GYM_8_STATE                                     0x403F
+
+#define VAR_DAYS                                         0x4040
 //landmark vars
-#define VAR_ALAMEDA_STATE                                   0x4040
 #define VAR_ALCATRAZ_EXHIBIT_STATE                          0x4041
 #define VAR_ALCATRAZ_STATE                                  0x4042
 #define VAR_BERKELEY_STATE                                  0x4043
@@ -170,7 +171,7 @@
 #define VAR_NAVALBASE_STATE                                 0x408E
 #define VAR_FORTPOINT_STATE                                 0x408F
 #define VAR_FAINTED_FOG_STATE                               0x4090
-#define PSF_VAR_112                                        0x4091
+#define VAR_ALAMEDA_STATE                                   0x4091
 #define PSF_VAR_113                                        0x4092
 #define PSF_VAR_114                                        0x4093
 #define PSF_VAR_115                                        0x4094
@@ -402,7 +403,6 @@
 #define VAR_REGICE_STEPS_3                               0x403D
 #define VAR_ALTERING_CAVE_WILD_SET                       0x403E
 #define VAR_DISTRIBUTE_EON_TICKET                        0x403F // This var is read and written, but is always zero. The only way to obtain the Eon Ticket in Emerald is via Record Mixing
-#define VAR_DAYS                                         0x4040
 #define VAR_FANCLUB_FAN_COUNTER                          0x4041
 #define VAR_FANCLUB_LOSE_FAN_TIMER                       0x4042
 #define VAR_DEPT_STORE_FLOOR                             0x4043
