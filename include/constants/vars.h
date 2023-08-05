@@ -61,7 +61,7 @@
 #define VAR_WILD_AI_FLAGS                                   0x4028
 //region related vars
 #define VAR_STORYLINE_STATE                                 0x4029
-#define VAR_FAINTED_FOG_STATE                               0x402A
+#define VAR_FRIENDSHIP_STEP_COUNTER                      0x402A
 #define VAR_POISON_STEP_COUNTER                          0x402B
 #define VAR_GIVEN_UNHOUSED                                  0x402C
 #define VAR_CHASECENTER_TOURNAMENT_STATE                    0x402D
@@ -169,7 +169,7 @@
 #define VAR_PLAYER_HOME_STATE                               0x408D
 #define VAR_NAVALBASE_STATE                                 0x408E
 #define VAR_FORTPOINT_STATE                                 0x408F
-#define PSF_VAR_111                                        0x4090
+#define VAR_FAINTED_FOG_STATE                               0x4090
 #define PSF_VAR_112                                        0x4091
 #define PSF_VAR_113                                        0x4092
 #define PSF_VAR_114                                        0x4093
