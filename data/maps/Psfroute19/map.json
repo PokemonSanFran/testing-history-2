@@ -2,7 +2,7 @@
   "id": "MAP_PSFROUTE19",
   "name": "Psfroute19",
   "layout": "LAYOUT_PSFROUTE19",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_LITTLEROOT_TEST",
   "region_map_section": "MAPSEC_PSFROUTE19",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
