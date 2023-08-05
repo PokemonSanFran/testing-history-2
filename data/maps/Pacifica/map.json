@@ -179,7 +179,7 @@
       "x": 10,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_ROUTE107_STATE",
+      "var": "VAR_BEACH_BATTLE_STATE",
       "var_value": "0",
       "script": "BeachBattle_BiancaWalkToPlayer"
     },
