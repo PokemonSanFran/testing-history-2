@@ -252,7 +252,7 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         waitmovement(0)
 
         msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith,,SPEAKER_ZOEY)
-
+        closemessage
         startmenu_savescreen
         goto(WhyAreYouHelpingThem_StartBattle_Script)
 }
@@ -264,12 +264,10 @@ script WhyAreYouHelpingThem_InteractBattle_Script {
 }
 
 script WhyAreYouHelpingThem_StartBattle_Script{
-    lock
-        msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen,,SPEAKER_ARCHER)
-        trainerbattle_no_intro(TRAINER_ARCHER_WHYAREYOUHELPINGTHEM,gText_WhyAreYouHelpingThem_AnotherVictory)
-        closemessage
-
-        goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
+    msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen,,SPEAKER_ARCHER)
+    closemessage
+    trainerbattle_no_intro(TRAINER_ARCHER_WHYAREYOUHELPINGTHEM,gText_WhyAreYouHelpingThem_AnotherVictory)
+    goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
 }
 
 script WhyAreYouHelpingThem_PostBattle_Dialogue {
