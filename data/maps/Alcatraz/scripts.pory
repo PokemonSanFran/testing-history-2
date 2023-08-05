@@ -12,9 +12,6 @@ mapscripts Alcatraz_MapScripts {
     ]
 }
 
-script Alcatraz_MapScripts_OnTransition {
-}
-
 script AlcatrazAttendant_HealPlayer_Script {
         lock
         call(Common_EventScript_OutOfCenterPartyHeal)
