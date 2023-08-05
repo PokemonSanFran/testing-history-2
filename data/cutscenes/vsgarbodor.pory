@@ -106,16 +106,15 @@ script VSGarbodor_TeamRocketGrunt1_Battle_Script {
         end
 }
 
-script VSGarbodor_TeamRocketGrunt3_Battle_Script {
-    trainerbattle_single(TRAINER_FAKEROCKET_B, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script)
-        msgbox(gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_B)
+script VSGarbodor_TeamRocketGrunt2_Battle_Script {
+    trainerbattle_single(TRAINER_FAKEROCKET_B, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script)
+        msgbox(gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_A)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
-
-script VSGarbodor_TeamRocketGrunt2_Battle_Script {
-    trainerbattle_single(TRAINER_FAKEROCKET_A, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script)
-        msgbox(gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_A)
+script VSGarbodor_TeamRocketGrunt3_Battle_Script {
+    trainerbattle_single(TRAINER_FAKEROCKET_A, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script)
+        msgbox(gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE,SPEAKER_ROCKET_MEMBER_B)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
