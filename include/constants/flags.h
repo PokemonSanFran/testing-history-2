@@ -169,7 +169,6 @@
 #define FLAG_UNLOCKED_STRENGTH                               0x91
 #define FLAG_UNLOCKED_WHIRLPOOL                              0x92
 #define FLAG_SET_WALL_CLOCK                                  0x93
-#define FLAG_IS_SANFRAN_CHAMPION                             0x94
 #define FLAG_QUEST_ALLTHATGLITTERS_DEFEATED_POKEMON          0x95
 #define FLAG_DEFEATED_LAB_MON_A                              0x96
 #define FLAG_DEFEATED_LAB_MON_B                              0x97
@@ -1352,7 +1351,7 @@
 #define PSF_FLAG_1316                                        (SYSTEM_FLAGS + 0x1C)
 #define PSF_FLAG_1317                                        (SYSTEM_FLAGS + 0x1D)
 #define PSF_FLAG_1318                                        (SYSTEM_FLAGS + 0x1E)
-#define PSF_FLAG_1319                                        (SYSTEM_FLAGS + 0x1F)
+#define FLAG_IS_SANFRAN_CHAMPION                             (SYSTEM_FLAGS + 0x1F)
 #define PSF_FLAG_1320                                        (SYSTEM_FLAGS + 0x20)
 #define PSF_FLAG_1321                                        (SYSTEM_FLAGS + 0x21)
 #define PSF_FLAG_1322                                        (SYSTEM_FLAGS + 0x22)
