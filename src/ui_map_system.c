@@ -691,7 +691,7 @@ void CreateSFRegionMapCursor(u16 tileTag, u16 paletteTag)
         else
         {
             StartSpriteAnim(sRegionMap->cursorSpriteLOC, 0);
-            sRegionMap->cursorSpriteLOC->y += 10;
+            sRegionMap->cursorSpriteLOC->y += 16;
             sRegionMap->cursor_flipped = FALSE;
         }
 
@@ -715,7 +715,7 @@ void CreateSFRegionMapCursor(u16 tileTag, u16 paletteTag)
         sRegionMap->cursorSpriteLOC->data[3] = TRUE;
 
         PrintWarpPriceOnTooltip(spriteIdLOC, 2, 0xcc0);
-        PrintWarpPriceOnTooltip(spriteId, 2, 0x5c0);
+        PrintWarpPriceOnTooltip(spriteIdLOC, 2, 0x4c0);
     }
     return;
 }
@@ -845,7 +845,7 @@ static void Menu_InitWindows(void)
 
 static const u8 sText_Money_Bar[]         = _("Money: ¥{STR_VAR_1}");
 static const u8 sText_Money_BarSmall[]         = _("¥{STR_VAR_1}");
-static const u8 sText_Money_BarSmall2[]         = _("¥ {STR_VAR_1}");
+static const u8 sText_Money_BarSmall2[]         = _("¥{CLEAR 1}{STR_VAR_1}");
 static const u8 sText_A_Button_BarDef[]         = _("Go");
 static const u8 sText_B_Button_BarDef[]         = _("Cancel");
 static const u8 sText_Select_Button_BarDef[]         = _("Marker");
@@ -973,7 +973,7 @@ static void PrintWarpPriceOnTooltip(u32 spriteId, u32 bgColor, u32 startTile) //
     //*txtPtr++ = CHAR_CURRENCY;
     //txtPtr = ConvertIntToDecimalStringN(txtPtr, GetWarpPriceAtMapSec(sRegionMap->mapSecId, WARP_UBER), STR_CONV_MODE_LEFT_ALIGN, 4);
 
-    ConvertIntToDecimalStringN(gStringVar1, GetWarpPriceAtMapSec(sRegionMap->mapSecId, WARP_UBER), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, GetWarpPriceAtMapSec(sRegionMap->mapSecId, WARP_UBER), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringExpandPlaceholders(gStringVar4, sText_Money_BarSmall2);
 
     windowTileData = AddTextPrinterAndCreateWindowOnTooltip(gStringVar4, 2, 5, bgColor, &windowId);
@@ -1013,13 +1013,13 @@ static void UpdateRegionMapCursor(void)
         if((sRegionMap->cursorPosY * 8 + 4) >= 80 && sRegionMap->cursor_flipped == FALSE)
         {
             StartSpriteAnim(sRegionMap->cursorSpriteLOC, 1);
-            sRegionMap->cursorSpriteLOC->y -= 20;
+            sRegionMap->cursorSpriteLOC->y -= 26;
             sRegionMap->cursor_flipped = TRUE;
         }
         else if((sRegionMap->cursorPosY * 8 + 4) < 80 && sRegionMap->cursor_flipped == TRUE)
         {
             StartSpriteAnim(sRegionMap->cursorSpriteLOC, 0);
-            sRegionMap->cursorSpriteLOC->y += 20;
+            sRegionMap->cursorSpriteLOC->y += 26;
             sRegionMap->cursor_flipped = FALSE;
         }
     }
@@ -1257,7 +1257,7 @@ static u8 HandleWarpFailedNoCash(void)
 
 u32 GetWarpPriceAtMapSec(u16 mapSecId, u8 warp_type)
 {
-    return 20;
+    return 2000;
 }
 
 static u8 MoveRegionMapCursor_Full(void)
@@ -1919,7 +1919,7 @@ static void UnhideRegionMapCursorIcon(void)
             if((sRegionMap->cursorPosY * 8 + 4) >= 80)
                 sRegionMap->cursorSpriteLOC->y -= 10;
             else
-                sRegionMap->cursorSpriteLOC->y += 10;
+                sRegionMap->cursorSpriteLOC->y += 16;
             sRegionMap->cursorSpriteLOC->callback = SpriteCB_CursorMapZoomed;
             //sRegionMap->cursorSpriteLOC->invisible = FALSE;
         }
@@ -1933,7 +1933,7 @@ static void UnhideRegionMapCursorIcon(void)
             if((sRegionMap->cursorPosY * 8 + 4) >= 80)
                 sRegionMap->cursorSpriteLOC->y -= 10;
             else
-                sRegionMap->cursorSpriteLOC->y += 10;
+                sRegionMap->cursorSpriteLOC->y += 16;
             //sRegionMap->cursorSpriteLOC->invisible = FALSE;
         }
     }
