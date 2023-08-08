@@ -72,19 +72,14 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    setflag(FLAG_VISITED_OAKLAND)
     end
 }
 
 script Debug_Script_2{
-    warpsilent(MAP_OAKLAND,0)
     end
 }
 
 script Debug_Script_3{
-    if(flag(FLAG_VISITED_OAKLAND)){
-        msgbox("test")
-    }
     end
 }
 

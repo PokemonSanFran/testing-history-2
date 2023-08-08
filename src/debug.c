@@ -785,13 +785,13 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct5F[] =
     [7] = {gDebugText_Jump_BreakTheInternet,DEBUG_JUMP_MENU_ITEM_BREAKTHEINTERNET},
     [8] = {gDebugText_Jump_WarehouseWarfare,DEBUG_JUMP_MENU_ITEM_WAREHOUSEWARFARE},
     [9] = {gDebugText_Jump_OneDown,DEBUG_JUMP_MENU_ITEM_ONEDOWN},
-    [9] = {gDebugText_Jump_Earthquake,DEBUG_JUMP_MENU_ITEM_EARTHQUAKE},
-    [10] = {gDebugText_Jump_ThisIsntRandom,DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM},
-    [11] = {gDebugText_Jump_WaitEvenThen,DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN},
-    [12] = {gDebugText_Jump_LetsFinishThis,DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS},
-    [13] = {gDebugText_Jump_ImIn,DEBUG_JUMP_MENU_ITEM_IMIN},
-    [14] = {gDebugText_Jump_YouCantStopMe,DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME},
-    [15] = {gDebugText_Jump_WeCanStopYouActually,DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY},
+    [10] = {gDebugText_Jump_Earthquake,DEBUG_JUMP_MENU_ITEM_EARTHQUAKE},
+    [11] = {gDebugText_Jump_ThisIsntRandom,DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM},
+    [12] = {gDebugText_Jump_WaitEvenThen,DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN},
+    [13] = {gDebugText_Jump_LetsFinishThis,DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS},
+    [14] = {gDebugText_Jump_ImIn,DEBUG_JUMP_MENU_ITEM_IMIN},
+    [15] = {gDebugText_Jump_YouCantStopMe,DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME},
+    [16] = {gDebugText_Jump_WeCanStopYouActually,DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY},
 };
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {

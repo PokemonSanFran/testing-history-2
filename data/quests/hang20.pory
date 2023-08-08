@@ -51,25 +51,16 @@ script Quest_Hang20_StartQuest_Dialogue{
 
     msgbox(gText_Hang20_HeyYouNewHere)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_Hang20_YeahOrre)
-    callnative(ClearMugshot)
-    
+
     msgbox(gText_Hang20_OhDamnThatsLandLocked)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_Hang20_WereTouchingTheSea)
-    callnative(ClearMugshot)
 
     msgbox(gText_Hang20_NoWaves)
     msgbox(gText_Hang20_DoYouWannaLearn)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_Hang20_OhIveNever)
-    callnative(ClearMugshot)
 
     msgbox(gText_Hang20_ItsToughSoWeGotta)
     msgbox(gText_Hang20_WaitBeating)
@@ -109,7 +100,7 @@ script Quest_Hang20_Reward_Dialogue{
 }
 
 script Quest_Hang20_Secret_Dialogue{
-    msgbox(gText_Hang20_OhShitYoure) 
+    msgbox(gText_Hang20_OhShitYoure)
     msgbox(gText_Hang20_YoureSuperTough)
     msgbox(gText_Hang20_ImFromOrre)
     msgbox(gText_Hang20_WordItsMad)
@@ -180,7 +171,7 @@ text gText_Hang20_OhShitYoure{
     format("Hey, you're {PLAYER}, right? Killer waves, right? Not as good as back home, but still sick.")
 }
 text gText_Hang20_YoureSuperTough{
-    format("Here to catch some waves?") 
+    format("Here to catch some waves?")
 }
 text gText_Hang20_ImFromOrre{
     format("I'm from Orre! We're landlocked, so I never learned to Surf.")

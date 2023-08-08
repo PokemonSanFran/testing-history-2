@@ -62,23 +62,15 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	setflag FLAG_VISITED_OAKLAND
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_OAKLAND, 0
 	end
 
 
 Debug_Script_3::
-	goto_if_set FLAG_VISITED_OAKLAND, Debug_Script_3_2
-Debug_Script_3_1:
 	end
-
-Debug_Script_3_2:
-	msgbox Debug_Script_3_Text_0
-	goto Debug_Script_3_1
 
 
 Debug_Script_4::
@@ -119,9 +111,6 @@ Debug_CheckSaveBlock::
 	release
 	end
 
-
-Debug_Script_3_Text_0:
-	.string "test$"
 
 Debug_FlagsNotSetOverworldConfigMessage_Text::
 	.string "Feature unavailable!\n"

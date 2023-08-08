@@ -125,28 +125,21 @@ script Quest_Recruitlocalartists_ProgressReward_Script{
 script Quest_Recruitlocalartists_StartQuest_Dialogue{
     lock
     //PSF TODO move player if in sabrina's walking path
-    setvar(VAR_MUGSHOT,MUGSHOT_SABRINA)
 
     if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
         faceplayer
-        callnative(DrawMugshot)
         msgbox(gText_Recruitlocalartists_HelloPlayer)
         closemessage
-        callnative(ClearMugshot)
     }
 
     applymovement(SABRINA_MISSION,Common_Movement_FaceUp)
     waitmovement(SABRINA_MISSION)
 
-    callnative(DrawMugshot)
     msgbox(gText_Recruitlocalartists_TheseMurals)
-    callnative(ClearMugshot)
     closemessage
 
     faceplayer
-    callnative(DrawMugshot)
     msgbox(gText_Recruitlocalartists_TheLocalsLove)
-    callnative(ClearMugshot)
     closemessage
 
     applymovement(SABRINA_MISSION,Quest_Recruitlocalartists_LeaveMission_Movement)

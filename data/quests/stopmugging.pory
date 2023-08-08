@@ -64,24 +64,15 @@ script Quest_StopMugging_RunIntoPlayer_Dialogue{
     msgbox(gText_StopMugging_TheyTook)
     closemessage
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_StopMugging_WhatTheHell)
-    callnative(ClearMugshot)
 
     msgbox(gText_StopMugging_WeNeedThat)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_StopMugging_YouNeedSomebodyElse)
-    callnative(ClearMugshot)
 
     msgbox(gText_StopMugging_YouDontUnderstand)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_StopMugging_YouTriedToMug)
-    callnative(ClearMugshot)
 
     goto(Quest_StopMugging_StartBattle_Script)
 }
@@ -123,11 +114,8 @@ script Quest_StopMugging_Complete_Dialogue{
     applymovement(MUGGERB,Quest_StopMugging_LookAround_Movement)
     waitmovement(MUGGERB)
     msgbox(gText_StopMugging_TheAssholeMust)
-    
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
+
     msgbox(gText_StopMugging_IThinkYoure)
-    callnative(ClearMugshot)
 
     msgbox(gText_StopMugging_WellTry)
     closemessage
@@ -142,12 +130,9 @@ script Quest_StopMugging_Complete_Dialogue{
 }
 
 script Quest_StopMugging_Heal_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     msgbox(gText_StopMugging_ImGladIWas)
-    callnative(ClearMugshot)
 
-    special(HealPlayerParty)    
+    special(HealPlayerParty)
     special(ResetHealLocationToSOMA)
     warpsilent(MAP_SOMA,25,31)
     release
@@ -231,7 +216,7 @@ movement Quest_StopMugging_SlamIntoPlayerA_Movement{
 movement Quest_StopMugging_SlamIntoPlayerB_Movement{
     walk_faster_left
     walk_faster_down * 6
-    face_right 
+    face_right
     step_end
 }
 movement Quest_StopMugging_FlyBackwards_Movement{

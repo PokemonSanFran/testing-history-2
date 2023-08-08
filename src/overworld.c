@@ -821,7 +821,7 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
 
 void CheckSetVisitedRouteFlags(void)
 {
-    if (CheckBagHasItem(ITEM_GO_GOGGLES,1) && FlagGet(FLAG_VISITED_LOMBARDSTREET))
+    if ((VarGet(VAR_ALCATRAZ_STATE) >= BATTLED_MALVA) && FlagGet(FLAG_VISITED_LOMBARDSTREET))
         FlagSet(FLAG_VISITED_PSFROUTE1);
 
     if (FlagGet(FLAG_VISITED_FORTPOINT) && FlagGet(FLAG_VISITED_PAINTEDLADIES))
