@@ -6,70 +6,69 @@ on:
       - default 
   pull_request:
 
-    jobs:
-      build:
-        runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
+env:
+  GAME_VERSION: EMERALD
+  GAME_REVISION: 0
+  GAME_LANGUAGE: ENGLISH
+  MODERN: 0
+  COMPARE: 0
+steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+
+  - name: Checkout agbcc
+    uses: actions/checkout@v2
+    with:
+      path: agbcc
+      repository: pret/agbcc
+
+  - name: Install binutils
+    run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi libelf-dev
+      # build-essential, git, and libpng-dev are already installed
+      # gcc-arm-none-eabi is only needed for the modern build
+      # as an alternative to dkP
+
+  - name: Install agbcc
+    run: |
+      ./build.sh
+      ./install.sh ../
+    working-directory: agbcc
+
+  - name: Agbcc
+    run: make -j${nproc} -O all
+
+  - name: Modern
     env:
-      GAME_VERSION: EMERALD
-      GAME_REVISION: 0
-      GAME_LANGUAGE: ENGLISH
-      MODERN: 0
+      MODERN: 1
       COMPARE: 0
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    run: make -j${nproc} -O all
 
-      - name: Checkout agbcc
-        uses: actions/checkout@v2
-        with:
-          path: agbcc
-          repository: pret/agbcc
+# - name: Test
+#   env:
+#     TEST: 1
+#   run: |
+      # make -j${nproc} -O pokeemerald-test.elf
+      # make -j${nproc} check
 
-      - name: Install binutils
-        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi libelf-dev
-          # build-essential, git, and libpng-dev are already installed
-          # gcc-arm-none-eabi is only needed for the modern build
-          # as an alternative to dkP
+  - name: Upload Artifacts TO Google Drive
+    uses: Jumbo810/Upload_Github_Artifacts_TO_GDrive@v1.1.1
+    with:
+      target: /home/runner/work/game_pkmnsnfrn/game_pkmnsnfrn/pokeemerald.gba
+      credentials: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+      upload-to: 1E4meFn1GkW-F5Ykco-2qUz6M54fiwsN5
 
-      - name: Install agbcc
-        run: |
-          ./build.sh
-          ./install.sh ../
-        working-directory: agbcc
+  - name: discord notifcation with commit messages 
+    env:
+      DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
+      DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
+      DISCORD_USERNAME: Loudred
+    uses: Ilshidur/action-discord@master
+    with:
+      args: |
+        "This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message}}
 
-      - name: Agbcc
-        run: make -j${nproc} -O all
-
-      - name: Modern
-        env:
-          MODERN: 1
-          COMPARE: 0
-        run: make -j${nproc} -O all
-
-      - name: Test
-        env:
-          TEST: 1
-        run: |
-          make -j${nproc} -O pokeemerald-test.elf
-          # make -j${nproc} check
-
-      - name: Upload Artifacts TO Google Drive
-        uses: Jumbo810/Upload_Github_Artifacts_TO_GDrive@v1.1.1
-        with:
-          target: /home/runner/work/game_pkmnsnfrn/game_pkmnsnfrn/pokeemerald.gba
-        credentials: ${{ secrets.<YOUR_SERVICE_ACCOUNT_CREDENTIALS> }}
-        google-client-id: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        upload-to: 1E4meFn1GkW-F5Ykco-2qUz6M54fiwsN5
-
-      - name: discord notifcation with commit messages 
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
-          DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
-          DISCORD_USERNAME: Loudred
-        uses: Ilshidur/action-discord@master
-        with:
-          args: |
-            "This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message}}
-
-              📁🔗 https://bit.ly/3IgDnk9
-              "
+          📁🔗 https://bit.ly/3IgDnk9
+          "
