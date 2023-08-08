@@ -4602,16 +4602,6 @@
       "blockdata_filepath": "data/layouts/Salesforcetower_5F/map.bin"
     },
     {
-      "id": "LAYOUT_SALESFORCETOWER_11F",
-      "name": "Salesforcetower_11F_Layout",
-      "width": 19,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/Salesforcetower_11F/border.bin",
-      "blockdata_filepath": "data/layouts/Salesforcetower_11F/map.bin"
-    },
-    {
       "id": "LAYOUT_MISSION",
       "name": "Mission_Layout",
       "width": 40,

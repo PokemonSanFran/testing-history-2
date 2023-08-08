@@ -1114,7 +1114,6 @@ Script_RemoveTint::
 .include "data/maps/Salesforcetower_Elevator/scripts.inc"
 .include "data/maps/Salesforcetower_2F/scripts.inc"
 .include "data/maps/Salesforcetower_5F/scripts.inc"
-.include "data/maps/Salesforcetower_11F/scripts.inc"
 .include "data/maps/Mission/scripts.inc"
 .include "data/maps/Psfroute9/scripts.inc"
 .include "data/maps/Tenderloin/scripts.inc"
