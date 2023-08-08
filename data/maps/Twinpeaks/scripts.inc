@@ -5,6 +5,7 @@ Twinpeaks_MapScripts::
 	.byte 0
 
 Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_TWINPEAKS_BASE
 	call Quest_IBelieveICanFly_Gertrude_Visibility_Script
 	call OkayLetsFixIt_Object_Visibility_Script
 	return

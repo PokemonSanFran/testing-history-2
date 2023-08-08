@@ -1,6 +1,11 @@
 Fishermanswharf_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Fishermanswharf_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Fishermanswharf_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Fishermanswharf_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_FISHERMANSWHARF
+	return
 
 Fishermanswharf_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0

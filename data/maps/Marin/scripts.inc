@@ -5,6 +5,7 @@ Marin_MapScripts::
 	.byte 0
 
 Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_MARIN
 	call Quest_Restoremarin_HideLenora_Script
 	call Quest_Restoremarin_MoveLenora_Script
 	call Marin_HideBianca_Script

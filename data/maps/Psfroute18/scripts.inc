@@ -1,5 +1,9 @@
 Psfroute18_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute18_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute18_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	return
 
 
 Psfroute18_EventScript_DeliveryC::

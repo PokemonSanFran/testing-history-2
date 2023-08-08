@@ -19,6 +19,7 @@ mapscripts Psfroute22_MapScripts {
     ]
 }
 
+
 script Psfroute22_ConstructionVisibility_Script {
     switch (var(VAR_CONSTRUCTION_STRIKE_STATE)){
         case STRIKE_NOT_STARTED: call(TheStrikeStrikesBack_HideObject_Script)
@@ -30,3 +31,4 @@ script Psfroute22_ConstructionVisibility_Script {
 
     return
 }
+

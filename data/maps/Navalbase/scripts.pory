@@ -8,6 +8,7 @@ const PKMNB = 6
 
 mapscripts Navalbase_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
+setflag(FLAG_VISITED_NAVALBASE)
         call(Navalbase_Object_Setup_Script)
     }
     MAP_SCRIPT_ON_LOAD {

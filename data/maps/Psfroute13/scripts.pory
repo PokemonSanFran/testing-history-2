@@ -5,6 +5,7 @@ mapscripts Psfroute13_MapScripts{
     }
 }
 
+
 script Psfroute13_EventScript_Auguste_Script{
     trainerbattle_single(TRAINER_HOSTESS,gText_Auguste_PreBattle,gText_Auguste_PostBattle,Quest_Restaurantexpansion2_TrainerA_PostBattle_Script)
         call(Quest_Restaurantexpansion2_TrainerA_PostBattle_Script)

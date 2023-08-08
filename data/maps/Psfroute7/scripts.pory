@@ -1,5 +1,4 @@
-mapscripts Psfroute11_MapScripts {
+mapscripts Psfroute7_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
     }
 }
-

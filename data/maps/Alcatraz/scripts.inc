@@ -4,6 +4,7 @@ Alcatraz_MapScripts::
 	.byte 0
 
 Alcatraz_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_ALCATRAZ
 	call YoungPadawan_HideMalva_Script
 	call ResetAlcatrazExhibit_Script
 	call YouRealizeTheyreEvilRight_HideObject_Script

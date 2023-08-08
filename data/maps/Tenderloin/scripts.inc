@@ -4,6 +4,7 @@ Tenderloin_MapScripts::
 	.byte 0
 
 Tenderloin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_TENDERLOIN
 	call EnterAriana_ObjectCleanUp_Script
 	call Quest_NoGoodDeed_HideRainer_Hotel_Script
 	call Quest_Manofmanyhats_Liidia_Attendant_Visibility_Script

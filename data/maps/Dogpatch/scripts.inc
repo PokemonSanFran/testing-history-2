@@ -3,6 +3,7 @@ Dogpatch_MapScripts::
 	.byte 0
 
 Dogpatch_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_DOGPATCH
 	call Quest_StolenTrade_HideObjectB_Script
 	call HowDoWeGetHome_PostSceneObjectCleanUp_Script
 	call HowDoWeGetHome_FerryFixed_Script

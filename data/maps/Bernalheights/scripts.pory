@@ -1,5 +1,6 @@
 mapscripts Bernalheights_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
+setflag(FLAG_VISITED_BERNALHEIGHTS)
         call(Quest_Restaurantexpansion2_HideStaffB_Script)
         call(Quest_NeighborhoodCleanUp3_ObjectVisibility_Script)
     }

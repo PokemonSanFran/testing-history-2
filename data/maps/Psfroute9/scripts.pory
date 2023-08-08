@@ -4,3 +4,4 @@ mapscripts Psfroute9_MapScripts {
         call(NewAssholeAppears_HideArcher_Script)
     }
 }
+

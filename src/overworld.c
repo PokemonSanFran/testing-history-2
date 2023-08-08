@@ -819,6 +819,93 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
     return SetDiveWarp(CONNECTION_DIVE, x, y);
 }
 
+void CheckSetVisitedRouteFlags(void)
+{
+    if (CheckBagHasItem(ITEM_GO_GOGGLES,1) && FlagGet(FLAG_VISITED_LOMBARDSTREET))
+        FlagSet(FLAG_VISITED_PSFROUTE1);
+
+    if (FlagGet(FLAG_VISITED_FORTPOINT) && FlagGet(FLAG_VISITED_PAINTEDLADIES))
+        FlagSet(FLAG_VISITED_PSFROUTE2);
+
+    if (FlagGet(FLAG_VISITED_PACIFICA) && FlagGet(FLAG_VISITED_GLDNGTEWILDS_WEST))
+        FlagSet(FLAG_VISITED_PSFROUTE5);
+
+    if (FlagGet(FLAG_VISITED_SUNSET) && FlagGet(FLAG_VISITED_GLDNGTEWILDS_SOUTH))
+        FlagSet(FLAG_VISITED_PSFROUTE7);
+
+    if (FlagGet(FLAG_VISITED_SOMA) && FlagGet(FLAG_VISITED_FISHERMANSWHARF))
+        FlagSet(FLAG_VISITED_PSFROUTE8);
+
+    if (FlagGet(FLAG_VISITED_TENDERLOIN) && FlagGet(FLAG_VISITED_MISSION))
+        FlagSet(FLAG_VISITED_PSFROUTE9);
+
+    if (FlagGet(FLAG_VISITED_MISSION) && FlagGet(FLAG_VISITED_BERNALHEIGHTS))
+        FlagSet(FLAG_VISITED_PSFROUTE11);
+
+    if (FlagGet(FLAG_VISITED_OAKLAND) && FlagGet(FLAG_VISITED_ALAMEDA))
+        FlagSet(FLAG_VISITED_PSFROUTE12);
+
+    if (FlagGet(FLAG_VISITED_CASTRO) && FlagGet(FLAG_VISITED_PAINTEDLADIES))
+        FlagSet(FLAG_VISITED_PSFROUTE13);
+
+    if(FlagGet(FLAG_VISITED_CASTRO) && FlagGet(FLAG_VISITED_MISSION))
+        FlagSet(FLAG_VISITED_PSFROUTE14);
+
+    if(FlagGet(FLAG_VISITED_FISHERMANSWHARF) && FlagGet(FLAG_VISITED_ALCATRAZ))
+        FlagSet(FLAG_VISITED_PSFROUTE15);
+
+    if(FlagGet(FLAG_VISITED_SOUTHBAY) && FlagGet(FLAG_VISITED_BERNALHEIGHTS))
+        FlagSet(FLAG_VISITED_PSFROUTE17);
+
+    if(FlagGet(FLAG_VISITED_CASTRO) && FlagGet(FLAG_VISITED_TWINPEAKS_BASE))
+        FlagSet(FLAG_VISITED_PSFROUTE18);
+
+    if(FlagGet(FLAG_VISITED_LOMBARDSTREET) && FlagGet(FLAG_VISITED_FISHERMANSWHARF))
+        FlagSet(FLAG_VISITED_PSFROUTE19);
+
+    if(FlagGet(FLAG_VISITED_ALCATRAZ) && FlagGet(FLAG_VISITED_ALAMEDA))
+        FlagSet(FLAG_VISITED_PSFROUTE20);
+
+    if(FlagGet(FLAG_VISITED_BERNALHEIGHTS) && FlagGet(FLAG_VISITED_DOGPATCH))
+        FlagSet(FLAG_VISITED_PSFROUTE21);
+
+    if(FlagGet(FLAG_VISITED_SOMA) && FlagGet(FLAG_VISITED_DOGPATCH))
+        FlagSet(FLAG_VISITED_PSFROUTE22);
+
+    if(FlagGet(FLAG_VISITED_LAKEMERCED) && FlagGet(FLAG_VISITED_SUNSET))
+        FlagSet(FLAG_VISITED_PSFROUTE32);
+
+    if(FlagGet(FLAG_VISITED_TREASUREISLAND))
+        FlagSet(FLAG_VISITED_PSFROUTE30);
+
+    if(FlagGet(FLAG_VISITED_JAPANTOWN) && FlagGet(FLAG_VISITED_TENDERLOIN))
+        FlagSet(FLAG_VISITED_PSFROUTE38);
+
+    if(FlagGet(FLAG_VISITED_HAIGHTASHBURY) && FlagGet(FLAG_VISITED_PAINTEDLADIES))
+        FlagSet(FLAG_VISITED_PSFROUTE43);
+
+    if(FlagGet(FLAG_VISITED_PRESIDIO) && FlagGet(FLAG_VISITED_PACIFICA))
+        FlagSet(FLAG_VISITED_PSFROUTE49);
+
+    if(FlagGet(FLAG_VISITED_ALAMEDA) && FlagGet(FLAG_VISITED_ALCATRAZ))
+        FlagSet(FLAG_VISITED_PSFROUTE51);
+
+    if(FlagGet(FLAG_VISITED_BERKELEY) && FlagGet(FLAG_VISITED_OAKLAND))
+        FlagSet(FLAG_VISITED_PSFROUTE63);
+
+    if(FlagGet(FLAG_VISITED_MUIRWOODS) && FlagGet(FLAG_VISITED_MARIN))
+        FlagSet(FLAG_VISITED_PSFROUTE61);
+
+    if(FlagGet(FLAG_VISITED_LOMBARDSTREET) && FlagGet(FLAG_VISITED_TENDERLOIN))
+        FlagSet(FLAG_VISITED_PSFROUTE70);
+
+    if (FlagGet(FLAG_VISITED_OAKLAND) && FlagGet(FLAG_VISITED_ALAMEDA))
+        FlagSet(FLAG_VISITED_PSFROUTE72);
+
+    if(FlagGet(FLAG_VISITED_MARIN) && FlagGet(FLAG_VISITED_BERKELEY))
+        FlagSet(FLAG_VISITED_PSFROUTE76);
+}
+
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
     s32 paletteIndex;
@@ -843,6 +930,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
+    CheckSetVisitedRouteFlags();
     InitMap();
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout);
@@ -859,7 +947,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 
     if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
      || gMapHeader.regionMapSectionId != sLastMapSectionId)
-        ShowMapNamePopup();
+    ShowMapNamePopup();
 }
 
 static void LoadMapFromWarp(bool32 a1)
@@ -896,6 +984,7 @@ static void LoadMapFromWarp(bool32 a1)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
+    CheckSetVisitedRouteFlags();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)

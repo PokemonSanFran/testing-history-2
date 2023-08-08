@@ -3,6 +3,7 @@ Lakemerritt_MapScripts::
 	.byte 0
 
 Lakemerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_LAKEMERRITT
 	call Quest_ShutDownMedicineMan_HideDealer_Script
 	call Lakemerritt_ObjectVisibility_Script
 	return

@@ -350,7 +350,6 @@ u8 *MapHeaderCheckScriptTable(u8 tag)
         ptr += 4;
     }
 }
-
 void RunOnLoadMapScript(void)
 {
     MapHeaderRunScriptType(MAP_SCRIPT_ON_LOAD);

@@ -4,6 +4,7 @@ Psfroute62_MapScripts::
 	.byte 0
 
 Psfroute62_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Psfroute62_RouteFlag_Script
 	call Quest_Ultrawormholeresearch_ControlTotemVisibility
 	goto Psfroute62_MapScripts_OnTransition
 	return
@@ -11,6 +12,20 @@ Psfroute62_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfroute62_MapScripts_MAP_SCRIPT_ON_RESUME:
 	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
+
+
+Psfroute62_RouteFlag_Script::
+	goto_if_set FLAG_VISITED_OAKLANDCOLISEUM, Psfroute62_RouteFlag_Script_3
+Psfroute62_RouteFlag_Script_1:
+	return
+
+Psfroute62_RouteFlag_Script_2:
+	setflag FLAG_VISITED_PSFROUTE62
+	goto Psfroute62_RouteFlag_Script_1
+
+Psfroute62_RouteFlag_Script_3:
+	goto_if_set FLAG_VISITED_OAKLAND, Psfroute62_RouteFlag_Script_2
+	goto Psfroute62_RouteFlag_Script_1
 
 
 Psfroute62_MapScripts_OnTransition::

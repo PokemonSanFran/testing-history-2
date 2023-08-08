@@ -3,6 +3,7 @@ Bernalheights_MapScripts::
 	.byte 0
 
 Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_BERNALHEIGHTS
 	call Quest_Restaurantexpansion2_HideStaffB_Script
 	call Quest_NeighborhoodCleanUp3_ObjectVisibility_Script
 	return

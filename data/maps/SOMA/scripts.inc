@@ -9,6 +9,7 @@ SOMA_MapScripts_MAP_SCRIPT_ON_RESUME:
 	return
 
 SOMA_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_SOMA
 	call Quest_StopMugging_HideObject_Script
 	call Twitter_HideReporter_Script
 	call WowYoureStrong_HideObject_Script

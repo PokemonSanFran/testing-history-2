@@ -4,6 +4,7 @@ mapscripts Presidio_MapScripts {
         VAR_TEMP_9, 0: Quest_HauntABuilding_EndQuestCheck_Script
     ]
     MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_PRESIDIO)
         call(YouLookTired_BlockMansionAccess_Script)
         call(Quest_BuildingScope_MoveEmployee_Script)
         call(Quest_NoGoodDeed_HideEmployee_Script)

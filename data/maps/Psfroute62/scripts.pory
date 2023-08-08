@@ -2,12 +2,20 @@ const FLAG_HIDE_BIANCA = FLAG_TEMP_2
 
 mapscripts Psfroute62_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        call(Psfroute62_RouteFlag_Script)
         call(Quest_Ultrawormholeresearch_ControlTotemVisibility)
         goto(Psfroute62_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_RESUME{
         call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
     }
+}
+
+script Psfroute62_RouteFlag_Script{
+	if(flag(FLAG_VISITED_OAKLANDCOLISEUM) && flag(FLAG_VISITED_OAKLAND)){
+			setflag(FLAG_VISITED_PSFROUTE62)
+	}
+	return
 }
 
 script Psfroute62_MapScripts_OnTransition {
@@ -24,7 +32,7 @@ script Psfroute62_InteractMatthew_Event_Script {
         }
         } else {
             switch(var(VAR_MASK_OFF_STATE)){
-                case NOT_ASSIGNED: 
+                case NOT_ASSIGNED:
                 case ASSIGNED_MASK_OFF:
                 case GOT_MASK_OFF_CLUE_1:
                 case GOT_MASK_OFF_CLUE_2:

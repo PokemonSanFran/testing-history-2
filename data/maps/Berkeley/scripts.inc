@@ -5,6 +5,7 @@ Berkeley_MapScripts::
 	.byte 0
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_BERKELEY
 	call Quest_Rightingwrongs_Item_Visibility_Script
 	call Quest_Rightingwrongs_Berekley_HideRobber_Script
 	call swagbag2_SetUp_Object_Script

@@ -15,6 +15,7 @@ script OkayLetsFixIt_Object_Visibility_Script{
 }
 
 script OkayLetsFixit_ReachTop_Script {
+    setflag(FLAG_VISITED_TWINPEAKS)
 
     checkitem(ITEM_METEORITE, 1)
         if (!var (VAR_RESULT)) {
@@ -45,12 +46,12 @@ script OkayLetsFixit_ReachTop_Script {
         waitmovement(0)
 
         msgbox(gText_OkayLetsFixIt_WhatWhereDidYou,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_OkayLetsFixIt_HaveYouRealized,,SPEAKER_HIKO)
 
         msgbox(gText_OkayLetsFixIt_InComingHere,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_OkayLetsFixIt_LetsLookBack,,SPEAKER_HIKO)
         closemessage
@@ -64,7 +65,7 @@ script OkayLetsFixit_StartFlashback_Script {
         setvar(VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT)
 
         msgbox(gText_OkayLetsFixIt_ThisWasTheNight,,SPEAKER_ZOEY)
-        
+
 
         applymovement(HIKO, Common_Movement_FaceLeft)
         waitmovement(HIKO)
@@ -79,7 +80,7 @@ script OkayLetsFixit_StartFlashback_Script {
         msgbox(gText_OkayLetsFixIt_AndNow,,SPEAKER_HIKO)
         msgbox(gText_OkayLetsFixIt_AndNowIveBecome,,SPEAKER_ZOEY,,EMOTE_SAD)
         closemessage
-        
+
         delay(30)
         warpsilent(MAP_TWINPEAKS, 255, 17, 43)
         end
@@ -103,7 +104,7 @@ script OkayLetsFixit_ReturnToPeak_Script {
         waitmovement(PLAYER)
 
         msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou,,SPEAKER_ZOEY)
-        
+
 
         msgbox(gText_OkayLetsFixIt_IHopeYouMake,,SPEAKER_HIKO)
         closemessage

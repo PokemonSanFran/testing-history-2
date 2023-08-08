@@ -4,6 +4,7 @@ Castro_MapScripts::
 	.byte 0
 
 Castro_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_CASTRO
 	call Quest_BlueRobbery_HideObject_Script
 	return
 

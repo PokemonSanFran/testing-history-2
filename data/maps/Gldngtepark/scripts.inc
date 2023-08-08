@@ -4,6 +4,7 @@ Gldngtepark_MapScripts::
 	.byte 0
 
 Gldngtepark_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_GLDNGTEPARK
 	call Quest_Biomeresearch_HideLeader_Script
 	return
 

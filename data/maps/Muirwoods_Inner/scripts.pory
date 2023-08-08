@@ -1,5 +1,6 @@
 mapscripts Muirwoods_Inner_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+    setflag(FLAG_VISITED_MUIRWOODS)
         call(EnterTheMaster_Muirwoods_Inner_ObjectSetup_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -18,4 +19,4 @@ script Muirwoods_Siebold_Interact_Script {
         closemessage
         release
         end
-} 
+    }

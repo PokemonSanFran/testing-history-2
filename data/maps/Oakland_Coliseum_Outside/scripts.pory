@@ -5,6 +5,7 @@ const FLAG_HIDE_WHITNEY = FLAG_TEMP_1
 mapscripts Oakland_Coliseum_Outside_MapScripts {
 
     MAP_SCRIPT_ON_TRANSITION {
+setflag(FLAG_VISITED_OAKLANDCOLISEUM)
         call(Quest_BuildingAnExhibit_HideLeader_Script)
     }
 }

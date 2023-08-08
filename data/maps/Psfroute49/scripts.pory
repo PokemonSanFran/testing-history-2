@@ -8,6 +8,7 @@ mapscripts Psfroute49_MapScripts {
     }
 }
 
+
 script Psfroute49_EventScript_Alice_Script{
     trainerbattle_single(TRAINER_JAINTOR,gText_Alice_PreBattle,gText_Alice_PostBattle,Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)
         call(Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)

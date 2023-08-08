@@ -1,17 +1,18 @@
 mapscripts Chasecenter_Lockers_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+setflag(FLAG_VISITED_CHASECENTER)
         goto(Chasecenter_Lockers_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP: HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script 
+        VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP: HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script
             VAR_STORYLINE_STATE, STORY_CHAMPIONSHIP_EXPLAINED: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
     VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
-        VAR_STORYLINE_STATE, STORY_BIANCA_WON_GROUP: GroupStages_GreetBeforeStart_Dialogue 
-        VAR_STORYLINE_STATE, STORY_SEMIFINAL_COMPLETE: WaitHeDidWhat_RivalsGoToMatch_Script 
+        VAR_STORYLINE_STATE, STORY_BIANCA_WON_GROUP: GroupStages_GreetBeforeStart_Dialogue
+        VAR_STORYLINE_STATE, STORY_SEMIFINAL_COMPLETE: WaitHeDidWhat_RivalsGoToMatch_Script
         VAR_STORYLINE_STATE, STORY_POST_DIANTHA: ExhibitionBattle_PostBattle_Dialogue
     ]
 }
@@ -41,7 +42,7 @@ script Chasecenter_Lockers_Bianca_Event_Script {
             case STORY_CONGRATULATED_BY_ROSE: call(ExhibitionBattle_Bianca_Dialogue)
         }
     closemessage
-        
+
         release
         end
 }

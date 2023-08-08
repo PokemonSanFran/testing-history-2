@@ -4,6 +4,7 @@ Pacifica_MapScripts::
 	.byte 0
 
 Pacifica_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_PACIFICA
 	call BeachBattle_ObjectVisibility_Script
 	call Quest_CutePokemon_HideMelissaC_Script
 	call Quest_ShutDownMedicineMan_ControlLeaderVisibility

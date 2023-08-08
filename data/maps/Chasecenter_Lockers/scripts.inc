@@ -6,6 +6,7 @@ Chasecenter_Lockers_MapScripts::
 	.byte 0
 
 Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_CHASECENTER
 	goto Chasecenter_Lockers_MapScripts_OnTransition
 	return
 

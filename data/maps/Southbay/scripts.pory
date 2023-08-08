@@ -2,6 +2,7 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 
 mapscripts Southbay_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
+setflag(FLAG_VISITED_SOUTHBAY)
         call(Quest_AngelDelivery_Hide_BikerB_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [

@@ -4,6 +4,7 @@ Haightashbury_MapScripts::
 	.byte 0
 
 Haightashbury_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_HAIGHTASHBURY
 	call AndWeMarchOn_ObjectVisibility_Script
 	call Quest_AngelDelivery_Hide_BikerA_Script
 	call Quest_LastMusicVenue_HidePublicDrummers

@@ -4,6 +4,7 @@ Presidio_MapScripts::
 	.byte 0
 
 Presidio_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_PRESIDIO
 	call YouLookTired_BlockMansionAccess_Script
 	call Quest_BuildingScope_MoveEmployee_Script
 	call Quest_NoGoodDeed_HideEmployee_Script

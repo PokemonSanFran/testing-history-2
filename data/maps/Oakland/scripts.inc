@@ -5,6 +5,7 @@ Oakland_MapScripts::
 	.byte 0
 
 Oakland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_OAKLAND
 	call WarehouseRave_HideObject_Script
 	call Quest_GetTheBand_HideBikerC_Script
 	call Quest_NoGoodDeed_HideRainer_Script

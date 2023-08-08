@@ -1,5 +1,6 @@
 mapscripts Gldngtebridge_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+setflag(FLAG_VISITED_GLDNGTEBRIDGE)
         call(OffYouGo_ObjectCleanUp_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE[

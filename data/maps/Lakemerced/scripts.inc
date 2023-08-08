@@ -3,6 +3,7 @@ Lakemerced_MapScripts::
 	.byte 0
 
 Lakemerced_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_LAKEMERCED
 	call Quest_Theboywhocriedwithwolves_Ambrogio_Visibility_Script
 	return
 

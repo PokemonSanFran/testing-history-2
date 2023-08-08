@@ -3,6 +3,7 @@ Robinwilltunnel_MapScripts::
 	.byte 0
 
 Robinwilltunnel_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_ROBINWILLTUNNEL
 	goto Robinwilltunnel_MapScripts_OnTransition
 	return
 

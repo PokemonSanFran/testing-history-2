@@ -2,6 +2,7 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 
 mapscripts Alcatraz_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+setflag(FLAG_VISITED_ALCATRAZ)
         call(YoungPadawan_HideMalva_Script)
         call(ResetAlcatrazExhibit_Script)
         call(YouRealizeTheyreEvilRight_HideObject_Script)

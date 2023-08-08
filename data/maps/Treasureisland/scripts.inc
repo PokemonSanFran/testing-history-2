@@ -4,6 +4,7 @@ Treasureisland_MapScripts::
 	.byte 0
 
 Treasureisland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_TREASUREISLAND
 	call LetsGrabLunch_HideArcher_Outside_Script
 	call Quest_Restoretreasureisland_HideCilan_Outside_Script
 	call LetsGrabLunch_CheckRestorationProgress_Script

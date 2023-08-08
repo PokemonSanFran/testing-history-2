@@ -1,5 +1,6 @@
 mapscripts Lakemerritt_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+setflag(FLAG_VISITED_LAKEMERRITT)
         call(Quest_ShutDownMedicineMan_HideDealer_Script)
         call(Lakemerritt_ObjectVisibility_Script)
     }
@@ -58,7 +59,7 @@ mart HerbDealerShop{
 
 script Lakemerritt_Interact_HerbBystander_Dialogue{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
-    
+
     if(var(VAR_RESULT)){
         msgbox(gText_Lakemerritt_OhManDidYouHear,MSGBOX_NPC)
     }else {

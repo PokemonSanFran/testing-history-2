@@ -5,6 +5,7 @@ Chinatown_MapScripts::
 	.byte 0
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_CHINATOWN
 	call HowDisappointing_ManageObject_Script
 	call Quest_CulturalPurity_HideLeader_Script
 	call Quest_CulturalPurity_HideBackUp_Script

@@ -1,5 +1,6 @@
 mapscripts Twinpeaks_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+    setflag(FLAG_VISITED_TWINPEAKS_BASE)
         call(Quest_IBelieveICanFly_Gertrude_Visibility_Script)
         call(OkayLetsFixIt_Object_Visibility_Script)
     }
@@ -12,6 +13,7 @@ mapscripts Twinpeaks_MapScripts {
         VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT: OkayLetsFixit_ReturnToPeak_Script
     ]
 }
+
 
 script Twinpeaks_EventScript_DeliveryB{
     trainerbattle_single(TRAINER_BODEGA_3,gText_ExpandedPlaceholder_Empty,gText_ExpandedPlaceholder_Empty)

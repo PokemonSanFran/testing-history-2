@@ -3,6 +3,7 @@ Oakland_Coliseum_Outside_MapScripts::
 	.byte 0
 
 Oakland_Coliseum_Outside_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_OAKLANDCOLISEUM
 	call Quest_BuildingAnExhibit_HideLeader_Script
 	return
 

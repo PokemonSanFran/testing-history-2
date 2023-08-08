@@ -4,6 +4,7 @@ Fortpoint_MapScripts::
 	.byte 0
 
 Fortpoint_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_FORTPOINT
 	call YouLookTired_HideObjects_Script
 	return
 

@@ -6,3 +6,4 @@ mapscripts Psfroute14_MapScripts {
         call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
     }
 }
+

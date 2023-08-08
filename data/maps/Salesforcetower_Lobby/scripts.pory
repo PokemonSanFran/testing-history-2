@@ -2,6 +2,7 @@ const FLAG_HIDE_GUARD = FLAG_TEMP_1
 
 mapscripts Salesforcetower_Lobby_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
+        setflag(FLAG_VISITED_SALESFORCETOWER)
         call(Salesforcetower_GuardRaidFloors_Script)
         call(ImIn_MakeRaidPartyVisible_Script)
     }

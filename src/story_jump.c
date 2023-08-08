@@ -509,6 +509,7 @@ static void PreventVariableFromReversion(u16 adjustedVariable,
 
 void JumpPlayerTo_swagbag()
 {
+    FlagSet(FLAG_VISITED_SOUTHBAY);
     VarSet(VAR_PROLOGUE_STATE,START_ADVENTURE);
 	VarSet(VAR_PLAYER_HOME_STATE, POST_SWAGBAG);
 	FlagSet(FLAG_SYS_POKENAV_GET);
@@ -531,6 +532,8 @@ void JumpPlayerTo_ReadySetI()
 void JumpPlayerTo_EnterFalkner()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_MISSION);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	AddBagItem(ITEM_TM01, 1);
 	FlagSet(FLAG_BADGE01_GET);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_FALKNER);
@@ -542,6 +545,8 @@ void JumpPlayerTo_EnterFalkner()
 void JumpPlayerTo_EnterBugsy()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_JAPANTOWN);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	AddBagItem(ITEM_TM02, 1);
 	FlagSet(FLAG_BADGE02_GET);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_BUGSY);
@@ -553,6 +558,8 @@ void JumpPlayerTo_EnterBugsy()
 void JumpPlayerTo_EnterWhitney()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_SOMA);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	AddBagItem(ITEM_TM03, 1);
 	FlagSet(FLAG_BADGE03_GET);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_WHITNEY);
@@ -565,6 +572,7 @@ void JumpPlayerTo_EnterWhitney()
 void JumpPlayerTo_NewAssholeAppears()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	IncrementStorylineVariable();
 	VarSet(VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_ARCHER_NEWASSHOLEAPPEARS);
@@ -573,6 +581,8 @@ void JumpPlayerTo_NewAssholeAppears()
 void JumpPlayerTo_OldAssholeAppears()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_LOMBARDSTREET);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	IncrementStorylineVariable();
 	VarSet(VAR_LOMBARDSTREET_STATE, DEFEATED_BIANCA_LOMBARD);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_BIANCA_OLDASSHOLEAPPEARS);
@@ -582,6 +592,8 @@ void JumpPlayerTo_OldAssholeAppears()
 void JumpPlayerTo_GroupofAssholesAppears()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_FISHERMANSWHARF);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	AddBagItem(ITEM_MACH_BIKE, 1);
 	VarSet(VAR_GROUP_OF_ASSHOLES_STATE, PLAYER_HAS_DEFEATED_TEAMROCKET);
 	IncrementStorylineVariable();
@@ -592,6 +604,7 @@ void JumpPlayerTo_GroupofAssholesAppears()
 void JumpPlayerTo_FlyingBlind()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	VarSet(VAR_FAINTED_FOG_STATE, LEARNED_ABOUT_FOG);
 	SetWarpDestination(MAP_GROUP(PSFROUTE1), MAP_NUM(PSFROUTE1), NO_WARP_ID, 79, 15);
 
@@ -599,6 +612,7 @@ void JumpPlayerTo_FlyingBlind()
 void JumpPlayerTo_WowYoureStrong()
 {
 	JumpPlayerTo_EnterWhitney();
+    FlagSet(FLAG_VISITED_SALESFORCETOWER);
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG);
     SetWarpDestination(MAP_GROUP(SOMA),MAP_NUM(SOMA),8, USE_WARP_ID, USE_WARP_ID);
 }
@@ -621,6 +635,8 @@ void JumpPlayerTo_AlwaysWatchingWazokwski()
 void JumpPlayerTo_EnterAriana()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
+    FlagSet(FLAG_VISITED_TENDERLOIN);
 	AddBagItem(ITEM_MEGA_RING, 1);
     SetWarpDestination(MAP_GROUP(TENDERLOIN),MAP_NUM(TENDERLOIN),NO_WARP_ID,2,40);
 
@@ -628,6 +644,8 @@ void JumpPlayerTo_EnterAriana()
 void JumpPlayerTo_HowDoWeGetHome()
 {
 	JumpPlayerTo_ReadySetI();
+    FlagSet(FLAG_VISITED_DOGPATCH);
+    FlagSet(FLAG_VISITED_BERNALHEIGHTS);
 	VarSet(VAR_DOGPATCH_STATE, POST_HOW_DO_WE_GET_HOME);
 	IncrementStorylineVariable();
     SetWarpDestination(MAP_GROUP(DOGPATCH),MAP_NUM(DOGPATCH),NO_WARP_ID,11,21);
@@ -652,6 +670,8 @@ void JumpPlayerTo_AaandWereBack()
 void JumpPlayerTo_AssholesHome()
 {
 	JumpPlayerTo_AaandWereBack();
+    FlagSet(FLAG_VISITED_FERRYBUILDING);
+    FlagSet(FLAG_VISITED_ALAMEDA);
 	VarSet(VAR_ALAMEDA_STATE, DEFEATED_ARCHER_ALAMEDA);
 	VarSet(VAR_STORYLINE_STATE, STORY_DEFEAT_ARCHER_ALAMEDA);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_ARCHER_ASSHOLEHOME);
@@ -660,15 +680,16 @@ void JumpPlayerTo_AssholesHome()
 void JumpPlayerTo_HousingProtest()
 {
 	JumpPlayerTo_AssholesHome();
+    FlagSet(FLAG_VISITED_OAKLAND);
 	VarSet(VAR_STORYLINE_STATE, STORY_DEFEAT_BERKELEY_PROTEST);
 	VarSet(VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_HOUSINGPROTEST_ROCKET);
-	SetWarpDestination(0, 28, NO_WARP_ID, 7, 14);
     SetWarpDestination(MAP_GROUP(PSFROUTE63),MAP_NUM(PSFROUTE63),NO_WARP_ID,7,14);
 }
 void JumpPlayerTo_swagbag2()
 {
 	JumpPlayerTo_HousingProtest();
+    FlagSet(FLAG_VISITED_BERKELEY);
 	VarSet(VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE);
     SetWarpDestination(MAP_GROUP(BERKELEY),MAP_NUM(BERKELEY),NO_WARP_ID,4,13);
 }
@@ -715,6 +736,7 @@ void JumpPlayerTo_YoungPadawan()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
 	JumpPlayerTo_SorryAboutMyFriends();
+    FlagSet(FLAG_VISITED_ALCATRAZ);
 	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline,
 	                             STORY_COMPLETE_ALCATRAZ);
 	VarSet(VAR_ALCATRAZ_STATE, BATTLED_MALVA);
@@ -733,6 +755,7 @@ void JumpPlayerTo_WaitYouWentWhere()
 void JumpPlayerTo_EnterChuck()
 {
 	JumpPlayerTo_YoungPadawan();
+    FlagSet(FLAG_VISITED_FORTPOINT);
 	IncrementStorylineVariable();
 	AddBagItem(ITEM_TM05, 1);
 	FlagSet(FLAG_BADGE05_GET);
@@ -752,6 +775,7 @@ void JumpPlayerTo_YouLookTired()
 void JumpPlayerTo_Kogasraisondetre()
 {
 	JumpPlayerTo_YouLookTired();
+    FlagSet(FLAG_VISITED_PRESIDIO);
 	IncrementStorylineVariable();
 	VarSet(VAR_KOGA_RAISON_DETRE_STATE, POST_KOGA_RAISON_DETRE);
 	VarSet(VAR_KOGA_MANSION_STATE, FINISHED_KOGA_RAISON);
@@ -761,6 +785,7 @@ void JumpPlayerTo_BeachBattle()
 {
 	JumpPlayerTo_YoungPadawan();
 	IncrementStorylineVariable();
+    FlagSet(FLAG_VISITED_PACIFICA);
 	VarSet(VAR_BEACH_BATTLE_STATE, POST_BEACH_BATTLE);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_BIANCA_BEACHBATTLE);
 	SetWarpDestination(MAP_GROUP(PACIFICA), MAP_NUM(PACIFICA), NO_WARP_ID, 10, 23);
@@ -768,6 +793,12 @@ void JumpPlayerTo_BeachBattle()
 void JumpPlayerTo_EnterJasmine()
 {
 	JumpPlayerTo_YoungPadawan();
+    FlagSet(FLAG_VISITED_GLDNGTEPARK);
+    FlagSet(FLAG_VISITED_GLDNGTEWILDS);
+    FlagSet(FLAG_VISITED_GLDNGTEWILDS_EAST);
+    FlagSet(FLAG_VISITED_GLDNGTEWILDS_NORTH);
+    FlagSet(FLAG_VISITED_GLDNGTEWILDS_SOUTH);
+    FlagSet(FLAG_VISITED_GLDNGTEWILDS_WEST);
 	IncrementStorylineVariable();
 	AddBagItem(ITEM_TM06, 1);
 	FlagSet(FLAG_BADGE06_GET);
@@ -784,6 +815,7 @@ void JumpPlayerTo_ANewStrike()
 void JumpPlayerTo_AndWeMarchOn()
 {
 	JumpPlayerTo_YoungPadawan();
+    FlagSet(FLAG_VISITED_HAIGHTASHBURY);
 	VarSet(VAR_HAIGHTASHBURY_STATE, PARADE_COMPLETE);
 	SetWarpDestination(MAP_GROUP(HAIGHTASHBURY),MAP_NUM(HAIGHTASHBURY),NO_WARP_ID, 23, 7);
 }
@@ -801,6 +833,7 @@ void JumpPlayerTo_EnterPryce()
 void JumpPlayerTo_Battle8()
 {
 	JumpPlayerTo_YoungPadawan();
+    FlagSet(FLAG_VISITED_PAINTEDLADIES);
 	IncrementStorylineVariable();
 	VarSet(VAR_BATTLE_8_STATE, DEFEATED_ARCHER_PAINTEDLADIES);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_ARCHER_BATTLE8);
@@ -809,6 +842,7 @@ void JumpPlayerTo_Battle8()
 void JumpPlayerTo_EnterClair()
 {
 	JumpPlayerTo_YoungPadawan();
+    FlagSet(FLAG_VISITED_CASTRO);
 	IncrementStorylineVariable();
 	AddBagItem(ITEM_TM08, 1);
 	FlagSet(FLAG_BADGE08_GET);
@@ -846,6 +880,7 @@ void JumpPlayerTo_VSGarbodor()
 void JumpPlayerTo_OffYouGo()
 {
 	JumpPlayerTo_VSGarbodor();
+    FlagSet(FLAG_VISITED_GLDNGTEBRIDGE);
 	VarSet(VAR_GOLDENGATEBRIDGE_STATE, POST_OFF_YOU_GO);
 	VarSet(VAR_STORYLINE_STATE, STORY_ASSIGNED_SIEBOLD_QUESTS);
 	VarSet(VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_INSIDE_TUNNEL);
@@ -854,6 +889,8 @@ void JumpPlayerTo_OffYouGo()
 void JumpPlayerTo_IGuessWeShouldBeNiceNow()
 {
 	JumpPlayerTo_OffYouGo();
+    FlagSet(FLAG_VISITED_ROBINWILLTUNNEL);
+    FlagSet(FLAG_VISITED_MARIN);
 	VarSet(VAR_MUIRWOODS_STATE, BIANCA_WAITING_MUIRWOODS);
 	VarSet(VAR_MARIN_STATE, BIANCA_INVITED_AIRBNB);
 	VarSet(VAR_ROBINWILLIAMSTUNNEL_STATE, SIEBOLD_BOSS_DEFEATED);
@@ -862,6 +899,7 @@ void JumpPlayerTo_IGuessWeShouldBeNiceNow()
 void JumpPlayerTo_EntertheMaster()
 {
 	JumpPlayerTo_IGuessWeShouldBeNiceNow();
+    FlagSet(FLAG_VISITED_MUIRWOODS);
 	VarSet(VAR_MUIRWOODS_STATE, MET_SIEBOLD);
 	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_ACTIVE);
@@ -895,11 +933,12 @@ void JumpPlayerTo_SurvivalChance333()
 void JumpPlayerTo_WhyAreYouHelpingThem()
 {
 	JumpPlayerTo_SurvivalChance333();
+    FlagSet(FLAG_VISITED_NAVALBASE);
 	VarSet(VAR_NAVALBASE_STATE, DEFEATED_ARCHER_NAVALBASE);
 	VarSet(VAR_PLAYER_HOME_STATE, NEXT_DAY_CHAMPIONSHIP);
 	VarSet(VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_ARCHER_WHYAREYOUHELPINGTHEM);
-    SetWarpDestination(MAP_GROUP(PRESIDIO_COMPOUND_1F),MAP_NUM(PRESIDIO_COMPOUND_1F),NO_WARP_ID,11,4);
+    SetWarpDestination(MAP_GROUP(SOUTHBAY_COMPOUND_1F),MAP_NUM(SOUTHBAY_COMPOUND_1F),NO_WARP_ID,11,4);
 }
 
 void JumpPlayerTo_WhyAreYouHelpingThemSleep()
@@ -913,6 +952,7 @@ void JumpPlayerTo_WhyAreYouHelpingThemSleep()
 void JumpPlayerTo_HeresHowThisIsGoingToGo()
 {
 	JumpPlayerTo_WhyAreYouHelpingThemSleep();
+    FlagSet(FLAG_VISITED_CHASECENTER);
 	VarSet(VAR_STORYLINE_STATE, STORY_CHAMPIONSHIP_EXPLAINED);
     SetWarpDestination(MAP_GROUP(CHASECENTER_LOCKERS),MAP_NUM(CHASECENTER_LOCKERS),0,USE_WARP_ID,USE_WARP_ID);
 }
@@ -963,9 +1003,10 @@ void JumpPlayerTo_BeingChampionisHard()
 void JumpPlayerTo_LetsGrabLunch()
 {
 	JumpPlayerTo_BeingChampionisHard();
+    FlagSet(FLAG_VISITED_TREASUREISLAND);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_ARCHER_LETSGRABLUNCH);
 	VarSet(VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION);
-    SetWarpDestination(MAP_GROUP(TREASUREISLAND),MAP_NUM(TREASUREISLAND),NO_WARP_ID,14,9);
+    SetWarpDestination(MAP_GROUP(TREASUREISLAND_RESTAURANT),MAP_NUM(TREASUREISLAND_RESTAURANT),NO_WARP_ID,14,9);
 }
 void JumpPlayerTo_RestoreChinatown()
 {
@@ -1053,6 +1094,7 @@ void JumpPlayerTo_YouHaveYourOrders()
 void JumpPlayerTo_HowDisappointing()
 {
 	JumpPlayerTo_YouHaveYourOrders();
+    FlagSet(FLAG_VISITED_CHINATOWN);
 	IncrementStorylineVariable();
 	QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_COMPLETED);
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE);
@@ -1074,6 +1116,7 @@ void JumpPlayerTo_LetsBurnThisMotherDown()
 void JumpPlayerTo_Manhunt()
 {
 	JumpPlayerTo_CongratsYoureanAsshole();
+    FlagSet(FLAG_VISITED_LAKEMERRITT);
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_COMPLETED);
 	VarSet(VAR_MANHUNT_STATE, MANHUNT_COMPLETE);
@@ -1099,6 +1142,8 @@ void JumpPlayerTo_MaybeIFuckedUp()
 void JumpPlayerTo_OkayLetsFixit()
 {
 	JumpPlayerTo_MaybeIFuckedUp();
+    FlagSet(FLAG_VISITED_TWINPEAKS_BASE);
+    FlagSet(FLAG_VISITED_TWINPEAKS);
 	FlagSet(FLAG_TIMELINE_TIMETRAVEL);
 	FlagClear(FLAG_TIMELINE_FALSE);
 	VarSet(VAR_STORYLINE_STATE, STORY_MORNING_OF_TIMELINE_SPLIT);
@@ -1248,6 +1293,7 @@ void JumpPlayerTo_Earthquake()
 void JumpPlayerTo_ThisIsntRandom()
 {
 	JumpPlayerTo_Earthquake();
+    FlagSet(FLAG_VISITED_UNDERGROUNDLAB);
 	VarSet(VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_2);
     SetWarpDestination(MAP_GROUP(UNDERGROUNDLAB),MAP_NUM(UNDERGROUNDLAB),NO_WARP_ID,24,4);
 }
@@ -1262,6 +1308,7 @@ void JumpPlayerTo_WaitEvenThen()
 void JumpPlayerTo_LetsFinishThis()
 {
 	JumpPlayerTo_WaitEvenThen();
+    FlagSet(FLAG_VISITED_SUNSET);
 	VarSet(VAR_STORYLINE_STATE, STORY_BEFORE_SABRINA_BREAKIN);
     SetWarpDestination(MAP_GROUP(SUNSET),MAP_NUM(SUNSET),NO_WARP_ID,13,19);
 }

@@ -4,6 +4,7 @@ Gldngtebridge_MapScripts::
 	.byte 0
 
 Gldngtebridge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_GLDNGTEBRIDGE
 	call OffYouGo_ObjectCleanUp_Script
 	return
 

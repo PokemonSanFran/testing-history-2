@@ -5,6 +5,7 @@ Alameda_MapScripts::
 	.byte 0
 
 Alameda_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_ALAMEDA
 	call Alameda_LayoutSwap_Script
 	call Quest_StealTheAxe_HideLeader_Script
 	call Alameda_ObjectVisibility_Script

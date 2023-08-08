@@ -4,6 +4,7 @@ Palacefinearts_MapScripts::
 	.byte 0
 
 Palacefinearts_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_PALACEFINEARTS
 	call_if_quest_active QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_LockBride_Script
 	call_if_quest_not_complete QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_Palacefienarts_HideBrideMissing_Script
 	call_if_quest_complete QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_CleanUpWeddingParty_Script

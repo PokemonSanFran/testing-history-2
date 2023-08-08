@@ -4,6 +4,7 @@ Sunset_MapScripts::
 	.byte 0
 
 Sunset_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_SUNSET
 	call ImIn_HideObject_OutsideHouse_Script
 	call Quest_ReturnDoll_HideObject_Script
 	call Quest_StolenTrade_HideObjectA_Script

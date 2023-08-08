@@ -4,6 +4,7 @@ Muirwoods_Inner_MapScripts::
 	.byte 0
 
 Muirwoods_Inner_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_MUIRWOODS
 	call EnterTheMaster_Muirwoods_Inner_ObjectSetup_Script
 	return
 

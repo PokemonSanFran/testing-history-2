@@ -4,6 +4,7 @@ Japantown_MapScripts::
 	.byte 0
 
 Japantown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_JAPANTOWN
 	call Quest_HybridCulture_HideLeader_Script
 	call Quest_GetTheBand_HideBikerE_Script
 	call Quest_CutePokemon_HideMelissaA_Script

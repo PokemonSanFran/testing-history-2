@@ -4,6 +4,7 @@ Paintedladies_MapScripts::
 	.byte 0
 
 Paintedladies_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_PAINTEDLADIES
 	goto Paintedladies_MapScripts_OnTransition
 	return
 

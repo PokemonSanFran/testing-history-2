@@ -3,6 +3,7 @@ Mission_MapScripts::
 	.byte 0
 
 Mission_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_MISSION
 	call Quest_Recruitlocalartists_Sabrina_Visibility_Script
 	call Quest_Recruitlocalartists_Smeargle_Visibility_Script
 	call Quest_Restaurantexpansion_Mission_Leader_Visibilty_Script

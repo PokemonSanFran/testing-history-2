@@ -3,6 +3,10 @@ Gldngtewilds_MapScripts::
 	.byte 0
 
 Gldngtewilds_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_GLDNGTEWILDS_NORTH
+	setflag FLAG_VISITED_GLDNGTEWILDS_WEST
+	setflag FLAG_VISITED_GLDNGTEWILDS_EAST
+	setflag FLAG_VISITED_GLDNGTEWILDS_SOUTH
 	call Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script
 	call Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script
 	call_if_quest_complete QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_Gldngtewilds_HideBrideMissing_Script

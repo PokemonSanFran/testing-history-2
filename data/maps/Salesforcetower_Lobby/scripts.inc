@@ -4,6 +4,7 @@ Salesforcetower_Lobby_MapScripts::
 	.byte 0
 
 Salesforcetower_Lobby_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_SALESFORCETOWER
 	call Salesforcetower_GuardRaidFloors_Script
 	call ImIn_MakeRaidPartyVisible_Script
 	return

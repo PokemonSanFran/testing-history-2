@@ -5,6 +5,7 @@ Navalbase_MapScripts::
 	.byte 0
 
 Navalbase_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_NAVALBASE
 	call Navalbase_Object_Setup_Script
 	return
 
