@@ -58,7 +58,7 @@ jobs:
         with:
           target: /home/runner/work/game_pkmnsnfrn/game_pkmnsnfrn/pokeemerald.gba
           credentials: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
-          upload-to: 1E4meFn1GkW-F5Ykco-2qUz6M54fiwsN5
+          parent_folder_id: 1E4meFn1GkW-F5Ykco-2qUz6M54fiwsN5
     
       - name: discord notification with commit messages 
         env:
