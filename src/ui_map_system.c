@@ -59,7 +59,7 @@
 #define WARP_TAXI 1
 
 /*
- * 
+ *
  */
 
 //==========DEFINES==========//
@@ -171,9 +171,9 @@ static const struct BgTemplate sMenuBgTemplates[] =
 
 };
 
-static const struct WindowTemplate sMenuWindowTemplates[] = 
+static const struct WindowTemplate sMenuWindowTemplates[] =
 {
-    [WINDOW_1] = 
+    [WINDOW_1] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
@@ -183,7 +183,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .paletteNum = 15,   // palette index to use for text
         .baseBlock = 1,     // tile start in VRAM
     },
-    [WINDOW_2] = 
+    [WINDOW_2] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
@@ -265,10 +265,69 @@ static const u8 sRegionMap_MapSectionLayout[MAP_HEIGHT][MAP_WIDTH] = {
 static const u8 sMapHealLocations[][3] =
 {
     [MAPSEC_SOUTHBAY] = {MAP_GROUP(SOUTHBAY), MAP_NUM(SOUTHBAY), HEAL_LOCATION_SOUTHBAY_COMPOUND_2F},
-
+    [MAPSEC_ALAMEDA]={MAP_GROUP(ALAMEDA),MAP_NUM(ALAMEDA),HEAL_LOCATION_ALAMEDA},
+    [MAPSEC_ALCATRAZ]={MAP_GROUP(ALCATRAZ),MAP_NUM(ALCATRAZ),HEAL_LOCATION_ALCATRAZ},
+    [MAPSEC_BERKELEY]={MAP_GROUP(BERKELEY),MAP_NUM(BERKELEY),HEAL_LOCATION_BERKELEY},
+    [MAPSEC_BERNALHEIGHTS]={MAP_GROUP(BERNALHEIGHTS),MAP_NUM(BERNALHEIGHTS),HEAL_LOCATION_BERNALHEIGHTS},
+    [MAPSEC_CASTRO]={MAP_GROUP(CASTRO),MAP_NUM(CASTRO),HEAL_LOCATION_CASTRO},
+    [MAPSEC_CHINATOWN]={MAP_GROUP(CHINATOWN),MAP_NUM(CHINATOWN),HEAL_LOCATION_CHINATOWN},
+    [MAPSEC_DOGPATCH]={MAP_GROUP(DOGPATCH),MAP_NUM(DOGPATCH),HEAL_LOCATION_DOGPATCH},
+    [MAPSEC_FISHERMANSWHARF]={MAP_GROUP(FISHERMANSWHARF),MAP_NUM(FISHERMANSWHARF),HEAL_LOCATION_FISHERMANSWHARF},
+    [MAPSEC_FORTPOINT]={MAP_GROUP(FORTPOINT),MAP_NUM(FORTPOINT),HEAL_LOCATION_FORTPOINT},
+    [MAPSEC_GLDNGTEBRIDGE]={MAP_GROUP(GLDNGTEBRIDGE),MAP_NUM(GLDNGTEBRIDGE),HEAL_LOCATION_GLDNGTEBRIDGE},
+    [MAPSEC_GLDNGTEPARK]={MAP_GROUP(GLDNGTEPARK),MAP_NUM(GLDNGTEPARK),HEAL_LOCATION_GLDNGTEPARK},
+    [MAPSEC_HAIGHTASHBURY]={MAP_GROUP(HAIGHTASHBURY),MAP_NUM(HAIGHTASHBURY),HEAL_LOCATION_HAIGHTASHBURY},
+    [MAPSEC_JAPANTOWN]={MAP_GROUP(JAPANTOWN),MAP_NUM(JAPANTOWN),HEAL_LOCATION_JAPANTOWN},
+    [MAPSEC_LAKEMERCED]={MAP_GROUP(LAKEMERCED),MAP_NUM(LAKEMERCED),HEAL_LOCATION_LAKEMERCED},
+    [MAPSEC_LAKEMERRITT]={MAP_GROUP(LAKEMERRITT),MAP_NUM(LAKEMERRITT),HEAL_LOCATION_LAKEMERRITT},
+    [MAPSEC_LOMBARDSTREET]={MAP_GROUP(LOMBARDSTREET),MAP_NUM(LOMBARDSTREET),HEAL_LOCATION_LOMBARDSTREET},
+    [MAPSEC_MARIN]={MAP_GROUP(MARIN),MAP_NUM(MARIN),HEAL_LOCATION_MARIN},
+    [MAPSEC_MISSION]={MAP_GROUP(MISSION),MAP_NUM(MISSION),HEAL_LOCATION_MISSION},
+    [MAPSEC_MUIRWOODS]={MAP_GROUP(MUIRWOODS_INNER),MAP_NUM(MUIRWOODS_INNER),HEAL_LOCATION_MUIRWOODS_INNER},
+    [MAPSEC_OAKLAND]={MAP_GROUP(OAKLAND),MAP_NUM(OAKLAND),HEAL_LOCATION_OAKLAND},
+    [MAPSEC_OAKLANDCOLISEUM       ]={MAP_GROUP(OAKLAND_COLISEUM_OUTSIDE),MAP_NUM(OAKLAND_COLISEUM_OUTSIDE),HEAL_LOCATION_OAKLAND_COLISEUM_OUTSIDE},
+    [MAPSEC_PACIFICA]={MAP_GROUP(PACIFICA),MAP_NUM(PACIFICA),HEAL_LOCATION_PACIFICA},
+    [MAPSEC_PAINTEDLADIES]={MAP_GROUP(PAINTEDLADIES),MAP_NUM(PAINTEDLADIES),HEAL_LOCATION_PAINTEDLADIES},
+    [MAPSEC_PALACEFINEARTS]={MAP_GROUP(PALACEFINEARTS),MAP_NUM(PALACEFINEARTS),HEAL_LOCATION_PALACEFINEARTS},
+    [MAPSEC_PRESIDIO]={MAP_GROUP(PRESIDIO),MAP_NUM(PRESIDIO),HEAL_LOCATION_PRESIDIO},
+    [MAPSEC_PSFROUTE1]={MAP_GROUP(PSFROUTE1),MAP_NUM(PSFROUTE1),HEAL_LOCATION_PSFROUTE1},
+    [MAPSEC_PSFROUTE11]={MAP_GROUP(PSFROUTE11),MAP_NUM(PSFROUTE11),HEAL_LOCATION_PSFROUTE11},
+    [MAPSEC_PSFROUTE12]={MAP_GROUP(PSFROUTE12),MAP_NUM(PSFROUTE12),HEAL_LOCATION_PSFROUTE12},
+    [MAPSEC_PSFROUTE13]={MAP_GROUP(PSFROUTE13),MAP_NUM(PSFROUTE13),HEAL_LOCATION_PSFROUTE13},
+    [MAPSEC_PSFROUTE14]={MAP_GROUP(PSFROUTE14),MAP_NUM(PSFROUTE14),HEAL_LOCATION_PSFROUTE14},
+    [MAPSEC_PSFROUTE15]={MAP_GROUP(PSFROUTE15),MAP_NUM(PSFROUTE15),HEAL_LOCATION_PSFROUTE15},
+    [MAPSEC_PSFROUTE17]={MAP_GROUP(PSFROUTE17),MAP_NUM(PSFROUTE17),HEAL_LOCATION_PSFROUTE17},
+    [MAPSEC_PSFROUTE18]={MAP_GROUP(PSFROUTE18),MAP_NUM(PSFROUTE18),HEAL_LOCATION_PSFROUTE18},
+    [MAPSEC_PSFROUTE19]={MAP_GROUP(PSFROUTE19),MAP_NUM(PSFROUTE19),HEAL_LOCATION_PSFROUTE19},
+    [MAPSEC_PSFROUTE2]={MAP_GROUP(PSFROUTE2),MAP_NUM(PSFROUTE2),HEAL_LOCATION_PSFROUTE2},
+    [MAPSEC_PSFROUTE20]={MAP_GROUP(PSFROUTE20),MAP_NUM(PSFROUTE20),HEAL_LOCATION_PSFROUTE20},
+    [MAPSEC_PSFROUTE21]={MAP_GROUP(PSFROUTE21),MAP_NUM(PSFROUTE21),HEAL_LOCATION_PSFROUTE21},
+    [MAPSEC_PSFROUTE22]={MAP_GROUP(PSFROUTE22),MAP_NUM(PSFROUTE22),HEAL_LOCATION_PSFROUTE22},
+    [MAPSEC_PSFROUTE30]={MAP_GROUP(PSFROUTE30),MAP_NUM(PSFROUTE30),HEAL_LOCATION_PSFROUTE30},
+    [MAPSEC_PSFROUTE32]={MAP_GROUP(PSFROUTE32),MAP_NUM(PSFROUTE32),HEAL_LOCATION_PSFROUTE32},
+    [MAPSEC_PSFROUTE38]={MAP_GROUP(PSFROUTE38),MAP_NUM(PSFROUTE38),HEAL_LOCATION_PSFROUTE38},
+    [MAPSEC_PSFROUTE43]={MAP_GROUP(PSFROUTE43),MAP_NUM(PSFROUTE43),HEAL_LOCATION_PSFROUTE43},
+    [MAPSEC_PSFROUTE49]={MAP_GROUP(PSFROUTE49),MAP_NUM(PSFROUTE49),HEAL_LOCATION_PSFROUTE49},
+    [MAPSEC_PSFROUTE5]={MAP_GROUP(PSFROUTE5),MAP_NUM(PSFROUTE5),HEAL_LOCATION_PSFROUTE5},
+    [MAPSEC_PSFROUTE51]={MAP_GROUP(PSFROUTE51),MAP_NUM(PSFROUTE51),HEAL_LOCATION_PSFROUTE51},
+    [MAPSEC_PSFROUTE61]={MAP_GROUP(PSFROUTE61),MAP_NUM(PSFROUTE61),HEAL_LOCATION_PSFROUTE61},
+    [MAPSEC_PSFROUTE62]={MAP_GROUP(PSFROUTE62),MAP_NUM(PSFROUTE62),HEAL_LOCATION_PSFROUTE62},
+    [MAPSEC_PSFROUTE63]={MAP_GROUP(PSFROUTE63),MAP_NUM(PSFROUTE63),HEAL_LOCATION_PSFROUTE63},
+    [MAPSEC_PSFROUTE7]={MAP_GROUP(PSFROUTE7),MAP_NUM(PSFROUTE7),HEAL_LOCATION_PSFROUTE7},
+    [MAPSEC_PSFROUTE70]={MAP_GROUP(PSFROUTE70),MAP_NUM(PSFROUTE70),HEAL_LOCATION_PSFROUTE70},
+    [MAPSEC_PSFROUTE72]={MAP_GROUP(PSFROUTE72),MAP_NUM(PSFROUTE72),HEAL_LOCATION_PSFROUTE72},
+    [MAPSEC_PSFROUTE76]={MAP_GROUP(PSFROUTE76),MAP_NUM(PSFROUTE76),HEAL_LOCATION_PSFROUTE76},
+    [MAPSEC_PSFROUTE8]={MAP_GROUP(PSFROUTE8),MAP_NUM(PSFROUTE8),HEAL_LOCATION_PSFROUTE8},
+    [MAPSEC_PSFROUTE9]={MAP_GROUP(PSFROUTE9),MAP_NUM(PSFROUTE9),HEAL_LOCATION_PSFROUTE9},
+    [MAPSEC_SOMA]={MAP_GROUP(SOMA),MAP_NUM(SOMA),HEAL_LOCATION_SOMA},
+    [MAPSEC_SOUTHBAY]={MAP_GROUP(SOUTHBAY),MAP_NUM(SOUTHBAY),HEAL_LOCATION_SOUTHBAY},
+    [MAPSEC_SUNSET]={MAP_GROUP(SUNSET),MAP_NUM(SUNSET),HEAL_LOCATION_SUNSET},
+    [MAPSEC_TENDERLOIN]={MAP_GROUP(TENDERLOIN),MAP_NUM(TENDERLOIN),HEAL_LOCATION_TENDERLOIN},
+    [MAPSEC_TREASUREISLAND]={MAP_GROUP(TREASUREISLAND),MAP_NUM(TREASUREISLAND),HEAL_LOCATION_TREASUREISLAND},
+    [MAPSEC_TWINPEAKS]={MAP_GROUP(TWINPEAKS),MAP_NUM(TWINPEAKS),HEAL_LOCATION_TWINPEAKS},
 };
 
-static const u8 sMenuWindowFontColors[][3] = 
+static const u8 sMenuWindowFontColors[][3] =
 {
     [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GRAY,  TEXT_COLOR_LIGHT_GRAY},
     [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,  TEXT_COLOR_DARK_GRAY},
@@ -502,7 +561,7 @@ static bool8 Menu_DoGfxSetup(void)
         sRegionMap->mapSecType = GetMapsecType(sRegionMap->mapSecId);
         if (sRegionMap->mapSecType != MAPSECTYPE_NONE)
             sRegionMap->active_cursor = CURSOR_LOC;
-        else 
+        else
             sRegionMap->active_cursor = CURSOR_NO_LOC;
         CreateSFRegionMapCursor(TAG_CURSOR, TAG_CURSOR);
         PrintDefaultHeaderTitleToWindow(WINDOW_1, FONT_WHITE);
@@ -516,7 +575,7 @@ static bool8 Menu_DoGfxSetup(void)
         break;
     default:
         //SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_MODE_1 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
-        //SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(2) | BGCNT_256COLOR   
+        //SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(2) | BGCNT_256COLOR
         //                                                | BGCNT_AFF512x512
         //                                                | BGCNT_CHARBASE(2)
         //                                                | BGCNT_SCREENBASE(28));
@@ -667,16 +726,16 @@ void CreateSFRegionMapCursor(u16 tileTag, u16 paletteTag)
     LoadSpritePalette(&palette);
     spriteIdLOC = CreateSprite(&template, 0x38, 0x48, 0);
 
-    
+
     if ((spriteId != MAX_SPRITES) && (spriteIdLOC != MAX_SPRITES))
     {
         sRegionMap->cursorSprite = &gSprites[spriteId];
         sRegionMap->cursorSpriteLOC = &gSprites[spriteIdLOC];
-        
+
         sRegionMap->cursorSpriteLOC->oam.size = SPRITE_SIZE(64x64);
         sRegionMap->cursorSpriteLOC->x = 8 * sRegionMap->cursorPosX + 4;
         sRegionMap->cursorSpriteLOC->y = 8 * sRegionMap->cursorPosY + 4;
-        
+
         sRegionMap->cursorSprite->oam.size = SPRITE_SIZE(16x16);
         sRegionMap->cursorSprite->x = 8 * sRegionMap->cursorPosX + 4;
         sRegionMap->cursorSprite->y = 8 * sRegionMap->cursorPosY + 4;
@@ -760,7 +819,7 @@ static bool8 RegionMap_LoadGraphics(void)
         sMenuDataPtr->gfxLoadState++;
         break;
     case 4:
-        if (!FreeTempTileDataBuffersIfPossible()){         
+        if (!FreeTempTileDataBuffersIfPossible()){
             LoadPalette(sBarsPalette, 0, 32);
             sMenuDataPtr->gfxLoadState++;
         }
@@ -1023,10 +1082,10 @@ static void UpdateRegionMapCursor(void)
             sRegionMap->cursor_flipped = FALSE;
         }
     }
-    else 
+    else
     {
         if(sRegionMap->active_cursor == CURSOR_LOC)
-        {   
+        {
             sRegionMap->active_cursor = CURSOR_NO_LOC;
             sRegionMap->cursorSprite->invisible = FALSE;
             sRegionMap->cursorSpriteLOC->invisible = TRUE;
@@ -1123,7 +1182,7 @@ static u8 ProcessRegionMapInput_Full(void)
     {
         input = MAP_INPUT_B_BUTTON;
     }
-    
+
     return input;
 }
 
@@ -1172,7 +1231,7 @@ static u8 HandleAttemptWarpInput(void)
     {
         sRegionMap->inputCallback = ProcessRegionMapInput_Full;
     }
-    
+
     return MAP_INPUT_NONE;
 }
 
@@ -1180,7 +1239,7 @@ static u8 HandleWarpConfirmInput(void)
 {
     switch(sRegionMap->warp_counter)
     {
-        case 0: 
+        case 0:
             PlaySE(SE_SELECT);
             PrintHeaderWarpConfirmToWindow();
             //sRegionMap->cursorSpriteLOC->invisible = TRUE;
@@ -1210,7 +1269,7 @@ static u8 HandleWarpCloseMenu(void)
 {
     switch(sRegionMap->warp_counter)
     {
-        case 0: 
+        case 0:
             if (sMapHealLocations[sRegionMap->mapSecId][2] != HEAL_LOCATION_NONE)
                 SetWarpDestinationToHealLocation(sMapHealLocations[sRegionMap->mapSecId][2]);
             else
@@ -1234,7 +1293,7 @@ static u8 HandleWarpFailedNoCash(void)
 {
     switch(sRegionMap->warp_counter)
     {
-        case WARP_FAILED_PAUSE_START: 
+        case WARP_FAILED_PAUSE_START:
             PlaySE(SE_SELECT);
             StringCopy(sRegionMap->mapSecName, sText_NotEnoughMoney);
             PrintDefaultHeaderTitleToWindow(WINDOW_1, FONT_WHITE);
@@ -1252,7 +1311,7 @@ static u8 HandleWarpFailedNoCash(void)
             break;
     }
     return MAP_INPUT_NONE;
-    
+
 }
 
 u32 GetWarpPriceAtMapSec(u16 mapSecId, u8 warp_type)
@@ -1291,7 +1350,7 @@ static u8 MoveRegionMapCursor_Full(void)
         sRegionMap->mapSecId = mapSecId;
         GetSFMapName(sRegionMap->mapSecName, sRegionMap->mapSecId, MAP_NAME_LENGTH);
     }
-  
+
     GetPositionOfCursorWithinMapSec();
 
     sRegionMap->inputCallback = ProcessRegionMapInput_Full;
