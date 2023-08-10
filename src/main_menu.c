@@ -1562,120 +1562,120 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tLotadSpriteId data[9]
 //#define tBrendanSpriteId data[10]
 //#define tMaySpriteId data[11]
-#define tTeen1SpriteId data[10]	
-#define tTeen2SpriteId data[11]	
-#define tChild1SpriteId data[12]	
-#define tChild2SpriteId data[13]	
-#define tOld1SpriteId data[14]	
-#define tOld2SpriteId data[15]	
+#define tTeen1SpriteId data[10]
+#define tTeen2SpriteId data[11]
+#define tChild1SpriteId data[12]
+#define tChild2SpriteId data[13]
+#define tOld1SpriteId data[14]
+#define tOld2SpriteId data[15]
 
-static void SpriteCB_PikaSync(struct Sprite * sprite)	
-{	
-    sprite->y2 = gSprites[sprite->data[0]].animCmdIndex;	
-}	
-static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)	
-{	
-    u8 spriteId;	
-    u8 i = 0;	
-    switch (state)	
-    {	
-    case 0:	
-        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[0]);	
-        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[1]);	
-        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[2]);	
-        LoadSpritePalette(&sOakSpeech_PikaSpritePal);	
-        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[0], 0x10, 0x11, 2);	
-        gSprites[spriteId].oam.priority = 0;	
-        gTasks[taskId].data[7] = spriteId;	
-        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[1], 0x10, 0x09, 3);	
-        gSprites[spriteId].oam.priority = 0;	
-        gSprites[spriteId].data[0] = gTasks[taskId].data[7];	
-        gSprites[spriteId].callback = SpriteCB_PikaSync;	
-        gTasks[taskId].data[8] = spriteId;	
-        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[2], 0x18, 0x0D, 1);	
-        gSprites[spriteId].oam.priority = 0;	
-        gSprites[spriteId].data[0] = gTasks[taskId].data[7];	
-        gSprites[spriteId].callback = SpriteCB_PikaSync;	
-        gTasks[taskId].data[9] = spriteId;	
-        break;	
-    case 1:	
-        LoadCompressedSpriteSheet(&sOakSpeech_GrassPlatformSpriteSheet);	
-        LoadSpritePalette(&sOakSpeech_GrassPlatformSpritePal);	
-        for (i = 0; i < 3; i++)	
-        {	
-            spriteId = CreateSprite(&sOakSpeech_GrassPlatformSpriteTemplates[i], i * 32 + 88, 0x70, 1);	
-            gSprites[spriteId].oam.priority = 2;	
-            gSprites[spriteId].animPaused = TRUE;	
-            gSprites[spriteId].coordOffsetEnabled = TRUE;	
-            gTasks[taskId].data[7 + i] = spriteId;	
-        }	
-        break;	
-    }	
+static void SpriteCB_PikaSync(struct Sprite * sprite)
+{
+    sprite->y2 = gSprites[sprite->data[0]].animCmdIndex;
 }
-static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)	
-{	
-    u8 i;	
-    for (i = 0; i < 3; i++)	
-    {	
-        DestroySprite(&gSprites[gTasks[taskId].data[7 + i]]);	
-    }	
-    switch (state)	
-    {	
-    case 0:	
-        FreeSpriteTilesByTag(0x1003);	
-        FreeSpriteTilesByTag(0x1002);	
-        FreeSpriteTilesByTag(0x1001);	
-        FreeSpritePaletteByTag(0x1001);	
-        break;	
-    case 1:	
-        FreeSpriteTilesByTag(0x1000);	
-        FreeSpritePaletteByTag(0x1000);	
-        break;	
-    }	
-}	
-static void VBlankCB_NewGameOaksSpeech(void)	
-{	
-    LoadOam();	
-    ProcessSpriteCopyRequests();	
-    TransferPlttBuffer();	
-}	
-static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen	
-{	
-    int x = 99;	
-    u8 i = 0;	
-    //stolen from FRLG src\oak_speech.c to set up OakSpeechResources	
-    sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Allocates memory for OakSpeechResources, stolen from Task_OaksSpeech1	
-    SetGpuReg(REG_OFFSET_BLDY,0); //makes sure first page's text isn't too dark, stolen from OaksSpeech1	
-    SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1	
-    SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1	
-    gPaletteFade.bufferTransferDisabled = TRUE;	
-    LoadPalette(sHelpDocsPalette, 0x000, 0x080); //loads the palette for the Adventure Welcome Screen	
-    DecompressAndCopyTileDataToVram(1, sOakSpeechGfx_GameStartHelpUI, 0, 0, 0);	
-    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen	
-    gPaletteFade.bufferTransferDisabled = FALSE;	
-    	
-    ShowBg(1);	
-    SetVBlankCallback(VBlankCB_NewGameOaksSpeech);	
-    PlayBGM(MUS_RG_NEW_GAME_INSTRUCT);	
-    	
-    if (!gPaletteFade.active)	
-    {	
-            /* for (i = 0; i < 3; i++)	
-            //commenting all this out to see if I need it at all	
-            FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);	
-            ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);	
-            CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);	
-            RemoveWindow(sOakSpeechResources->unk_0014[i]);	
-            sOakSpeechResources->unk_0014[i] = 0;*/	
-        	
-        FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);	
-        CopyBgTilemapBufferToVram(1);	
-        DestroyTextCursorSprite(gTasks[taskId].data[5]); 	
-        sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014	
-        LoadPalette(sOakSpeechResources->unk_0014, 0, 2);	
-        gTasks[taskId].data[3] = 32;	
-        gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;	
-    }	
+static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
+{
+    u8 spriteId;
+    u8 i = 0;
+    switch (state)
+    {
+    case 0:
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[0]);
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[1]);
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[2]);
+        LoadSpritePalette(&sOakSpeech_PikaSpritePal);
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[0], 0x10, 0x11, 2);
+        gSprites[spriteId].oam.priority = 0;
+        gTasks[taskId].data[7] = spriteId;
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[1], 0x10, 0x09, 3);
+        gSprites[spriteId].oam.priority = 0;
+        gSprites[spriteId].data[0] = gTasks[taskId].data[7];
+        gSprites[spriteId].callback = SpriteCB_PikaSync;
+        gTasks[taskId].data[8] = spriteId;
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[2], 0x18, 0x0D, 1);
+        gSprites[spriteId].oam.priority = 0;
+        gSprites[spriteId].data[0] = gTasks[taskId].data[7];
+        gSprites[spriteId].callback = SpriteCB_PikaSync;
+        gTasks[taskId].data[9] = spriteId;
+        break;
+    case 1:
+        LoadCompressedSpriteSheet(&sOakSpeech_GrassPlatformSpriteSheet);
+        LoadSpritePalette(&sOakSpeech_GrassPlatformSpritePal);
+        for (i = 0; i < 3; i++)
+        {
+            spriteId = CreateSprite(&sOakSpeech_GrassPlatformSpriteTemplates[i], i * 32 + 88, 0x70, 1);
+            gSprites[spriteId].oam.priority = 2;
+            gSprites[spriteId].animPaused = TRUE;
+            gSprites[spriteId].coordOffsetEnabled = TRUE;
+            gTasks[taskId].data[7 + i] = spriteId;
+        }
+        break;
+    }
+}
+static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)
+{
+    u8 i;
+    for (i = 0; i < 3; i++)
+    {
+        DestroySprite(&gSprites[gTasks[taskId].data[7 + i]]);
+    }
+    switch (state)
+    {
+    case 0:
+        FreeSpriteTilesByTag(0x1003);
+        FreeSpriteTilesByTag(0x1002);
+        FreeSpriteTilesByTag(0x1001);
+        FreeSpritePaletteByTag(0x1001);
+        break;
+    case 1:
+        FreeSpriteTilesByTag(0x1000);
+        FreeSpritePaletteByTag(0x1000);
+        break;
+    }
+}
+static void VBlankCB_NewGameOaksSpeech(void)
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+}
+static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
+{
+    int x = 99;
+    u8 i = 0;
+    //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
+    sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Allocates memory for OakSpeechResources, stolen from Task_OaksSpeech1
+    SetGpuReg(REG_OFFSET_BLDY,0); //makes sure first page's text isn't too dark, stolen from OaksSpeech1
+    SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
+    SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
+    gPaletteFade.bufferTransferDisabled = TRUE;
+    LoadPalette(sHelpDocsPalette, 0x000, 0x080); //loads the palette for the Adventure Welcome Screen
+    DecompressAndCopyTileDataToVram(1, sOakSpeechGfx_GameStartHelpUI, 0, 0, 0);
+    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
+    gPaletteFade.bufferTransferDisabled = FALSE;
+
+    ShowBg(1);
+    SetVBlankCallback(VBlankCB_NewGameOaksSpeech);
+    PlayBGM(MUS_RG_NEW_GAME_INSTRUCT);
+
+    if (!gPaletteFade.active)
+    {
+            /* for (i = 0; i < 3; i++)
+            //commenting all this out to see if I need it at all
+            FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
+            ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
+            CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);
+            RemoveWindow(sOakSpeechResources->unk_0014[i]);
+            sOakSpeechResources->unk_0014[i] = 0;*/
+
+        FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
+        CopyBgTilemapBufferToVram(1);
+        DestroyTextCursorSprite(gTasks[taskId].data[5]);
+        sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
+        LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
+        gTasks[taskId].data[3] = 32;
+        gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
+    }
 }
 static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome screen
 {
@@ -1871,18 +1871,18 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     ShowBg(0);
     ShowBg(1);
 }
-static void Task_NewGameBirchSpeech_WhatIsYourName(u8 taskId)	
-{	
-    InitWindows(sNewGameBirchSpeechTextWindows);	
-    LoadMainMenuWindowFrameTiles(0, 0xF3);	
-    LoadMessageBoxGfx(0, 0xFC, 0xF0);	
-    NewGameBirchSpeech_ShowDialogueWindow(0, 1);	
-    PutWindowTilemap(0);	
-    CopyWindowToVram(0, 2);	
-    NewGameBirchSpeech_ClearWindow(0);	
-    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);	
-    AddTextPrinterForMessage(1);	
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;	
+static void Task_NewGameBirchSpeech_WhatIsYourName(u8 taskId)
+{
+    InitWindows(sNewGameBirchSpeechTextWindows);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+    LoadMessageBoxGfx(0, 0xFC, 0xF0);
+    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, 2);
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;
 }
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
 {
@@ -2160,26 +2160,26 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
     {
         gSprites[spriteId].invisible = TRUE;
 
-        switch (gTasks[taskId].tPlayerGender)	
-        {	
-            case 0:	
-                spriteId = gTasks[taskId].tTeen1SpriteId;	
-                break;	
-            case 1:	
-                spriteId = gTasks[taskId].tTeen2SpriteId;	
-                break;	
-            case 2:	
-                spriteId = gTasks[taskId].tChild1SpriteId;	
-                break;	
-            case 3:	
-                spriteId = gTasks[taskId].tChild2SpriteId;	
-                break;	
-            case 4:	
-                spriteId = gTasks[taskId].tOld1SpriteId;	
-                break;	
-            case 5:	
-                spriteId = gTasks[taskId].tOld2SpriteId;	
-                break;	
+        switch (gTasks[taskId].tPlayerGender)
+        {
+            case 0:
+                spriteId = gTasks[taskId].tTeen1SpriteId;
+                break;
+            case 1:
+                spriteId = gTasks[taskId].tTeen2SpriteId;
+                break;
+            case 2:
+                spriteId = gTasks[taskId].tChild1SpriteId;
+                break;
+            case 3:
+                spriteId = gTasks[taskId].tChild2SpriteId;
+                break;
+            case 4:
+                spriteId = gTasks[taskId].tOld1SpriteId;
+                break;
+            case 5:
+                spriteId = gTasks[taskId].tOld2SpriteId;
+                break;
         }
 
         gSprites[spriteId].x = DISPLAY_WIDTH;
@@ -3126,12 +3126,12 @@ void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
 {
     const u8 *name;
     u8 i;
-        //A randomly generated number is passed to this function. If the number is even, the player will get a randomly assigned "male" name. If odd, the player will get a randomly assigned "female" name.	
+        //A randomly generated number is passed to this function. If the number is even, the player will get a randomly assigned "male" name. If odd, the player will get a randomly assigned "female" name.
 
-if (nameId % 2 == 0)	
-        name = sMalePresetNames[nameId];	
-    else	
-        name = sFemalePresetNames[nameId];	
+if (nameId % 2 == 0)
+        name = sMalePresetNames[nameId];
+    else
+        name = sFemalePresetNames[nameId];
     /*
     if (gSaveBlock2Ptr->playerGender == MALE)
         name = sMalePresetNames[nameId];
@@ -3219,8 +3219,13 @@ static void MainMenu_FormatSavegameBadges(void)
 
 static void LoadMainMenuWindowFrameTiles(u8 bgId, u16 tileOffset)
 {
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     LoadBgTiles(bgId, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->tiles, 0x120, tileOffset);
-    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
+    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, 32, 32);
+    #else
+    LoadBgTiles(bgId, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, tileOffset);
+    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 32, 32);
+    #endif
 }
 
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *template, u16 baseTileNum)

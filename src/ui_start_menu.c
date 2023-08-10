@@ -32,6 +32,7 @@
 #include "quest_flavor_lookup.h"
 #include "rtc.h"
 #include "region_map.h"
+#include "ui_map_system.h"
 #include "trainer_card.h"
 #include "scanline_effect.h"
 #include "script.h"
@@ -51,6 +52,7 @@
 #include "new_game.h"
 #include "save.h"
 #include "start_menu.h"
+#include "ui_map_system.h"
 
 //==========DEFINES==========//
 struct MenuResources
@@ -1428,9 +1430,9 @@ void Task_OpenPokenavStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        PlayRainStoppingSoundEffect();
-        CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
+		PlayRainStoppingSoundEffect();
+		CleanupOverworldWindowsAndTilemaps();
+        CreateTask(Task_OpenMapSystemFromStartMenu, 0);
     }
 }
 

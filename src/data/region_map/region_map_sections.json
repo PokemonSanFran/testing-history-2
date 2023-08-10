@@ -837,23 +837,23 @@
   "map_section": "MAPSEC_SUNSET",
   "name": "Sunset",
   "x": 0,
-  "y": 0,
+  "y": 12,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_GLDNGTEPARK",
   "name": "Gldngtepark",
-  "x": 0,
-  "y": 0,
-  "width": 1,
-  "height": 1
+  "x": 7,
+  "y": 3,
+  "width": 3,
+  "height": 2
 },
 {
   "map_section": "MAPSEC_PRESIDIO",
   "name": "Presidio",
-  "x": 0,
-  "y": 0,
+  "x": 6,
+  "y": 4,
   "width": 1,
   "height": 1
 },
@@ -861,7 +861,7 @@
   "map_section": "MAPSEC_PACIFICA",
   "name": "Pacifica",
   "x": 0,
-  "y": 0,
+  "y": 5,
   "width": 1,
   "height": 1
 },
@@ -876,39 +876,39 @@
 {
   "map_section": "MAPSEC_MISSION",
   "name": "Mission",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 10,
   "width": 1,
-  "height": 1
+  "height": 2
 },
 {
   "map_section": "MAPSEC_DOGPATCH",
   "name": "Dogpatch",
-  "x": 0,
-  "y": 0,
+  "x": 17,
+  "y": 14,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_SOUTHBAY",
   "name": "Southbay",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 15,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_OAKLAND",
   "name": "Oakland",
-  "x": 0,
-  "y": 0,
-  "width": 1,
-  "height": 1
+  "x": 23,
+  "y": 6,
+  "width": 2,
+  "height": 2
 },
 {
   "map_section": "MAPSEC_MARIN",
   "name": "Marin",
-  "x": 0,
+  "x": 6,
   "y": 0,
   "width": 1,
   "height": 1
@@ -916,7 +916,7 @@
 {
   "map_section": "MAPSEC_BERKELEY",
   "name": "Berkeley",
-  "x": 0,
+  "x": 24,
   "y": 0,
   "width": 1,
   "height": 1
@@ -924,80 +924,80 @@
 {
   "map_section": "MAPSEC_TENDERLOIN",
   "name": "Tenderloin",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 6,
   "width": 1,
-  "height": 1
+  "height": 2
 },
 {
   "map_section": "MAPSEC_CHINATOWN",
   "name": "Chinatown",
-  "x": 0,
-  "y": 0,
+  "x": 15,
+  "y": 6,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_JAPANTOWN",
   "name": "Japantown",
-  "x": 0,
-  "y": 0,
+  "x": 11,
+  "y": 6,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_SOMA",
   "name": "Soma",
-  "x": 0,
-  "y": 0,
-  "width": 1,
-  "height": 1
+  "x": 16,
+  "y": 9,
+  "width": 2,
+  "height": 2
 },
 {
   "map_section": "MAPSEC_BERNALHEIGHTS",
   "name": "Bernalheights",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 13,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_ALAMEDA",
   "name": "Alameda",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 23,
+  "y": 11,
+  "width": 2,
   "height": 1
 },
 {
   "map_section": "MAPSEC_HAIGHTASHBURY",
   "name": "Haightashbury",
-  "x": 0,
-  "y": 0,
+  "x": 6,
+  "y": 8,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_TWINPEAKS",
   "name": "Twinpeaks",
-  "x": 0,
-  "y": 0,
+  "x": 5,
+  "y": 15,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_NAVALBASE",
   "name": "Navalbase",
-  "x": 0,
-  "y": 0,
+  "x":23,
+  "y": 11,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PAINTEDLADIES",
   "name": "Paintedladies",
-  "x": 0,
-  "y": 0,
+  "x": 9,
+  "y": 8,
   "width": 1,
   "height": 1
 },
@@ -1028,8 +1028,8 @@
 {
   "map_section": "MAPSEC_LOMBARDSTREET",
   "name": "Lombardstreet",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 4,
   "width": 1,
   "height": 1
 },
@@ -1044,24 +1044,24 @@
 {
   "map_section": "MAPSEC_FORTPOINT",
   "name": "Fortpoint",
-  "x": 0,
-  "y": 0,
+  "x": 8,
+  "y": 3,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_TRANSPYRAMID",
   "name": "Transpyramid",
-  "x": 0,
-  "y": 0,
+  "x": 17,
+  "y": 4,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_FERRYBUILDING",
   "name": "Ferrybuilding",
-  "x": 0,
-  "y": 0,
+  "x": 17,
+  "y": 7,
   "width": 1,
   "height": 1
 },
@@ -1092,8 +1092,8 @@
 {
   "map_section": "MAPSEC_OAKLANDCOLISEUM",
   "name": "Oaklandcoliseum",
-  "x": 0,
-  "y": 0,
+  "x": 27,
+  "y": 6,
   "width": 1,
   "height": 1
 },
@@ -1108,23 +1108,23 @@
 {
   "map_section": "MAPSEC_GLDNGTEBRIDGE",
   "name": "Gldngtebridge",
-  "x": 0,
-  "y": 0,
+  "x": 6,
+  "y": 2,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_ROBINWILLTUNNEL",
   "name": "Robinwilltunnel",
-  "x": 0,
-  "y": 0,
+  "x": 5,
+  "y": 1,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_MUIRWOODS",
   "name": "Muirwoods",
-  "x": 0,
+  "x": 1,
   "y": 0,
   "width": 1,
   "height": 1
@@ -1132,8 +1132,8 @@
 {
   "map_section": "MAPSEC_LAKEMERRITT",
   "name": "Lakemerritt",
-  "x": 0,
-  "y": 0,
+  "x": 27,
+  "y": 4,
   "width": 1,
   "height": 1
 },
@@ -1141,15 +1141,15 @@
   "map_section": "MAPSEC_LAKEMERCED",
   "name": "Lakemerced",
   "x": 0,
-  "y": 0,
+  "y": 14,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_TREASUREISLAND",
   "name": "Treasureisland",
-  "x": 0,
-  "y": 0,
+  "x": 19,
+  "y": 4,
   "width": 1,
   "height": 1
 },
@@ -1164,8 +1164,8 @@
 {
   "map_section": "MAPSEC_ALCATRAZ",
   "name": "Alcatraz",
-  "x": 0,
-  "y": 0,
+  "x": 16,
+  "y": 1,
   "width": 1,
   "height": 1
 },
@@ -1180,56 +1180,56 @@
 {
   "map_section": "MAPSEC_PSFROUTE1",
   "name": "Psfroute1",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 10,
+  "y": 4,
+  "width": 3,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE2",
   "name": "Psfroute2",
-  "x": 0,
-  "y": 0,
+  "x": 9,
+  "y": 3,
   "width": 1,
-  "height": 1
+  "height": 5
 },
 {
   "map_section": "MAPSEC_PSFROUTE5",
   "name": "Psfroute5",
   "x": 0,
-  "y": 0,
+  "y": 6,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE7",
   "name": "Psfroute7",
-  "x": 0,
-  "y": 0,
+  "x": 2,
+  "y": 10,
   "width": 1,
-  "height": 1
+  "height": 3
 },
 {
   "map_section": "MAPSEC_PSFROUTE8",
   "name": "Psfroute8",
-  "x": 0,
-  "y": 0,
+  "x": 17,
+  "y": 5,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE9",
   "name": "Psfroute9",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 9,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE11",
   "name": "Psfroute11",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 12,
   "width": 1,
   "height": 1
 },
@@ -1244,41 +1244,41 @@
 {
   "map_section": "MAPSEC_PSFROUTE13",
   "name": "Psfroute13",
-  "x": 0,
-  "y": 0,
+  "x": 9,
+  "y": 9,
   "width": 1,
-  "height": 1
+  "height": 2
 },
 {
   "map_section": "MAPSEC_PSFROUTE14",
   "name": "Psfroute14",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 10,
+  "y": 12,
+  "width": 2,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE15",
   "name": "Psfroute15",
-  "x": 0,
-  "y": 0,
+  "x": 16,
+  "y": 2,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE17",
   "name": "Psfroute17",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 14,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE18",
   "name": "Psfroute18",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 5,
+  "y": 14,
+  "width": 4,
   "height": 1
 },
 {
@@ -1300,18 +1300,18 @@
 {
   "map_section": "MAPSEC_PSFROUTE21",
   "name": "Psfroute21",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 14,
+  "y": 13,
+  "width": 2,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE22",
   "name": "Psfroute22",
-  "x": 0,
-  "y": 0,
+  "x": 17,
+  "y": 11,
   "width": 1,
-  "height": 1
+  "height": 3
 },
 {
   "map_section": "MAPSEC_PSFROUTE25",
@@ -1333,103 +1333,103 @@
   "map_section": "MAPSEC_PSFROUTE32",
   "name": "Psfroute32",
   "x": 0,
-  "y": 0,
+  "y": 13,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE38",
   "name": "Psfroute38",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 11,
+  "y": 7,
+  "width": 2,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE43",
   "name": "Psfroute43",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 7,
+  "y": 8,
+  "width": 2,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE49",
   "name": "Psfroute49",
   "x": 0,
-  "y": 0,
-  "width": 1,
+  "y": 4,
+  "width": 6,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE51",
   "name": "Psfroute51",
-  "x": 0,
-  "y": 0,
-  "width": 1,
+  "x": 18,
+  "y": 7,
+  "width": 3,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE61",
   "name": "Psfroute61",
-  "x": 0,
+  "x": 2,
   "y": 0,
-  "width": 1,
+  "width": 4,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE62",
   "name": "Psfroute62",
-  "x": 0,
-  "y": 0,
+  "x": 26,
+  "y": 4,
   "width": 1,
-  "height": 1
+  "height": 2
 },
 {
   "map_section": "MAPSEC_PSFROUTE63",
   "name": "Psfroute63",
-  "x": 0,
-  "y": 0,
+  "x": 24,
+  "y": 1,
   "width": 1,
-  "height": 1
+  "height": 4
 },
 {
   "map_section": "MAPSEC_PSFROUTE70",
   "name": "Psfroute70",
-  "x": 0,
-  "y": 0,
+  "x": 13,
+  "y": 5,
   "width": 1,
   "height": 1
 },
 {
   "map_section": "MAPSEC_PSFROUTE72",
   "name": "Psfroute72",
-  "x": 0,
-  "y": 0,
+  "x": 24,
+  "y": 8,
   "width": 1,
-  "height": 1
+  "height": 3
 },
 {
   "map_section": "MAPSEC_PSFROUTE76",
   "name": "Psfroute76",
-  "x": 0,
+  "x": 7,
   "y": 0,
-  "width": 1,
+  "width": 17,
   "height": 1
 },
 {
   "map_section": "MAPSEC_GLDNGTEWILDS",
   "name": "Gldngtewilds",
-  "x": 0,
-  "y": 0,
-  "width": 1,
-  "height": 1
+  "x": 7,
+  "y": 3,
+  "width": 3,
+  "height": 2
 },
 {
   "map_section": "MAPSEC_SALESFORCETOWER",
   "name": "Salesforcetower",
-  "x": 0,
-  "y": 0,
+  "x": 16,
+  "y": 9,
   "width": 1,
   "height": 1
 },

@@ -92,7 +92,11 @@ static void InitPlayerTrainerId(void)
 static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED] = OPTIONS_TEXT_SPEED_FAST;
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE] = 0;
+    #else
+    gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    #endif
     gSaveBlock2Ptr->optionsMusic[MUSIC_OPTIONS_SPEAKER] = OPTIONS_SOUND_MONO;
     gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE] = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_ANIMATIONS] = FALSE;

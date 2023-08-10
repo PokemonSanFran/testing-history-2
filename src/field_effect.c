@@ -3925,6 +3925,46 @@ static void Task_MoveDeoxysRock(u8 taskId)
     }
 }
 
+static void FieldCallback_UseUber(void);
+static void Task_UseUber(void);
+static void FieldCallback_UberIntoMap(void);
+
+void ReturnToFieldFromRegionMapWarpSelect(void)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    gFieldCallback = Task_UseUber;
+}
+
+static void FieldCallback_UseUber(void)
+{
+    //CreateTask(Task_UseUber, 0);
+    LockPlayerFieldControls();
+    FreezeObjectEvents();
+    gFieldCallback = NULL;
+}
+
+static void Task_UseUber(void)
+{
+
+    Overworld_ResetStateAfterFly();
+    WarpIntoMap();
+    SetMainCallback2(CB2_LoadMap);
+    gFieldCallback = FieldCallback_UberIntoMap;
+
+}
+
+static void FieldCallback_UberIntoMap(void)
+{
+    Overworld_PlaySpecialMapMusic();
+    FadeInFromBlack();
+    if (gPaletteFade.active)
+            return;
+
+    UnlockPlayerFieldControls();
+    UnfreezeObjectEvents();
+    gFieldCallback = NULL;
+}
+
 #undef tState
 #undef tSpriteId
 #undef tTargetX
