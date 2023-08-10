@@ -2,7 +2,7 @@
   "id": "MAP_MISSION",
   "name": "Mission",
   "layout": "LAYOUT_MISSION",
-  "music": "MUS_RG_VS_MEWTWO",
+  "music": "MUS_DESERT",
   "region_map_section": "MAPSEC_MISSION",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

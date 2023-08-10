@@ -4564,7 +4564,7 @@ const u8 *GetQuestDoneDesc(s32 questId)
 
 void PrintQuestFlavorText(s32 questId)
 {
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar3, 40, 19, 5, 0, 0,
+	QuestMenu_AddTextPrinterParameterized(1, FONT_SMALL_NARROW, gStringVar3, 40, 19, 5, 0, 0,
 	                                      4);
 }
 
