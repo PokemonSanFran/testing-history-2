@@ -69,9 +69,14 @@ script LetsBurnThisMotherDown_StartQuest_Dialogue{
 
         msgbox(gText_LetsBurnThisMotherDown_INeedToTalk,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         startquest(QUEST_LETS_BURN_THIS_MOTHER_DOWN)
-        closemessage
-        release
-        end
+        buffermapname(STR_VAR_1,MAP_ALCATRAZ)
+        msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
+        if (var(VAR_RESULT)){
+            warpsilent(MAP_ALCATRAZ,48,61)
+        }
+    closemessage
+    release
+    end
 }
 
 script LetsBurnThisMotherDown_CheckActiveQuest_Script{

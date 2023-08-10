@@ -52,85 +52,87 @@ script YouHaveYourOrders_CompleteQuest_Dialogue{
 
 script YouHaveYourOrders_Assignment_Dialogue {
     setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_ASSIGNED)
-    
-msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_ItCantBeTougher,,SPEAKER_ZOEY)
+        msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_HmmGoodPoint,,SPEAKER_KOGA)
-    
-    closemessage
+        msgbox(gText_YouHaveYourOrders_ItCantBeTougher,,SPEAKER_ZOEY)
 
-    applymovement(KOGA,YouHaveYourOrders_PaceInOffice)
-    waitmovement(0)
-    
-msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed,,SPEAKER_KOGA)
+        msgbox(gText_YouHaveYourOrders_HmmGoodPoint,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_WhyAllAtOnce,,SPEAKER_ZOEY)
+        closemessage
 
-msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut,,SPEAKER_KOGA)
+        applymovement(KOGA,YouHaveYourOrders_PaceInOffice)
+        waitmovement(0)
 
-msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys,,SPEAKER_ZOEY)
+        msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_CorrectEachOfUs,,SPEAKER_KOGA)
+        msgbox(gText_YouHaveYourOrders_WhyAllAtOnce,,SPEAKER_ZOEY)
 
-if (var(VAR_STORYLINE_STATE) == STORY_START_FALSE_TIMELINE){
-msgbox(gText_YouHaveYourOrders_TheyInvolved,,SPEAKER_ZOEY)
+        msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_WeHiredThem,,SPEAKER_KOGA)
-}
+        msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouHaveYourOrders_CorrectEachOfUs,,SPEAKER_KOGA)
+
+        if (var(VAR_STORYLINE_STATE) == STORY_START_FALSE_TIMELINE){
+            msgbox(gText_YouHaveYourOrders_TheyInvolved,,SPEAKER_ZOEY)
+
+                msgbox(gText_YouHaveYourOrders_WeHiredThem,,SPEAKER_KOGA)
+        }
 
     //If the player has converted the Haightashbury Gym: PSF TODO
 
     if (!var(VAR_TEMP_0)){
 
-msgbox(gText_YouHaveYourOrders_WhatAbout,,SPEAKER_ZOEY)
+        msgbox(gText_YouHaveYourOrders_WhatAbout,,SPEAKER_ZOEY)
 
-msgbox(gText_YouHaveYourOrders_OurIntelligenceTells,,SPEAKER_KOGA)
+            msgbox(gText_YouHaveYourOrders_OurIntelligenceTells,,SPEAKER_KOGA)
     }
 
     applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
-    waitmovement(0)
+        waitmovement(0)
 
-msgbox(gText_YouHaveYourOrders_ThankYouAsUsual,,SPEAKER_KOGA)
+        msgbox(gText_YouHaveYourOrders_ThankYouAsUsual,,SPEAKER_KOGA)
 
-msgbox(gText_YouHaveYourOrders_IStillFeelLike,,SPEAKER_ZOEY)
-    
+        msgbox(gText_YouHaveYourOrders_IStillFeelLike,,SPEAKER_ZOEY)
+
+        closemessage
+
+        applymovement(KOGA,Common_Movement_FacePlayer)
+
+        msgbox(gText_YouHaveYourOrders_InCaseYouHavent,,SPEAKER_KOGA)
+
+        closemessage
+
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(0)
+
+        msgbox(gText_YouHaveYourOrders_YouWereAGym,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest,,SPEAKER_KOGA)
+
+        msgbox(gText_YouHaveYourOrders_WasThatHard,,SPEAKER_ZOEY)
+
+        msgbox(gText_YouHaveYourOrders_AtTheTimeNo,,SPEAKER_KOGA)
+
+        applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
+        waitmovement(0)
+
+        msgbox(gText_YouHaveYourOrders_ICouldGoShut,,SPEAKER_KOGA)
+
+
+        startquest(QUEST_HOW_DISAPPOINTING)
+
+        buffermapname(STR_VAR_1,MAP_CHINATOWN)
+        msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
+        if (var(VAR_RESULT)){
+            warpsilent(MAP_CHINATOWN,33,8)
+        }
+
     closemessage
-
-    applymovement(KOGA,Common_Movement_FacePlayer)
-
-msgbox(gText_YouHaveYourOrders_InCaseYouHavent,,SPEAKER_KOGA)
-    
-    closemessage
-
-    playse(SE_PIN)
-    applymovement(PLAYER,Common_Movement_ExclamationMark)
-    waitmovement(0)
-
-msgbox(gText_YouHaveYourOrders_YouWereAGym,,SPEAKER_ZOEY)
-
-msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest,,SPEAKER_KOGA)
-
-msgbox(gText_YouHaveYourOrders_WasThatHard,,SPEAKER_ZOEY)
-
-msgbox(gText_YouHaveYourOrders_AtTheTimeNo,,SPEAKER_KOGA)
-
-    applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
-    waitmovement(0)
-
-msgbox(gText_YouHaveYourOrders_ICouldGoShut,,SPEAKER_KOGA)
-    
-
-    startquest(QUEST_HOW_DISAPPOINTING)
-
-msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
-if (var(VAR_RESULT)){
-    warpsilent(MAP_CHINATOWN,33,8)
-}
-
-closemessage
-end
+    release
+    end
 }
     text gText_YouHaveYourOrders_AreYouSure {
         format("{PLAYER}, are you sure you're ready for this mission?")
@@ -217,7 +219,7 @@ text gText_YouHaveYourOrders_ICouldGoShut {
 }
 
 text gText_YouHaveYourOrders_DoYouWantTo {
-    format("Do you want to go to Chinatown?")
+    format("Do you want to go to {STR_VAR_1}?")
 }
 
 

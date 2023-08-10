@@ -60,8 +60,14 @@ script Manhunt_Assignment_Dialogue {
 
 
         startquest(QUEST_MANHUNT)
-        release
-        end
+        buffermapname(STR_VAR_1,MAP_SOMA)
+        msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
+        if (var(VAR_RESULT)){
+            warpsilent(MAP_SOMA,6,20)
+        }
+    closemessage
+    release
+    end
 }
 
 //SOMA
@@ -136,7 +142,7 @@ script Manhunt_Teodoro_Battle_Script {
 
 
         msgbox(gText_Manhunt_YeahIDidSomeWork,,SPEAKER_TEODORO)
-        multi_fixed_2_vs_1(TRAINER_ALLEN,gText_Manhunt_DamnPunks,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        multi_fixed_2_vs_1(TRAINER_ALLEN,gText_Manhunt_DamnPunks,TRAINER_BIANCA_IMIN,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_2)
 
         msgbox(gText_Manhunt_WhatDoYouKnow,,SPEAKER_BIANCA)
@@ -195,7 +201,7 @@ script Manhunt_Dudley_Battle_Script {
 
 
         msgbox(gText_Manhunt_WoahWaitHold,,SPEAKER_DUDLEY)
-        multi_fixed_2_vs_1(TRAINER_TIANA,gText_Manhunt_ShitMan,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        multi_fixed_2_vs_1(TRAINER_TIANA,gText_Manhunt_ShitMan,TRAINER_BIANCA_IMIN,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_3)
 
         msgbox(gText_Manhunt_ShitMan,,SPEAKER_DUDLEY)
@@ -242,7 +248,7 @@ script Manhunt_Matthew_Battle_Script {
 
         msgbox(gText_Manhunt_YeahToldMeYoud,,SPEAKER_MATTHEW)
 
-        multi_fixed_2_vs_1(TRAINER_SHANNON,gText_Manhunt_OhDamnLooksLike,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        multi_fixed_2_vs_1(TRAINER_SHANNON,gText_Manhunt_OhDamnLooksLike,TRAINER_BIANCA_IMIN,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_4)
 
         msgbox(gText_Manhunt_IFeelBadForAll,MSGBOX_AUTOCLOSE,SPEAKER_MATTHEW)
@@ -271,7 +277,7 @@ script Manhunt_Encounter_Giovanni_Dialogue {
 
         lock
 
-        multi_fixed_2_vs_1(TRAINER_MATT,gText_Manhunt_IfIDontHave,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+        multi_fixed_2_vs_1(TRAINER_MATT,gText_Manhunt_IfIDontHave,TRAINER_BIANCA_IMIN,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
         addvar(VAR_STORYLINE_STATE,1)
 
