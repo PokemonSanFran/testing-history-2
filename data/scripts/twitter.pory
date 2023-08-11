@@ -106,7 +106,7 @@ script TwitterPost_BetweenAStoneAndAHardPlace_Script {
 }
 
 text gText_Twitter_ThereWasAnError {
-    format("There was an error displying this content. Please try again later.")
+    format("There was an error displaying this content. Please try again later.")
 }
 
 text gText_Twitter_RabiesOutBreak_Message {

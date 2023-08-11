@@ -325,7 +325,7 @@ text gText_Prologue_ThankYouAll{
 }
 
 text gText_Prologue_FirstOfCourse{
-    format("First of course, congratulations to the newest Champion, Adam!Despite not being from here, you've excelled in our region's competitive climate, and we're honored to cement you into our Hall of Fame.")
+    format("First of course, congratulations to the newest Champion, Adam! Despite not being from here, you've excelled in our region's competitive climate, and we're honored to cement you into our Hall of Fame.")
 }
 text gText_Prologue_IRegretToInform{
     format("Of course, I regret to inform you all that effective immediately, I'll be stepping down as a member of the Elite Four.")

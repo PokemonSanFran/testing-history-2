@@ -207,7 +207,7 @@ text gText_BuildingScope_OhYourePlayer{
     format("Oh! You're {PLAYER}. Maybe... you can help me? I work for YCombinator, in the League Ops Division")
 }
 text gText_BuildingScope_TheresABuildingIn{
-    format("this building is adbandoned, so the league wants to buy it to turn it into a battle arena. But I'm pretty sure its overrun by beasts! Nasty things, they attack whenever we try to go inside.")
+    format("this building is abandoned, so the league wants to buy it to turn it into a battle arena. But I'm pretty sure its overrun by beasts! Nasty things, they attack whenever we try to go inside.")
 }
 text gText_BuildingScope_AnimalsOrPokemon{
     format("Animals... or pokemon or something. Can you go in there and clear them out, because you're tougher than me!")

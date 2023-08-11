@@ -876,7 +876,7 @@ static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTI
             [BATTLE_OPTIONS_FAINTED_MON]            = 0,
             [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0,
             [BATTLE_OPTIONS_NICKNAME]               = 0,
-            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_WHITEOUT]               = 0,
             [BATTLE_OPTIONS_ITEM_HEALING]           = 0,
             [BATTLE_OPTIONS_CENTER_HEALING]         = 0,
             [BATTLE_OPTIONS_MOVE_HEALING]           = 0,
@@ -905,7 +905,7 @@ static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTI
             [BATTLE_OPTIONS_FAINTED_MON]            = 0,
             [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0,
             [BATTLE_OPTIONS_NICKNAME]               = 0,
-            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_WHITEOUT]               = 0,
             [BATTLE_OPTIONS_ITEM_HEALING]           = 0,
             [BATTLE_OPTIONS_CENTER_HEALING]         = 0,
             [BATTLE_OPTIONS_MOVE_HEALING]           = 0,
@@ -934,7 +934,7 @@ static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTI
             [BATTLE_OPTIONS_FAINTED_MON]            = 0,
             [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0,
             [BATTLE_OPTIONS_NICKNAME]               = 2,
-            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_WHITEOUT]               = 0,
             [BATTLE_OPTIONS_ITEM_HEALING]           = 0,
             [BATTLE_OPTIONS_CENTER_HEALING]         = 0,
             [BATTLE_OPTIONS_MOVE_HEALING]           = 0,
@@ -963,7 +963,7 @@ static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTI
             [BATTLE_OPTIONS_FAINTED_MON]            = 1,
             [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 2,
             [BATTLE_OPTIONS_NICKNAME]               = 1,
-            [BATTLE_OPTIONS_WITHEOUT]               = 1,
+            [BATTLE_OPTIONS_WHITEOUT]               = 1,
             [BATTLE_OPTIONS_ITEM_HEALING]           = 0,
             [BATTLE_OPTIONS_CENTER_HEALING]         = 0,
             [BATTLE_OPTIONS_MOVE_HEALING]           = 0,
@@ -992,7 +992,7 @@ static const u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTI
             [BATTLE_OPTIONS_FAINTED_MON]            = 0,
             [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0,
             [BATTLE_OPTIONS_NICKNAME]               = 0,
-            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_WHITEOUT]               = 0,
             [BATTLE_OPTIONS_ITEM_HEALING]           = 1,
             [BATTLE_OPTIONS_CENTER_HEALING]         = 0,
             [BATTLE_OPTIONS_MOVE_HEALING]           = 0,
@@ -1682,7 +1682,7 @@ static const struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTL
             },
         .numOptions = 3,
     },
-    [BATTLE_OPTIONS_WITHEOUT] =
+    [BATTLE_OPTIONS_WHITEOUT] =
     {
         .title = _("Witheout"),
         .options = {

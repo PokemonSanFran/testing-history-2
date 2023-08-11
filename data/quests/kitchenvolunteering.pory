@@ -134,7 +134,7 @@ script Quest_Kitchenvolunteering_RepeatQuest_Dialogue{
     lock
     faceplayer
     special(Quest_Kitchenvolunteering_ChooseRandomPantryItem)
-    msgbox(gText_Kitchenvolunteering_OhWowTheyNever,,SPEAKER_AUGUSTA) 
+    msgbox(gText_Kitchenvolunteering_OhWowTheyNever,,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_ThisTimeCanYouGrab,,SPEAKER_AUGUSTA)
     call(Quest_Kitchenvolunteering_GiveKey_Script)
     release
@@ -171,7 +171,7 @@ text gText_Kitchenvolunteering_OhYoureNotDone{
     format("Oh you're not done? Let me know when you are.")
 }
 text gText_Kitchenvolunteering_TheyNever{
-    format("They never realzied they've got the wrong guy...")
+    format("They never realized they've got the wrong person...")
 }
 text gText_Kitchenvolunteering_OhThankGod{
     format("Oh thank God! I'll take those. Thank you so much!")
