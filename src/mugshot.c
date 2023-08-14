@@ -8,6 +8,7 @@
 #include "palette.h"
 #include "event_data.h"
 #include "constants/mugshots.h"
+#include "string_util.h"
 
 #define MUGSHOT_PALETTE_NUM 13
 
@@ -56,11 +57,11 @@ void ClearMugshot(void){
 static void DrawMugshotCore(const struct Mugshot* const mugshot, int x, int y){
     struct WindowTemplate t;
     u16 windowId;
-    
+
     if(sMugshotWindow != 0){
         ClearMugshot();
     }
-    
+
     #if GAME_VERSION==VERSION_EMERALD
     SetWindowTemplateFields(&t, 0, x, y, mugshot->width/8, mugshot->height/8, MUGSHOT_PALETTE_NUM, 0x40);
     #else
@@ -68,7 +69,7 @@ static void DrawMugshotCore(const struct Mugshot* const mugshot, int x, int y){
     #endif
     windowId = AddWindow(&t);
     sMugshotWindow = windowId + 1;
-    
+
     LoadPalette(mugshot->palette, 16 * MUGSHOT_PALETTE_NUM, 32);
     CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
     PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
@@ -167,7 +168,7 @@ enum Colors
     FONT_WHITE,
 };
 
-static const u8 sMenuWindowFontColors[][3] = 
+static const u8 sMenuWindowFontColors[][3] =
 {
     [FONT_BLACK]    = {TEXT_COLOR_TRANSPARENT,  13,   11},
     [FONT_WHITE]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,       TEXT_COLOR_TRANSPARENT},
@@ -208,7 +209,7 @@ static void CreateSpeakerIconSprite(u16 speaker, u16 offset)
     paltag = GetSpritePaletteTagByPaletteNum(palnum);
     sPortaitPaletteID = paltag;
     FreeSpritePaletteByTag(paltag);
-    
+
     sSpriteSheet_Speaker_Icon.data = sSpeakerData[speaker].speakerIcon;
     sSpriteSheet_Speaker_Icon.size = 0x0800;
     sSpriteSheet_Speaker_Icon.tag = SpriteTag;
@@ -280,15 +281,15 @@ void DrawMessageBoxAddOns(u8 windowId){
     u8 tail = VarGet(VAR_MSGBOX_TAIL);
     u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
     u8 i, x, y;
-    
+
     if(sMugshotWindow != 0){
         ClearMessageBoxAddOns();
     }
-    
+
     SetWindowTemplateFields(&t, 0, WINDOW_TILELEFT, WINDOW_TILETOP, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8, MUGSHOT_PALETTE_NUM, 0x40);
     windowId = AddWindow(&t);
     sMugshotWindow = windowId + 1;
-        
+
     LoadPalette(palette, 16 * MUGSHOT_PALETTE_NUM, 32);
     //Top Left Part
     CopyToWindowPixelBuffer(windowId, (const void*)sMsgbox_Top_0, 0, WINDOW_TITLEOFFSET);
@@ -298,13 +299,16 @@ void DrawMessageBoxAddOns(u8 windowId){
     //Top Right Part
     CopyToWindowPixelBuffer(windowId, (const void*)sMsgbox_Top_2, 0, WINDOW_TITLEOFFSET + 1 + WINDOW_SIZE);
 
+
+    StringExpandPlaceholders(gStringVar4,str);
+
     if(speaker != SPEAKER_DEFAULT && speaker < NUM_SPEAKERS){
         //Name Width
         if(onPhone)
-            offset = GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH) - 8 - PHONE_WIDTH;
+            offset = GetStringRightAlignXOffset(SPEAKER_FONT, gStringVar4, MAX_SPEAKER_NAME_WIDTH) - 8 - PHONE_WIDTH;
         else
-            offset = GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH) - 16;
-        offset2 = MAX_SPEAKER_NAME_WIDTH - GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
+            offset = GetStringRightAlignXOffset(SPEAKER_FONT, gStringVar4, MAX_SPEAKER_NAME_WIDTH) - 16;
+        offset2 = MAX_SPEAKER_NAME_WIDTH - GetStringRightAlignXOffset(SPEAKER_FONT, gStringVar4, MAX_SPEAKER_NAME_WIDTH);
         if(EMOTES_X < offset)
             offset = EMOTES_X;
         //Name Box
@@ -366,7 +370,7 @@ void DrawMessageBoxAddOns(u8 windowId){
             break;
         }
 
-        
+
         //Phone
         if(onPhone)
             BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X - offset, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
@@ -375,8 +379,8 @@ void DrawMessageBoxAddOns(u8 windowId){
         CreateSpeakerIconSprite(speaker, offset);
 
         //Speaker Name
-        //offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
-        AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
+        //offset = GetStringCenterAlignXOffset(SPEAKER_FONT, gStringVar4, MAX_SPEAKER_NAME_WIDTH);
+        AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
     }
 
     PutWindowRectTilemap(windowId, 0, 0, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8);

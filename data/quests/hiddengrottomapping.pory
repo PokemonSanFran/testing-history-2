@@ -19,7 +19,7 @@ script Quest_Hiddengrottomapping_MarkSubquestBiome_Script{
 
 script Quest_Hiddengrottomapping_PannenVisibility_Script{
     questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_HIDDENGROTTOMAPPING)
-    
+
     if (!var(VAR_RESULT)){
         setflag(FLAG_HIDE_PANNEN)
     }
@@ -29,7 +29,7 @@ script Quest_Hiddengrottomapping_PannenVisibility_Script{
 script Quest_Hiddengrottomapping_StartQuest_Dialogue{
     addvar(VAR_TEMP_0,1)
     questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_HIDDENGROTTOMAPPING)
-    
+
     if (!var(VAR_RESULT)){
         end
     }
@@ -103,7 +103,7 @@ text gText_Hiddengrottomapping_WhyHello{
 }
 
 text gText_Hiddengrottomapping_WildPokemonBuild{
-    format("We're in a Hidden Grotto. Wild Pokemon create these spaces! Soetimes there are exceptionally rare Pokemon inside, or items they've left behind.")
+    format("We're in a Hidden Grotto. Wild Pokemon create these spaces! Sometimes there are exceptionally rare Pokemon inside, or items they've left behind.")
 }
 
 text gText_Hiddengrottomapping_ButNobodyKnows{
@@ -111,7 +111,7 @@ text gText_Hiddengrottomapping_ButNobodyKnows{
 }
 
 text gText_Hiddengrottomapping_DoMeAFavor{
-    format("I see you've got a phone, and if you're Trainer, you're tracking battle data, right? Keep traveling the region. I think there are five different types of Hidden Grotto biomes in Sanfran... once you've been to them all, come to my house in Gldngtepark! I'll extract the data from your phone.")
+    format("I see you've got a phone, and if you're a Trainer, you're tracking battle data, right? Keep traveling the region. I think there are five different types of Hidden Grotto biomes in Sanfran... once you've been to them all, come to my house in Gldngtepark! I'll extract the data from your phone.")
 }
 
 text gText_Hiddengrottomapping_SighHeToldYou{
