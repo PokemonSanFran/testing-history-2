@@ -15,8 +15,10 @@ script NoGoggles_PreventProgress {
                     setvar(VAR_FAINTED_FOG_STATE,1)
                 }
             end
-        } 
+        }
 }
+
+// PSF TODO: Need to update the places where the goggles are talked about to make it clear that the player needs specifically the PSF googles, their Go-GOggles won't cut it
 
 script FlyingBlind_CheckFainted_Script {
     checkitem(ITEM_GO_GOGGLES,1)
@@ -47,19 +49,19 @@ script FlyingBlind_Dialogue {
         msgbox(gText_FlyingBlind_NotSoEasy,,VAR_DYNAMIC_SPEAKER,,EMOTE_LAUGH)
 
         msgbox(gText_FlyingBlind_GuessingYouSaw,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-        
+
         msgbox(gText_FlyingBlind_NotJustYou,,VAR_DYNAMIC_SPEAKER)
 
         msgbox(gText_FlyingBlind_Karl,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-        
+
         msgbox(gText_FlyingBlind_YouReallyBrandNew,,VAR_DYNAMIC_SPEAKER)
 
         msgbox(gText_FlyingBlind_WaitTheFogHas,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-        
+
         msgbox(gText_FlyingBlind_NotVeryWell,,VAR_DYNAMIC_SPEAKER)
 
         msgbox(gText_FlyingBlind_NoResponse,MSGBOX_DEFAULT,SPEAKER_ZOEY)
-        
+
         msgbox(gText_FlyingBlind_EverSinceYouPeople,,VAR_DYNAMIC_SPEAKER)
 
         msgbox(gText_FlyingBlind_GottaFindSomebody,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT)
