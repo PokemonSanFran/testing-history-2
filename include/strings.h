@@ -3219,8 +3219,6 @@ extern const u8 gText_Bodegaburnout_HelpKeepFood[];
 extern const u8 gText_Bodegaburnout_BalanceOurBooks[];
 extern const u8 gText_Bodegaburnout_RaiseTheMood[];
 
-//Quest_Taxicabturnaround_
-
 //Debug Start
 extern const u8 gText_WhereWeDropping[];
 extern const u8 gText_Prolouge[];
@@ -3238,4 +3236,10 @@ extern const u8 gText_EraseQuestion[];
 extern const u8 gText_YouSaved[];
 extern const u8 gText_ConfirmOverwrite[];
 extern const u8 gText_CancelOverwrite[];
+
+//Start Pokevial Branch
+extern const u8 gText_PokevialHasDoses[];
+extern const u8 gText_PokevialIsEmpty[];
+extern const u8 gText_YourPkmnWereRestored[];
+//End Pokevial Branch
 #endif // GUARD_STRINGS_H

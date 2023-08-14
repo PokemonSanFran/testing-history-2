@@ -645,3 +645,9 @@ gSpecials::
     def_special LevelUpAllPokemonTo100
     def_special SavePlayerPartyBattleFrontier
     def_special LoadPlayerPartyBattleFrontier
+
+    //Start Pokevial Branch
+    def_special PokevialGetDose
+    def_special PokevialGetSize
+    def_special PokevialRefill
+    //End Pokevial Branch

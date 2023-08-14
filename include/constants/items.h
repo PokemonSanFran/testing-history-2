@@ -997,7 +997,9 @@
 #define ITEM_STOLEN_GOODS 730
 #define ITEM_BEACH_GLASS 102
 
-#define ITEMS_COUNT 799
+#define ITEM_POKEVIAL 800
+
+#define ITEMS_COUNT 801
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

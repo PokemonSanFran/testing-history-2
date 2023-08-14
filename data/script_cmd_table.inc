@@ -238,6 +238,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_bufferpartymonspecies @ 0xeb
 	.4byte ScrCmd_bufferabilityname @ 0xec
     .4byte ScrCmd_buffermapname @ 0xed
+    .4byte ScrCmd_pokevial                          @ 0xee
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop
