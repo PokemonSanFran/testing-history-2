@@ -97,6 +97,6 @@
 #define ITEM_EFFECT_HEAL_PP 21
 #define ITEM_EFFECT_NONE 22
 #define ITEM_EFFECT_ALL_EV 23
-#define ITEM_EFFECT_POKEVIAL 23 //Pokevial Branch
+#define ITEM_EFFECT_POKEVIAL 24 //Pokevial Branch
 
 #endif // GUARD_CONSTANTS_ITEM_EFFECTS_H
