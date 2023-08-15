@@ -5860,15 +5860,6 @@ u8 GetItemEffectType(u16 item)
     if (itemEffect == NULL)
         return ITEM_EFFECT_NONE;
 
-    // Read the item's effect properties.
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-#ifndef FREE_ENIGMA_BERRY
-        itemEffect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-#else
-    itemEffect = 0;
-    #endif
-    else
-        itemEffect = gItemEffectTable[item - ITEM_POTION];
 
     if ((itemEffect[0] & ITEM0_DIRE_HIT) || itemEffect[1] || (itemEffect[3] & ITEM3_GUARD_SPEC))
         return ITEM_EFFECT_X_ITEM;
