@@ -4333,15 +4333,6 @@ static bool8 IsHPRecoveryItem(u16 item)
 {
     const u8 *effect = GetItemEffect(item);
 
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-#ifndef FREE_ENIGMA_BERRY
-        effect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-#else
-        effect = 0;
-    #endif
-    else
-        effect = gItemEffectTable[item - ITEM_POTION];
-
     if (effect == NULL)
         return FALSE;
 
