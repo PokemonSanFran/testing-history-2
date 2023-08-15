@@ -7031,10 +7031,10 @@ static bool8 IsMonNotFullyHealed(void)
     s32 j;
 
     if (currentHP < maxHP)
-        return TRUE;  // Found a Pokémon with less than full HP
+        return TRUE;  // Found a Pok├⌐mon with less than full HP
 
     if (status != 0)
-        return TRUE;  // Found a Pokémon with a status condition
+        return TRUE;  // Found a Pok├⌐mon with a status condition
 
     for (j = 0; j < MAX_MON_MOVES; j++)
     {
@@ -7043,7 +7043,7 @@ static bool8 IsMonNotFullyHealed(void)
 
         if (currentPP < maxPP)
         {
-            return TRUE;  // Found a Pokémon with less than max PP
+            return TRUE;  // Found a Pok├⌐mon with less than max PP
         }
     }
 

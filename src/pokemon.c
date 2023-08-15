@@ -5798,21 +5798,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
         return TRUE;
 
     // Get item effect
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-    {
-        if (gMain.inBattle)
-            itemEffect = GetItemEffect(item);
-        else
-            #ifndef FREE_ENIGMA_BERRY
-            itemEffect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-            #else
-            itemEffect = 0;
-            #endif
-    }
-    else
-    {
-        itemEffect = gItemEffectTable[item - ITEM_POTION];
-    }
+    itemEffect = GetItemEffect(item);
 
     // Do item effect
     for (i = 0; i < ITEM_EFFECT_ARG_START; i++)
@@ -8698,32 +8684,32 @@ u8 CreateCustomMon(u16 species, u8 level, u16 item, u8 ball, u8 nature, u8 abili
 
     if (nature == NUM_NATURES || nature == 0xFF)
         nature = Random() % NUM_NATURES;
-    
+
     if (isShiny)
         CreateShinyMonWithNature(&gEnemyParty[0], species, level, nature);
     else
         CreateMonWithNature(&gEnemyParty[0], species, level, 32, nature);
-    
+
     for (i = 0; i < NUM_STATS; i++)
     {
         // ev
         if (evs[i] != 32 && evs[i] != 0xFF)
             SetMonData(&gEnemyParty[0], MON_DATA_HP_EV + i, &evs[i]);
-        
+
         // iv
         if (ivs[i] != 32 && ivs[i] != 0xFF)
             SetMonData(&gEnemyParty[0], MON_DATA_HP_IV + i, &ivs[i]);
     }
     CalculateMonStats(&gEnemyParty[0]);
-    
+
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (moves[i] == 0 || moves[i] == 0xFF || moves[i] > MOVES_COUNT)
             continue;
-        
+
         SetMonMoveSlot(&gEnemyParty[0], moves[i], i);
     }
-    
+
     //ability
     if (abilityNum == 0xFF || GetAbilityBySpecies(species, abilityNum) == 0)
     {
@@ -8731,13 +8717,13 @@ u8 CreateCustomMon(u16 species, u8 level, u16 item, u8 ball, u8 nature, u8 abili
             abilityNum = Random() % 3;  // includes hidden abilities
         } while (GetAbilityBySpecies(species, abilityNum) == 0);
     }
-    
+
     SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
-    
+
     //ball
     if (ball <= POKEBALL_COUNT)
         SetMonData(&gEnemyParty[0], MON_DATA_POKEBALL, &ball);
-    
+
     //item
     heldItem[0] = item;
     heldItem[1] = item >> 8;
