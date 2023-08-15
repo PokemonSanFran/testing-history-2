@@ -4333,15 +4333,6 @@ static bool8 IsHPRecoveryItem(u16 item)
 {
     const u8 *effect = GetItemEffect(item);
 
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-#ifndef FREE_ENIGMA_BERRY
-        effect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-#else
-        effect = 0;
-    #endif
-    else
-        effect = gItemEffectTable[item - ITEM_POTION];
-
     if (effect == NULL)
         return FALSE;
 
@@ -4937,16 +4928,6 @@ static void Task_HandleWhichMoveInput(u8 taskId)
 void ItemUseCB_PPRecovery(u8 taskId, TaskFunc task)
 {
     const u8 *effect = GetItemEffect(gSpecialVar_ItemId);
-    u16 item = gSpecialVar_ItemId;
-
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-#ifndef FREE_ENIGMA_BERRY
-        effect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-#else
-    effect = 0;
-#endif
-    else
-        effect = gItemEffectTable[item - ITEM_POTION];
 
     if (effect == NULL || !(effect[4] & ITEM4_HEAL_PP_ONE))
     {
@@ -5859,16 +5840,6 @@ u8 GetItemEffectType(u16 item)
 
     if (itemEffect == NULL)
         return ITEM_EFFECT_NONE;
-
-    // Read the item's effect properties.
-    if (item == ITEM_ENIGMA_BERRY_E_READER)
-#ifndef FREE_ENIGMA_BERRY
-        itemEffect = gSaveBlock1Ptr->enigmaBerry.itemEffect;
-#else
-    itemEffect = 0;
-    #endif
-    else
-        itemEffect = gItemEffectTable[item - ITEM_POTION];
 
     if ((itemEffect[0] & ITEM0_DIRE_HIT) || itemEffect[1] || (itemEffect[3] & ITEM3_GUARD_SPEC))
         return ITEM_EFFECT_X_ITEM;
@@ -7060,10 +7031,10 @@ static bool8 IsMonNotFullyHealed(void)
     s32 j;
 
     if (currentHP < maxHP)
-        return TRUE;  // Found a Pokémon with less than full HP
+        return TRUE;  // Found a Pok├⌐mon with less than full HP
 
     if (status != 0)
-        return TRUE;  // Found a Pokémon with a status condition
+        return TRUE;  // Found a Pok├⌐mon with a status condition
 
     for (j = 0; j < MAX_MON_MOVES; j++)
     {
@@ -7072,7 +7043,7 @@ static bool8 IsMonNotFullyHealed(void)
 
         if (currentPP < maxPP)
         {
-            return TRUE;  // Found a Pokémon with less than max PP
+            return TRUE;  // Found a Pok├⌐mon with less than max PP
         }
     }
 
