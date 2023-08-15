@@ -146,7 +146,7 @@ TwitterPost_BetweenAStoneAndAHardPlace_Script_2:
 
 
 gText_Twitter_ThereWasAnError::
-	.string "There was an error displying this\n"
+	.string "There was an error displaying this\n"
 	.string "content. Please try again later.$"
 
 gText_Twitter_RabiesOutBreak_Message::
