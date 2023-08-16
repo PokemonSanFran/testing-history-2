@@ -155,7 +155,7 @@
 #define NUM_DEX_FLAG_BYTES ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER)
 #define NUM_FLAG_BYTES ROUND_BITS_TO_BYTES(FLAGS_COUNT)
 #define NUM_TRENDY_SAYING_BYTES ROUND_BITS_TO_BYTES(NUM_TRENDY_SAYINGS)
-#define NUM_TM_BYTES ROUND_BITS_TO_BYTES(TMHM_COUNT) // PSF technicalmachine Branch
+#define NUM_TM_BYTES ROUND_BITS_TO_BYTES(BAG_TMHM_COUNT) // PSF technicalmachine Branch
 
 // Calls m0/m1/.../m8 depending on how many arguments are passed.
 #define VARARG_8(m, ...) CAT(m, NARG_8(__VA_ARGS__))(__VA_ARGS__)
@@ -1179,7 +1179,7 @@ struct SaveBlock1
     /*0x5D8*/ struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
     /*0x650*/ struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
     ///*0x690*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
-    u8 bagPocket_TMHMOwnedFlags[NUM_TM_BYTES]; //allow for a total of 112 TMs/HMs // PSF technicalmachine Branch
+    u8 bagPocket_TMHMOwnedFlags[NUM_TM_BYTES]; //allow for an amount of TMs/HMs dictated by the BAG_TMHM_COUNT constant // PSF technicalmachine Branch
     /*0x790*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
     /*0x848*/ struct Pokeblock pokeblocks[POKEBLOCKS_COUNT];
     /*0x988*/ struct Coords16 savedPos;

@@ -26,12 +26,12 @@ struct Item
 struct BagPocket
 {
     struct ItemSlot *itemSlots;
-    u8 capacity;
+    u16 capacity;
 };
 
 extern const struct Item gItems[];
 extern struct BagPocket gBagPockets[];
-extern struct ItemSlot gTmHmItemSlots[TMHM_COUNT];// PSF technicalmachine Branch
+extern struct ItemSlot gTmHmItemSlots[BAG_TMHM_COUNT];// PSF technicalmachine Branch
 
 void ApplyNewEncryptionKeyToBagItems(u32 newKey);
 void ApplyNewEncryptionKeyToBagItems_(u32 newKey);

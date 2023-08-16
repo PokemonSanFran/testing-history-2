@@ -1103,7 +1103,7 @@ static const u8 *const sUnused_StatStrings[] =
     gText_Speed2
 };
 
-const u16 sTMHMMoves[ITEM_TM400 - ITEM_TM01 + 1] = //PSF technicalmachine Branch
+const u16 sTMHMMoves[BAG_TMHM_COUNT] = //PSF technicalmachine Branch
 //The amount of elements in this array is because the TMs are spanning two different ranges, 582 - 681 and then 801+
 //PSF TODO we should unify them and then fix this once we stop pulling from expansion
 {
