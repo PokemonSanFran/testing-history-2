@@ -87,6 +87,7 @@ static void ListMenuUpdateCursorObject(u8 taskId, u16 x, u16 y, u32 cursorObjId)
 static void ListMenuRemoveCursorObject(u8 taskId, u32 cursorObjId);
 static void SpriteCallback_ScrollIndicatorArrow(struct Sprite *sprite);
 static void SpriteCallback_RedArrowCursor(struct Sprite *sprite);
+static void ListMenu_WrapCursorToOppositeEnd(struct ListMenu *list,bool32 movingDown,s32 currentRow,u32 totalRows);
 
 // EWRAM vars
 static EWRAM_DATA struct {
@@ -410,12 +411,26 @@ u8 ListMenuInitInRect(struct ListMenuTemplate *listMenuTemplate, struct ListMenu
     return taskId;
 }
 
+static void ListMenu_WrapCursorToOppositeEnd(struct ListMenu *list,bool32 movingDown,s32 currentRow,u32 totalRows)
+{
+    u32 diffRows = (movingDown == TRUE) ? (totalRows - currentRow) : currentRow;
+    u8 remainingRowDistance = 0;
+
+    while (diffRows > 0)
+    {
+        remainingRowDistance = diffRows > UCHAR_MAX ? UCHAR_MAX : diffRows;
+        ListMenuChangeSelection(list, TRUE, remainingRowDistance, movingDown);
+        diffRows -= remainingRowDistance;
+    }
+
+}
+
 s32 ListMenu_ProcessInput(u8 listTaskId)
 {
     struct ListMenu *list = (void*) gTasks[listTaskId].data;
-    //PSF CHANGE The following two lines allow the player to press down on the last item in a menu list to loop to the top.
-    s32 currentPosition = list->scrollOffset + list->selectedRow;
-    u8 lastPositon = list->template.totalItems - 1;
+    s32 currentRow = list->scrollOffset + list->selectedRow;
+    u32 totalRows = list->template.totalItems - 1;
+    bool32 movingDown;
 
     if (JOY_NEW(A_BUTTON))
     {
@@ -427,18 +442,24 @@ s32 ListMenu_ProcessInput(u8 listTaskId)
     }
     else if (JOY_REPEAT(DPAD_UP))
     {
-                if (currentPosition == 0)
-            ListMenuChangeSelection(list,TRUE,lastPositon,TRUE);
+        movingDown = FALSE;
+
+        if (currentRow == 0)
+            ListMenu_WrapCursorToOppositeEnd(list, !movingDown, currentRow, totalRows);
         else
-            ListMenuChangeSelection(list, TRUE, 1, FALSE);
+            ListMenuChangeSelection(list, TRUE, 1, movingDown);
+
         return LIST_NOTHING_CHOSEN;
     }
     else if (JOY_REPEAT(DPAD_DOWN))
     {
-                if (currentPosition == lastPositon)
-            ListMenuChangeSelection(list,TRUE,lastPositon, FALSE);
+        movingDown = TRUE;
+
+        if (currentRow == totalRows)
+            ListMenu_WrapCursorToOppositeEnd(list, !movingDown, currentRow, totalRows);
         else
-            ListMenuChangeSelection(list, TRUE, 1, TRUE);
+            ListMenuChangeSelection(list, TRUE, 1, movingDown);
+
         return LIST_NOTHING_CHOSEN;
     }
     else // try to move by one window scroll
