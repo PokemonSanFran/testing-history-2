@@ -422,7 +422,6 @@ static void ListMenu_WrapCursorToOppositeEnd(struct ListMenu *list,bool32 moving
         ListMenuChangeSelection(list, TRUE, remainingRowDistance, movingDown);
         diffRows -= remainingRowDistance;
     }
-
 }
 
 s32 ListMenu_ProcessInput(u8 listTaskId)
